@@ -1,0 +1,21 @@
+# Firmware blobs (proprietary, never commit)
+firmware/*.bin
+firmware/*.mbn
+firmware/*.elf
+firmware/*.fw
+
+# Build artifacts
+*.o
+*.ko
+*.dtb
+*.img
+Image
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
