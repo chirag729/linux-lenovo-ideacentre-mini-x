@@ -1,0 +1,323 @@
+﻿
+
+SriovSupport                      : NoIoMmuSupport
+PcieLinkSpeed                     : 8.0 GT/s
+PcieMaxLinkSpeed                  : 8.0 GT/s
+Version                           : 1.1+
+DeviceType                        : PCI Express endpoint
+CurrentSpeedAndMode               : NA
+ifAlias                           : Wi-Fi
+InterfaceAlias                    : Wi-Fi
+ifDesc                            : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) Network Adapter
+Segment                           : 4
+Bus                               : 1
+Device                            : 0
+Function                          : 0
+Slot                              : 
+PcieLinkWidth                     : 2
+Caption                           : MSFT_NetAdapterHardwareInfoSettingData 'Qualcomm FastConnect 7800 Wi-Fi 7 High 
+                                    Band Simultaneous (HBS) Network Adapter'
+Description                       : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) Network Adapter
+ElementName                       : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) Network Adapter
+InstanceID                        : {DC0F6E43-0095-4E7C-BCE7-35B1527212C3}
+InterfaceDescription              : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) Network Adapter
+Name                              : Wi-Fi
+Source                            : 2
+SystemName                        : LenovoMini1
+BusNumber                         : 1
+DeviceNumber                      : 0
+Dma64BitSupported                 : False
+FunctionNumber                    : 0
+LineBasedInterrupts               : False
+LineBasedInterruptSupported       : False
+LocationInformationString         : PCI segment 4 bus 1, device 0, function 0
+MaxInterruptMessages              : 32
+MsiEnabled                        : False
+MsiInterruptSupported             : True
+MsiSupported                      : False
+MsiXEnabled                       : False
+MsiXInterruptSupported            : False
+MsixMessageAffinityArray          : 
+MsiXSupported                     : False
+NoInterrupt                       : True
+NumaNode                          : 
+NumMsiMessages                    : 
+NumMsixTableEntries               : 
+PciCurrentSpeedAndMode            : 
+PciDeviceLabelID                  : 
+PciDeviceLabelString              : 
+PciDeviceType                     : 2
+PciExpressCurrentLinkSpeedEncoded : 3
+PciExpressCurrentLinkWidth        : 2
+PciExpressCurrentPayloadSize      : 128
+PciExpressMaxLinkSpeedEncoded     : 3
+PciExpressMaxLinkWidth            : 2
+PciExpressMaxPayloadSize          : 128
+PciExpressMaxReadRequestSize      : 512
+PciExpressVersion                 : 2
+PciXCurrentSpeedAndMode           : 
+S0WakeupSupported                 : True
+SegmentNumber                     : 4
+SlotNumber                        : 
+PSComputerName                    : 
+CimClass                          : ROOT/StandardCimv2:MSFT_NetAdapterHardwareInfoSettingData
+CimInstanceProperties             : {Caption, Description, ElementName, InstanceID...}
+CimSystemProperties               : Microsoft.Management.Infrastructure.CimSystemProperties
+
+SriovSupport                      : NoIoMmuSupport
+PcieLinkSpeed                     : 2.5 GT/s
+PcieMaxLinkSpeed                  : 2.5 GT/s
+Version                           : 1.1+
+DeviceType                        : PCI Express endpoint
+CurrentSpeedAndMode               : NA
+ifAlias                           : Ethernet
+InterfaceAlias                    : Ethernet
+ifDesc                            : Realtek PCIe GbE Family Controller
+Segment                           : 5
+Bus                               : 1
+Device                            : 0
+Function                          : 0
+Slot                              : 
+PcieLinkWidth                     : 1
+Caption                           : MSFT_NetAdapterHardwareInfoSettingData 'Realtek PCIe GbE Family Controller'
+Description                       : Realtek PCIe GbE Family Controller
+ElementName                       : Realtek PCIe GbE Family Controller
+InstanceID                        : {4BDBD802-F80E-4AF7-9A46-EAB25A299527}
+InterfaceDescription              : Realtek PCIe GbE Family Controller
+Name                              : Ethernet
+Source                            : 2
+SystemName                        : LenovoMini1
+BusNumber                         : 1
+DeviceNumber                      : 0
+Dma64BitSupported                 : True
+FunctionNumber                    : 0
+LineBasedInterrupts               : False
+LineBasedInterruptSupported       : True
+LocationInformationString         : PCI segment 5 bus 1, device 0, function 0
+MaxInterruptMessages              : 4
+MsiEnabled                        : True
+MsiInterruptSupported             : True
+MsiSupported                      : True
+MsiXEnabled                       : True
+MsiXInterruptSupported            : True
+MsixMessageAffinityArray          : {MSFT_NetAdapter_Group_Affinity}
+MsiXSupported                     : True
+NoInterrupt                       : False
+NumaNode                          : 
+NumMsiMessages                    : 1
+NumMsixTableEntries               : 4
+PciCurrentSpeedAndMode            : 
+PciDeviceLabelID                  : 
+PciDeviceLabelString              : 
+PciDeviceType                     : 2
+PciExpressCurrentLinkSpeedEncoded : 1
+PciExpressCurrentLinkWidth        : 1
+PciExpressCurrentPayloadSize      : 128
+PciExpressMaxLinkSpeedEncoded     : 1
+PciExpressMaxLinkWidth            : 1
+PciExpressMaxPayloadSize          : 128
+PciExpressMaxReadRequestSize      : 512
+PciExpressVersion                 : 2
+PciXCurrentSpeedAndMode           : 
+S0WakeupSupported                 : True
+SegmentNumber                     : 5
+SlotNumber                        : 
+PSComputerName                    : 
+CimClass                          : ROOT/StandardCimv2:MSFT_NetAdapterHardwareInfoSettingData
+CimInstanceProperties             : {Caption, Description, ElementName, InstanceID...}
+CimSystemProperties               : Microsoft.Management.Infrastructure.CimSystemProperties
+
+SriovSupport                      : NoIoMmuSupport
+PcieLinkSpeed                     : Unknown
+PcieMaxLinkSpeed                  : Unknown
+Version                           : 
+DeviceType                        : Unknown
+CurrentSpeedAndMode               : NA
+ifAlias                           : Wi-Fi 2
+InterfaceAlias                    : Wi-Fi 2
+ifDesc                            : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) Network Adapter
+Segment                           : 
+Bus                               : 
+Device                            : 
+Function                          : 
+Slot                              : 
+PcieLinkWidth                     : 
+Caption                           : MSFT_NetAdapterHardwareInfoSettingData 'Qualcomm FastConnect 7800 Wi-Fi 7 High 
+                                    Band Simultaneous (HBS) Network Adapter'
+Description                       : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) Network Adapter
+ElementName                       : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) Network Adapter
+InstanceID                        : {3D37E4C9-EB4A-46E1-9999-A57FC0A42027}
+InterfaceDescription              : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) Network Adapter
+Name                              : Wi-Fi 2
+Source                            : 2
+SystemName                        : LenovoMini1
+BusNumber                         : 
+DeviceNumber                      : 
+Dma64BitSupported                 : False
+FunctionNumber                    : 
+LineBasedInterrupts               : False
+LineBasedInterruptSupported       : 
+LocationInformationString         : 
+MaxInterruptMessages              : 
+MsiEnabled                        : False
+MsiInterruptSupported             : 
+MsiSupported                      : False
+MsiXEnabled                       : False
+MsiXInterruptSupported            : 
+MsixMessageAffinityArray          : 
+MsiXSupported                     : False
+NoInterrupt                       : True
+NumaNode                          : 
+NumMsiMessages                    : 
+NumMsixTableEntries               : 
+PciCurrentSpeedAndMode            : 
+PciDeviceLabelID                  : 
+PciDeviceLabelString              : 
+PciDeviceType                     : 
+PciExpressCurrentLinkSpeedEncoded : 
+PciExpressCurrentLinkWidth        : 
+PciExpressCurrentPayloadSize      : 
+PciExpressMaxLinkSpeedEncoded     : 
+PciExpressMaxLinkWidth            : 
+PciExpressMaxPayloadSize          : 
+PciExpressMaxReadRequestSize      : 
+PciExpressVersion                 : 
+PciXCurrentSpeedAndMode           : 
+S0WakeupSupported                 : False
+SegmentNumber                     : 
+SlotNumber                        : 
+PSComputerName                    : 
+CimClass                          : ROOT/StandardCimv2:MSFT_NetAdapterHardwareInfoSettingData
+CimInstanceProperties             : {Caption, Description, ElementName, InstanceID...}
+CimSystemProperties               : Microsoft.Management.Infrastructure.CimSystemProperties
+
+SriovSupport                      : NoIoMmuSupport
+PcieLinkSpeed                     : Unknown
+PcieMaxLinkSpeed                  : Unknown
+Version                           : 
+DeviceType                        : Unknown
+CurrentSpeedAndMode               : NA
+ifAlias                           : Wi-Fi 4
+InterfaceAlias                    : Wi-Fi 4
+ifDesc                            : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) Network Adapter
+Segment                           : 
+Bus                               : 
+Device                            : 
+Function                          : 
+Slot                              : 
+PcieLinkWidth                     : 
+Caption                           : MSFT_NetAdapterHardwareInfoSettingData 'Qualcomm FastConnect 7800 Wi-Fi 7 High 
+                                    Band Simultaneous (HBS) Network Adapter'
+Description                       : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) Network Adapter
+ElementName                       : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) Network Adapter
+InstanceID                        : {1E37BFC2-7FA6-4AF6-92F5-4F859B686B21}
+InterfaceDescription              : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) Network Adapter
+Name                              : Wi-Fi 4
+Source                            : 2
+SystemName                        : LenovoMini1
+BusNumber                         : 
+DeviceNumber                      : 
+Dma64BitSupported                 : False
+FunctionNumber                    : 
+LineBasedInterrupts               : False
+LineBasedInterruptSupported       : 
+LocationInformationString         : 
+MaxInterruptMessages              : 
+MsiEnabled                        : False
+MsiInterruptSupported             : 
+MsiSupported                      : False
+MsiXEnabled                       : False
+MsiXInterruptSupported            : 
+MsixMessageAffinityArray          : 
+MsiXSupported                     : False
+NoInterrupt                       : True
+NumaNode                          : 
+NumMsiMessages                    : 
+NumMsixTableEntries               : 
+PciCurrentSpeedAndMode            : 
+PciDeviceLabelID                  : 
+PciDeviceLabelString              : 
+PciDeviceType                     : 
+PciExpressCurrentLinkSpeedEncoded : 
+PciExpressCurrentLinkWidth        : 
+PciExpressCurrentPayloadSize      : 
+PciExpressMaxLinkSpeedEncoded     : 
+PciExpressMaxLinkWidth            : 
+PciExpressMaxPayloadSize          : 
+PciExpressMaxReadRequestSize      : 
+PciExpressVersion                 : 
+PciXCurrentSpeedAndMode           : 
+S0WakeupSupported                 : False
+SegmentNumber                     : 
+SlotNumber                        : 
+PSComputerName                    : 
+CimClass                          : ROOT/StandardCimv2:MSFT_NetAdapterHardwareInfoSettingData
+CimInstanceProperties             : {Caption, Description, ElementName, InstanceID...}
+CimSystemProperties               : Microsoft.Management.Infrastructure.CimSystemProperties
+
+SriovSupport                      : NoIoMmuSupport
+PcieLinkSpeed                     : Unknown
+PcieMaxLinkSpeed                  : Unknown
+Version                           : 
+DeviceType                        : Unknown
+CurrentSpeedAndMode               : NA
+ifAlias                           : Wi-Fi 3
+InterfaceAlias                    : Wi-Fi 3
+ifDesc                            : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) Network Adapter
+Segment                           : 
+Bus                               : 
+Device                            : 
+Function                          : 
+Slot                              : 
+PcieLinkWidth                     : 
+Caption                           : MSFT_NetAdapterHardwareInfoSettingData 'Qualcomm FastConnect 7800 Wi-Fi 7 High 
+                                    Band Simultaneous (HBS) Network Adapter'
+Description                       : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) Network Adapter
+ElementName                       : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) Network Adapter
+InstanceID                        : {0FA433A8-5A46-487B-B66A-5FD19D4B4E0B}
+InterfaceDescription              : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) Network Adapter
+Name                              : Wi-Fi 3
+Source                            : 2
+SystemName                        : LenovoMini1
+BusNumber                         : 
+DeviceNumber                      : 
+Dma64BitSupported                 : False
+FunctionNumber                    : 
+LineBasedInterrupts               : False
+LineBasedInterruptSupported       : 
+LocationInformationString         : 
+MaxInterruptMessages              : 
+MsiEnabled                        : False
+MsiInterruptSupported             : 
+MsiSupported                      : False
+MsiXEnabled                       : False
+MsiXInterruptSupported            : 
+MsixMessageAffinityArray          : 
+MsiXSupported                     : False
+NoInterrupt                       : True
+NumaNode                          : 
+NumMsiMessages                    : 
+NumMsixTableEntries               : 
+PciCurrentSpeedAndMode            : 
+PciDeviceLabelID                  : 
+PciDeviceLabelString              : 
+PciDeviceType                     : 
+PciExpressCurrentLinkSpeedEncoded : 
+PciExpressCurrentLinkWidth        : 
+PciExpressCurrentPayloadSize      : 
+PciExpressMaxLinkSpeedEncoded     : 
+PciExpressMaxLinkWidth            : 
+PciExpressMaxPayloadSize          : 
+PciExpressMaxReadRequestSize      : 
+PciExpressVersion                 : 
+PciXCurrentSpeedAndMode           : 
+S0WakeupSupported                 : False
+SegmentNumber                     : 
+SlotNumber                        : 
+PSComputerName                    : 
+CimClass                          : ROOT/StandardCimv2:MSFT_NetAdapterHardwareInfoSettingData
+CimInstanceProperties             : {Caption, Description, ElementName, InstanceID...}
+CimSystemProperties               : Microsoft.Management.Infrastructure.CimSystemProperties
+
+
+

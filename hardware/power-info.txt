@@ -1,0 +1,1 @@
+﻿Battery life report saved to file path C:\Development\Projects\linux-lenovo-ideacentre-mini-x\hardware\battery-report.html.

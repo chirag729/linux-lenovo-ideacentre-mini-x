@@ -1,0 +1,8 @@
+﻿
+DriveLetter FileSystemLabel FileSystem         Size SizeRemaining
+----------- --------------- ----------         ---- -------------
+          C Windows         NTFS       509722226688  407720341504
+            WinRE_DRV       NTFS         2097147904    1310064640
+            SYSTEM          FAT32         268435456     162013184
+
+

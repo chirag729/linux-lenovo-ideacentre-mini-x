@@ -1,0 +1,66 @@
+﻿
+
+Availability                            : 3
+CpuStatus                               : 1
+CurrentVoltage                          : 11
+DeviceID                                : CPU0
+ErrorCleared                            : 
+ErrorDescription                        : 
+LastErrorCode                           : 
+LoadPercentage                          : 16
+Status                                  : OK
+StatusInfo                              : 3
+AddressWidth                            : 64
+DataWidth                               : 64
+ExtClock                                : 
+L2CacheSize                             : 24576
+L2CacheSpeed                            : 
+MaxClockSpeed                           : 2956
+PowerManagementSupported                : False
+ProcessorType                           : 3
+Revision                                : 513
+SocketDesignation                       : Qualcomm
+Version                                 : Model 2, Stepping 1
+VoltageCaps                             : 
+Caption                                 : ARMv8 (64-bit) Family 8 Model 1 Revision 201
+Description                             : ARMv8 (64-bit) Family 8 Model 1 Revision 201
+InstallDate                             : 
+Name                                    : Snapdragon(R) X - X126100 - Qualcomm(R) Oryon(TM) CPU
+ConfigManagerErrorCode                  : 
+ConfigManagerUserConfig                 : 
+CreationClassName                       : Win32_Processor
+PNPDeviceID                             : 
+PowerManagementCapabilities             : 
+SystemCreationClassName                 : Win32_ComputerSystem
+SystemName                              : LENOVOMINI1
+CurrentClockSpeed                       : 2956
+Family                                  : 280
+OtherFamilyDescription                  : 
+Role                                    : CPU
+Stepping                                : 1
+UniqueId                                : 
+UpgradeMethod                           : 6
+Architecture                            : 12
+AssetTag                                : 
+Characteristics                         : 44
+L3CacheSize                             : 0
+L3CacheSpeed                            : 0
+Level                                   : 1
+Manufacturer                            : Qualcomm Technologies Inc
+NumberOfCores                           : 8
+NumberOfEnabledCore                     : 8
+NumberOfLogicalProcessors               : 8
+PartNumber                              : 460
+ProcessorId                             : 0000000000000000
+SecondLevelAddressTranslationExtensions : False
+SerialNumber                            : 2B8ACD75
+ThreadCount                             : 8
+VirtualizationFirmwareEnabled           : False
+VMMonitorModeExtensions                 : True
+PSComputerName                          : 
+CimClass                                : root/cimv2:Win32_Processor
+CimInstanceProperties                   : {Caption, Description, InstallDate, Name...}
+CimSystemProperties                     : Microsoft.Management.Infrastructure.CimSystemProperties
+
+
+

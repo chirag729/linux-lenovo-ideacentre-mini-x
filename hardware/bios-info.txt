@@ -1,0 +1,40 @@
+﻿
+
+Status                         : OK
+Name                           : O6NKT3BA
+Caption                        : O6NKT3BA
+SMBIOSPresent                  : True
+Description                    : O6NKT3BA
+InstallDate                    : 
+BuildNumber                    : 
+CodeSet                        : 
+IdentificationCode             : 
+LanguageEdition                : 
+Manufacturer                   : LENOVO
+OtherTargetOS                  : 
+SerialNumber                   : PF5NRJD6
+SoftwareElementID              : O6NKT3BA
+SoftwareElementState           : 3
+TargetOperatingSystem          : 0
+Version                        : LENOVO - 13B0
+PrimaryBIOS                    : True
+BiosCharacteristics            : {32, 41, 42}
+BIOSVersion                    : {LENOVO - 13B0, O6NKT3BA, INSYDE Corp. - 0}
+CurrentLanguage                : en|US|iso8859-1,0
+EmbeddedControllerMajorVersion : 0
+EmbeddedControllerMinorVersion : 22
+InstallableLanguages           : 2
+ListOfLanguages                : {en|US|iso8859-1,0, zh|CN|unicode,0}
+ReleaseDate                    : 02/05/2025 01:00:00
+SMBIOSBIOSVersion              : O6NKT3BA
+SMBIOSMajorVersion             : 3
+SMBIOSMinorVersion             : 6
+SystemBiosMajorVersion         : 1
+SystemBiosMinorVersion         : 59
+PSComputerName                 : 
+CimClass                       : root/cimv2:Win32_BIOS
+CimInstanceProperties          : {Caption, Description, InstallDate, Name...}
+CimSystemProperties            : Microsoft.Management.Infrastructure.CimSystemProperties
+
+
+

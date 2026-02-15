@@ -1,0 +1,73 @@
+﻿
+Host Name:                     LENOVOMINI1
+OS Name:                       Microsoft Windows 11 Home
+OS Version:                    10.0.26200 N/A Build 26200
+OS Manufacturer:               Microsoft Corporation
+OS Configuration:              Standalone Workstation
+OS Build Type:                 Multiprocessor Free
+Registered Owner:              ch1gz@hotmail.com
+Registered Organization:       N/A
+Product ID:                    00342-21469-09617-AAOEM
+Original Install Date:         18/11/2025, 00:55:27
+System Boot Time:              15/02/2026, 18:08:44
+System Manufacturer:           LENOVO
+System Model:                  91B6001CUK
+System Type:                   ARM64-based PC
+Processor(s):                  1 Processor(s) Installed.
+                               [01]: ARMv8 (64-bit) Family 8 Model 1 Revision 201 Qualcomm Technologies Inc ~2956 Mhz
+BIOS Version:                  LENOVO O6NKT3BA, 02/05/2025
+Windows Directory:             C:\Windows
+System Directory:              C:\Windows\system32
+Boot Device:                   \Device\HarddiskVolume1
+System Locale:                 en-us;English (United States)
+Input Locale:                  en-gb;English (United Kingdom)
+Time Zone:                     (UTC+00:00) Dublin, Edinburgh, Lisbon, London
+Total Physical Memory:         32,326 MB
+Available Physical Memory:     16,698 MB
+Virtual Memory: Max Size:      37,446 MB
+Virtual Memory: Available:     22,132 MB
+Virtual Memory: In Use:        15,314 MB
+Page File Location(s):         C:\pagefile.sys
+Domain:                        WORKGROUP
+Logon Server:                  \\LENOVOMINI1
+Hotfix(s):                     7 Hotfix(s) Installed.
+                               [01]: KB5066128
+                               [02]: KB5050575
+                               [03]: KB5054156
+                               [04]: KB5071430
+                               [05]: KB5077181
+                               [06]: KB5071142
+                               [07]: KB5077869
+Network Card(s):               2 NIC(s) Installed.
+                               [01]: Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) Network Adapter
+                                     Connection Name: Wi-Fi
+                                     DHCP Enabled:    Yes
+                                     DHCP Server:     192.168.3.1
+                                     IP address(es)
+                                     [01]: 192.168.3.108
+                                     [02]: fe80::df61:2711:bb42:4765
+                                     [03]: 2a02:6b67:d102:5c40:29ea:4d8a:f71f:f2bd
+                                     [04]: 2a02:6b67:d102:5c40:da88:48a:e148:71b0
+                               [02]: Realtek PCIe GbE Family Controller
+                                     Connection Name: Ethernet
+                                     Status:          Media disconnected
+Virtualization-based security: Status: Running
+                               Required Security Properties:
+                                     Base Virtualization Support
+                               Available Security Properties:
+                                     Base Virtualization Support
+                                     Secure Boot
+                                     DMA Protection
+                                     UEFI Code Readonly
+                                     Mode Based Execution Control
+                               Services Configured:
+                                     Hypervisor enforced Code Integrity
+                                     Secure Launch
+                               Services Running:
+                                     Hypervisor enforced Code Integrity
+                                     Secure Launch
+                               App Control for Business policy: Enforced
+                               App Control for Business user mode policy: Enforced
+                               Security Features Enabled:
+                                     Return Address Signing (Kernel-mode)
+Hyper-V Requirements:          A hypervisor has been detected. Features required for Hyper-V will not be displayed.

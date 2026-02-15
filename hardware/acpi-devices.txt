@@ -1,0 +1,129 @@
+﻿
+InstanceId                                                                      FriendlyName                           
+----------                                                                      ------------                           
+ACPI\QCOM0C5A\64                                                                Qualcomm Temperature Sensor Device     
+ACPI\IWMID001\2&DABA3FF&2                                                       qckmd Device                           
+ACPI\QCOM0C10\1                                                                 Qualcomm(R) I2C Bus Device             
+ACPI\QCOM0C10\2                                                                 Qualcomm(R) I2C Bus Device             
+ACPI\QCOM0C10\3                                                                 Qualcomm(R) I2C Bus Device             
+ACPI\QCOM0C10\4                                                                 Qualcomm(R) I2C Bus Device             
+ACPI\QCOM0C10\5                                                                 Qualcomm(R) I2C Bus Device             
+ACPI\QCOM0C10\6                                                                 Qualcomm(R) I2C Bus Device             
+ACPI\QCOM0C10\8                                                                 Qualcomm(R) I2C Bus Device             
+ACPI\QCOM0C10\9                                                                 Qualcomm(R) I2C Bus Device             
+ACPI\QCOM0C10\A                                                                 Qualcomm(R) I2C Bus Device             
+ACPI\QCOM0C11\0                                                                 Qualcomm(R) Analog-to-Digital Conver...
+ACPI\QCOM0C16\F                                                                 Qualcomm(R) Bus Device                 
+ACPI\QCOM0C8D\2&DABA3FF&2                                                       Qualcomm(R) Secure Processor Subsyst...
+ACPI\PNP0C0B\0                                                                  ACPI Fan                               
+ACPI\QCOM06D8\0                                                                 Qualcomm(R) SSG Secure Services Device 
+ACPI\ACPI000C\2&DABA3FF&2                                                       ACPI Processor Aggregator              
+ACPI\ACPI0010\10                                                                ACPI Processor Container Device        
+ACPI\ACPI0010\11                                                                ACPI Processor Container Device        
+ACPI\VEN_QCOM&DEV_0C17&SUBSYS_CRD08380&REV_012F\2&DABA3FF&2                     Qualcomm Power Engine Plug-in Device   
+ACPI\QUALCOMM_TECHNOLOGIES_INC_-_ARMV8_(64-BIT)_FAMILY_8_MODEL_1_REVISION_201\0 Snapdragon(R) X - X126100 - Qualcomm...
+ACPI\QUALCOMM_TECHNOLOGIES_INC_-_ARMV8_(64-BIT)_FAMILY_8_MODEL_1_REVISION_201\1 Snapdragon(R) X - X126100 - Qualcomm...
+ACPI\QUALCOMM_TECHNOLOGIES_INC_-_ARMV8_(64-BIT)_FAMILY_8_MODEL_1_REVISION_201\2 Snapdragon(R) X - X126100 - Qualcomm...
+ACPI\QUALCOMM_TECHNOLOGIES_INC_-_ARMV8_(64-BIT)_FAMILY_8_MODEL_1_REVISION_201\3 Snapdragon(R) X - X126100 - Qualcomm...
+ACPI\QUALCOMM_TECHNOLOGIES_INC_-_ARMV8_(64-BIT)_FAMILY_8_MODEL_1_REVISION_201\4 Snapdragon(R) X - X126100 - Qualcomm...
+ACPI\QUALCOMM_TECHNOLOGIES_INC_-_ARMV8_(64-BIT)_FAMILY_8_MODEL_1_REVISION_201\5 Snapdragon(R) X - X126100 - Qualcomm...
+ACPI\QUALCOMM_TECHNOLOGIES_INC_-_ARMV8_(64-BIT)_FAMILY_8_MODEL_1_REVISION_201\6 Snapdragon(R) X - X126100 - Qualcomm...
+ACPI\QUALCOMM_TECHNOLOGIES_INC_-_ARMV8_(64-BIT)_FAMILY_8_MODEL_1_REVISION_201\7 Snapdragon(R) X - X126100 - Qualcomm...
+ACPI\VEN_QCOM&DEV_0CF9&SUBSYS_CRD08380&REV_0100\0                               Qualcomm Modem skin Policy Device      
+ACPI\QCOM0D04\0                                                                 Qualcomm(R) Aqstic(TM) BT ACX Transp...
+ACPI\QCOM0D05\0                                                                 Qualcomm Fan EC Interface Device       
+ACPI\QCOM0D08\3                                                                 Qualcomm(R) USB3(TM) eXtensible Host...
+ACPI\QCOM2466\1                                                                 Qualcomm SoC Secure Digital host con...
+ACPI\VEN_QCOM&DEV_06DF&SUBSYS_CRD08380&REV_0008\2&DABA3FF&2                     Qualcomm(R) Protection Domain Servic...
+ACPI\QCOM0C6D\2&DABA3FF&2                                                       Qualcomm(R) USB4(TM) Host Router Bus   
+ACPI\QCOM0CBF\1                                                                 Qualcomm Temperature Sensor Device     
+ACPI\PNP0A05\USB__UPC_OBJECT_CONTAINER                                          Generic Bus                            
+ACPI\THERMALZONE\TZ39                                                           ACPI Thermal Zone                      
+ACPI\THERMALZONE\TZ40                                                           ACPI Thermal Zone                      
+ACPI\THERMALZONE\TZ41                                                           ACPI Thermal Zone                      
+ACPI\ACPI0011\0                                                                 HID Button over Interrupt Driver       
+ACPI\PNP0C14\0                                                                  Microsoft Windows Management Interfa...
+ACPI\VEN_QCOM&DEV_0CF8&SUBSYS_CRD08380&REV_0100\0                               Qualcomm NSP limits Policy Device      
+ACPI\USBC000\5                                                                  UCM-UCSI ACPI Device                   
+ACPI\PNP0C14\PSM0                                                               Microsoft Windows Management Interfa...
+ACPI\PNP0C14\PSMI                                                               Microsoft Windows Management Interfa...
+ACPI\QCOM0427\0                                                                 Qualcomm(R) ACPI Bridge Device         
+ACPI\QCOM0C2D\1                                                                 Qualcomm(R) System Manager PMIC GPIO...
+ACPI\QCOM0CAC\2&DABA3FF&2                                                       Qualcomm(R) Secure Kernel Extension    
+ACPI\VEN_QCOM&DEV_06E0&SUBSYS_CRD08380&REV_0008\2&DABA3FF&2                     Qualcomm(R) Peripheral Image Loader ...
+ACPI\QCOM0CA4\2&DABA3FF&2                                                       Qualcomm(R) USB Type-C Device          
+ACPI\QCOM06DD\2&DABA3FF&2                                                       Qualcomm(R) SOC Partition Interface ...
+ACPI\QCOM0C84\0                                                                 Qualcomm Shared Memory Port Device     
+ACPI\QCOM0C85\0                                                                 Qualcomm(R) System Manager Device      
+ACPI\QCOM0C1B\2&DABA3FF&2                                                       Qualcomm(R) Audio DSP Subsystem Device 
+ACPI\QCOM0C88\0                                                                 Qualcomm(R) Bus Device                 
+ACPI\QCOM0C88\1                                                                 Qualcomm(R) Bus Device                 
+ACPI\QCOM0C88\2                                                                 Qualcomm(R) Bus Device                 
+ACPI\VEN_QCOM&DEV_0CF7&SUBSYS_CRD08380&REV_0100\0                               Qualcomm GPU limits Policy Device      
+ACPI\QCOM0C8B\0                                                                 Synopsys USB 3.0 Dual-Role Controller  
+ACPI\VEN_QCOM&DEV_0D17&SUBSYS_CRD08380&REV_002F\0                               Qualcomm(R) Adreno(TM) X1-45 GPU       
+ACPI\QCOM0C20\2&DABA3FF&2                                                       Qualcomm Subsystem Dependency Device   
+ACPI\QCOM0CC3\2&DABA3FF&2                                                       Qualcomm(R) NSP0 CDSP SW Thermal Device
+ACPI\QCOM0D0A\2&DABA3FF&2                                                       Snapdragon(R) X - X126100 - Qualcomm...
+ACPI\ACPI0010\100000                                                            ACPI Processor Container Device        
+ACPI\QCOM0CD5\2&DABA3FF&2                                                       Qualcomm(R) Wlan Thermal Mitigation ...
+ACPI\QCOM0C0D\2&DABA3FF&2                                                       Qualcomm(R) Data IPC Router Device     
+ACPI\VEN_QCOM&DEV_0C83&SUBSYS_CRD08380&REV_0001\2&DABA3FF&2                     Qualcomm System Cache Device           
+ACPI\PNP0C14\WM00                                                               Microsoft Windows Management Interfa...
+ACPI\QCOM0C91\0                                                                 Qualcomm Temperature Sensor Device     
+ACPI\QCOM0C96\0                                                                 Qualcomm(R) PCIe Platform Extension ...
+ACPI\PNP0A08\4                                                                  PCI Express Root Complex               
+ACPI\PNP0A08\5                                                                  PCI Express Root Complex               
+ACPI\PNP0A08\6                                                                  PCI Express Root Complex               
+ACPI\QCOM06DC\2&DABA3FF&2                                                       Qualcomm(R) TFTP Device                
+ACPI\QCOM0CDA\0                                                                 Qualcomm Wwan Power Down Driver        
+ACPI\QCOM0CB0\2&DABA3FF&2                                                       Qualcomm(R) Compute DSP Subsystem De...
+ACPI\QCOM04DD\0                                                                 Qualcomm(R) System Manager SCM Device  
+ACPI\QCOM04DE\0                                                                 Qualcomm(R) System Manager Device      
+ACPI_HAL\PNP0C08\0                                                              Microsoft ACPI-Compliant System        
+ACPI\QCOM0C6B\2&DABA3FF&2                                                       Qualcomm(R) Bluetooth UART Transport...
+ACPI\QCOM0C2C\2&DABA3FF&2                                                       Qualcomm(R) Power Management PMIC Ap...
+ACPI\QCOM06E1\2&DABA3FF&2                                                       Qualcomm(R) Reset Power Error Notifi...
+ACPI\VEN_QCOM&DEV_0CF5&SUBSYS_CRD08380&REV_0100\0                               Qualcomm CPU DCVS Cluster 1 Policy D...
+ACPI_HAL\UEFI\0                                                                 Microsoft UEFI-Compliant System        
+ACPI\ACPI000E\2&DABA3FF&2                                                       ACPI Wake Alarm                        
+ACPI\QCOM0C87\2&DABA3FF&2                                                       Qualcomm Secure Processor Device       
+ACPI\QCOM0C82\2&DABA3FF&2                                                       Qualcomm(R) Audio RPC Daemon Device    
+ACPI\QCOM0CE4\0                                                                 Qualcomm(R) System Manager Secapp De...
+ACPI\VEN_QCOM&DEV_0CF4&SUBSYS_CRD08380&REV_0100\0                               Qualcomm CPU DCVS Cluster 0 Policy D...
+ACPI\QCOM0C2B\2&DABA3FF&2                                                       Qualcomm(R) Power Management PMIC De...
+ACPI\QCOM06E5\2&DABA3FF&2                                                       Qualcomm(R) Subsys Base Thermal Miti...
+ACPI\QCOM0C58\0                                                                 Qualcomm Temperature Sensor Device     
+ACPI\QCOM0C58\1                                                                 Qualcomm Temperature Sensor Device     
+ACPI\QCOM0C59\0                                                                 Qualcomm Temperature Sensor Device     
+ACPI\QCOM0C59\1                                                                 Qualcomm Temperature Sensor Device     
+ACPI\QCOM0C5A\1                                                                 Qualcomm Temperature Sensor Device     
+ACPI\QCOM0C5E\0                                                                 Qualcomm ADC Temperature Monitor Device
+ACPI\QCOM0C5F\0                                                                 Qualcomm ADC Temperature Monitor Device
+ACPI\VEN_QCOM&DEV_0CF3&SUBSYS_CRD08380&REV_0100\0                               Qualcomm CPU DCVS Policy Device        
+ACPI\QCOM0C8E\2&DABA3FF&2                                                       Qualcomm(R) Power Management PMIC GL...
+ACPI\VEN_QCOM&DEV_0CFC&SUBSYS_CRD08380&REV_0100\0                               Qualcomm WLAN Limits Policy Device     
+ACPI\QCOM06C2\0                                                                 Qualcomm(R) Inter Processor Communic...
+ACPI\QCOM0C0A\1                                                                 Qualcomm(R) Bam Bus Device             
+ACPI\QCOM0C0A\5                                                                 Qualcomm(R) Bam Bus Device             
+ACPI\QCOM0C0B\1                                                                 Qualcomm(R) SPMI Bus Device            
+ACPI\QCOM0C0C\0                                                                 Qualcomm(R) System Manager GPIO Device 
+ACPI\QCOM0C0E\B                                                                 Qualcomm(R) SPI Bus Device             
+ACPI\QCOM068F\0                                                                 Qualcomm(R) IOMMU Device               
+ACPI\QCOM068F\1                                                                 Qualcomm(R) IOMMU Device               
+ACPI\QCOM0C5C\2&DABA3FF&2                                                       Qualcomm(R) FastRPC Device             
+ACPI\VEN_QCOM&DEV_0C09&SUBSYS_CRD08380&REV_0001\0                               Qualcomm System MMU Device             
+ACPI\VEN_QCOM&DEV_0C09&SUBSYS_CRD08380&REV_0001\1                               Qualcomm System MMU Device             
+ACPI\QCOM0C16\16                                                                Qualcomm(R) Bus Device                 
+ACPI\QCOM0C60\0                                                                 Qualcomm ADC Temperature Monitor Device
+ACPI\QCOM0C61\0                                                                 Qualcomm ADC Temperature Monitor Device
+ACPI\QCOM0C62\0                                                                 Qualcomm ADC Temperature Monitor Device
+ACPI\QCOM0C63\0                                                                 Qualcomm ADC Temperature Monitor Device
+ACPI\PNP0C14\ISET                                                               Microsoft Windows Management Interfa...
+ACPI\QCOM0CA8\0                                                                 Qualcomm(R) Connection Security Device 
+ACPI\VEN_QCOM&DEV_0CF2&SUBSYS_CRD08380&REV_0100\0                               Qualcomm CPU Core parking Policy Device
+ACPI\QCOM0C2F\2&DABA3FF&2                                                       Qualcomm(R) System Manager Device      
+ACPI\VEN_QCOM&DEV_0CFB&SUBSYS_CRD08380&REV_0100\0                               Qualcomm Modem BCL Policy Device       
+ACPI\PNP0A05\USB__PLD_OBJECT_CONTAINER                                          Generic Bus                            
+
+

@@ -1,0 +1,71 @@
+﻿
+
+Caption                      : Qualcomm(R) Adreno(TM) X1-45 GPU
+Description                  : Qualcomm(R) Adreno(TM) X1-45 GPU
+InstallDate                  : 
+Name                         : Qualcomm(R) Adreno(TM) X1-45 GPU
+Status                       : OK
+Availability                 : 3
+ConfigManagerErrorCode       : 0
+ConfigManagerUserConfig      : False
+CreationClassName            : Win32_VideoController
+DeviceID                     : VideoController1
+ErrorCleared                 : 
+ErrorDescription             : 
+LastErrorCode                : 
+PNPDeviceID                  : ACPI\VEN_QCOM&DEV_0D17&SUBSYS_CRD08380&REV_002F\0
+PowerManagementCapabilities  : 
+PowerManagementSupported     : 
+StatusInfo                   : 
+SystemCreationClassName      : Win32_ComputerSystem
+SystemName                   : LENOVOMINI1
+MaxNumberControlled          : 
+ProtocolSupported            : 
+TimeOfLastReset              : 
+AcceleratorCapabilities      : 
+CapabilityDescriptions       : 
+CurrentBitsPerPixel          : 32
+CurrentHorizontalResolution  : 1920
+CurrentNumberOfColors        : 4294967296
+CurrentNumberOfColumns       : 0
+CurrentNumberOfRows          : 0
+CurrentRefreshRate           : 60
+CurrentScanMode              : 4
+CurrentVerticalResolution    : 1080
+MaxMemorySupported           : 
+MaxRefreshRate               : 75
+MinRefreshRate               : 50
+NumberOfVideoPages           : 
+VideoMemoryType              : 2
+VideoProcessor               : Qualcomm(R) Adreno(TM) Graphics
+NumberOfColorPlanes          : 
+VideoArchitecture            : 5
+VideoMode                    : 
+AdapterCompatibility         : Qualcomm Incorporated
+AdapterDACType               : InternalDAC
+AdapterRAM                   : 0
+ColorTableEntries            : 
+DeviceSpecificPens           : 
+DitherType                   : 0
+DriverDate                   : 28/11/2024 00:00:00
+DriverVersion                : 31.0.85.0
+ICMIntent                    : 
+ICMMethod                    : 
+InfFilename                  : oem29.inf
+InfSection                   : QCDX_Inst_Base_111_Purwa.NT
+InstalledDisplayDrivers      : <>,C:\Windows\System32\DriverStore\FileRepository\qcdx8380.inf_arm64_3555a260d521ff65\qc
+                               dx11arm64xum.dll,C:\Windows\System32\DriverStore\FileRepository\qcdx8380.inf_arm64_3555a
+                               260d521ff65\qcdx11arm64xum.dll,C:\Windows\System32\DriverStore\FileRepository\qcdx8380.i
+                               nf_arm64_3555a260d521ff65\qcdx12arm64xum.dll
+Monochrome                   : False
+ReservedSystemPaletteEntries : 
+SpecificationVersion         : 
+SystemPaletteEntries         : 
+VideoModeDescription         : 1920 x 1080 x 4294967296 colors
+PSComputerName               : 
+CimClass                     : root/cimv2:Win32_VideoController
+CimInstanceProperties        : {Caption, Description, InstallDate, Name...}
+CimSystemProperties          : Microsoft.Management.Infrastructure.CimSystemProperties
+
+
+

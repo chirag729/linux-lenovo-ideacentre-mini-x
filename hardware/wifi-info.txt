@@ -1,0 +1,58 @@
+﻿
+There are 2 interfaces on the system: 
+Network shell commands need location permission to access WLAN information. Turn on Location services on the Location page in Privacy & security settings.
+Here is the URI for the Location page in the Settings app: ms-settings:privacy-location
+To open the Location page in the Settings app, run the following command:
+start ms-settings:privacy-location
+
+Or, to open the Location page from the Run dialog box, press Windows logo key + R, and then copy and paste the URI above.
+
+Function WlanQueryInterface returns error 5:
+Access is denied.
+
+
+
+Interface name: Wi-Fi
+
+    Driver                    : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) Network Adapter
+    Vendor                    : Qualcomm Communications Inc.
+    Provider                  : Qualcomm Communications Inc.
+    Date                      : 28/11/2024
+    Version                   : 1.0.4182.1000
+    INF file                  : oem83.inf
+    Type                      : Native Wi-Fi Driver
+    Radio types supported     : 802.11a 802.11b 802.11g 802.11g 802.11n 802.11ac 802.11ax 802.11be
+    FIPS 140 mode supported   : Yes
+    802.11w Management Frame Protection supported : Yes
+    Hosted network supported  : No
+    Authentication and cipher supported in infrastructure mode:
+                                Open             None
+                                Open             WEP-40bit
+                                Open             WEP-104bit
+                                Open             WEP
+                                WPA-Enterprise   TKIP
+                                WPA-Personal     TKIP
+                                WPA2-Enterprise  TKIP
+                                WPA2-Personal    TKIP
+                                WPA-Enterprise   CCMP
+                                WPA-Personal     CCMP
+                                WPA2-Enterprise  CCMP
+                                WPA2-Personal    CCMP
+                                Vendor defined   CCMP
+                                Vendor defined   CCMP
+                                WPA3-Personal    CCMP
+                                OWE              CCMP
+                                WPA3-Enterprise  CCMP
+                                WPA3-Enterprise 192 Bits GCMP-256
+                                WPA3-Personal    GCMP-256
+                                WPA3-Enterprise  GCMP-256
+                                OWE              GCMP-256
+                                Vendor defined   Vendor defined
+    Number of supported bands : 5
+                                2.4 GHz [ 2412 MHz - 2484 MHz]
+                                5 GHz [ 5180 MHz - 5885 MHz]
+                                6 GHz [ 5935 MHz - 7115 MHz]
+                                IHV Custom [ 5180 MHz - 5320 MHz]
+                                IHV Custom [ 5500 MHz - 7115 MHz]
+    Wireless Display Supported: Yes (Graphics Driver: Yes, Wi-Fi Driver: Yes)
+

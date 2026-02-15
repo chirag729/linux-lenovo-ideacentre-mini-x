@@ -1,0 +1,228 @@
+﻿
+
+Class                       : MEDIA
+FriendlyName                : Qualcomm(R) Aqstic(TM) ACX External Display Audio Device
+InstanceId                  : QCASD\DYNAMICENUMEXTERNALDISPLAYVX2452_SERIES362743422720\5&3B74891F&0&VX2452_SERIES36274
+                              3422720
+Problem                     : CM_PROB_NONE
+ConfigManagerErrorCode      : CM_PROB_NONE
+ProblemDescription          : 
+Caption                     : Qualcomm(R) Aqstic(TM) ACX External Display Audio Device
+Description                 : Qualcomm(R) Aqstic(TM) ACX External Display Audio Device
+InstallDate                 : 
+Name                        : Qualcomm(R) Aqstic(TM) ACX External Display Audio Device
+Status                      : OK
+Availability                : 
+ConfigManagerUserConfig     : False
+CreationClassName           : Win32_PnPEntity
+DeviceID                    : QCASD\DYNAMICENUMEXTERNALDISPLAYVX2452_SERIES362743422720\5&3B74891F&0&VX2452_SERIES36274
+                              3422720
+ErrorCleared                : 
+ErrorDescription            : 
+LastErrorCode               : 
+PNPDeviceID                 : QCASD\DYNAMICENUMEXTERNALDISPLAYVX2452_SERIES362743422720\5&3B74891F&0&VX2452_SERIES36274
+                              3422720
+PowerManagementCapabilities : 
+PowerManagementSupported    : 
+StatusInfo                  : 
+SystemCreationClassName     : Win32_ComputerSystem
+SystemName                  : LENOVOMINI1
+ClassGuid                   : {4d36e96c-e325-11ce-bfc1-08002be10318}
+CompatibleID                : 
+HardwareID                  : {QCASD\DynamicEnumExternalDisplayVX2452_Series362743422720, 
+                              QCASD\DynamicEnumExternalDisplay}
+Manufacturer                : QUALCOMM
+PNPClass                    : MEDIA
+Present                     : True
+Service                     : 
+PSComputerName              : 
+CimClass                    : ROOT/cimv2:Win32_PnPEntity
+CimInstanceProperties       : {Caption, Description, InstallDate, Name...}
+CimSystemProperties         : Microsoft.Management.Infrastructure.CimSystemProperties
+
+Class                       : MEDIA
+FriendlyName                : Qualcomm(R) Aqstic(TM) ACX Audio Device
+InstanceId                  : ADCM\VEN_QCOM&DEV_0CE6&SUBSYS_CRD08380\4&1EA384D1&0&1
+Problem                     : CM_PROB_NONE
+ConfigManagerErrorCode      : CM_PROB_NONE
+ProblemDescription          : 
+Caption                     : Qualcomm(R) Aqstic(TM) ACX Audio Device
+Description                 : Qualcomm(R) Aqstic(TM) ACX Audio Device
+InstallDate                 : 
+Name                        : Qualcomm(R) Aqstic(TM) ACX Audio Device
+Status                      : OK
+Availability                : 
+ConfigManagerUserConfig     : False
+CreationClassName           : Win32_PnPEntity
+DeviceID                    : ADCM\VEN_QCOM&DEV_0CE6&SUBSYS_CRD08380\4&1EA384D1&0&1
+ErrorCleared                : 
+ErrorDescription            : 
+LastErrorCode               : 
+PNPDeviceID                 : ADCM\VEN_QCOM&DEV_0CE6&SUBSYS_CRD08380\4&1EA384D1&0&1
+PowerManagementCapabilities : 
+PowerManagementSupported    : 
+StatusInfo                  : 
+SystemCreationClassName     : Win32_ComputerSystem
+SystemName                  : LENOVOMINI1
+ClassGuid                   : {4d36e96c-e325-11ce-bfc1-08002be10318}
+CompatibleID                : 
+HardwareID                  : {ADCM\VEN_QCOM&DEV_0CE6&SUBSYS_CRD08380, ADCM\VEN_QCOM&DEV_0CE6, ADCM\QCOM0CE6}
+Manufacturer                : QUALCOMM
+PNPClass                    : MEDIA
+Present                     : True
+Service                     : qcasd
+PSComputerName              : 
+CimClass                    : ROOT/cimv2:Win32_PnPEntity
+CimInstanceProperties       : {Caption, Description, InstallDate, Name...}
+CimSystemProperties         : Microsoft.Management.Infrastructure.CimSystemProperties
+
+Class                       : MEDIA
+FriendlyName                : Qualcomm(R) Aqstic(TM) ACX External Display Audio Device
+InstanceId                  : QCASD\DYNAMICENUMEXTERNALDISPLAYLM1710_(VGA)303754890010\5&3B74891F&0&LM1710_(VGA)3037548
+                              90010
+Problem                     : CM_PROB_PHANTOM
+ConfigManagerErrorCode      : CM_PROB_PHANTOM
+ProblemDescription          : 
+Caption                     : Qualcomm(R) Aqstic(TM) ACX External Display Audio Device
+Description                 : Qualcomm(R) Aqstic(TM) ACX External Display Audio Device
+InstallDate                 : 
+Name                        : Qualcomm(R) Aqstic(TM) ACX External Display Audio Device
+Status                      : Unknown
+Availability                : 
+ConfigManagerUserConfig     : False
+CreationClassName           : Win32_PnPEntity
+DeviceID                    : QCASD\DYNAMICENUMEXTERNALDISPLAYLM1710_(VGA)303754890010\5&3B74891F&0&LM1710_(VGA)3037548
+                              90010
+ErrorCleared                : 
+ErrorDescription            : 
+LastErrorCode               : 
+PNPDeviceID                 : QCASD\DYNAMICENUMEXTERNALDISPLAYLM1710_(VGA)303754890010\5&3B74891F&0&LM1710_(VGA)3037548
+                              90010
+PowerManagementCapabilities : 
+PowerManagementSupported    : 
+StatusInfo                  : 
+SystemCreationClassName     : Win32_ComputerSystem
+SystemName                  : LENOVOMINI1
+ClassGuid                   : {4d36e96c-e325-11ce-bfc1-08002be10318}
+CompatibleID                : 
+HardwareID                  : {QCASD\DynamicEnumExternalDisplayLM1710_(VGA)303754890010, 
+                              QCASD\DynamicEnumExternalDisplay}
+Manufacturer                : QUALCOMM
+PNPClass                    : MEDIA
+Present                     : False
+Service                     : 
+PSComputerName              : 
+CimClass                    : ROOT/cimv2:Win32_PnPEntity
+CimInstanceProperties       : {Caption, Description, InstallDate, Name...}
+CimSystemProperties         : Microsoft.Management.Infrastructure.CimSystemProperties
+
+Class                       : MEDIA
+FriendlyName                : Qualcomm(R) Aqstic(TM) Audio Adapter Device
+InstanceId                  : AUCD\VEN_QCOM&DEV_0C29&SUBSYS_CRD08380\5&7935824&0&0
+Problem                     : CM_PROB_NONE
+ConfigManagerErrorCode      : CM_PROB_NONE
+ProblemDescription          : 
+Caption                     : Qualcomm(R) Aqstic(TM) Audio Adapter Device
+Description                 : Qualcomm(R) Aqstic(TM) Audio Adapter Device
+InstallDate                 : 
+Name                        : Qualcomm(R) Aqstic(TM) Audio Adapter Device
+Status                      : OK
+Availability                : 
+ConfigManagerUserConfig     : False
+CreationClassName           : Win32_PnPEntity
+DeviceID                    : AUCD\VEN_QCOM&DEV_0C29&SUBSYS_CRD08380\5&7935824&0&0
+ErrorCleared                : 
+ErrorDescription            : 
+LastErrorCode               : 
+PNPDeviceID                 : AUCD\VEN_QCOM&DEV_0C29&SUBSYS_CRD08380\5&7935824&0&0
+PowerManagementCapabilities : 
+PowerManagementSupported    : 
+StatusInfo                  : 
+SystemCreationClassName     : Win32_ComputerSystem
+SystemName                  : LENOVOMINI1
+ClassGuid                   : {4d36e96c-e325-11ce-bfc1-08002be10318}
+CompatibleID                : 
+HardwareID                  : {AUCD\VEN_QCOM&DEV_0C29&SUBSYS_CRD08380, AUCD\VEN_QCOM&DEV_0C29, AUCD\QCOM0C29}
+Manufacturer                : QUALCOMM
+PNPClass                    : MEDIA
+Present                     : True
+Service                     : QCAUD
+PSComputerName              : 
+CimClass                    : ROOT/cimv2:Win32_PnPEntity
+CimInstanceProperties       : {Caption, Description, InstallDate, Name...}
+CimSystemProperties         : Microsoft.Management.Infrastructure.CimSystemProperties
+
+Class                       : MEDIA
+FriendlyName                : Qualcomm(R) Aqstic(TM) ACX Static Endpoints Audio Device
+InstanceId                  : QCASD\STATICENDPOINTDEVICE0\5&3B74891F&0&0
+Problem                     : CM_PROB_NONE
+ConfigManagerErrorCode      : CM_PROB_NONE
+ProblemDescription          : 
+Caption                     : Qualcomm(R) Aqstic(TM) ACX Static Endpoints Audio Device
+Description                 : Qualcomm(R) Aqstic(TM) ACX Static Endpoints Audio Device
+InstallDate                 : 
+Name                        : Qualcomm(R) Aqstic(TM) ACX Static Endpoints Audio Device
+Status                      : OK
+Availability                : 
+ConfigManagerUserConfig     : False
+CreationClassName           : Win32_PnPEntity
+DeviceID                    : QCASD\STATICENDPOINTDEVICE0\5&3B74891F&0&0
+ErrorCleared                : 
+ErrorDescription            : 
+LastErrorCode               : 
+PNPDeviceID                 : QCASD\STATICENDPOINTDEVICE0\5&3B74891F&0&0
+PowerManagementCapabilities : 
+PowerManagementSupported    : 
+StatusInfo                  : 
+SystemCreationClassName     : Win32_ComputerSystem
+SystemName                  : LENOVOMINI1
+ClassGuid                   : {4d36e96c-e325-11ce-bfc1-08002be10318}
+CompatibleID                : 
+HardwareID                  : {QCASD\StaticEndpointDevice0, QCASD\StaticEndpointDevice}
+Manufacturer                : QUALCOMM
+PNPClass                    : MEDIA
+Present                     : True
+Service                     : 
+PSComputerName              : 
+CimClass                    : ROOT/cimv2:Win32_PnPEntity
+CimInstanceProperties       : {Caption, Description, InstallDate, Name...}
+CimSystemProperties         : Microsoft.Management.Infrastructure.CimSystemProperties
+
+Class                       : MEDIA
+FriendlyName                : Qualcomm(R) Aqstic(TM)
+InstanceId                  : ADCM\VEN_QCOM&DEV_0CC1&SUBSYS_CRD08380\4&1EA384D1&0&0
+Problem                     : CM_PROB_NONE
+ConfigManagerErrorCode      : CM_PROB_NONE
+ProblemDescription          : 
+Caption                     : Qualcomm(R) Aqstic(TM)
+Description                 : Qualcomm(R) Aqstic(TM)
+InstallDate                 : 
+Name                        : Qualcomm(R) Aqstic(TM)
+Status                      : OK
+Availability                : 
+ConfigManagerUserConfig     : False
+CreationClassName           : Win32_PnPEntity
+DeviceID                    : ADCM\VEN_QCOM&DEV_0CC1&SUBSYS_CRD08380\4&1EA384D1&0&0
+ErrorCleared                : 
+ErrorDescription            : 
+LastErrorCode               : 
+PNPDeviceID                 : ADCM\VEN_QCOM&DEV_0CC1&SUBSYS_CRD08380\4&1EA384D1&0&0
+PowerManagementCapabilities : 
+PowerManagementSupported    : 
+StatusInfo                  : 
+SystemCreationClassName     : Win32_ComputerSystem
+SystemName                  : LENOVOMINI1
+ClassGuid                   : {4d36e96c-e325-11ce-bfc1-08002be10318}
+CompatibleID                : 
+HardwareID                  : {ADCM\VEN_QCOM&DEV_0CC1&SUBSYS_CRD08380, ADCM\VEN_QCOM&DEV_0CC1, ADCM\QCOM0CC1}
+Manufacturer                : (Standard system devices)
+PNPClass                    : MEDIA
+Present                     : True
+Service                     : qcaucd
+PSComputerName              : 
+CimClass                    : ROOT/cimv2:Win32_PnPEntity
+CimInstanceProperties       : {Caption, Description, InstallDate, Name...}
+CimSystemProperties         : Microsoft.Management.Infrastructure.CimSystemProperties
+
+
+

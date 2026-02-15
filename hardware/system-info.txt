@@ -1,0 +1,74 @@
+﻿
+
+AdminPasswordStatus         : 0
+BootupState                 : Normal boot
+ChassisBootupState          : 3
+KeyboardPasswordStatus      : 2
+PowerOnPasswordStatus       : 0
+PowerSupplyState            : 3
+PowerState                  : 0
+FrontPanelResetStatus       : 2
+ThermalState                : 3
+Status                      : OK
+Name                        : LENOVOMINI1
+PowerManagementCapabilities : 
+PowerManagementSupported    : 
+Caption                     : LENOVOMINI1
+Description                 : ARM processor family
+InstallDate                 : 
+CreationClassName           : Win32_ComputerSystem
+NameFormat                  : 
+PrimaryOwnerContact         : 
+PrimaryOwnerName            : ch1gz@hotmail.com
+Roles                       : {LM_Workstation, LM_Server, NT}
+InitialLoadInfo             : 
+LastLoadInfo                : 
+ResetCapability             : 1
+AutomaticManagedPagefile    : True
+AutomaticResetBootOption    : True
+AutomaticResetCapability    : True
+BootOptionOnLimit           : 
+BootOptionOnWatchDog        : 
+BootROMSupported            : True
+BootStatus                  : {0, 0, 0, 0...}
+ChassisSKUNumber            : SKU Number
+CurrentTimeZone             : 0
+DaylightInEffect            : False
+DNSHostName                 : LenovoMini1
+Domain                      : WORKGROUP
+DomainRole                  : 0
+EnableDaylightSavingsTime   : True
+HypervisorPresent           : True
+InfraredSupported           : False
+Manufacturer                : LENOVO
+Model                       : 91B6001CUK
+NetworkServerModeEnabled    : True
+NumberOfLogicalProcessors   : 8
+NumberOfProcessors          : 1
+OEMLogoBitmap               : {66, 77, 248, 168...}
+OEMStringArray              : {LENOVO ThinkCentre Embedded Controller -[O6NCT16A-0.16]-, LENOVO ThinkCentre BIOS Boot 
+                              Block Revision 1.59, INVALID, INVALID...}
+PartOfDomain                : False
+PauseAfterReset             : -1
+PCSystemType                : 1
+PCSystemTypeEx              : 1
+ResetCount                  : -1
+ResetLimit                  : -1
+SupportContactDescription   : 
+SystemFamily                : IdeaCentre Mini 01Q8X10
+SystemSKUNumber             : LENOVO_MT_91B6_BU_Lenovo_FM_IdeaCentre Mini 01Q8X10
+SystemStartupDelay          : 
+SystemStartupOptions        : 
+SystemStartupSetting        : 
+SystemType                  : ARM64-based PC
+TotalPhysicalMemory         : 33896411136
+UserName                    : LenovoMini1\ch1gz
+WakeUpType                  : 6
+Workgroup                   : WORKGROUP
+PSComputerName              : 
+CimClass                    : root/cimv2:Win32_ComputerSystem
+CimInstanceProperties       : {Caption, Description, InstallDate, Name...}
+CimSystemProperties         : Microsoft.Management.Infrastructure.CimSystemProperties
+
+
+

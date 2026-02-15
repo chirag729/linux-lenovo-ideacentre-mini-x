@@ -1,0 +1,156 @@
+﻿
+
+Class                       : Display
+FriendlyName                : Qualcomm(R) Adreno(TM) X1-45 GPU
+InstanceId                  : ACPI\VEN_QCOM&DEV_0D17&SUBSYS_CRD08380&REV_002F\0
+Problem                     : CM_PROB_NONE
+ConfigManagerErrorCode      : CM_PROB_NONE
+ProblemDescription          : 
+Caption                     : Qualcomm(R) Adreno(TM) X1-45 GPU
+Description                 : Qualcomm(R) Adreno(TM) X1-45 GPU
+InstallDate                 : 
+Name                        : Qualcomm(R) Adreno(TM) X1-45 GPU
+Status                      : OK
+Availability                : 
+ConfigManagerUserConfig     : False
+CreationClassName           : Win32_PnPEntity
+DeviceID                    : ACPI\VEN_QCOM&DEV_0D17&SUBSYS_CRD08380&REV_002F\0
+ErrorCleared                : 
+ErrorDescription            : 
+LastErrorCode               : 
+PNPDeviceID                 : ACPI\VEN_QCOM&DEV_0D17&SUBSYS_CRD08380&REV_002F\0
+PowerManagementCapabilities : 
+PowerManagementSupported    : 
+StatusInfo                  : 
+SystemCreationClassName     : Win32_ComputerSystem
+SystemName                  : LENOVOMINI1
+ClassGuid                   : {4d36e968-e325-11ce-bfc1-08002be10318}
+CompatibleID                : {ACPI\VEN_QCOM&DEV_0D17&REV_002F, ACPI\VEN_QCOM&DEV_0D17, 
+                              ACPI\VEN_QCOM&CLS_0003&SUBCLS_0000&PI_00, ACPI\VEN_QCOM&CLS_0003&SUBCLS_0000...}
+HardwareID                  : {ACPI\VEN_QCOM&DEV_0D17&SUBSYS_CRD08380&REV_002F, 
+                              ACPI\VEN_QCOM&DEV_0D17&SUBSYS_CRD08380, 
+                              ACPI\VEN_QCOM&DEV_0D17&CLS_0003&SUBCLS_0000&PI_00, 
+                              ACPI\VEN_QCOM&DEV_0D17&CLS_0003&SUBCLS_0000...}
+Manufacturer                : Qualcomm Incorporated
+PNPClass                    : Display
+Present                     : True
+Service                     : QCDX
+PSComputerName              : 
+CimClass                    : ROOT/cimv2:Win32_PnPEntity
+CimInstanceProperties       : {Caption, Description, InstallDate, Name...}
+CimSystemProperties         : Microsoft.Management.Infrastructure.CimSystemProperties
+
+
+
+
+
+Class                       : Monitor
+FriendlyName                : Generic Monitor (LF24T450G)
+InstanceId                  : DISPLAY\SAM71C7\3&CC8D879&1&UID5
+Problem                     : CM_PROB_PHANTOM
+ConfigManagerErrorCode      : CM_PROB_PHANTOM
+ProblemDescription          : 
+Caption                     : Generic Monitor (LF24T450G)
+Description                 : Generic PnP Monitor
+InstallDate                 : 
+Name                        : Generic Monitor (LF24T450G)
+Status                      : Unknown
+Availability                : 
+ConfigManagerUserConfig     : False
+CreationClassName           : Win32_PnPEntity
+DeviceID                    : DISPLAY\SAM71C7\3&CC8D879&1&UID5
+ErrorCleared                : 
+ErrorDescription            : 
+LastErrorCode               : 
+PNPDeviceID                 : DISPLAY\SAM71C7\3&CC8D879&1&UID5
+PowerManagementCapabilities : 
+PowerManagementSupported    : 
+StatusInfo                  : 
+SystemCreationClassName     : Win32_ComputerSystem
+SystemName                  : LENOVOMINI1
+ClassGuid                   : {4d36e96e-e325-11ce-bfc1-08002be10318}
+CompatibleID                : {*PNP09FF}
+HardwareID                  : {MONITOR\SAM71C7}
+Manufacturer                : (Standard monitor types)
+PNPClass                    : Monitor
+Present                     : False
+Service                     : monitor
+PSComputerName              : 
+CimClass                    : ROOT/cimv2:Win32_PnPEntity
+CimInstanceProperties       : {Caption, Description, InstallDate, Name...}
+CimSystemProperties         : Microsoft.Management.Infrastructure.CimSystemProperties
+
+Class                       : Monitor
+FriendlyName                : Generic Monitor (VX2452 Series)
+InstanceId                  : DISPLAY\VSCDE2E\3&CC8D879&1&UID5
+Problem                     : CM_PROB_NONE
+ConfigManagerErrorCode      : CM_PROB_NONE
+ProblemDescription          : 
+Caption                     : Generic Monitor (VX2452 Series)
+Description                 : Generic PnP Monitor
+InstallDate                 : 
+Name                        : Generic Monitor (VX2452 Series)
+Status                      : OK
+Availability                : 
+ConfigManagerUserConfig     : False
+CreationClassName           : Win32_PnPEntity
+DeviceID                    : DISPLAY\VSCDE2E\3&CC8D879&1&UID5
+ErrorCleared                : 
+ErrorDescription            : 
+LastErrorCode               : 
+PNPDeviceID                 : DISPLAY\VSCDE2E\3&CC8D879&1&UID5
+PowerManagementCapabilities : 
+PowerManagementSupported    : 
+StatusInfo                  : 
+SystemCreationClassName     : Win32_ComputerSystem
+SystemName                  : LENOVOMINI1
+ClassGuid                   : {4d36e96e-e325-11ce-bfc1-08002be10318}
+CompatibleID                : {*PNP09FF}
+HardwareID                  : {MONITOR\VSCDE2E}
+Manufacturer                : (Standard monitor types)
+PNPClass                    : Monitor
+Present                     : True
+Service                     : monitor
+PSComputerName              : 
+CimClass                    : ROOT/cimv2:Win32_PnPEntity
+CimInstanceProperties       : {Caption, Description, InstallDate, Name...}
+CimSystemProperties         : Microsoft.Management.Infrastructure.CimSystemProperties
+
+Class                       : Monitor
+FriendlyName                : Generic Monitor (LM1710 (VGA))
+InstanceId                  : DISPLAY\ZTY1910\3&CC8D879&1&UID3
+Problem                     : CM_PROB_PHANTOM
+ConfigManagerErrorCode      : CM_PROB_PHANTOM
+ProblemDescription          : 
+Caption                     : Generic Monitor (LM1710 (VGA))
+Description                 : Generic PnP Monitor
+InstallDate                 : 
+Name                        : Generic Monitor (LM1710 (VGA))
+Status                      : Unknown
+Availability                : 
+ConfigManagerUserConfig     : False
+CreationClassName           : Win32_PnPEntity
+DeviceID                    : DISPLAY\ZTY1910\3&CC8D879&1&UID3
+ErrorCleared                : 
+ErrorDescription            : 
+LastErrorCode               : 
+PNPDeviceID                 : DISPLAY\ZTY1910\3&CC8D879&1&UID3
+PowerManagementCapabilities : 
+PowerManagementSupported    : 
+StatusInfo                  : 
+SystemCreationClassName     : Win32_ComputerSystem
+SystemName                  : LENOVOMINI1
+ClassGuid                   : {4d36e96e-e325-11ce-bfc1-08002be10318}
+CompatibleID                : {*PNP09FF}
+HardwareID                  : {MONITOR\ZTY1910}
+Manufacturer                : (Standard monitor types)
+PNPClass                    : Monitor
+Present                     : False
+Service                     : monitor
+PSComputerName              : 
+CimClass                    : ROOT/cimv2:Win32_PnPEntity
+CimInstanceProperties       : {Caption, Description, InstallDate, Name...}
+CimSystemProperties         : Microsoft.Management.Infrastructure.CimSystemProperties
+
+
+

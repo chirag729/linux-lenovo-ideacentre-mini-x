@@ -1,0 +1,774 @@
+﻿
+
+MacAddress                                       : 48-45-E6-1B-B3-DF
+Status                                           : Up
+LinkSpeed                                        : 2.9 Gbps
+MediaType                                        : Native 802.11
+PhysicalMediaType                                : Native 802.11
+AdminStatus                                      : Up
+MediaConnectionState                             : Connected
+DriverInformation                                : Driver Date 2024-11-28 Version 1.0.4182.1000 NDIS 6.89
+DriverFileName                                   : qcwlanhmt8380.sys
+NdisVersion                                      : 6.89
+ifOperStatus                                     : Up
+ifAlias                                          : Wi-Fi
+InterfaceAlias                                   : Wi-Fi
+ifIndex                                          : 19
+ifDesc                                           : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) 
+                                                   Network Adapter
+ifName                                           : wireless_32768
+DriverVersion                                    : 1.0.4182.1000
+LinkLayerAddress                                 : 48-45-E6-1B-B3-DF
+Caption                                          : 
+Description                                      : 
+ElementName                                      : 
+InstanceID                                       : {DC0F6E43-0095-4E7C-BCE7-35B1527212C3}
+CommunicationStatus                              : 
+DetailedStatus                                   : 
+HealthState                                      : 
+InstallDate                                      : 
+Name                                             : Wi-Fi
+OperatingStatus                                  : 
+OperationalStatus                                : 
+PrimaryStatus                                    : 
+StatusDescriptions                               : 
+AvailableRequestedStates                         : 
+EnabledDefault                                   : 2
+EnabledState                                     : 5
+OtherEnabledState                                : 
+RequestedState                                   : 12
+TimeOfLastStateChange                            : 
+TransitioningToState                             : 12
+AdditionalAvailability                           : 
+Availability                                     : 
+CreationClassName                                : MSFT_NetAdapter
+DeviceID                                         : {DC0F6E43-0095-4E7C-BCE7-35B1527212C3}
+ErrorCleared                                     : 
+ErrorDescription                                 : 
+IdentifyingDescriptions                          : 
+LastErrorCode                                    : 
+MaxQuiesceTime                                   : 
+OtherIdentifyingInfo                             : 
+PowerManagementCapabilities                      : 
+PowerManagementSupported                         : 
+PowerOnHours                                     : 
+StatusInfo                                       : 
+SystemCreationClassName                          : CIM_NetworkPort
+SystemName                                       : LenovoMini1
+TotalPowerOnHours                                : 
+MaxSpeed                                         : 
+OtherPortType                                    : 
+PortType                                         : 
+RequestedSpeed                                   : 
+Speed                                            : 2882400000
+UsageRestriction                                 : 
+ActiveMaximumTransmissionUnit                    : 1500
+AutoSense                                        : 
+FullDuplex                                       : False
+LinkTechnology                                   : 
+NetworkAddresses                                 : {4845E61BB3DF}
+OtherLinkTechnology                              : 
+OtherNetworkPortType                             : 
+PermanentAddress                                 : 4845E61BB3DF
+PortNumber                                       : 0
+SupportedMaximumTransmissionUnit                 : 
+AdminLocked                                      : False
+ComponentID                                      : PCI\VEN_17CB&DEV_1107&SUBSYS_E11517AA
+ConnectorPresent                                 : True
+DeviceName                                       : \Device\{DC0F6E43-0095-4E7C-BCE7-35B1527212C3}
+DeviceWakeUpEnable                               : True
+DriverDate                                       : 2024-11-28
+DriverDateData                                   : 133772256000000000
+DriverDescription                                : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) 
+                                                   Network Adapter
+DriverMajorNdisVersion                           : 6
+DriverMinorNdisVersion                           : 89
+DriverName                                       : \SystemRoot\System32\DriverStore\FileRepository\qcwlanhmt8380.inf_ar
+                                                   m64_9776df1402fb9fa5\qcwlanhmt8380.sys
+DriverProvider                                   : Qualcomm Communications Inc.
+DriverVersionString                              : 1.0.4182.1000
+EndPointInterface                                : False
+HardwareInterface                                : True
+Hidden                                           : False
+HigherLayerInterfaceIndices                      : {24}
+IMFilter                                         : False
+InterfaceAdminStatus                             : 1
+InterfaceDescription                             : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) 
+                                                   Network Adapter
+InterfaceGuid                                    : {DC0F6E43-0095-4E7C-BCE7-35B1527212C3}
+InterfaceIndex                                   : 19
+InterfaceName                                    : wireless_32768
+InterfaceOperationalStatus                       : 1
+InterfaceType                                    : 71
+iSCSIInterface                                   : False
+LowerLayerInterfaceIndices                       : 
+MajorDriverVersion                               : 0
+MediaConnectState                                : 1
+MediaDuplexState                                 : 1
+MinorDriverVersion                               : 0
+MtuSize                                          : 1500
+NdisMedium                                       : 16
+NdisPhysicalMedium                               : 9
+NetLuid                                          : 19985273102270464
+NetLuidIndex                                     : 32768
+NotUserRemovable                                 : False
+OperationalStatusDownDefaultPortNotAuthenticated : False
+OperationalStatusDownInterfacePaused             : False
+OperationalStatusDownLowPowerState               : False
+OperationalStatusDownMediaDisconnected           : False
+PnPDeviceID                                      : PCI\VEN_17CB&DEV_1107&SUBSYS_E11517AA&REV_01\4&2b53bcce&0&0000
+PromiscuousMode                                  : False
+ReceiveLinkSpeed                                 : 2882400000
+State                                            : 2
+TransmitLinkSpeed                                : 2882400000
+Virtual                                          : False
+VlanID                                           : 
+WdmInterface                                     : True
+PSComputerName                                   : 
+CimClass                                         : ROOT/StandardCimv2:MSFT_NetAdapter
+CimInstanceProperties                            : {Caption, Description, ElementName, InstanceID...}
+CimSystemProperties                              : Microsoft.Management.Infrastructure.CimSystemProperties
+
+MacAddress                                       : 
+Status                                           : Not Present
+LinkSpeed                                        : 0 bps
+MediaType                                        : Native 802.11
+PhysicalMediaType                                : Native 802.11
+AdminStatus                                      : Down
+MediaConnectionState                             : Unknown
+DriverInformation                                : Driver Date 2024-11-28 Version 1.0.4182.1000 NDIS 6.89
+DriverFileName                                   : qcwlanhmt8380.sys
+NdisVersion                                      : 6.89
+ifOperStatus                                     : NotPresent
+ifAlias                                          : Wi-Fi 5
+InterfaceAlias                                   : Wi-Fi 5
+ifIndex                                          : 15
+ifDesc                                           : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) 
+                                                   Network Adapter
+ifName                                           : wireless_32772
+DriverVersion                                    : 1.0.4182.1000
+LinkLayerAddress                                 : 
+Caption                                          : 
+Description                                      : 
+ElementName                                      : 
+InstanceID                                       : {ACB47B86-680E-4BA6-AA7F-105F87F7E822}
+CommunicationStatus                              : 
+DetailedStatus                                   : 
+HealthState                                      : 
+InstallDate                                      : 
+Name                                             : Wi-Fi 5
+OperatingStatus                                  : 
+OperationalStatus                                : 
+PrimaryStatus                                    : 
+StatusDescriptions                               : 
+AvailableRequestedStates                         : 
+EnabledDefault                                   : 2
+EnabledState                                     : 5
+OtherEnabledState                                : 
+RequestedState                                   : 12
+TimeOfLastStateChange                            : 
+TransitioningToState                             : 12
+AdditionalAvailability                           : 
+Availability                                     : 
+CreationClassName                                : MSFT_NetAdapter
+DeviceID                                         : {ACB47B86-680E-4BA6-AA7F-105F87F7E822}
+ErrorCleared                                     : 
+ErrorDescription                                 : 
+IdentifyingDescriptions                          : 
+LastErrorCode                                    : 
+MaxQuiesceTime                                   : 
+OtherIdentifyingInfo                             : 
+PowerManagementCapabilities                      : 
+PowerManagementSupported                         : 
+PowerOnHours                                     : 
+StatusInfo                                       : 
+SystemCreationClassName                          : CIM_NetworkPort
+SystemName                                       : LenovoMini1
+TotalPowerOnHours                                : 
+MaxSpeed                                         : 
+OtherPortType                                    : 
+PortType                                         : 
+RequestedSpeed                                   : 
+Speed                                            : 0
+UsageRestriction                                 : 
+ActiveMaximumTransmissionUnit                    : 0
+AutoSense                                        : 
+FullDuplex                                       : 
+LinkTechnology                                   : 
+NetworkAddresses                                 : 
+OtherLinkTechnology                              : 
+OtherNetworkPortType                             : 
+PermanentAddress                                 : 
+PortNumber                                       : 0
+SupportedMaximumTransmissionUnit                 : 
+AdminLocked                                      : False
+ComponentID                                      : PCI\VEN_17CB&DEV_1107&SUBSYS_E11517AA
+ConnectorPresent                                 : True
+DeviceName                                       : \Device\{ACB47B86-680E-4BA6-AA7F-105F87F7E822}
+DeviceWakeUpEnable                               : False
+DriverDate                                       : 2024-11-28
+DriverDateData                                   : 133772256000000000
+DriverDescription                                : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) 
+                                                   Network Adapter
+DriverMajorNdisVersion                           : 6
+DriverMinorNdisVersion                           : 89
+DriverName                                       : \SystemRoot\System32\DriverStore\FileRepository\qcwlanhmt8380.inf_ar
+                                                   m64_9776df1402fb9fa5\qcwlanhmt8380.sys
+DriverProvider                                   : Qualcomm Communications Inc.
+DriverVersionString                              : 1.0.4182.1000
+EndPointInterface                                : False
+HardwareInterface                                : True
+Hidden                                           : False
+HigherLayerInterfaceIndices                      : 
+IMFilter                                         : False
+InterfaceAdminStatus                             : 2
+InterfaceDescription                             : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) 
+                                                   Network Adapter
+InterfaceGuid                                    : {ACB47B86-680E-4BA6-AA7F-105F87F7E822}
+InterfaceIndex                                   : 15
+InterfaceName                                    : wireless_32772
+InterfaceOperationalStatus                       : 6
+InterfaceType                                    : 71
+iSCSIInterface                                   : False
+LowerLayerInterfaceIndices                       : 
+MajorDriverVersion                               : 0
+MediaConnectState                                : 0
+MediaDuplexState                                 : 0
+MinorDriverVersion                               : 0
+MtuSize                                          : 0
+NdisMedium                                       : 16
+NdisPhysicalMedium                               : 9
+NetLuid                                          : 19985273169379328
+NetLuidIndex                                     : 32772
+NotUserRemovable                                 : False
+OperationalStatusDownDefaultPortNotAuthenticated : False
+OperationalStatusDownInterfacePaused             : False
+OperationalStatusDownLowPowerState               : False
+OperationalStatusDownMediaDisconnected           : False
+PnPDeviceID                                      : PCI\VEN_17CB&DEV_1107&SUBSYS_E11517AA&REV_01\4&2b53bcce&0&0000
+PromiscuousMode                                  : False
+ReceiveLinkSpeed                                 : 0
+State                                            : 2
+TransmitLinkSpeed                                : 0
+Virtual                                          : False
+VlanID                                           : 
+WdmInterface                                     : False
+PSComputerName                                   : 
+CimClass                                         : ROOT/StandardCimv2:MSFT_NetAdapter
+CimInstanceProperties                            : {Caption, Description, ElementName, InstanceID...}
+CimSystemProperties                              : Microsoft.Management.Infrastructure.CimSystemProperties
+
+MacAddress                                       : 18-3D-2D-CE-9F-AC
+Status                                           : Disconnected
+LinkSpeed                                        : 0 bps
+MediaType                                        : 802.3
+PhysicalMediaType                                : 802.3
+AdminStatus                                      : Up
+MediaConnectionState                             : Disconnected
+DriverInformation                                : Driver Date 2024-11-28 Version 10.74.1128.2024 NDIS 6.40
+DriverFileName                                   : rt640arm64.sys
+NdisVersion                                      : 6.40
+ifOperStatus                                     : Down
+ifAlias                                          : Ethernet
+InterfaceAlias                                   : Ethernet
+ifIndex                                          : 11
+ifDesc                                           : Realtek PCIe GbE Family Controller
+ifName                                           : ethernet_32770
+DriverVersion                                    : 10.74.1128.2024
+LinkLayerAddress                                 : 18-3D-2D-CE-9F-AC
+Caption                                          : 
+Description                                      : 
+ElementName                                      : 
+InstanceID                                       : {4BDBD802-F80E-4AF7-9A46-EAB25A299527}
+CommunicationStatus                              : 
+DetailedStatus                                   : 
+HealthState                                      : 
+InstallDate                                      : 
+Name                                             : Ethernet
+OperatingStatus                                  : 
+OperationalStatus                                : 
+PrimaryStatus                                    : 
+StatusDescriptions                               : 
+AvailableRequestedStates                         : 
+EnabledDefault                                   : 2
+EnabledState                                     : 5
+OtherEnabledState                                : 
+RequestedState                                   : 12
+TimeOfLastStateChange                            : 
+TransitioningToState                             : 12
+AdditionalAvailability                           : 
+Availability                                     : 
+CreationClassName                                : MSFT_NetAdapter
+DeviceID                                         : {4BDBD802-F80E-4AF7-9A46-EAB25A299527}
+ErrorCleared                                     : 
+ErrorDescription                                 : 
+IdentifyingDescriptions                          : 
+LastErrorCode                                    : 
+MaxQuiesceTime                                   : 
+OtherIdentifyingInfo                             : 
+PowerManagementCapabilities                      : 
+PowerManagementSupported                         : 
+PowerOnHours                                     : 
+StatusInfo                                       : 
+SystemCreationClassName                          : CIM_NetworkPort
+SystemName                                       : LenovoMini1
+TotalPowerOnHours                                : 
+MaxSpeed                                         : 
+OtherPortType                                    : 
+PortType                                         : 
+RequestedSpeed                                   : 
+Speed                                            : 
+UsageRestriction                                 : 
+ActiveMaximumTransmissionUnit                    : 1500
+AutoSense                                        : 
+FullDuplex                                       : 
+LinkTechnology                                   : 
+NetworkAddresses                                 : {183D2DCE9FAC}
+OtherLinkTechnology                              : 
+OtherNetworkPortType                             : 
+PermanentAddress                                 : 183D2DCE9FAC
+PortNumber                                       : 0
+SupportedMaximumTransmissionUnit                 : 
+AdminLocked                                      : False
+ComponentID                                      : PCI\VEN_10EC&DEV_8168&REV_1B
+ConnectorPresent                                 : True
+DeviceName                                       : \Device\{4BDBD802-F80E-4AF7-9A46-EAB25A299527}
+DeviceWakeUpEnable                               : True
+DriverDate                                       : 2024-11-28
+DriverDateData                                   : 133772256000000000
+DriverDescription                                : Realtek PCIe GbE Family Controller
+DriverMajorNdisVersion                           : 6
+DriverMinorNdisVersion                           : 40
+DriverName                                       : \SystemRoot\System32\drivers\rt640arm64.sys
+DriverProvider                                   : Realtek
+DriverVersionString                              : 10.74.1128.2024
+EndPointInterface                                : False
+HardwareInterface                                : True
+Hidden                                           : False
+HigherLayerInterfaceIndices                      : {21}
+IMFilter                                         : False
+InterfaceAdminStatus                             : 1
+InterfaceDescription                             : Realtek PCIe GbE Family Controller
+InterfaceGuid                                    : {4BDBD802-F80E-4AF7-9A46-EAB25A299527}
+InterfaceIndex                                   : 11
+InterfaceName                                    : ethernet_32770
+InterfaceOperationalStatus                       : 2
+InterfaceType                                    : 6
+iSCSIInterface                                   : False
+LowerLayerInterfaceIndices                       : 
+MajorDriverVersion                               : 10
+MediaConnectState                                : 2
+MediaDuplexState                                 : 0
+MinorDriverVersion                               : 74
+MtuSize                                          : 1500
+NdisMedium                                       : 0
+NdisPhysicalMedium                               : 14
+NetLuid                                          : 1689399649632256
+NetLuidIndex                                     : 32770
+NotUserRemovable                                 : False
+OperationalStatusDownDefaultPortNotAuthenticated : False
+OperationalStatusDownInterfacePaused             : False
+OperationalStatusDownLowPowerState               : False
+OperationalStatusDownMediaDisconnected           : True
+PnPDeviceID                                      : PCI\VEN_10EC&DEV_8168&SUBSYS_379617AA&REV_1B\01000000684CE00000
+PromiscuousMode                                  : False
+ReceiveLinkSpeed                                 : 
+State                                            : 2
+TransmitLinkSpeed                                : 
+Virtual                                          : False
+VlanID                                           : 
+WdmInterface                                     : False
+PSComputerName                                   : 
+CimClass                                         : ROOT/StandardCimv2:MSFT_NetAdapter
+CimInstanceProperties                            : {Caption, Description, ElementName, InstanceID...}
+CimSystemProperties                              : Microsoft.Management.Infrastructure.CimSystemProperties
+
+MacAddress                                       : 8A-45-E6-1B-B3-DF
+Status                                           : Disconnected
+LinkSpeed                                        : 0 bps
+MediaType                                        : Native 802.11
+PhysicalMediaType                                : Native 802.11
+AdminStatus                                      : Up
+MediaConnectionState                             : Disconnected
+DriverInformation                                : Driver Date 2024-11-28 Version 1.0.4182.1000 NDIS 6.89
+DriverFileName                                   : qcwlanhmt8380.sys
+NdisVersion                                      : 6.89
+ifOperStatus                                     : Down
+ifAlias                                          : Wi-Fi 2
+InterfaceAlias                                   : Wi-Fi 2
+ifIndex                                          : 10
+ifDesc                                           : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) 
+                                                   Network Adapter
+ifName                                           : wireless_32769
+DriverVersion                                    : 1.0.4182.1000
+LinkLayerAddress                                 : 8A-45-E6-1B-B3-DF
+Caption                                          : 
+Description                                      : 
+ElementName                                      : 
+InstanceID                                       : {3D37E4C9-EB4A-46E1-9999-A57FC0A42027}
+CommunicationStatus                              : 
+DetailedStatus                                   : 
+HealthState                                      : 
+InstallDate                                      : 
+Name                                             : Wi-Fi 2
+OperatingStatus                                  : 
+OperationalStatus                                : 
+PrimaryStatus                                    : 
+StatusDescriptions                               : 
+AvailableRequestedStates                         : 
+EnabledDefault                                   : 2
+EnabledState                                     : 5
+OtherEnabledState                                : 
+RequestedState                                   : 12
+TimeOfLastStateChange                            : 
+TransitioningToState                             : 12
+AdditionalAvailability                           : 
+Availability                                     : 
+CreationClassName                                : MSFT_NetAdapter
+DeviceID                                         : {3D37E4C9-EB4A-46E1-9999-A57FC0A42027}
+ErrorCleared                                     : 
+ErrorDescription                                 : 
+IdentifyingDescriptions                          : 
+LastErrorCode                                    : 
+MaxQuiesceTime                                   : 
+OtherIdentifyingInfo                             : 
+PowerManagementCapabilities                      : 
+PowerManagementSupported                         : 
+PowerOnHours                                     : 
+StatusInfo                                       : 
+SystemCreationClassName                          : CIM_NetworkPort
+SystemName                                       : LenovoMini1
+TotalPowerOnHours                                : 
+MaxSpeed                                         : 
+OtherPortType                                    : 
+PortType                                         : 
+RequestedSpeed                                   : 
+Speed                                            : 
+UsageRestriction                                 : 
+ActiveMaximumTransmissionUnit                    : 1500
+AutoSense                                        : 
+FullDuplex                                       : True
+LinkTechnology                                   : 
+NetworkAddresses                                 : {8A45E61BB3DF}
+OtherLinkTechnology                              : 
+OtherNetworkPortType                             : 
+PermanentAddress                                 : 8A45E61BB3DF
+PortNumber                                       : 0
+SupportedMaximumTransmissionUnit                 : 
+AdminLocked                                      : False
+ComponentID                                      : PCI\VEN_17CB&DEV_1107&SUBSYS_E11517AA
+ConnectorPresent                                 : True
+DeviceName                                       : \Device\{3D37E4C9-EB4A-46E1-9999-A57FC0A42027}
+DeviceWakeUpEnable                               : False
+DriverDate                                       : 2024-11-28
+DriverDateData                                   : 133772256000000000
+DriverDescription                                : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) 
+                                                   Network Adapter
+DriverMajorNdisVersion                           : 6
+DriverMinorNdisVersion                           : 89
+DriverName                                       : \SystemRoot\System32\DriverStore\FileRepository\qcwlanhmt8380.inf_ar
+                                                   m64_9776df1402fb9fa5\qcwlanhmt8380.sys
+DriverProvider                                   : Qualcomm Communications Inc.
+DriverVersionString                              : 1.0.4182.1000
+EndPointInterface                                : False
+HardwareInterface                                : True
+Hidden                                           : False
+HigherLayerInterfaceIndices                      : {42}
+IMFilter                                         : False
+InterfaceAdminStatus                             : 1
+InterfaceDescription                             : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) 
+                                                   Network Adapter
+InterfaceGuid                                    : {3D37E4C9-EB4A-46E1-9999-A57FC0A42027}
+InterfaceIndex                                   : 10
+InterfaceName                                    : wireless_32769
+InterfaceOperationalStatus                       : 2
+InterfaceType                                    : 71
+iSCSIInterface                                   : False
+LowerLayerInterfaceIndices                       : 
+MajorDriverVersion                               : 0
+MediaConnectState                                : 2
+MediaDuplexState                                 : 2
+MinorDriverVersion                               : 0
+MtuSize                                          : 1500
+NdisMedium                                       : 16
+NdisPhysicalMedium                               : 9
+NetLuid                                          : 19985273119047680
+NetLuidIndex                                     : 32769
+NotUserRemovable                                 : False
+OperationalStatusDownDefaultPortNotAuthenticated : False
+OperationalStatusDownInterfacePaused             : False
+OperationalStatusDownLowPowerState               : False
+OperationalStatusDownMediaDisconnected           : True
+PnPDeviceID                                      : PCI\VEN_17CB&DEV_1107&SUBSYS_E11517AA&REV_01\4&2b53bcce&0&0000
+PromiscuousMode                                  : False
+ReceiveLinkSpeed                                 : 
+State                                            : 2
+TransmitLinkSpeed                                : 
+Virtual                                          : False
+VlanID                                           : 
+WdmInterface                                     : True
+PSComputerName                                   : 
+CimClass                                         : ROOT/StandardCimv2:MSFT_NetAdapter
+CimInstanceProperties                            : {Caption, Description, ElementName, InstanceID...}
+CimSystemProperties                              : Microsoft.Management.Infrastructure.CimSystemProperties
+
+MacAddress                                       : 7A-45-E6-1B-B3-DF
+Status                                           : Disconnected
+LinkSpeed                                        : 0 bps
+MediaType                                        : Native 802.11
+PhysicalMediaType                                : Native 802.11
+AdminStatus                                      : Up
+MediaConnectionState                             : Disconnected
+DriverInformation                                : Driver Date 2024-11-28 Version 1.0.4182.1000 NDIS 6.89
+DriverFileName                                   : qcwlanhmt8380.sys
+NdisVersion                                      : 6.89
+ifOperStatus                                     : Down
+ifAlias                                          : Wi-Fi 4
+InterfaceAlias                                   : Wi-Fi 4
+ifIndex                                          : 4
+ifDesc                                           : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) 
+                                                   Network Adapter
+ifName                                           : wireless_32771
+DriverVersion                                    : 1.0.4182.1000
+LinkLayerAddress                                 : 7A-45-E6-1B-B3-DF
+Caption                                          : 
+Description                                      : 
+ElementName                                      : 
+InstanceID                                       : {1E37BFC2-7FA6-4AF6-92F5-4F859B686B21}
+CommunicationStatus                              : 
+DetailedStatus                                   : 
+HealthState                                      : 
+InstallDate                                      : 
+Name                                             : Wi-Fi 4
+OperatingStatus                                  : 
+OperationalStatus                                : 
+PrimaryStatus                                    : 
+StatusDescriptions                               : 
+AvailableRequestedStates                         : 
+EnabledDefault                                   : 2
+EnabledState                                     : 5
+OtherEnabledState                                : 
+RequestedState                                   : 12
+TimeOfLastStateChange                            : 
+TransitioningToState                             : 12
+AdditionalAvailability                           : 
+Availability                                     : 
+CreationClassName                                : MSFT_NetAdapter
+DeviceID                                         : {1E37BFC2-7FA6-4AF6-92F5-4F859B686B21}
+ErrorCleared                                     : 
+ErrorDescription                                 : 
+IdentifyingDescriptions                          : 
+LastErrorCode                                    : 
+MaxQuiesceTime                                   : 
+OtherIdentifyingInfo                             : 
+PowerManagementCapabilities                      : 
+PowerManagementSupported                         : 
+PowerOnHours                                     : 
+StatusInfo                                       : 
+SystemCreationClassName                          : CIM_NetworkPort
+SystemName                                       : LenovoMini1
+TotalPowerOnHours                                : 
+MaxSpeed                                         : 
+OtherPortType                                    : 
+PortType                                         : 
+RequestedSpeed                                   : 
+Speed                                            : 
+UsageRestriction                                 : 
+ActiveMaximumTransmissionUnit                    : 1500
+AutoSense                                        : 
+FullDuplex                                       : True
+LinkTechnology                                   : 
+NetworkAddresses                                 : {7A45E61BB3DF}
+OtherLinkTechnology                              : 
+OtherNetworkPortType                             : 
+PermanentAddress                                 : 7A45E61BB3DF
+PortNumber                                       : 0
+SupportedMaximumTransmissionUnit                 : 
+AdminLocked                                      : False
+ComponentID                                      : PCI\VEN_17CB&DEV_1107&SUBSYS_E11517AA
+ConnectorPresent                                 : True
+DeviceName                                       : \Device\{1E37BFC2-7FA6-4AF6-92F5-4F859B686B21}
+DeviceWakeUpEnable                               : False
+DriverDate                                       : 2024-11-28
+DriverDateData                                   : 133772256000000000
+DriverDescription                                : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) 
+                                                   Network Adapter
+DriverMajorNdisVersion                           : 6
+DriverMinorNdisVersion                           : 89
+DriverName                                       : \SystemRoot\System32\DriverStore\FileRepository\qcwlanhmt8380.inf_ar
+                                                   m64_9776df1402fb9fa5\qcwlanhmt8380.sys
+DriverProvider                                   : Qualcomm Communications Inc.
+DriverVersionString                              : 1.0.4182.1000
+EndPointInterface                                : False
+HardwareInterface                                : True
+Hidden                                           : False
+HigherLayerInterfaceIndices                      : {32}
+IMFilter                                         : False
+InterfaceAdminStatus                             : 1
+InterfaceDescription                             : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) 
+                                                   Network Adapter
+InterfaceGuid                                    : {1E37BFC2-7FA6-4AF6-92F5-4F859B686B21}
+InterfaceIndex                                   : 4
+InterfaceName                                    : wireless_32771
+InterfaceOperationalStatus                       : 2
+InterfaceType                                    : 71
+iSCSIInterface                                   : False
+LowerLayerInterfaceIndices                       : 
+MajorDriverVersion                               : 0
+MediaConnectState                                : 2
+MediaDuplexState                                 : 2
+MinorDriverVersion                               : 0
+MtuSize                                          : 1500
+NdisMedium                                       : 16
+NdisPhysicalMedium                               : 9
+NetLuid                                          : 19985273152602112
+NetLuidIndex                                     : 32771
+NotUserRemovable                                 : False
+OperationalStatusDownDefaultPortNotAuthenticated : False
+OperationalStatusDownInterfacePaused             : False
+OperationalStatusDownLowPowerState               : False
+OperationalStatusDownMediaDisconnected           : True
+PnPDeviceID                                      : PCI\VEN_17CB&DEV_1107&SUBSYS_E11517AA&REV_01\4&2b53bcce&0&0000
+PromiscuousMode                                  : False
+ReceiveLinkSpeed                                 : 
+State                                            : 2
+TransmitLinkSpeed                                : 
+Virtual                                          : False
+VlanID                                           : 
+WdmInterface                                     : True
+PSComputerName                                   : 
+CimClass                                         : ROOT/StandardCimv2:MSFT_NetAdapter
+CimInstanceProperties                            : {Caption, Description, ElementName, InstanceID...}
+CimSystemProperties                              : Microsoft.Management.Infrastructure.CimSystemProperties
+
+MacAddress                                       : 6A-45-E6-1B-B3-DF
+Status                                           : Disconnected
+LinkSpeed                                        : 0 bps
+MediaType                                        : Native 802.11
+PhysicalMediaType                                : Native 802.11
+AdminStatus                                      : Up
+MediaConnectionState                             : Disconnected
+DriverInformation                                : Driver Date 2024-11-28 Version 1.0.4182.1000 NDIS 6.89
+DriverFileName                                   : qcwlanhmt8380.sys
+NdisVersion                                      : 6.89
+ifOperStatus                                     : Down
+ifAlias                                          : Wi-Fi 3
+InterfaceAlias                                   : Wi-Fi 3
+ifIndex                                          : 3
+ifDesc                                           : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) 
+                                                   Network Adapter
+ifName                                           : wireless_32770
+DriverVersion                                    : 1.0.4182.1000
+LinkLayerAddress                                 : 6A-45-E6-1B-B3-DF
+Caption                                          : 
+Description                                      : 
+ElementName                                      : 
+InstanceID                                       : {0FA433A8-5A46-487B-B66A-5FD19D4B4E0B}
+CommunicationStatus                              : 
+DetailedStatus                                   : 
+HealthState                                      : 
+InstallDate                                      : 
+Name                                             : Wi-Fi 3
+OperatingStatus                                  : 
+OperationalStatus                                : 
+PrimaryStatus                                    : 
+StatusDescriptions                               : 
+AvailableRequestedStates                         : 
+EnabledDefault                                   : 2
+EnabledState                                     : 5
+OtherEnabledState                                : 
+RequestedState                                   : 12
+TimeOfLastStateChange                            : 
+TransitioningToState                             : 12
+AdditionalAvailability                           : 
+Availability                                     : 
+CreationClassName                                : MSFT_NetAdapter
+DeviceID                                         : {0FA433A8-5A46-487B-B66A-5FD19D4B4E0B}
+ErrorCleared                                     : 
+ErrorDescription                                 : 
+IdentifyingDescriptions                          : 
+LastErrorCode                                    : 
+MaxQuiesceTime                                   : 
+OtherIdentifyingInfo                             : 
+PowerManagementCapabilities                      : 
+PowerManagementSupported                         : 
+PowerOnHours                                     : 
+StatusInfo                                       : 
+SystemCreationClassName                          : CIM_NetworkPort
+SystemName                                       : LenovoMini1
+TotalPowerOnHours                                : 
+MaxSpeed                                         : 
+OtherPortType                                    : 
+PortType                                         : 
+RequestedSpeed                                   : 
+Speed                                            : 
+UsageRestriction                                 : 
+ActiveMaximumTransmissionUnit                    : 1500
+AutoSense                                        : 
+FullDuplex                                       : True
+LinkTechnology                                   : 
+NetworkAddresses                                 : {6A45E61BB3DF}
+OtherLinkTechnology                              : 
+OtherNetworkPortType                             : 
+PermanentAddress                                 : 6A45E61BB3DF
+PortNumber                                       : 0
+SupportedMaximumTransmissionUnit                 : 
+AdminLocked                                      : False
+ComponentID                                      : PCI\VEN_17CB&DEV_1107&SUBSYS_E11517AA
+ConnectorPresent                                 : True
+DeviceName                                       : \Device\{0FA433A8-5A46-487B-B66A-5FD19D4B4E0B}
+DeviceWakeUpEnable                               : True
+DriverDate                                       : 2024-11-28
+DriverDateData                                   : 133772256000000000
+DriverDescription                                : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) 
+                                                   Network Adapter
+DriverMajorNdisVersion                           : 6
+DriverMinorNdisVersion                           : 89
+DriverName                                       : \SystemRoot\System32\DriverStore\FileRepository\qcwlanhmt8380.inf_ar
+                                                   m64_9776df1402fb9fa5\qcwlanhmt8380.sys
+DriverProvider                                   : Qualcomm Communications Inc.
+DriverVersionString                              : 1.0.4182.1000
+EndPointInterface                                : False
+HardwareInterface                                : True
+Hidden                                           : False
+HigherLayerInterfaceIndices                      : {28}
+IMFilter                                         : False
+InterfaceAdminStatus                             : 1
+InterfaceDescription                             : Qualcomm FastConnect 7800 Wi-Fi 7 High Band Simultaneous (HBS) 
+                                                   Network Adapter
+InterfaceGuid                                    : {0FA433A8-5A46-487B-B66A-5FD19D4B4E0B}
+InterfaceIndex                                   : 3
+InterfaceName                                    : wireless_32770
+InterfaceOperationalStatus                       : 2
+InterfaceType                                    : 71
+iSCSIInterface                                   : False
+LowerLayerInterfaceIndices                       : 
+MajorDriverVersion                               : 0
+MediaConnectState                                : 2
+MediaDuplexState                                 : 2
+MinorDriverVersion                               : 0
+MtuSize                                          : 1500
+NdisMedium                                       : 16
+NdisPhysicalMedium                               : 9
+NetLuid                                          : 19985273135824896
+NetLuidIndex                                     : 32770
+NotUserRemovable                                 : False
+OperationalStatusDownDefaultPortNotAuthenticated : False
+OperationalStatusDownInterfacePaused             : False
+OperationalStatusDownLowPowerState               : False
+OperationalStatusDownMediaDisconnected           : True
+PnPDeviceID                                      : PCI\VEN_17CB&DEV_1107&SUBSYS_E11517AA&REV_01\4&2b53bcce&0&0000
+PromiscuousMode                                  : False
+ReceiveLinkSpeed                                 : 
+State                                            : 2
+TransmitLinkSpeed                                : 
+Virtual                                          : False
+VlanID                                           : 
+WdmInterface                                     : True
+PSComputerName                                   : 
+CimClass                                         : ROOT/StandardCimv2:MSFT_NetAdapter
+CimInstanceProperties                            : {Caption, Description, ElementName, InstanceID...}
+CimSystemProperties                              : Microsoft.Management.Infrastructure.CimSystemProperties
+
+
+

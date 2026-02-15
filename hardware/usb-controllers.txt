@@ -1,0 +1,342 @@
+﻿
+
+Class                       : USB
+FriendlyName                : USB Mass Storage Device
+InstanceId                  : USB\VID_0781&PID_55A3\0101AC54CC1E11AB14988B505276626837D7A7CDB7A4BF68DF72CE74297DF529AD7
+                              F00000000000000000000ECED538CFF8E7000A3558107AF2B4A68
+Problem                     : CM_PROB_PHANTOM
+ConfigManagerErrorCode      : CM_PROB_PHANTOM
+ProblemDescription          : 
+Caption                     : USB Mass Storage Device
+Description                 : USB Mass Storage Device
+InstallDate                 : 
+Name                        : USB Mass Storage Device
+Status                      : Unknown
+Availability                : 
+ConfigManagerUserConfig     : False
+CreationClassName           : Win32_PnPEntity
+DeviceID                    : USB\VID_0781&PID_55A3\0101AC54CC1E11AB14988B505276626837D7A7CDB7A4BF68DF72CE74297DF529AD7
+                              F00000000000000000000ECED538CFF8E7000A3558107AF2B4A68
+ErrorCleared                : 
+ErrorDescription            : 
+LastErrorCode               : 
+PNPDeviceID                 : USB\VID_0781&PID_55A3\0101AC54CC1E11AB14988B505276626837D7A7CDB7A4BF68DF72CE74297DF529AD7
+                              F00000000000000000000ECED538CFF8E7000A3558107AF2B4A68
+PowerManagementCapabilities : 
+PowerManagementSupported    : 
+StatusInfo                  : 
+SystemCreationClassName     : Win32_ComputerSystem
+SystemName                  : LENOVOMINI1
+ClassGuid                   : {36fc9e60-c465-11cf-8056-444553540000}
+CompatibleID                : {USB\COMPAT_VID_0781&Class_08&SubClass_06&Prot_50, 
+                              USB\COMPAT_VID_0781&Class_08&SubClass_06, USB\COMPAT_VID_0781&Class_08, 
+                              USB\Class_08&SubClass_06&Prot_50...}
+HardwareID                  : {USB\VID_0781&PID_55A3&REV_0100, USB\VID_0781&PID_55A3}
+Manufacturer                : Compatible USB storage device
+PNPClass                    : USB
+Present                     : False
+Service                     : USBSTOR
+PSComputerName              : 
+CimClass                    : ROOT/cimv2:Win32_PnPEntity
+CimInstanceProperties       : {Caption, Description, InstallDate, Name...}
+CimSystemProperties         : Microsoft.Management.Infrastructure.CimSystemProperties
+
+Class                       : USB
+FriendlyName                : Qualcomm(R) USB3(TM) eXtensible Host Controller
+InstanceId                  : ACPI\QCOM0D08\3
+Problem                     : CM_PROB_NONE
+ConfigManagerErrorCode      : CM_PROB_NONE
+ProblemDescription          : 
+Caption                     : Qualcomm(R) USB3(TM) eXtensible Host Controller
+Description                 : USB xHCI Compliant Host Controller
+InstallDate                 : 
+Name                        : Qualcomm(R) USB3(TM) eXtensible Host Controller
+Status                      : OK
+Availability                : 
+ConfigManagerUserConfig     : False
+CreationClassName           : Win32_PnPEntity
+DeviceID                    : ACPI\QCOM0D08\3
+ErrorCleared                : 
+ErrorDescription            : 
+LastErrorCode               : 
+PNPDeviceID                 : ACPI\QCOM0D08\3
+PowerManagementCapabilities : 
+PowerManagementSupported    : 
+StatusInfo                  : 
+SystemCreationClassName     : Win32_ComputerSystem
+SystemName                  : LENOVOMINI1
+ClassGuid                   : {36fc9e60-c465-11cf-8056-444553540000}
+CompatibleID                : {ACPI\VEN_QCOM&DEV_0D08, ACPI\PNP0D15, PNP0D15}
+HardwareID                  : {ACPI\VEN_QCOM&DEV_0D08&SUBSYS_CRD08380, ACPI\QCOM0D08, *QCOM0D08}
+Manufacturer                : Generic USB xHCI Host Controller
+PNPClass                    : USB
+Present                     : True
+Service                     : USBXHCI
+PSComputerName              : 
+CimClass                    : ROOT/cimv2:Win32_PnPEntity
+CimInstanceProperties       : {Caption, Description, InstallDate, Name...}
+CimSystemProperties         : Microsoft.Management.Infrastructure.CimSystemProperties
+
+Class                       : USB
+FriendlyName                : Synopsys USB 3.0 Dual-Role Controller
+InstanceId                  : ACPI\QCOM0C8B\0
+Problem                     : CM_PROB_NONE
+ConfigManagerErrorCode      : CM_PROB_NONE
+ProblemDescription          : 
+Caption                     : Synopsys USB 3.0 Dual-Role Controller
+Description                 : Synopsys USB 3.0 Dual-Role Controller
+InstallDate                 : 
+Name                        : Synopsys USB 3.0 Dual-Role Controller
+Status                      : OK
+Availability                : 
+ConfigManagerUserConfig     : False
+CreationClassName           : Win32_PnPEntity
+DeviceID                    : ACPI\QCOM0C8B\0
+ErrorCleared                : 
+ErrorDescription            : 
+LastErrorCode               : 
+PNPDeviceID                 : ACPI\QCOM0C8B\0
+PowerManagementCapabilities : 
+PowerManagementSupported    : 
+StatusInfo                  : 
+SystemCreationClassName     : Win32_ComputerSystem
+SystemName                  : LENOVOMINI1
+ClassGuid                   : {36fc9e60-c465-11cf-8056-444553540000}
+CompatibleID                : {ACPI\VEN_QCOM&DEV_0C8B, ACPI\PNP0CA1, PNP0CA1, ACPI\QCOMFFE1...}
+HardwareID                  : {ACPI\VEN_QCOM&DEV_0C8B&SUBSYS_CRD08380, ACPI\QCOM0C8B, *QCOM0C8B}
+Manufacturer                : Synopsys
+PNPClass                    : USB
+Present                     : True
+Service                     : UrsSynopsys
+PSComputerName              : 
+CimClass                    : ROOT/cimv2:Win32_PnPEntity
+CimInstanceProperties       : {Caption, Description, InstallDate, Name...}
+CimSystemProperties         : Microsoft.Management.Infrastructure.CimSystemProperties
+
+Class                       : USB
+FriendlyName                : USB Root Hub (USB 3.0)
+InstanceId                  : USB\ROOT_HUB30\3&2A02A9A5&1&0
+Problem                     : CM_PROB_NONE
+ConfigManagerErrorCode      : CM_PROB_NONE
+ProblemDescription          : 
+Caption                     : USB Root Hub (USB 3.0)
+Description                 : USB Root Hub (USB 3.0)
+InstallDate                 : 
+Name                        : USB Root Hub (USB 3.0)
+Status                      : OK
+Availability                : 
+ConfigManagerUserConfig     : False
+CreationClassName           : Win32_PnPEntity
+DeviceID                    : USB\ROOT_HUB30\3&2A02A9A5&1&0
+ErrorCleared                : 
+ErrorDescription            : 
+LastErrorCode               : 
+PNPDeviceID                 : USB\ROOT_HUB30\3&2A02A9A5&1&0
+PowerManagementCapabilities : 
+PowerManagementSupported    : 
+StatusInfo                  : 
+SystemCreationClassName     : Win32_ComputerSystem
+SystemName                  : LENOVOMINI1
+ClassGuid                   : {36fc9e60-c465-11cf-8056-444553540000}
+CompatibleID                : 
+HardwareID                  : {USB\ROOT_HUB30&VIDQCOM&PID0D08&REV0000, USB\ROOT_HUB30&VIDQCOM&PID0D08, USB\ROOT_HUB30}
+Manufacturer                : (Standard USB HUBs)
+PNPClass                    : USB
+Present                     : True
+Service                     : USBHUB3
+PSComputerName              : 
+CimClass                    : ROOT/cimv2:Win32_PnPEntity
+CimInstanceProperties       : {Caption, Description, InstallDate, Name...}
+CimSystemProperties         : Microsoft.Management.Infrastructure.CimSystemProperties
+
+Class                       : USB
+FriendlyName                : USB Mass Storage Device
+InstanceId                  : USB\VID_0781&PID_55A3\0101F3637EA7067D4F904AACFD0FBBF625AB55FB4AB319A3CE8F1A9A95823EF51AA
+                              900000000000000000000961777F7FF8B7300A3558107AF2B4DD7
+Problem                     : CM_PROB_PHANTOM
+ConfigManagerErrorCode      : CM_PROB_PHANTOM
+ProblemDescription          : 
+Caption                     : USB Mass Storage Device
+Description                 : USB Mass Storage Device
+InstallDate                 : 
+Name                        : USB Mass Storage Device
+Status                      : Unknown
+Availability                : 
+ConfigManagerUserConfig     : False
+CreationClassName           : Win32_PnPEntity
+DeviceID                    : USB\VID_0781&PID_55A3\0101F3637EA7067D4F904AACFD0FBBF625AB55FB4AB319A3CE8F1A9A95823EF51AA
+                              900000000000000000000961777F7FF8B7300A3558107AF2B4DD7
+ErrorCleared                : 
+ErrorDescription            : 
+LastErrorCode               : 
+PNPDeviceID                 : USB\VID_0781&PID_55A3\0101F3637EA7067D4F904AACFD0FBBF625AB55FB4AB319A3CE8F1A9A95823EF51AA
+                              900000000000000000000961777F7FF8B7300A3558107AF2B4DD7
+PowerManagementCapabilities : 
+PowerManagementSupported    : 
+StatusInfo                  : 
+SystemCreationClassName     : Win32_ComputerSystem
+SystemName                  : LENOVOMINI1
+ClassGuid                   : {36fc9e60-c465-11cf-8056-444553540000}
+CompatibleID                : {USB\COMPAT_VID_0781&Class_08&SubClass_06&Prot_50, 
+                              USB\COMPAT_VID_0781&Class_08&SubClass_06, USB\COMPAT_VID_0781&Class_08, 
+                              USB\Class_08&SubClass_06&Prot_50...}
+HardwareID                  : {USB\VID_0781&PID_55A3&REV_0100, USB\VID_0781&PID_55A3}
+Manufacturer                : Compatible USB storage device
+PNPClass                    : USB
+Present                     : False
+Service                     : USBSTOR
+PSComputerName              : 
+CimClass                    : ROOT/cimv2:Win32_PnPEntity
+CimInstanceProperties       : {Caption, Description, InstallDate, Name...}
+CimSystemProperties         : Microsoft.Management.Infrastructure.CimSystemProperties
+
+Class                       : USB
+FriendlyName                : USB Composite Device
+InstanceId                  : USB\VID_1C4F&PID_0002\5&25A7E32F&0&4
+Problem                     : CM_PROB_PHANTOM
+ConfigManagerErrorCode      : CM_PROB_PHANTOM
+ProblemDescription          : 
+Caption                     : USB Composite Device
+Description                 : USB Composite Device
+InstallDate                 : 
+Name                        : USB Composite Device
+Status                      : Unknown
+Availability                : 
+ConfigManagerUserConfig     : False
+CreationClassName           : Win32_PnPEntity
+DeviceID                    : USB\VID_1C4F&PID_0002\5&25A7E32F&0&4
+ErrorCleared                : 
+ErrorDescription            : 
+LastErrorCode               : 
+PNPDeviceID                 : USB\VID_1C4F&PID_0002\5&25A7E32F&0&4
+PowerManagementCapabilities : 
+PowerManagementSupported    : 
+StatusInfo                  : 
+SystemCreationClassName     : Win32_ComputerSystem
+SystemName                  : LENOVOMINI1
+ClassGuid                   : {36fc9e60-c465-11cf-8056-444553540000}
+CompatibleID                : {USB\COMPAT_VID_1C4F&DevClass_00&SubClass_00&Prot00, 
+                              USB\COMPAT_VID_1C4F&DevClass_00&SubClass_00, USB\COMPAT_VID_1C4F&DevClass_00, 
+                              USB\DevClass_00&SubClass_00&Prot_00...}
+HardwareID                  : {USB\VID_1C4F&PID_0002&REV_0340, USB\VID_1C4F&PID_0002}
+Manufacturer                : (Standard USB Host Controller)
+PNPClass                    : USB
+Present                     : False
+Service                     : usbccgp
+PSComputerName              : 
+CimClass                    : ROOT/cimv2:Win32_PnPEntity
+CimInstanceProperties       : {Caption, Description, InstallDate, Name...}
+CimSystemProperties         : Microsoft.Management.Infrastructure.CimSystemProperties
+
+Class                       : USB
+FriendlyName                : Generic USB Hub
+InstanceId                  : USB\VID_05E3&PID_0610\4&562E25C&0&1
+Problem                     : CM_PROB_NONE
+ConfigManagerErrorCode      : CM_PROB_NONE
+ProblemDescription          : 
+Caption                     : Generic USB Hub
+Description                 : Generic USB Hub
+InstallDate                 : 
+Name                        : Generic USB Hub
+Status                      : OK
+Availability                : 
+ConfigManagerUserConfig     : False
+CreationClassName           : Win32_PnPEntity
+DeviceID                    : USB\VID_05E3&PID_0610\4&562E25C&0&1
+ErrorCleared                : 
+ErrorDescription            : 
+LastErrorCode               : 
+PNPDeviceID                 : USB\VID_05E3&PID_0610\4&562E25C&0&1
+PowerManagementCapabilities : 
+PowerManagementSupported    : 
+StatusInfo                  : 
+SystemCreationClassName     : Win32_ComputerSystem
+SystemName                  : LENOVOMINI1
+ClassGuid                   : {36fc9e60-c465-11cf-8056-444553540000}
+CompatibleID                : {USB\USB20_HUB}
+HardwareID                  : {USB\VID_05E3&PID_0610&REV_7881, USB\VID_05E3&PID_0610}
+Manufacturer                : (Standard USB HUBs)
+PNPClass                    : USB
+Present                     : True
+Service                     : USBHUB3
+PSComputerName              : 
+CimClass                    : ROOT/cimv2:Win32_PnPEntity
+CimInstanceProperties       : {Caption, Description, InstallDate, Name...}
+CimSystemProperties         : Microsoft.Management.Infrastructure.CimSystemProperties
+
+Class                       : USB
+FriendlyName                : Generic SuperSpeed USB Hub
+InstanceId                  : USB\VID_05E3&PID_0625\4&562E25C&0&3
+Problem                     : CM_PROB_NONE
+ConfigManagerErrorCode      : CM_PROB_NONE
+ProblemDescription          : 
+Caption                     : Generic SuperSpeed USB Hub
+Description                 : Generic SuperSpeed USB Hub
+InstallDate                 : 
+Name                        : Generic SuperSpeed USB Hub
+Status                      : OK
+Availability                : 
+ConfigManagerUserConfig     : False
+CreationClassName           : Win32_PnPEntity
+DeviceID                    : USB\VID_05E3&PID_0625\4&562E25C&0&3
+ErrorCleared                : 
+ErrorDescription            : 
+LastErrorCode               : 
+PNPDeviceID                 : USB\VID_05E3&PID_0625\4&562E25C&0&3
+PowerManagementCapabilities : 
+PowerManagementSupported    : 
+StatusInfo                  : 
+SystemCreationClassName     : Win32_ComputerSystem
+SystemName                  : LENOVOMINI1
+ClassGuid                   : {36fc9e60-c465-11cf-8056-444553540000}
+CompatibleID                : {USB\USB30_HUB}
+HardwareID                  : {USB\VID_05E3&PID_0625&REV_7881, USB\VID_05E3&PID_0625}
+Manufacturer                : (Standard USB HUBs)
+PNPClass                    : USB
+Present                     : True
+Service                     : USBHUB3
+PSComputerName              : 
+CimClass                    : ROOT/cimv2:Win32_PnPEntity
+CimInstanceProperties       : {Caption, Description, InstallDate, Name...}
+CimSystemProperties         : Microsoft.Management.Infrastructure.CimSystemProperties
+
+Class                       : USB
+FriendlyName                : USB Composite Device
+InstanceId                  : USB\VID_1A2C&PID_2124\5&25A7E32F&0&3
+Problem                     : CM_PROB_NONE
+ConfigManagerErrorCode      : CM_PROB_NONE
+ProblemDescription          : 
+Caption                     : USB Composite Device
+Description                 : USB Composite Device
+InstallDate                 : 
+Name                        : USB Composite Device
+Status                      : OK
+Availability                : 
+ConfigManagerUserConfig     : False
+CreationClassName           : Win32_PnPEntity
+DeviceID                    : USB\VID_1A2C&PID_2124\5&25A7E32F&0&3
+ErrorCleared                : 
+ErrorDescription            : 
+LastErrorCode               : 
+PNPDeviceID                 : USB\VID_1A2C&PID_2124\5&25A7E32F&0&3
+PowerManagementCapabilities : 
+PowerManagementSupported    : 
+StatusInfo                  : 
+SystemCreationClassName     : Win32_ComputerSystem
+SystemName                  : LENOVOMINI1
+ClassGuid                   : {36fc9e60-c465-11cf-8056-444553540000}
+CompatibleID                : {USB\COMPAT_VID_1A2C&DevClass_00&SubClass_00&Prot00, 
+                              USB\COMPAT_VID_1A2C&DevClass_00&SubClass_00, USB\COMPAT_VID_1A2C&DevClass_00, 
+                              USB\DevClass_00&SubClass_00&Prot_00...}
+HardwareID                  : {USB\VID_1A2C&PID_2124&REV_0110, USB\VID_1A2C&PID_2124}
+Manufacturer                : (Standard USB Host Controller)
+PNPClass                    : USB
+Present                     : True
+Service                     : usbccgp
+PSComputerName              : 
+CimClass                    : ROOT/cimv2:Win32_PnPEntity
+CimInstanceProperties       : {Caption, Description, InstallDate, Name...}
+CimSystemProperties         : Microsoft.Management.Infrastructure.CimSystemProperties
+
+
+

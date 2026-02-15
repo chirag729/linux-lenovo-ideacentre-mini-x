@@ -1,0 +1,51 @@
+﻿
+
+DiskNumber            : 0
+PartitionStyle        : GPT
+ProvisioningType      : Fixed
+OperationalStatus     : Online
+HealthStatus          : Healthy
+BusType               : NVMe
+UniqueIdFormat        : SCSI Name String
+OfflineReason         : 
+ObjectId              : {1}\\LENOVOMINI1\root/Microsoft/Windows/Storage/Providers_v2\WSP_Disk.ObjectId="{7ea311dc-6cff-
+                        11f0-9c53-806e6f6e6963}:DI:\\?\scsi#disk&ven_nvme&prod_samsung_mzvl8512#5&3421d9&0&000000#{53f5
+                        6307-b6bf-11d0-94f2-00a0c91efb8b}"
+PassThroughClass      : 
+PassThroughIds        : 
+PassThroughNamespace  : 
+PassThroughServer     : 
+UniqueId              : eui.002538A451B02F9D
+AdapterSerialNumber   : S7G7NF0Y412097      _0001
+AllocatedSize         : 512110190592
+BootFromDisk          : True
+FirmwareVersion       : 8L2QKXD7
+FriendlyName          : SAMSUNG MZVL8512HDLU-00BLL
+Guid                  : {cce13791-1b26-44db-b220-e867eca1958e}
+IsBoot                : True
+IsClustered           : False
+IsHighlyAvailable     : False
+IsOffline             : False
+IsReadOnly            : False
+IsScaleOut            : False
+IsSystem              : True
+LargestFreeExtent     : 0
+Location              : Integrated : Bus 1537 : Device 0 : Function 0 : Adapter 0
+LogicalSectorSize     : 512
+Manufacturer          : 
+Model                 : SAMSUNG MZVL8512HDLU-00BLL
+Number                : 0
+NumberOfPartitions    : 4
+Path                  : \\?\scsi#disk&ven_nvme&prod_samsung_mzvl8512#5&3421d9&0&000000#{53f56307-b6bf-11d0-94f2-00a0c91
+                        efb8b}
+PhysicalSectorSize    : 4096
+SerialNumber          : 0025_38A4_51B0_2F9D.
+Signature             : 
+Size                  : 512110190592
+PSComputerName        : 
+CimClass              : ROOT/Microsoft/Windows/Storage:MSFT_Disk
+CimInstanceProperties : {ObjectId, PassThroughClass, PassThroughIds, PassThroughNamespace...}
+CimSystemProperties   : Microsoft.Management.Infrastructure.CimSystemProperties
+
+
+

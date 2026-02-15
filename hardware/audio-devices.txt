@@ -1,0 +1,76 @@
+﻿
+
+Class                       : AudioEndpoint
+FriendlyName                : VX2452 Series (3- Qualcomm(R) Aqstic(TM) ACX External Display Audio Device)
+InstanceId                  : SWD\MMDEVAPI\{0.0.0.00000000}.{C4A53F14-4E94-4469-862D-537C82815568}
+Problem                     : CM_PROB_PHANTOM
+ConfigManagerErrorCode      : CM_PROB_PHANTOM
+ProblemDescription          : 
+Caption                     : VX2452 Series (3- Qualcomm(R) Aqstic(TM) ACX External Display Audio Device)
+Description                 : Audio Endpoint
+InstallDate                 : 
+Name                        : VX2452 Series (3- Qualcomm(R) Aqstic(TM) ACX External Display Audio Device)
+Status                      : Unknown
+Availability                : 
+ConfigManagerUserConfig     : False
+CreationClassName           : Win32_PnPEntity
+DeviceID                    : SWD\MMDEVAPI\{0.0.0.00000000}.{C4A53F14-4E94-4469-862D-537C82815568}
+ErrorCleared                : 
+ErrorDescription            : 
+LastErrorCode               : 
+PNPDeviceID                 : SWD\MMDEVAPI\{0.0.0.00000000}.{C4A53F14-4E94-4469-862D-537C82815568}
+PowerManagementCapabilities : 
+PowerManagementSupported    : 
+StatusInfo                  : 
+SystemCreationClassName     : Win32_ComputerSystem
+SystemName                  : LENOVOMINI1
+ClassGuid                   : {c166523c-fe0c-4a94-a586-f1a80cfbbf3e}
+CompatibleID                : {GenericAudioEndpoint, SWD\GenericRaw, SWD\Generic}
+HardwareID                  : {MMDEVAPI\AudioEndpoints}
+Manufacturer                : Microsoft
+PNPClass                    : AudioEndpoint
+Present                     : False
+Service                     : 
+PSComputerName              : 
+CimClass                    : ROOT/cimv2:Win32_PnPEntity
+CimInstanceProperties       : {Caption, Description, InstallDate, Name...}
+CimSystemProperties         : Microsoft.Management.Infrastructure.CimSystemProperties
+
+Class                       : AudioEndpoint
+FriendlyName                : VX2452 Series (3- Qualcomm(R) Aqstic(TM) ACX External Display Audio Device)
+InstanceId                  : SWD\MMDEVAPI\{0.0.0.00000000}.{49EC2500-7BA1-40BC-AAEA-006CDEEB0672}
+Problem                     : CM_PROB_NONE
+ConfigManagerErrorCode      : CM_PROB_NONE
+ProblemDescription          : 
+Caption                     : VX2452 Series (3- Qualcomm(R) Aqstic(TM) ACX External Display Audio Device)
+Description                 : Audio Endpoint
+InstallDate                 : 
+Name                        : VX2452 Series (3- Qualcomm(R) Aqstic(TM) ACX External Display Audio Device)
+Status                      : OK
+Availability                : 
+ConfigManagerUserConfig     : False
+CreationClassName           : Win32_PnPEntity
+DeviceID                    : SWD\MMDEVAPI\{0.0.0.00000000}.{49EC2500-7BA1-40BC-AAEA-006CDEEB0672}
+ErrorCleared                : 
+ErrorDescription            : 
+LastErrorCode               : 
+PNPDeviceID                 : SWD\MMDEVAPI\{0.0.0.00000000}.{49EC2500-7BA1-40BC-AAEA-006CDEEB0672}
+PowerManagementCapabilities : 
+PowerManagementSupported    : 
+StatusInfo                  : 
+SystemCreationClassName     : Win32_ComputerSystem
+SystemName                  : LENOVOMINI1
+ClassGuid                   : {c166523c-fe0c-4a94-a586-f1a80cfbbf3e}
+CompatibleID                : {GenericAudioEndpoint, SWD\GenericRaw, SWD\Generic}
+HardwareID                  : {MMDEVAPI\AudioEndpoints}
+Manufacturer                : Microsoft
+PNPClass                    : AudioEndpoint
+Present                     : True
+Service                     : 
+PSComputerName              : 
+CimClass                    : ROOT/cimv2:Win32_PnPEntity
+CimInstanceProperties       : {Caption, Description, InstallDate, Name...}
+CimSystemProperties         : Microsoft.Management.Infrastructure.CimSystemProperties
+
+
+

@@ -1,0 +1,38 @@
+﻿
+
+Status                  : OK
+Name                    : Base Board
+PoweredOn               : True
+Caption                 : Base Board
+Description             : Base Board
+InstallDate             : 
+CreationClassName       : Win32_BaseBoard
+Manufacturer            : LENOVO
+Model                   : 
+OtherIdentifyingInfo    : 
+PartNumber              : 
+SerialNumber            : 12345678
+SKU                     : 
+Tag                     : Base Board
+Version                 : SDK0T76573 WIN 3422146909617
+Depth                   : 
+Height                  : 
+HotSwappable            : False
+Removable               : False
+Replaceable             : True
+Weight                  : 
+Width                   : 
+HostingBoard            : True
+RequirementsDescription : 
+RequiresDaughterBoard   : False
+SlotLayout              : 
+SpecialRequirements     : 
+ConfigOptions           : 
+Product                 : 3796
+PSComputerName          : 
+CimClass                : root/cimv2:Win32_BaseBoard
+CimInstanceProperties   : {Caption, Description, InstallDate, Name...}
+CimSystemProperties     : Microsoft.Management.Infrastructure.CimSystemProperties
+
+
+

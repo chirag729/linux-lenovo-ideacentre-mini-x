@@ -1,0 +1,220 @@
+﻿
+
+Class                       : Bluetooth
+FriendlyName                : Qualcomm(R) Aqstic(TM) BT ACX Transport Device
+InstanceId                  : ACPI\QCOM0D04\0
+Problem                     : CM_PROB_NONE
+ConfigManagerErrorCode      : CM_PROB_NONE
+ProblemDescription          : 
+Caption                     : Qualcomm(R) Aqstic(TM) BT ACX Transport Device
+Description                 : Qualcomm(R) Aqstic(TM) BT ACX Transport Device
+InstallDate                 : 
+Name                        : Qualcomm(R) Aqstic(TM) BT ACX Transport Device
+Status                      : OK
+Availability                : 
+ConfigManagerUserConfig     : False
+CreationClassName           : Win32_PnPEntity
+DeviceID                    : ACPI\QCOM0D04\0
+ErrorCleared                : 
+ErrorDescription            : 
+LastErrorCode               : 
+PNPDeviceID                 : ACPI\QCOM0D04\0
+PowerManagementCapabilities : 
+PowerManagementSupported    : 
+StatusInfo                  : 
+SystemCreationClassName     : Win32_ComputerSystem
+SystemName                  : LENOVOMINI1
+ClassGuid                   : {e0cbf06c-cd8b-4647-bb8a-263b43f0f974}
+CompatibleID                : 
+HardwareID                  : {ACPI\VEN_QCOM&DEV_0D04, ACPI\QCOM0D04, *QCOM0D04}
+Manufacturer                : QUALCOMM
+PNPClass                    : Bluetooth
+Present                     : True
+Service                     : qcbtacx_transportdriver
+PSComputerName              : 
+CimClass                    : ROOT/cimv2:Win32_PnPEntity
+CimInstanceProperties       : {Caption, Description, InstallDate, Name...}
+CimSystemProperties         : Microsoft.Management.Infrastructure.CimSystemProperties
+
+Class                       : Bluetooth
+FriendlyName                : Microsoft Bluetooth Enumerator
+InstanceId                  : BTH\MS_BTHBRB\4&446723A&0&1
+Problem                     : CM_PROB_PHANTOM
+ConfigManagerErrorCode      : CM_PROB_PHANTOM
+ProblemDescription          : 
+Caption                     : Microsoft Bluetooth Enumerator
+Description                 : Microsoft Bluetooth Enumerator
+InstallDate                 : 
+Name                        : Microsoft Bluetooth Enumerator
+Status                      : Unknown
+Availability                : 
+ConfigManagerUserConfig     : False
+CreationClassName           : Win32_PnPEntity
+DeviceID                    : BTH\MS_BTHBRB\4&446723A&0&1
+ErrorCleared                : 
+ErrorDescription            : 
+LastErrorCode               : 
+PNPDeviceID                 : BTH\MS_BTHBRB\4&446723A&0&1
+PowerManagementCapabilities : 
+PowerManagementSupported    : 
+StatusInfo                  : 
+SystemCreationClassName     : Win32_ComputerSystem
+SystemName                  : LENOVOMINI1
+ClassGuid                   : {e0cbf06c-cd8b-4647-bb8a-263b43f0f974}
+CompatibleID                : 
+HardwareID                  : {BTH\MS_BTHBRB}
+Manufacturer                : Microsoft
+PNPClass                    : Bluetooth
+Present                     : False
+Service                     : BthEnum
+PSComputerName              : 
+CimClass                    : ROOT/cimv2:Win32_PnPEntity
+CimInstanceProperties       : {Caption, Description, InstallDate, Name...}
+CimSystemProperties         : Microsoft.Management.Infrastructure.CimSystemProperties
+
+Class                       : Bluetooth
+FriendlyName                : Qualcomm(R) Bluetooth UART Transport Driver
+InstanceId                  : ACPI\QCOM0C6B\2&DABA3FF&2
+Problem                     : CM_PROB_NONE
+ConfigManagerErrorCode      : CM_PROB_NONE
+ProblemDescription          : 
+Caption                     : Qualcomm(R) Bluetooth UART Transport Driver
+Description                 : Qualcomm(R) Bluetooth UART Transport Driver
+InstallDate                 : 
+Name                        : Qualcomm(R) Bluetooth UART Transport Driver
+Status                      : OK
+Availability                : 
+ConfigManagerUserConfig     : False
+CreationClassName           : Win32_PnPEntity
+DeviceID                    : ACPI\QCOM0C6B\2&DABA3FF&2
+ErrorCleared                : 
+ErrorDescription            : 
+LastErrorCode               : 
+PNPDeviceID                 : ACPI\QCOM0C6B\2&DABA3FF&2
+PowerManagementCapabilities : 
+PowerManagementSupported    : 
+StatusInfo                  : 
+SystemCreationClassName     : Win32_ComputerSystem
+SystemName                  : LENOVOMINI1
+ClassGuid                   : {e0cbf06c-cd8b-4647-bb8a-263b43f0f974}
+CompatibleID                : {ACPI\VEN_QCOM&DEV_0C6B}
+HardwareID                  : {ACPI\VEN_QCOM&DEV_0C6B&SUBSYS_CRD08380, ACPI\QCOM0C6B, *QCOM0C6B}
+Manufacturer                : Qualcomm Atheros Communications Inc.
+PNPClass                    : Bluetooth
+Present                     : True
+Service                     : QcBluetooth
+PSComputerName              : 
+CimClass                    : ROOT/cimv2:Win32_PnPEntity
+CimInstanceProperties       : {Caption, Description, InstallDate, Name...}
+CimSystemProperties         : Microsoft.Management.Infrastructure.CimSystemProperties
+
+Class                       : Bluetooth
+FriendlyName                : Microsoft Bluetooth LE Enumerator
+InstanceId                  : BTH\MS_BTHLE\4&446723A&0&3
+Problem                     : CM_PROB_PHANTOM
+ConfigManagerErrorCode      : CM_PROB_PHANTOM
+ProblemDescription          : 
+Caption                     : Microsoft Bluetooth LE Enumerator
+Description                 : Microsoft Bluetooth LE Enumerator
+InstallDate                 : 
+Name                        : Microsoft Bluetooth LE Enumerator
+Status                      : Unknown
+Availability                : 
+ConfigManagerUserConfig     : False
+CreationClassName           : Win32_PnPEntity
+DeviceID                    : BTH\MS_BTHLE\4&446723A&0&3
+ErrorCleared                : 
+ErrorDescription            : 
+LastErrorCode               : 
+PNPDeviceID                 : BTH\MS_BTHLE\4&446723A&0&3
+PowerManagementCapabilities : 
+PowerManagementSupported    : 
+StatusInfo                  : 
+SystemCreationClassName     : Win32_ComputerSystem
+SystemName                  : LENOVOMINI1
+ClassGuid                   : {e0cbf06c-cd8b-4647-bb8a-263b43f0f974}
+CompatibleID                : 
+HardwareID                  : {BTH\MS_BTHLE}
+Manufacturer                : Microsoft
+PNPClass                    : Bluetooth
+Present                     : False
+Service                     : BthLEEnum
+PSComputerName              : 
+CimClass                    : ROOT/cimv2:Win32_PnPEntity
+CimInstanceProperties       : {Caption, Description, InstallDate, Name...}
+CimSystemProperties         : Microsoft.Management.Infrastructure.CimSystemProperties
+
+Class                       : Bluetooth
+FriendlyName                : Qualcomm FastConnect 7800 Dual Bluetooth Adapter
+InstanceId                  : QCA_SHB\UART_H4_HMT\3&359D00E6&0&4097
+Problem                     : CM_PROB_NONE
+ConfigManagerErrorCode      : CM_PROB_NONE
+ProblemDescription          : 
+Caption                     : Qualcomm FastConnect 7800 Dual Bluetooth Adapter
+Description                 : Qualcomm FastConnect 7800 Dual Bluetooth Adapter
+InstallDate                 : 
+Name                        : Qualcomm FastConnect 7800 Dual Bluetooth Adapter
+Status                      : OK
+Availability                : 
+ConfigManagerUserConfig     : False
+CreationClassName           : Win32_PnPEntity
+DeviceID                    : QCA_SHB\UART_H4_HMT\3&359D00E6&0&4097
+ErrorCleared                : 
+ErrorDescription            : 
+LastErrorCode               : 
+PNPDeviceID                 : QCA_SHB\UART_H4_HMT\3&359D00E6&0&4097
+PowerManagementCapabilities : 
+PowerManagementSupported    : 
+StatusInfo                  : 
+SystemCreationClassName     : Win32_ComputerSystem
+SystemName                  : LENOVOMINI1
+ClassGuid                   : {e0cbf06c-cd8b-4647-bb8a-263b43f0f974}
+CompatibleID                : {MS_BTHX_BTHMINI}
+HardwareID                  : {QCA_SHB\UART_H4_HMT}
+Manufacturer                : Qualcomm Incorporated
+PNPClass                    : Bluetooth
+Present                     : True
+Service                     : BthMini
+PSComputerName              : 
+CimClass                    : ROOT/cimv2:Win32_PnPEntity
+CimInstanceProperties       : {Caption, Description, InstallDate, Name...}
+CimSystemProperties         : Microsoft.Management.Infrastructure.CimSystemProperties
+
+Class                       : Bluetooth
+FriendlyName                : Bluetooth Device (RFCOMM Protocol TDI)
+InstanceId                  : BTH\MS_RFCOMM\4&446723A&0&0
+Problem                     : CM_PROB_PHANTOM
+ConfigManagerErrorCode      : CM_PROB_PHANTOM
+ProblemDescription          : 
+Caption                     : Bluetooth Device (RFCOMM Protocol TDI)
+Description                 : Bluetooth Device (RFCOMM Protocol TDI)
+InstallDate                 : 
+Name                        : Bluetooth Device (RFCOMM Protocol TDI)
+Status                      : Unknown
+Availability                : 
+ConfigManagerUserConfig     : False
+CreationClassName           : Win32_PnPEntity
+DeviceID                    : BTH\MS_RFCOMM\4&446723A&0&0
+ErrorCleared                : 
+ErrorDescription            : 
+LastErrorCode               : 
+PNPDeviceID                 : BTH\MS_RFCOMM\4&446723A&0&0
+PowerManagementCapabilities : 
+PowerManagementSupported    : 
+StatusInfo                  : 
+SystemCreationClassName     : Win32_ComputerSystem
+SystemName                  : LENOVOMINI1
+ClassGuid                   : {e0cbf06c-cd8b-4647-bb8a-263b43f0f974}
+CompatibleID                : 
+HardwareID                  : {BTH\MS_RFCOMM}
+Manufacturer                : Microsoft
+PNPClass                    : Bluetooth
+Present                     : False
+Service                     : RFCOMM
+PSComputerName              : 
+CimClass                    : ROOT/cimv2:Win32_PnPEntity
+CimInstanceProperties       : {Caption, Description, InstallDate, Name...}
+CimSystemProperties         : Microsoft.Management.Infrastructure.CimSystemProperties
+
+
+
