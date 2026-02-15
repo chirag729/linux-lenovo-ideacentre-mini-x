@@ -11,21 +11,18 @@
 
 ## Development Infrastructure
 
-Two physical machines, three Claude Code instances, coordinating via this git repo and the local network.
-
-### Machine 1: Raspberry Pi 5 (always-on server)
-- **IP:** 192.168.1.14 (Ethernet)
-- **OS:** Ubuntu ARM64, 16GB RAM, NVMe, 8GB swap
-- **Primary role:** Always-on infrastructure -- TFTP server, NFS root server, netconsole listener, git origin
-- **Secondary role:** Backup build host (4 cores @ 2.4GHz, use `make -j3`, ccache enabled)
-- **Claude Code instance:** Coordination, analysis, patch preparation
-
-### Machine 2: Lenovo IdeaCentre Mini x Gen 10 (build host + target)
+### Lenovo IdeaCentre Mini x Gen 10 (development host + target)
 - **OS:** Windows 11 on ARM + WSL2 (Ubuntu ARM64) + Linux test boots
-- **Specs:** 8 cores @ 3.0GHz, 32GB RAM -- our primary build machine via WSL2
+- **Specs:** 8 cores @ 3.0GHz, 32GB RAM
 - **Claude Code instances:**
   - **Windows (PowerShell):** Hardware data capture, firmware extraction
-  - **WSL2 (Ubuntu):** Kernel compilation (`make -j7`, ccache), DTS authoring, DT validation
+  - **WSL2 (Ubuntu):** ALL development -- kernel compilation (`make -j7`, ccache), DTS authoring, DT validation, analysis, patch prep
+
+### Netbox (network boot & debug appliance)
+- **What it is:** Any always-on Linux machine on the same LAN as the Lenovo
+- **Role:** Network services during test boot cycles. NOT a development host.
+- **Services:** TFTP server, NFS root server, netconsole listener, SSH client into Lenovo
+- **Why it exists:** When the Lenovo reboots into Linux for testing, it can't listen to its own boot log, serve its own network boot files, or provide its own SSH access. The netbox handles all of that.
 
 ### Architecture
 
@@ -36,10 +33,11 @@ Two physical machines, three Claude Code instances, coordinating via this git re
 │  ┌─────────────────────┐  ┌────────────────────────────┐  │
 │  │  Windows 11 ARM      │  │  WSL2 (Ubuntu ARM64)       │  │
 │  │                      │  │                            │  │
-│  │  - HW data capture   │  │  - PRIMARY BUILD HOST      │  │
+│  │  - HW data capture   │  │  - ALL DEVELOPMENT         │  │
 │  │  - Firmware extract   │  │  - make -j7 (8c, 32GB)    │  │
 │  │  - Claude Code (PS)   │  │  - DTS authoring           │  │
 │  │                      │  │  - DT validation            │  │
+│  │                      │  │  - Analysis & patch prep    │  │
 │  │                      │  │  - Writes to EFI partition  │  │
 │  │                      │  │    via /mnt/c/              │  │
 │  │                      │  │  - Claude Code (bash)       │  │
@@ -47,49 +45,34 @@ Two physical machines, three Claude Code instances, coordinating via this git re
 │                                                            │
 │  [Reboot into Linux for testing]                           │
 │  - Boots kernel from EFI partition (written by WSL2)       │
-│  - OR network boots via TFTP from Pi                       │
-│  - Debug via: netconsole → Pi, SSH over Ethernet → Pi      │
+│  - OR network boots via TFTP from netbox                   │
+│  - Debug via: netconsole → netbox, SSH from netbox         │
 └────────────────────┬─────────────────────────────────────┘
-                     │ Ethernet (192.168.1.x)
+                     │ Ethernet (LAN)
                      │
 ┌────────────────────┴─────────────────────────────────────┐
-│                  Raspberry Pi 5 (192.168.1.14)             │
+│                    Netbox                                   │
 │                                                            │
 │  - TFTP server: serves kernel Image + DTB                  │
 │  - NFS server: serves root filesystem                      │
 │  - netconsole listener: captures Lenovo boot output        │
+│  - SSH into Lenovo during headless Linux boot               │
 │  - Always-on (never reboots)                               │
-│  - Git repo origin                                         │
-│  - Backup build host (make -j3, ccache)                    │
-│  - Claude Code (analysis, coordination, patch prep)        │
 └──────────────────────────────────────────────────────────┘
 ```
-
-### Build Speed Comparison
-
-| | Pi 5 | Lenovo WSL2 |
-|--|------|-------------|
-| Cores | 4 @ 2.4GHz | 8 @ 3.0GHz |
-| RAM | 16GB (+8GB swap) | 32GB |
-| Full kernel build | ~60-90 min | ~15-25 min |
-| Incremental (with ccache) | ~5-15 min | ~2-5 min |
-| DTS-only rebuild | seconds | seconds |
-| Available during test boot | Yes | No (rebooting) |
-
-**Primary build on WSL2. Fall back to Pi when Lenovo is rebooted for testing.**
 
 ### Debug Access (No Display)
 
 Display output is broken initially. These methods provide console access without a working display, in order of preference:
 
 1. **netconsole** (kernel console over Ethernet UDP)
-   - Add to kernel cmdline: `netconsole=@/eth0,6666@192.168.1.14/`
-   - Pi listens: `nc -u -l -p 6666 | tee testing/boot-logs/$(date +%Y%m%d-%H%M).txt`
+   - Add to kernel cmdline: `netconsole=@/eth0,6666@<NETBOX_IP>/`
+   - Netbox listens: `nc -u -l -p 6666 | tee testing/boot-logs/$(date +%Y%m%d-%H%M).txt`
    - Zero setup on Lenovo side, just a cmdline parameter
    - Works from earliest kernel boot, before rootfs mounts
 
 2. **SSH over Ethernet**
-   - Rootfs runs sshd on boot, Pi connects via `ssh root@<lenovo-ip>`
+   - Rootfs runs sshd on boot, netbox connects via `ssh root@<lenovo-ip>`
    - Interactive shell for testing, requires Ethernet driver working + rootfs
    - Add a static IP fallback in the rootfs: `ip=192.168.1.100::192.168.1.1:255.255.255.0::eth0:off`
 
@@ -103,25 +86,25 @@ Display output is broken initially. These methods provide console access without
 ```
 WSL2 builds kernel
   → writes Image + DTB to EFI partition (/mnt/c/efi/ or similar)
-  → OR: rsync to Pi TFTP directory (rsync -av Image pi@192.168.1.14:/srv/tftp/)
+  → OR: rsync to netbox TFTP directory (rsync -av Image user@netbox:/srv/tftp/)
   → commits DTS/defconfig changes to git repo
 
 Lenovo reboots into Linux
   → boots from EFI partition or TFTP
-  → netconsole streams boot log to Pi in real-time
+  → netconsole streams boot log to netbox in real-time
   → SSH available once Ethernet + rootfs are up
   → test results captured
 
-Pi receives
+Netbox receives
   → netconsole log saved to testing/boot-logs/
   → SSH session used for interactive testing
-  → results committed to git repo
-  → analysis fed back into DTS/kernel changes
+  → results shared via git repo
+  → analysis fed back into DTS/kernel changes (on WSL2)
 ```
 
-### Network Boot Setup (Pi 5)
+### Network Boot Setup (Netbox)
 
-Set up once, used for all subsequent test iterations:
+Set up once on the netbox, used for all subsequent test iterations:
 
 **TFTP** (serves kernel + DTB):
 ```bash
@@ -143,7 +126,7 @@ sudo exportfs -ra
 
 **netconsole listener:**
 ```bash
-# Run on Pi to capture Lenovo boot output:
+# Run on netbox to capture Lenovo boot output:
 nc -u -l -p 6666 | tee testing/boot-logs/$(date +%Y%m%d-%H%M).txt
 ```
 
@@ -294,26 +277,13 @@ WSL2 on the Lenovo is our primary build environment: 8 cores, 32GB RAM, native A
   ls /mnt/c/  # Should see Windows C: drive
   ```
 
-### 0.4 Set Up Pi 5 as Server
+### 0.4 Set Up Netbox
 
-The Pi is always-on infrastructure: TFTP, NFS, netconsole listener, git origin.
+Any always-on Linux machine on the same LAN. Only needs TFTP, NFS, and netcat.
 
-- [ ] Install server packages and build tools:
+- [ ] Install packages:
   ```bash
-  sudo apt install build-essential flex bison libssl-dev libelf-dev bc \
-    ccache device-tree-compiler \
-    tftpd-hpa nfs-kernel-server minicom screen
-  ```
-- [ ] Configure ccache:
-  ```bash
-  echo 'export PATH="/usr/lib/ccache:$PATH"' >> ~/.bashrc
-  ccache --max-size=10G
-  ```
-- [ ] Clone kernel sources (backup build host):
-  ```bash
-  git clone --depth=1 https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git ~/kernel/linux
-  git clone -b lenovo https://github.com/misaleh/linux.git ~/kernel/misaleh-linux
-  git clone https://github.com/TravMurav/dtbloader.git ~/kernel/dtbloader
+  sudo apt install tftpd-hpa nfs-kernel-server screen
   ```
 - [ ] Set up TFTP server:
   ```bash
@@ -329,7 +299,7 @@ The Pi is always-on infrastructure: TFTP, NFS, netconsole listener, git origin.
   sudo exportfs -ra
   sudo systemctl enable --now nfs-kernel-server
   ```
-- [ ] Set up git remote for this repo that the Lenovo WSL2 instance can access
+- [ ] Verify netconsole listener works: `nc -u -l -p 6666`
 
 ### 0.5 Preserve the Windows Partition
 - [ ] **Do NOT wipe Windows.** Shrink the Windows partition to make room for Linux
@@ -344,7 +314,7 @@ The Pi is always-on infrastructure: TFTP, NFS, netconsole listener, git origin.
 
 **Goal:** Fully identify every hardware component and its Linux driver requirements.
 
-This phase uses BOTH machines. The Lenovo (Windows) instance captures data that Windows exposes well (PnP IDs, driver info, ACPI), while the Pi analyzes it and correlates with Linux kernel source.
+The Lenovo (Windows) instance captures data that Windows exposes well (PnP IDs, driver info, ACPI). The WSL2 instance analyzes it and correlates with Linux kernel source.
 
 ### 1.1 Windows-Side Hardware Audit (Lenovo Claude instance)
 
@@ -380,7 +350,7 @@ These commands are run by the Claude Code instance on the Lenovo and committed t
 
 ### 1.2 Linux-Side Hardware Audit (after first Linux boot)
 
-Build Mostafa's kernel on WSL2 (fast), set up netconsole on the Pi (always-on), and boot the Lenovo:
+Build Mostafa's kernel on WSL2, set up netconsole on the netbox, and boot the Lenovo:
 
 - [ ] Build Mostafa's kernel from the `lenovo` branch on WSL2:
   ```bash
@@ -389,13 +359,13 @@ Build Mostafa's kernel on WSL2 (fast), set up netconsole on the Pi (always-on), 
   make -j7 Image dtbs
   ```
 - [ ] Place kernel + DTB on bootable USB or EFI partition (WSL2 can write to `/mnt/c/`)
-- [ ] Start netconsole listener on Pi:
+- [ ] Start netconsole listener on netbox:
   ```bash
   nc -u -l -p 6666 | tee testing/boot-logs/$(date +%Y%m%d-%H%M)-audit.txt
   ```
-- [ ] Add netconsole to kernel cmdline: `netconsole=@/eth0,6666@192.168.1.14/`
-- [ ] Reboot Lenovo into Linux -- Pi captures boot log in real time
-- [ ] If Ethernet + rootfs work, SSH in from Pi for interactive testing
+- [ ] Add netconsole to kernel cmdline: `netconsole=@/eth0,6666@<NETBOX_IP>/`
+- [ ] Reboot Lenovo into Linux -- netbox captures boot log in real time
+- [ ] If Ethernet + rootfs work, SSH in from netbox for interactive testing
 - [ ] **Create an auto-capture script** that runs at boot and saves everything to a USB partition:
   ```bash
   #!/bin/bash
@@ -416,9 +386,9 @@ Build Mostafa's kernel on WSL2 (fast), set up netconsole on the Pi (always-on), 
   # Copy ACPI tables if present
   cp -r /sys/firmware/acpi/tables/ /mnt/capture/acpi-tables/ 2>/dev/null
   ```
-- [ ] Bring USB stick back to Pi, commit all captured data to `hardware/linux-audit/`
+- [ ] Commit all captured data to `hardware/linux-audit/`
 
-### 1.3 Analysis (Pi Claude instance)
+### 1.3 Analysis (WSL2 Claude instance)
 
 Once both Windows and Linux data are committed:
 
@@ -850,14 +820,14 @@ The patches should be structured as follows:
 
 ## Repository Structure (This Repo)
 
-This repo is the shared workspace between the Pi 5 and Lenovo Claude Code instances.
+This repo is the shared workspace between all Claude Code instances.
 
 ```
 lenovo-mini-ubuntu/
   PLAN.md                              # This document
   CLAUDE.md                            # Instructions for Claude Code instances on both machines
   hardware/
-    hardware-map.md                    # Definitive component-to-driver map (Pi produces from data)
+    hardware-map.md                    # Definitive component-to-driver map (WSL2 produces from data)
     acpi-tables/                       # ACPI tables (extracted from Windows and Linux)
     dmi-data.txt                       # DMI/SMBIOS dump (Lenovo captures)
     pci-devices.txt                    # Windows PCI device IDs (Lenovo captures)
@@ -873,7 +843,7 @@ lenovo-mini-ubuntu/
     pnp-devices.txt                    # Full PnP device list (Lenovo captures)
     acpi-devices.txt                   # ACPI device enumeration (Lenovo captures)
     msinfo32-report.txt                # Full msinfo32 system report (Lenovo captures)
-    linux-audit/                       # Data captured from Linux boot (Lenovo runs, Pi analyzes)
+    linux-audit/                       # Data captured from Linux boot
       dmesg.txt
       cpuinfo.txt
       iomem.txt
@@ -886,10 +856,10 @@ lenovo-mini-ubuntu/
       thermal-zones.txt
       dmidecode.txt
   dts/
-    x1p42100-lenovo-ideacentre-mini-x.dts  # Our device tree (Pi authors, Lenovo tests)
+    x1p42100-lenovo-ideacentre-mini-x.dts  # Our device tree (WSL2 authors, Lenovo tests)
   kernel/
-    defconfig                          # Kernel config (Pi maintains)
-    patches/                           # Kernel patches not yet upstream (Pi authors)
+    defconfig                          # Kernel config (WSL2 maintains)
+    patches/                           # Kernel patches not yet upstream (WSL2 authors)
   firmware/
     extract.sh                         # Firmware extraction script (runs on Lenovo Windows)
     firmware-manifest.txt              # File list with hashes (Lenovo captures, no blobs in git)
@@ -897,7 +867,7 @@ lenovo-mini-ubuntu/
     lenovo_ideacentre_mini_x.c         # DTBLoader device definition
   scripts/
     hardware-audit.sh                  # Auto-capture script for Linux boot on Lenovo
-    build-kernel.sh                    # Kernel build script for Pi 5
+    build-kernel.sh                    # Kernel build script
     make-bootable-usb.sh               # Create bootable USB from built kernel
   docs/
     install-guide.md                   # End-user installation instructions
@@ -911,14 +881,14 @@ lenovo-mini-ubuntu/
 
 | Directory/File | Primary Author | Consumer |
 |---------------|----------------|----------|
-| `hardware/*.txt` | Lenovo (Windows) | Pi (analysis) |
-| `hardware/linux-audit/` | Lenovo (Linux boot) | Pi (analysis) |
-| `hardware/hardware-map.md` | Pi (synthesis) | Both |
-| `dts/` | Pi (authoring) | Lenovo (testing) |
-| `kernel/` | Pi (build/config) | Lenovo (testing) |
+| `hardware/*.txt` | Lenovo (Windows) | WSL2 (analysis) |
+| `hardware/linux-audit/` | Lenovo (Linux boot) | WSL2 (analysis) |
+| `hardware/hardware-map.md` | WSL2 (synthesis) | All |
+| `dts/` | WSL2 (authoring) | Lenovo (testing) |
+| `kernel/` | WSL2 (build/config) | Lenovo (testing) |
 | `firmware/` | Lenovo (extraction) | Lenovo (Linux boot) |
-| `scripts/` | Pi (authoring) | Both |
-| `testing/` | Lenovo (execution) | Pi (analysis) |
+| `scripts/` | WSL2 (authoring) | All |
+| `testing/` | Lenovo (execution) | WSL2 (analysis) |
 
 ---
 
