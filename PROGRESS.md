@@ -12,76 +12,32 @@ Always `git pull` before reading, `git push` after updating.
 - [x] Obtain Lenovo IdeaCentre Mini x Gen 10 (2026-02-15, user)
 - [x] Create GitHub repo: `chirag729/linux-lenovo-ideacentre-mini-x` (2026-02-15)
 - [x] Push initial repo with PLAN.md, CLAUDE.md, scripts (2026-02-15)
-- [ ] Confirm Windows 11 on ARM is installed and fully updated on Lenovo
+- [x] Confirm Windows 11 on ARM is installed and fully updated on Lenovo (2026-02-15, lenovo-win)
 
 ### 0.2 Set Up Lenovo Windows Instance
-- [ ] Install git for Windows ARM64 on Lenovo
-  - Download from: https://git-scm.com/download/win
-- [ ] Install Claude Code on Lenovo Windows (PowerShell)
-- [ ] Generate SSH key on Lenovo Windows for GitHub
-  ```powershell
-  ssh-keygen -t ed25519 -C "lenovo-win-lenovo-linux" -f $env:USERPROFILE\.ssh\id_ed25519
-  ```
-- [ ] Add Lenovo Windows SSH public key to GitHub
-- [ ] Clone the repo on Lenovo Windows:
-  ```powershell
-  cd ~\Projects
-  git clone git@github.com:chirag729/linux-lenovo-ideacentre-mini-x.git
-  ```
-- [ ] Verify Claude Code can run PowerShell commands on Lenovo
-- [ ] Test git push from Lenovo Windows
+- [x] Install git for Windows ARM64 on Lenovo (2026-02-15, lenovo-win)
+- [x] Install Claude Code on Lenovo Windows (2026-02-15, lenovo-win)
+- [x] Set up GitHub access (SSH key or HTTPS) (2026-02-15, lenovo-win)
+- [x] Clone the repo on Lenovo Windows (2026-02-15, lenovo-win)
+- [x] Verify Claude Code can run PowerShell commands on Lenovo (2026-02-15, lenovo-win)
+- [x] Test git push from Lenovo Windows (2026-02-15, lenovo-win)
 
 ### 0.3 Set Up Lenovo WSL2 Instance
-- [ ] Install WSL2 on Lenovo:
-  ```powershell
-  wsl --install -d Ubuntu
-  ```
-- [ ] Set WSL2 username and password
-- [ ] Update WSL2 Ubuntu:
-  ```bash
-  sudo apt update && sudo apt upgrade -y
-  ```
-- [ ] Install build dependencies in WSL2:
-  ```bash
-  sudo apt install build-essential flex bison libssl-dev libelf-dev bc \
-    ccache device-tree-compiler python3-pip git
-  pip3 install --user dtschema yamllint
-  ```
-- [ ] Configure ccache in WSL2:
-  ```bash
-  echo 'export PATH="/usr/lib/ccache:$PATH"' >> ~/.bashrc
-  source ~/.bashrc
-  ccache --max-size=10G
-  ```
-- [ ] Install Claude Code in WSL2
-- [ ] Generate SSH key in WSL2 for GitHub:
-  ```bash
-  ssh-keygen -t ed25519 -C "lenovo-wsl-lenovo-linux"
-  ```
+- [x] Install WSL2 on Lenovo (2026-02-16, lenovo-win)
+- [x] Reboot and set WSL2 username and password (2026-02-16, lenovo-win)
+  - Ubuntu 24.04.4 LTS, aarch64, 15GB RAM visible to WSL2
+- [x] Install build dependencies in WSL2 (2026-02-16, lenovo-win)
+  - gcc 13.3.0, ccache, dtc, flex, bison, etc.
+- [x] Install dtschema and yamllint (2026-02-16, lenovo-win)
+- [x] Configure ccache in WSL2: 10GB max (2026-02-16, lenovo-win)
+- [ ] Generate SSH key in WSL2 for GitHub
 - [ ] Add WSL2 SSH public key to GitHub
-- [ ] Clone project repo in WSL2:
-  ```bash
-  mkdir -p ~/Projects
-  git clone git@github.com:chirag729/linux-lenovo-ideacentre-mini-x.git ~/Projects/lenovo-mini-ubuntu
-  ```
-- [ ] Clone kernel sources in WSL2:
-  ```bash
-  mkdir -p ~/kernel
-  git clone --depth=1 https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git ~/kernel/linux
-  git clone -b lenovo https://github.com/misaleh/linux.git ~/kernel/misaleh-linux
-  ```
-- [ ] Clone dtbloader in WSL2:
-  ```bash
-  git clone https://github.com/TravMurav/dtbloader.git ~/kernel/dtbloader
-  ```
-- [ ] Verify WSL2 can access Windows filesystem:
-  ```bash
-  ls /mnt/c/
-  ```
-- [ ] Verify build works in WSL2:
-  ```bash
-  cd ~/kernel/linux && make defconfig && make -j7 Image
-  ```
+- [x] Clone project repo in WSL2: `~/Projects/lenovo-mini-ubuntu` (2026-02-16, lenovo-win)
+- [x] Clone mainline kernel in WSL2: `~/kernel/linux` (shallow, 2026-02-16, lenovo-win)
+- [x] Clone Mostafa's fork in WSL2: `~/kernel/misaleh-linux` (lenovo branch, 2026-02-16, lenovo-win)
+- [x] Clone dtbloader in WSL2: `~/kernel/dtbloader` (2026-02-16, lenovo-win)
+- [x] Verify WSL2 can access Windows filesystem via `/mnt/c/` (2026-02-16, lenovo-win)
+- [x] Verify build works in WSL2: `make defconfig && make -j7 Image` -- SUCCESS (2026-02-16, lenovo-win)
 - [ ] Test git push from WSL2
 
 ### 0.4 Set Up Netbox
@@ -116,21 +72,76 @@ Always `git pull` before reading, `git push` after updating.
 
 ## Phase 0.6: Windows Hardware Audit
 
-- [ ] Run `scripts/windows-hardware-audit.ps1` on Lenovo
-- [ ] Review output in `hardware/` directory
+- [x] Run `scripts/windows-hardware-audit.ps1` on Lenovo (2026-02-15, lenovo-win)
+- [x] Re-run as Administrator for SecureBoot data (2026-02-15, lenovo-win)
+- [x] Review output in `hardware/` directory -- 27 files captured (2026-02-15, lenovo-win)
 - [ ] Commit and push results
+
+### Key Findings from Windows Audit (2026-02-15)
+- **CPU:** Snapdragon X X1-26-100 (Purwa die), 8-core Oryon @ 2956 MHz, 24MB L2
+- **GPU:** Adreno X1-45 (ACPI QCOM0D17, driver INF confirms Purwa die)
+- **Ethernet:** Realtek RTL8168 (VEN_10EC DEV_8168) -- Linux driver: `r8169` (mature, should just work)
+- **WiFi:** Qualcomm FastConnect 7800 (VEN_17CB DEV_1107), PCIe seg 4 x2 -- Linux driver: `ath12k`
+- **Bluetooth:** FastConnect 7800 Dual BT, UART H4 transport (ACPI QCOM0C6B)
+- **NVMe:** Samsung MZVL8512HDLU-00BLL 512GB (only 1 drive detected, second M.2 slot likely empty)
+- **USB Controllers:** 1x xHCI (QCOM0D08), 1x DWC3 (QCOM0C8B), 1x USB4 (QCOM0C6D)
+- **USB Hub:** Genesys Logic GL3510 (VID 05E3, PID 0610/0625) -- internal hub for USB-A ports
+- **Audio:** Qualcomm Aqstic (QCOM0CE6, QCOM0C29, QCOM0CC1) + external display audio
+- **Secure Boot:** Enabled
+- **BIOS:** O6NKT3BA (2025-02-05), EC v0.22, SMBIOS 3.6
+- **PCIe:** 3 root complexes (segments 4=WiFi, 5=Ethernet, 6=NVMe)
+- **Lenovo USB device:** VID_17EF PID_6044 present (likely internal, needs identification)
 
 ---
 
 ## Phase 1: Hardware Audit & Identification
 
-(Will be broken into granular steps once Phase 0 is complete and we can see the hardware data)
+### 1.1 Windows-Side Audit
+- [x] Windows-side audit complete via `windows-hardware-audit.ps1` (2026-02-15, lenovo-win)
+- [ ] Extract ACPI tables with `acpidump.exe` → `hardware/acpi-tables/`
+- [x] Run `msinfo32 /report hardware/msinfo32-report.txt` (2026-02-16, lenovo-win)
 
-- [ ] Windows-side audit complete (Phase 0.6)
-- [ ] First Linux boot on Lenovo
-- [ ] Linux-side audit complete
-- [ ] Cross-reference analysis (WSL2)
-- [ ] Hardware map document produced
+### 1.2 Linux-Side Audit (after first Linux boot)
+- [x] Build Mostafa's kernel from `lenovo` branch on WSL2 (2026-02-16, lenovo-win)
+  - Kernel: 6.19.0-rc4-g740f9e80d577 from `lenovo` branch
+  - Image: ~/kernel/misaleh-linux/arch/arm64/boot/Image (53MB)
+  - DTB: ~/kernel/misaleh-linux/arch/arm64/boot/dts/qcom/x1p42100-lenovo-ideacentre-x-gen10.dtb (196KB)
+  - Built with `qcom_defconfig` + `make -j7`
+- [x] Create bootable USB stick with GRUB-EFI arm64 (2026-02-16, lenovo-win)
+  - SanDisk 3.2Gen1 (~28.6GB), GPT, 512MB FAT32 EFI System Partition
+  - GRUB EFI binary built with `grub-mkimage` including `fdt` module for devicetree loading
+  - Minimal busybox initramfs (985KB) with hardware audit init script
+  - Files: /EFI/BOOT/BOOTAA64.EFI, /EFI/BOOT/grub.cfg, /Image, /dtb/*.dtb, /initramfs.cpio.gz
+- [x] First USB boot attempt (2026-02-16, lenovo-win)
+  - GRUB menu displayed successfully on screen
+  - First attempt: `fdt` command not found -- fixed: command name is `devicetree` (module is `fdt`)
+  - Second attempt: devicetree loaded, kernel started (Tux logo visible), screen went black
+  - Screen goes black because DRM_MSM driver (built-in) takes over from efifb and fails
+- [x] QEMU ARM64 testing setup (2026-02-16, lenovo-win)
+  - Installed qemu-system-arm in WSL2
+  - Tested kernel+initramfs in QEMU (`-machine virt -cpu cortex-a76`)
+  - Full boot confirmed: kernel boots, initramfs works, drops to busybox shell
+  - Script: scripts/run-qemu.sh
+- [ ] Fix display output on real hardware
+  - `nomodeset` alone: still goes black (DRM_MSM is built-in =y, probes and kills efifb)
+  - `nomodeset + video=efifb:on + drm.modeset=0 + keep_bootcon`: Tux logo + brief text visible
+  - **NEXT**: Add `clk_ignore_unused pd_ignore_unused` to prevent clock/power domain shutdown
+  - Without DTB (ACPI-only): no display at all (no Tux logo)
+  - With DTB: display works initially but dies when unused clocks/power domains are disabled
+- [ ] Boot Lenovo into Linux with console output visible
+- [ ] Capture dmesg, lspci, lsusb, /proc/iomem, etc.
+- [ ] Commit all captured data to `hardware/linux-audit/`
+
+### 1.3 Analysis
+- [ ] Cross-reference Windows PnP device IDs with Linux `lspci` output
+- [x] Identify the Ethernet controller: **Realtek RTL8168** (VEN_10EC DEV_8168) (2026-02-15, lenovo-win)
+- [x] Identify USB hub chip: **Genesys Logic GL3510** (VID 05E3) (2026-02-15, lenovo-win)
+- [x] Identify Bluetooth transport: **UART H4** (ACPI QCOM0C6B) (2026-02-15, lenovo-win)
+- [ ] Identify display bridge chips (HDMI/DP) -- needs ACPI table analysis or Linux boot
+- [ ] Identify retimer chips -- needs I2C bus probing from Linux
+- [ ] Identify VID_17EF PID_6044 Lenovo USB device
+- [ ] Compare ACPI tables against DT nodes to find missing hardware descriptions
+- [ ] Produce `hardware/hardware-map.md` -- the definitive component-to-driver mapping
 
 ---
 
@@ -138,4 +149,15 @@ Always `git pull` before reading, `git push` after updating.
 
 Record any blockers, surprises, or decisions here:
 
-- (none yet)
+- SecureBoot is enabled -- disabled for test booting, BitLocker suspended (`Suspend-BitLocker -MountPoint "C:" -RebootCount 0`)
+- Only 1 NVMe drive detected (Samsung 512GB) -- second M.2 slot appears empty
+- SUBSYS values in audio/GPU ACPI IDs contain `CRD08380` -- this is the CRD (Customer Reference Design) subsystem ID, confirming the board is closely related to the Qualcomm reference design
+- Git Bash on Windows strips `$` variables from single-quoted strings passed to `wsl -d Ubuntu -- bash -c`. Workaround: write scripts to files and execute with `MSYS_NO_PATHCONV=1 wsl -d Ubuntu -- bash /mnt/c/path/to/script.sh`
+- Windows line endings (`\r\n`) break scripts run in WSL2. Fix with `sed -i 's/\r$//' script.sh` before running
+- EFI System Partition (ESP) requires Administrator access from Windows for both read and write
+- Display debugging findings (2026-02-16):
+  - CONFIG_DRM_MSM=y (built-in, not module) -- takes over from efifb even with nomodeset
+  - CONFIG_FB_EFI=y, CONFIG_FRAMEBUFFER_CONSOLE=y -- efifb works initially (Tux logo visible)
+  - Without DTB: no display (ACPI-only boot has no framebuffer info)
+  - With DTB + nomodeset: brief display then black -- clocks/power domains being disabled
+  - Best cmdline so far: `nomodeset video=efifb:on drm.modeset=0 clk_ignore_unused pd_ignore_unused console=tty0 earlycon earlyprintk loglevel=8 keep_bootcon`

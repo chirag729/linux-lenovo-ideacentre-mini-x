@@ -14,9 +14,9 @@
 ### Lenovo IdeaCentre Mini x Gen 10 (development host + target)
 - **OS:** Windows 11 on ARM + WSL2 (Ubuntu ARM64) + Linux test boots
 - **Specs:** 8 cores @ 3.0GHz, 32GB RAM
-- **Claude Code instances:**
-  - **Windows (PowerShell):** Hardware data capture, firmware extraction
-  - **WSL2 (Ubuntu):** ALL development -- kernel compilation (`make -j7`, ccache), DTS authoring, DT validation, analysis, patch prep
+- **Claude Code instance:** Windows (PowerShell) -- drives all work including WSL2 commands via `wsl -d Ubuntu`
+  - Hardware data capture, firmware extraction (Windows-native)
+  - Kernel compilation, DTS authoring, DT validation, analysis, patch prep (via WSL2)
 
 ### Netbox (network boot & debug appliance)
 - **What it is:** Any always-on Linux machine on the same LAN as the Lenovo
@@ -40,7 +40,7 @@
 │  │                      │  │  - Analysis & patch prep    │  │
 │  │                      │  │  - Writes to EFI partition  │  │
 │  │                      │  │    via /mnt/c/              │  │
-│  │                      │  │  - Claude Code (bash)       │  │
+│  │                      │  │  - Driven by Windows CC     │  │
 │  └──────────────────────┘  └────────────────────────────┘  │
 │                                                            │
 │  [Reboot into Linux for testing]                           │
@@ -149,23 +149,27 @@ No upstream patches have been submitted. No DTBLoader support exists. The Ubuntu
 
 | Component | Detail | Linux Driver | Status |
 |-----------|--------|-------------|--------|
-| SoC | Snapdragon X X1-26-100 (Purwa die, 8-core Oryon) | `x1p42100.dtsi` | Base SoC DTSI exists upstream |
-| GPU | Adreno X1-45, 1.7 TFLOPS | `msm` DRM / freedreno / Turnip | GPU nodes MISSING from x1p42100.dtsi |
+| SoC | Snapdragon X X1-26-100 (Purwa die, 8-core Oryon @ 2956 MHz) | `x1p42100.dtsi` | Base SoC DTSI exists upstream |
+| GPU | Adreno X1-45 (ACPI QCOM0D17, Purwa confirmed by driver INF) | `msm` DRM / freedreno / Turnip | GPU nodes MISSING from x1p42100.dtsi |
 | NPU | Hexagon, 45 TOPS | No mainline driver | Not targeted initially |
 | RAM | 32GB LPDDR5x-8448 (soldered) | N/A | Works |
-| NVMe | 2x M.2 2280 PCIe 4.0 x4 | `nvme` | Working |
-| WiFi | Qualcomm FastConnect 7800 (WCN7850-class) | `ath12k` | Detected, needs firmware |
-| Bluetooth | Integrated with WiFi module | `ath12k` / `btusb` | Not working on most X1P devices |
-| Ethernet | Gigabit (controller TBD) | TBD (likely Realtek) | Detected, needs identification |
-| Audio | WCD9385 codec + WSA8845 speakers | `snd-soc-qcom` | Probe failure (-22) |
+| NVMe | Samsung MZVL8512HDLU-00BLL 512GB, PCIe seg 6 x4 | `nvme` | Working (only 1 drive, 2nd slot empty) |
+| WiFi | Qualcomm FastConnect 7800 (VEN_17CB DEV_1107), PCIe seg 4 x2 | `ath12k` | Detected, needs firmware |
+| Bluetooth | FastConnect 7800 Dual BT, UART H4 transport (ACPI QCOM0C6B) | `hci_uart` / `qca_uart` | Not working on most X1P devices |
+| Ethernet | **Realtek RTL8168** (VEN_10EC DEV_8168), PCIe seg 5 x1 | `r8169` | **Identified** -- mature driver, should just work |
+| Audio | Qualcomm Aqstic (QCOM0CE6, QCOM0C29, QCOM0CC1) + display audio | `snd-soc-qcom` | Probe failure (-22) |
 | USB-C front | USB 3.2 Gen 2 (10Gbps) | `dwc3` | Partially working |
-| USB-A front | USB 3.2 Gen 2 (10Gbps, always-on) | `dwc3` / `xhci` | Needs mapping |
-| USB-C rear | USB4 (40Gbps) + DP 1.4a alt-mode | `dwc3` / `typec` | Partially working |
-| USB-A rear | 2x USB 3.2 Gen 2 + 1x USB 2.0 | `dwc3` / `xhci` | Needs mapping |
+| USB-A front | USB 3.2 Gen 2 (10Gbps, always-on) | `xhci` (via GL3510 hub) | Needs mapping |
+| USB-C rear | USB4 (40Gbps) + DP 1.4a alt-mode (ACPI QCOM0C6D) | `dwc3` / `typec` | Partially working |
+| USB-A rear | 2x USB 3.2 Gen 2 + 1x USB 2.0 (via GL3510 hub) | `xhci` (via GL3510 hub) | Needs mapping |
+| USB Hub | Genesys Logic GL3510 (VID 05E3, PID 0610+0625) | `usbcore` | **Identified** -- internal hub for USB-A ports |
 | HDMI | HDMI 2.1 TMDS | `msm` DRM | Not mapped |
 | DisplayPort | DP 1.4a (dedicated) | `msm` DRM | Not mapped (removed from DTS) |
+| Fan | EC-controlled (ACPI QCOM0D05) + ACPI Fan (PNP0C0B) | `acpi_fan` | Needs mapping |
 | Power | 150W internal PSU | N/A | N/A |
 | TPM | Firmware TPM 2.0 | `tpm_ftpm_tee` | Unknown |
+| Secure Boot | Enabled | -- | Must disable or use shim for test boots |
+| BIOS | O6NKT3BA (2025-02-05), EC v0.22, SMBIOS 3.6 | -- | -- |
 
 ---
 
@@ -179,7 +183,6 @@ No upstream patches have been submitted. No DTBLoader support exists. The Ubuntu
   ```powershell
   wsl --install -d Ubuntu
   ```
-- [ ] Install Claude Code inside WSL2 -- primary build agent
 - [ ] Optional: USB-to-UART serial adapter (3.3V) as backup debug channel
 
 ### 0.2 Document the Hardware from Windows (Lenovo Claude instance)

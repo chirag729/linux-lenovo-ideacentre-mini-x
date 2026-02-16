@@ -1,0 +1,6 @@
+select disk 1
+clean
+convert gpt
+create partition efi size=512
+format fs=fat32 label=LINUXBOOT quick
+assign letter=E

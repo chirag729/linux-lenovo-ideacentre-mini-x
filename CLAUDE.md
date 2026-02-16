@@ -9,9 +9,9 @@ See `PLAN.md` for the full plan.
 ## Machine Setup
 
 ### Lenovo IdeaCentre Mini x Gen 10 (development host + target device)
-- **Claude Code instances:**
-  - **Windows (PowerShell):** Hardware data capture, firmware extraction
-  - **WSL2 (Ubuntu ARM64):** ALL development -- kernel compilation (`make -j7`, ccache), DTS authoring, DT validation, analysis, patch prep
+- **Claude Code instance:** Windows (PowerShell) -- single instance drives all work, including WSL2 via `wsl -d Ubuntu`
+  - Hardware data capture, firmware extraction (Windows-native)
+  - Kernel compilation, DTS authoring, DT validation, analysis, patch prep (via WSL2)
 - **Build command:** `make -j7` (8 cores @ 3.0GHz, 32GB RAM, use ccache)
 - **Kernel source:** `~/kernel/linux` (mainline), `~/kernel/misaleh-linux` (Mostafa's fork)
 - **Key advantage:** Can write kernel + DTB directly to EFI partition via `/mnt/c/`
