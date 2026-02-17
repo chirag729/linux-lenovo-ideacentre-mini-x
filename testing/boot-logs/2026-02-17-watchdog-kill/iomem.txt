@@ -1,0 +1,234 @@
+00100000-002fffff : 100000.clock-controller clock-controller@100000
+00408000-00408fff : 408000.mailbox mailbox@408000
+00894000-00897fff : 894000.serial serial@894000
+008c0000-008c1fff : 8c0000.geniqup geniqup@8c0000
+00a80000-00a83fff : a80000.i2c i2c@a80000
+00ac0000-00ac1fff : ac0000.geniqup geniqup@ac0000
+00b80000-00b83fff : b80000.i2c i2c@b80000
+00b8c000-00b8ffff : b8c000.i2c i2c@b8c000
+00b94000-00b97fff : b94000.i2c i2c@b94000
+00bc0000-00bc1fff : bc0000.geniqup geniqup@bc0000
+00fd3000-00fd3153 : fd3000.phy phy@fd3000
+00fd5000-00fd8fff : fd5000.phy phy@fd5000
+01bf8000-01bfafff : 1bf8000.pci parf
+01bfb000-01bfbfff : 1bf8000.pci mhi
+01bfc000-01bfdfff : 1bfc000.phy phy@1bfc000
+01bfe000-01bfffff : 1bfc000.phy phy@1bfc000
+01c00000-01c02fff : 1c00000.pci parf
+01c03000-01c03fff : 1c00000.pci mhi
+01c06000-01c07fff : 1c06000.phy phy@1c06000
+01c08000-01c0afff : 1c08000.pci parf
+01c0b000-01c0bfff : 1c08000.pci mhi
+01c0e000-01c0ffff : 1c0e000.phy phy@1c0e000
+01f40000-01f5ffff : 1f40000.hwlock hwlock@1f40000
+01fc0000-01feffff : 1fc0000.clock-controller clock-controller@1fc0000
+03d90000-03d99fff : 3d90000.clock-controller clock-controller@3d90000
+03da0000-03ddffff : 3da0000.iommu iommu@3da0000
+088e1000-088e1153 : 88e1000.phy phy@88e1000
+088e2000-088e2153 : 88e2000.phy phy@88e2000
+088e3000-088e4fff : 88e3000.phy phy@88e3000
+088e5000-088e6fff : 88e5000.phy phy@88e5000
+0a400000-0a407fff : usb@a400000
+  0a400000-0a407fff : xhci-hcd.2.auto usb@a400000
+0a40c100-0a40ccff : a400000.usb usb@a400000
+0a4f8800-0a4f8bff : a4f8800.usb usb@a4f8800
+0a600000-0a607fff : usb@a600000
+  0a600000-0a607fff : xhci-hcd.1.auto usb@a600000
+0a60c100-0a60ccff : a600000.usb usb@a600000
+0a6f8800-0a6f8bff : a6f8800.usb usb@a6f8800
+0aaf0000-0aafffff : aaf0000.clock-controller clock-controller@aaf0000
+0ae00000-0ae00fff : ae00000.display-subsystem mdss
+0ae90000-0ae901ff : ae90000.displayport-controller displayport-controller@ae90000
+0ae90200-0ae903ff : ae90000.displayport-controller displayport-controller@ae90000
+0ae90400-0ae90fff : ae90000.displayport-controller displayport-controller@ae90000
+0ae91000-0ae913ff : ae90000.displayport-controller displayport-controller@ae90000
+0aea0000-0aea01ff : aea0000.displayport-controller displayport-controller@aea0000
+0aea0200-0aea03ff : aea0000.displayport-controller displayport-controller@aea0000
+0aea0400-0aea0fff : aea0000.displayport-controller displayport-controller@aea0000
+0aea1000-0aea13ff : aea0000.displayport-controller displayport-controller@aea0000
+0aec5000-0aec51c7 : aec5a00.phy phy@aec5a00
+0aec5200-0aec52eb : aec5a00.phy phy@aec5a00
+0aec5600-0aec56eb : aec5a00.phy phy@aec5a00
+0aec5a00-0aec5b9b : aec5a00.phy phy@aec5a00
+0af00000-0af1ffff : af00000.clock-controller clock-controller@af00000
+0c222000-0c222fff : c271000.thermal-sensor thermal-sensor@c271000
+0c223000-0c223fff : c272000.thermal-sensor thermal-sensor@c272000
+0c224000-0c224fff : c273000.thermal-sensor thermal-sensor@c273000
+0c271000-0c271fff : c271000.thermal-sensor thermal-sensor@c271000
+0c272000-0c272fff : c272000.thermal-sensor thermal-sensor@c272000
+0c273000-0c273fff : c273000.thermal-sensor thermal-sensor@c273000
+0c300000-0c3003ff : c300000.power-management power-management@c300000
+0c3f0000-0c3f03ff : c3f0000.sram sram@c3f0000
+0c42d000-0c430fff : c400000.arbiter cnfg
+0c432000-0c435fff : c400000.arbiter cnfg
+0c440000-0c4bffff : c400000.arbiter obsrvr
+0c4c0000-0c4cffff : c400000.arbiter intr
+0c4d0000-0c4dffff : c400000.arbiter intr
+0c500000-0c8fffff : c400000.arbiter chnls
+0f100000-0fffffff : f100000.pinctrl pinctrl@f100000
+10002000-10002fff : stm-base
+10004000-10004fff : tpda@10004000
+1000f000-1000ffff : tpdm@1000f000
+10041000-10041fff : funnel@10041000
+10042000-10042fff : funnel@10042000
+10045000-10045fff : funnel@10045000
+10800000-10800fff : tpdm@10800000
+1082c000-1082cfff : tpdm@1082c000
+10841000-10841fff : tpdm@10841000
+10844000-10844fff : tpdm@10844000
+10846000-10846fff : funnel@10846000
+1098b000-1098bfff : cti@1098b000
+10ac1000-10ac1fff : tpdm@10ac1000
+10ac4000-10ac4fff : tpda@10ac4000
+10ac5000-10ac5fff : funnel@10ac5000
+10b04000-10b04fff : funnel@10b04000
+10b05000-10b05fff : tmc@10b05000
+10b06000-10b06fff : replicator@10b06000
+10b08000-10b08fff : tpda@10b08000
+10b09000-10b09fff : tpdm@10b09000
+10b0a000-10b0afff : tpdm@10b0a000
+10b0b000-10b0bfff : tpdm@10b0b000
+10b0c000-10b0cfff : tpdm@10b0c000
+10b0d000-10b0dfff : tpdm@10b0d000
+10c08000-10c08fff : tpdm@10c08000
+10c0b000-10c0bfff : funnel@10c0b000
+10c28000-10c28fff : tpdm@10c28000
+10c29000-10c29fff : tpdm@10c29000
+10c2b000-10c2bfff : tpda@10c2b000
+10c2c000-10c2cfff : funnel@10c2c000
+10c38000-10c38fff : tpdm@10c38000
+10c39000-10c39fff : tpdm@10c39000
+10c3c000-10c3cfff : tpda@10c3c000
+10c3d000-10c3dfff : funnel@10c3d000
+10cc4000-10cc4fff : tpda@10cc4000
+10cc5000-10cc5fff : funnel@10cc5000
+10d04000-10d04fff : funnel@10d04000
+10d08000-10d08fff : tpdm@10d08000
+10d09000-10d09fff : tpdm@10d09000
+10d0a000-10d0afff : tpdm@10d0a000
+10d0b000-10d0bfff : tpdm@10d0b000
+10d0c000-10d0cfff : tpdm@10d0c000
+10d0d000-10d0dfff : tpdm@10d0d000
+10d0e000-10d0efff : tpdm@10d0e000
+10d0f000-10d0ffff : tpdm@10d0f000
+10d12000-10d12fff : tpda@10d12000
+10d13000-10d13fff : funnel@10d13000
+15000000-150fffff : 15000000.iommu iommu@15000000
+17000000-1700ffff : GICD
+17080000-1737ffff : GICR
+17430000-1743ffff : 17430000.mailbox mailbox@17430000
+17520000-1752ffff : 17500000.rsc drv-2
+17801000-17801fff : arch_mem_timer
+18830000-1883ffff : 17430000.mailbox mailbox@17430000
+18b4e000-18b4e3ff : 18b4e000.sram sram@18b4e000
+1c840000-1c840fff : 1c840000.watchdog watchdog@1c840000
+1c850000-1c850fff : 1c840000.watchdog watchdog@1c840000
+221c8000-221c8fff : 221c8000.efuse efuse@221c8000
+24091000-24091fff : 24091000.pmu pmu@24091000
+240b5400-240b59ff : 240b5400.pmu pmu@240b5400
+240b6400-240b69ff : 240b6400.pmu pmu@240b6400
+25000000-251fffff : 25000000.system-cache-controller llcc0_base
+25200000-253fffff : 25000000.system-cache-controller llcc1_base
+25400000-255fffff : 25000000.system-cache-controller llcc2_base
+25600000-257fffff : 25000000.system-cache-controller llcc3_base
+25800000-259fffff : 25000000.system-cache-controller llcc4_base
+25a00000-25bfffff : 25000000.system-cache-controller llcc5_base
+25c00000-25dfffff : 25000000.system-cache-controller llcc6_base
+25e00000-25ffffff : 25000000.system-cache-controller llcc7_base
+26000000-261fffff : 25000000.system-cache-controller llcc_broadcast_base
+26200000-263fffff : 25000000.system-cache-controller llcc_broadcast_and_base
+70000000-70000f1f : 1bf8000.pci dbi
+70000f40-70000fe7 : 1bf8000.pci elbi
+70001000-70001fff : 1bf8000.pci atu
+70100000-701fffff : 1bf8000.pci config
+70300000-73ffffff : pci@1bf8000
+  70300000-70300fff : 0006:00:00.0
+  70400000-704fffff : PCI Bus 0006:01
+    70400000-70403fff : 0006:01:00.0
+      70400000-70403fff : nvme
+7c000000-7c000f1c : 1c08000.pci dbi
+7c000f40-7c000fe7 : 1c08000.pci elbi
+7c001000-7c001fff : 1c08000.pci atu
+7c100000-7c1fffff : 1c08000.pci config
+7c300000-7dffffff : pci@1c08000
+  7c300000-7c300fff : 0004:00:00.0
+  7c400000-7c5fffff : PCI Bus 0004:01
+    7c400000-7c5fffff : 0004:01:00.0
+7e000000-7e000f1c : 1c00000.pci dbi
+7e000f40-7e000fe7 : 1c00000.pci elbi
+7e001000-7e001fff : 1c00000.pci atu
+7e100000-7e1fffff : 1c00000.pci config
+7e300000-7fffffff : pci@1c00000
+  7e300000-7e300fff : 0005:00:00.0
+  7e400000-7e4fffff : PCI Bus 0005:01
+    7e400000-7e403fff : 0005:01:00.0
+    7e404000-7e404fff : 0005:01:00.0
+      7e404000-7e404fff : r8169
+80800000-80dfffff : reserved
+815a0000-819fffff : System RAM
+81a00000-81a3ffff : reserved
+81d00000-81dfffff : System RAM
+81f00000-81f37fff : reserved
+81f38000-826fffff : System RAM
+82800000-833fffff : reserved
+83400000-83efffff : System RAM
+83f00000-83ffffff : reserved
+84000000-84afffff : System RAM
+85380000-866bffff : System RAM
+87e00000-8b7fffff : 6800000.remoteproc adspslpi@87e00000
+8b800000-8b87ffff : 6800000.remoteproc q6-adsp-dtb@8b800000
+8b900000-8d8fffff : 32300000.remoteproc cdsp@8b900000
+8d900000-8d97ffff : 32300000.remoteproc q6-cdsp-dtb@8d900000
+91480000-a7f00fff : System RAM
+a7f01000-a7f01fff : reserved
+a7f02000-a7f04fff : System RAM
+a7f05000-a7f0cfff : reserved
+a7f0d000-c3dc2fff : System RAM
+  bcc90000-bccc1fff : reserved
+  bce90000-bd140fff : reserved
+c3dc3000-c3e42fff : reserved
+c3e43000-c4142fff : System RAM
+c4143000-c41d9fff : reserved
+c41da000-c4414fff : System RAM
+c4415000-c4444fff : reserved
+c4445000-c4629fff : System RAM
+c462a000-c482afff : reserved
+c482b000-d4234fff : System RAM
+  c482e000-c482efff : reserved
+  cfa6a000-cfa6afff : reserved
+  d0e73000-d0e73fff : reserved
+d4235000-d46e0fff : reserved
+  d46c9000-d46c9fff : reserved
+d46e1000-d7fe6fff : System RAM
+  d46e1000-d47bcfff : reserved
+d7fe7000-d7ffffff : reserved
+de5b0000-e369ffff : reserved
+e36a0000-e47fffff : System RAM
+e4800000-e69bffff : reserved
+  e4800000-e4fe8fff : efifb
+e69c0000-f84fffff : System RAM
+  f4500000-f84fffff : reserved
+880000000-fffffffff : System RAM
+  880062000-880062fff : reserved
+  880080000-88008ffff : reserved
+  880090000-88009ffff : reserved
+  8800a0000-8800affff : reserved
+  8800b0000-8800bffff : reserved
+  8800c0000-8800cffff : reserved
+  8800d0000-8800dffff : reserved
+  8800e0000-8800effff : reserved
+  8800f0000-8800fffff : reserved
+  880200000-88020ffff : reserved
+  f946f0000-f969effff : Kernel code
+  f969f0000-f9762ffff : reserved
+  f97630000-f97bdffff : Kernel data
+  fd1000000-ff3dfffff : reserved
+  ff3e44000-ff3f03fff : reserved
+  ff3f04000-ff3f04fff : reserved
+  ff3f05000-ff3fccfff : reserved
+  ff3fce000-ff3fd0fff : reserved
+  ff3fd1000-ff3fd1fff : reserved
+  ff3fd2000-ff3fd7fff : reserved
+  ff3fd8000-ff3febfff : reserved
+  ff3fec000-ff4101fff : reserved
+  ff4102000-fffffffff : reserved

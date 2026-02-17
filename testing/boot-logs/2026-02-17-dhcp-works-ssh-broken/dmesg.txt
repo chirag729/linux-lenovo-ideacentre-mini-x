@@ -1,0 +1,1014 @@
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x512f0011]
+[    0.000000] Linux version 6.19.0-rc4-g740f9e80d577 (chirag@LenovoMini1) (gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0, GNU ld (GNU Binutils for Ubuntu) 2.42) #1 SMP PREEMPT Mon Feb 16 12:23:48 GMT 2026
+[    0.000000] KASLR enabled
+[    0.000000] Machine model: Lenovo IdeaCentre X Gen 10 Snapdragon
+[    0.000000] printk: debug: skip boot console de-registration.
+[    0.000000] efi: EFI v2.9 by INSYDE Corp.
+[    0.000000] efi: SMBIOS=0xd4436000 SMBIOS 3.0=0xd4433000 TPMFinalLog=0xd46c9000 ACPI 2.0=0xd47bc018 MEMATTR=0xcf96d018 ESRT=0xd0e73998 TPMEventLog=0xd475d018 INITRD=0xc482ed98 RNG=0xd4761e98 MEMRESERVE=0xc482ee98 
+[    0.000000] random: crng init done
+[    0.000000] esrt: Reserving ESRT space from 0x00000000d0e73998 to 0x00000000d0e73a70.
+[    0.000000] Reserved memory: created CMA memory pool at 0x0000000ff8000000, size 128 MiB
+[    0.000000] OF: reserved mem: initialized node linux,cma, compatible id shared-dma-pool
+[    0.000000] OF: reserved mem: 0x0000000ff8000000..0x0000000fffffffff (131072 KiB) map reusable linux,cma
+[    0.000000] earlycon: qcom_geni0 at MMIO 0x0000000000894000 (options '115200n8')
+[    0.000000] printk: legacy bootconsole [qcom_geni0] enabled
+[    0.000000] OF: reserved mem: 0x0000000080000000..0x00000000807fffff (8192 KiB) nomap non-reusable gunyah-hyp@80000000
+[    0.000000] OF: reserved mem: 0x0000000080800000..0x00000000809fffff (2048 KiB) nomap non-reusable hyp-elf-package@80800000
+[    0.000000] OF: reserved mem: 0x0000000080a00000..0x0000000080dfffff (4096 KiB) nomap non-reusable ncc@80a00000
+[    0.000000] OF: reserved mem: 0x0000000080e00000..0x0000000080e3ffff (256 KiB) nomap non-reusable cpucp-log@80e00000
+[    0.000000] OF: reserved mem: 0x0000000080e40000..0x000000008137ffff (5376 KiB) nomap non-reusable cpucp@80e40000
+[    0.000000] OF: reserved mem: 0x0000000081380000..0x00000000813fffff (512 KiB) nomap non-reusable reserved-region@81380000
+[    0.000000] OF: reserved mem: 0x0000000081400000..0x000000008159ffff (1664 KiB) nomap non-reusable tags-region@81400000
+[    0.000000] OF: reserved mem: 0x0000000081a00000..0x0000000081a3ffff (256 KiB) nomap non-reusable xbl-dtlog@81a00000
+[    0.000000] OF: reserved mem: 0x0000000081a40000..0x0000000081bfffff (1792 KiB) nomap non-reusable xbl-ramdump@81a40000
+[    0.000000] OF: reserved mem: 0x0000000081c00000..0x0000000081c5ffff (384 KiB) nomap non-reusable aop-image@81c00000
+[    0.000000] OF: reserved mem: 0x0000000081c60000..0x0000000081c7ffff (128 KiB) nomap non-reusable aop-cmd-db@81c60000
+[    0.000000] OF: reserved mem: 0x0000000081c80000..0x0000000081c9ffff (128 KiB) nomap non-reusable aop-config@81c80000
+[    0.000000] OF: reserved mem: 0x0000000081ca0000..0x0000000081cdffff (256 KiB) nomap non-reusable tme-crash-dump@81ca0000
+[    0.000000] OF: reserved mem: 0x0000000081ce0000..0x0000000081ce3fff (16 KiB) nomap non-reusable tme-log@81ce0000
+[    0.000000] OF: reserved mem: 0x0000000081ce4000..0x0000000081cf3fff (64 KiB) nomap non-reusable uefi-log@81ce4000
+[    0.000000] OF: reserved mem: 0x0000000081cff000..0x0000000081cfffff (4 KiB) nomap non-reusable secdata-apss@81cff000
+[    0.000000] OF: reserved mem: 0x0000000081e00000..0x0000000081efffff (1024 KiB) nomap non-reusable pdp-ns-shared@81e00000
+[    0.000000] OF: reserved mem: 0x0000000081f00000..0x0000000081f0ffff (64 KiB) nomap non-reusable gpu-prr@81f00000
+[    0.000000] OF: reserved mem: 0x0000000081f10000..0x0000000081f1ffff (64 KiB) nomap non-reusable tpm-control@81f10000
+[    0.000000] OF: reserved mem: 0x0000000081f20000..0x0000000081f2ffff (64 KiB) nomap non-reusable usb-ucsi-shared@81f20000
+[    0.000000] OF: reserved mem: 0x0000000081f30000..0x0000000081f35fff (24 KiB) nomap non-reusable pld-pep@81f30000
+[    0.000000] OF: reserved mem: 0x0000000081f36000..0x0000000081f36fff (4 KiB) nomap non-reusable pld-gmu@81f36000
+[    0.000000] OF: reserved mem: 0x0000000081f37000..0x0000000081f37fff (4 KiB) nomap non-reusable pld-pdp@81f37000
+[    0.000000] OF: reserved mem: 0x0000000082700000..0x00000000827fffff (1024 KiB) nomap non-reusable tz-stat@82700000
+[    0.000000] OF: reserved mem: 0x0000000082800000..0x00000000833fffff (12288 KiB) nomap non-reusable xbl-tmp-buffer@82800000
+[    0.000000] OF: reserved mem: 0x0000000084b00000..0x00000000852fffff (8192 KiB) nomap non-reusable adsp-rpc-remote-heap@84b00000
+[    0.000000] OF: reserved mem: 0x0000000085300000..0x000000008537ffff (512 KiB) nomap non-reusable spu-secure-shared-memory@85300000
+[    0.000000] OF: reserved mem: 0x00000000866c0000..0x00000000866fffff (256 KiB) nomap non-reusable adsp-boot-dtb@866c0000
+[    0.000000] OF: reserved mem: 0x0000000086700000..0x0000000086afffff (4096 KiB) nomap non-reusable spss-region@86700000
+[    0.000000] OF: reserved mem: 0x0000000086b00000..0x00000000876fffff (12288 KiB) nomap non-reusable adsp-boot@86b00000
+[    0.000000] OF: reserved mem: 0x0000000087700000..0x0000000087dfffff (7168 KiB) nomap non-reusable video@87700000
+[    0.000000] OF: reserved mem: 0x0000000087e00000..0x000000008b7fffff (59392 KiB) nomap non-reusable adspslpi@87e00000
+[    0.000000] OF: reserved mem: 0x000000008b800000..0x000000008b87ffff (512 KiB) nomap non-reusable q6-adsp-dtb@8b800000
+[    0.000000] OF: reserved mem: 0x000000008b900000..0x000000008d8fffff (32768 KiB) nomap non-reusable cdsp@8b900000
+[    0.000000] OF: reserved mem: 0x000000008d900000..0x000000008d97ffff (512 KiB) nomap non-reusable q6-cdsp-dtb@8d900000
+[    0.000000] OF: reserved mem: 0x000000008d9fe000..0x000000008d9fffff (8 KiB) nomap non-reusable gpu-microcode@8d9fe000
+[    0.000000] OF: reserved mem: 0x000000008da00000..0x000000008e0fffff (7168 KiB) nomap non-reusable cvp@8da00000
+[    0.000000] OF: reserved mem: 0x000000008e100000..0x000000008e8fffff (8192 KiB) nomap non-reusable camera@8e100000
+[    0.000000] OF: reserved mem: 0x000000008e900000..0x000000008effffff (7168 KiB) nomap non-reusable av1-encoder@8e900000
+[    0.000000] OF: reserved mem: 0x000000008f000000..0x000000008f9fffff (10240 KiB) nomap non-reusable reserved-region@8f000000
+[    0.000000] OF: reserved mem: 0x000000008fa00000..0x00000000912fffff (25600 KiB) nomap non-reusable wpss@8fa00000
+[    0.000000] OF: reserved mem: 0x0000000091300000..0x000000009137ffff (512 KiB) nomap non-reusable q6-wpss-dtb@91300000
+[    0.000000] OF: reserved mem: 0x00000000d8000000..0x00000000d803ffff (256 KiB) nomap non-reusable xbl-sc@d8000000
+[    0.000000] OF: reserved mem: 0x00000000d8040000..0x00000000d80dffff (640 KiB) nomap non-reusable reserved-region@d8040000
+[    0.000000] OF: reserved mem: 0x00000000d80e0000..0x00000000d85fffff (5248 KiB) nomap non-reusable qtee@d80e0000
+[    0.000000] OF: reserved mem: 0x00000000d8600000..0x00000000e0ffffff (141312 KiB) nomap non-reusable ta@d8600000
+[    0.000000] OF: reserved mem: 0x00000000e1000000..0x00000000e369ffff (39552 KiB) nomap non-reusable tags@e1000000
+[    0.000000] OF: reserved mem: 0x00000000ff800000..0x00000000ffdfffff (6144 KiB) nomap non-reusable llcc-lpi@ff800000
+[    0.000000] OF: reserved mem: 0x00000000ffe00000..0x00000000ffffffff (2048 KiB) nomap non-reusable smem@ffe00000
+[    0.000000] NUMA: Faking a node at [mem 0x0000000080800000-0x0000000fffffffff]
+[    0.000000] NODE_DATA(0) allocated [mem 0xff3fe93c0-0xff3feba3f]
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000080800000-0x00000000ffffffff]
+[    0.000000]   DMA32    empty
+[    0.000000]   Normal   [mem 0x0000000100000000-0x0000000fffffffff]
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000080800000-0x0000000080dfffff]
+[    0.000000]   node   0: [mem 0x00000000815a0000-0x00000000819fffff]
+[    0.000000]   node   0: [mem 0x0000000081a00000-0x0000000081a3ffff]
+[    0.000000]   node   0: [mem 0x0000000081d00000-0x0000000081dfffff]
+[    0.000000]   node   0: [mem 0x0000000081f00000-0x0000000081f37fff]
+[    0.000000]   node   0: [mem 0x0000000081f38000-0x00000000826fffff]
+[    0.000000]   node   0: [mem 0x0000000082800000-0x00000000833fffff]
+[    0.000000]   node   0: [mem 0x0000000083400000-0x0000000083efffff]
+[    0.000000]   node   0: [mem 0x0000000083f00000-0x0000000083ffffff]
+[    0.000000]   node   0: [mem 0x0000000084000000-0x0000000084afffff]
+[    0.000000]   node   0: [mem 0x0000000085380000-0x00000000866bffff]
+[    0.000000]   node   0: [mem 0x0000000091480000-0x00000000a7f00fff]
+[    0.000000]   node   0: [mem 0x00000000a7f01000-0x00000000a7f01fff]
+[    0.000000]   node   0: [mem 0x00000000a7f02000-0x00000000a7f04fff]
+[    0.000000]   node   0: [mem 0x00000000a7f05000-0x00000000a7f0cfff]
+[    0.000000]   node   0: [mem 0x00000000a7f0d000-0x00000000c3dc2fff]
+[    0.000000]   node   0: [mem 0x00000000c3dc3000-0x00000000c3e42fff]
+[    0.000000]   node   0: [mem 0x00000000c3e43000-0x00000000c4142fff]
+[    0.000000]   node   0: [mem 0x00000000c4143000-0x00000000c41d9fff]
+[    0.000000]   node   0: [mem 0x00000000c41da000-0x00000000c4414fff]
+[    0.000000]   node   0: [mem 0x00000000c4415000-0x00000000c4444fff]
+[    0.000000]   node   0: [mem 0x00000000c4445000-0x00000000c4629fff]
+[    0.000000]   node   0: [mem 0x00000000c462a000-0x00000000c482afff]
+[    0.000000]   node   0: [mem 0x00000000c482b000-0x00000000d4234fff]
+[    0.000000]   node   0: [mem 0x00000000d4235000-0x00000000d46e0fff]
+[    0.000000]   node   0: [mem 0x00000000d46e1000-0x00000000d7fe6fff]
+[    0.000000]   node   0: [mem 0x00000000d7fe7000-0x00000000d7ffffff]
+[    0.000000]   node   0: [mem 0x00000000de5b0000-0x00000000e369ffff]
+[    0.000000]   node   0: [mem 0x00000000e36a0000-0x00000000e47fffff]
+[    0.000000]   node   0: [mem 0x00000000e4800000-0x00000000e69bffff]
+[    0.000000]   node   0: [mem 0x00000000e69c0000-0x00000000f84fffff]
+[    0.000000]   node   0: [mem 0x0000000880000000-0x0000000fffffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000080800000-0x0000000fffffffff]
+[    0.000000] On node 0, zone DMA: 2048 pages in unavailable ranges
+[    0.000000] On node 0, zone DMA: 1952 pages in unavailable ranges
+[    0.000000] On node 0, zone DMA: 704 pages in unavailable ranges
+[    0.000000] On node 0, zone DMA: 256 pages in unavailable ranges
+[    0.000000] On node 0, zone DMA: 256 pages in unavailable ranges
+[    0.000000] On node 0, zone DMA: 2176 pages in unavailable ranges
+[    0.000000] On node 0, zone DMA: 11712 pages in unavailable ranges
+[    0.000000] On node 0, zone DMA: 26032 pages in unavailable ranges
+[    0.000000] On node 0, zone Normal: 31488 pages in unavailable ranges
+[    0.000000] psci: probing for conduit method from DT.
+[    0.000000] psci: PSCIv1.1 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: MIGRATE_INFO_TYPE not supported.
+[    0.000000] psci: SMC Calling Convention v1.3
+[    0.000000] psci: OSI mode supported.
+[    0.000000] percpu: Embedded 25 pages/cpu s63448 r8192 d30760 u102400
+[    0.000000] pcpu-alloc: s63448 r8192 d30760 u102400 alloc=25*4096
+[    0.000000] pcpu-alloc: [0] 0 [0] 1 [0] 2 [0] 3 [0] 4 [0] 5 [0] 6 [0] 7 
+[    0.000000] Detected PIPT I-cache on CPU0
+[    0.000000] CPU features: detected: Address authentication (architected QARMA5 algorithm)
+[    0.000000] CPU features: detected: GICv3 CPU interface
+[    0.000000] CPU features: detected: HCRX_EL2 register
+[    0.000000] CPU features: detected: Spectre-v4
+[    0.000000] CPU features: detected: Spectre-BHB
+[    0.000000] CPU features: detected: Broken CNTVOFF_EL2
+[    0.000000] alternatives: applying boot alternatives
+[    0.000000] Kernel command line: BOOT_IMAGE=/Image nomodeset video=efifb:on drm.modeset=0 clk_ignore_unused pd_ignore_unused console=tty0 earlycon earlyprintk loglevel=8 keep_bootcon
+[    0.000000] Booted with the nomodeset parameter. Only the system framebuffer will be available
+[    0.000000] Unknown kernel command line parameters "earlyprintk", will be passed to user space.
+[    0.000000] printk: log buffer data + meta data: 131072 + 458752 = 589824 bytes
+[    0.000000] Dentry cache hash table entries: 4194304 (order: 13, 33554432 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 2097152 (order: 12, 16777216 bytes, linear)
+[    0.000000] software IO TLB: area num 8.
+[    0.000000] software IO TLB: mapped [mem 0x00000000f4500000-0x00000000f8500000] (64MB)
+[    0.000000] Fallback order for Node 0: 0 
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 8279216
+[    0.000000] Policy zone: Normal
+[    0.000000] mem auto-init: stack:all(zero), heap alloc:off, heap free:off
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=8, Nodes=1
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=512 to nr_cpu_ids=8.
+[    0.000000] 	Trampoline variant of Tasks RCU enabled.
+[    0.000000] 	Tracing variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=8
+[    0.000000] RCU Tasks: Setting shift to 3 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=8.
+[    0.000000] RCU Tasks Trace: Setting shift to 3 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=8.
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] GICv3: 988 SPIs implemented
+[    0.000000] GICv3: 0 Extended SPIs implemented
+[    0.000000] Root IRQ handler: gic_handle_irq
+[    0.000000] GICv3: GICv3 features: 16 PPIs, DirectLPI
+[    0.000000] GICv3: GICD_CTLR.DS=1, SCR_EL3.FIQ=0
+[    0.000000] GICv3: Enabling SGIs without active state
+[    0.000000] GICv3: CPU0: found redistributor 0 region 0:0x0000000017080000
+[    0.000000] ITS [mem 0x17040000-0x1707ffff]
+[    0.000000] ITS@0x0000000017040000: Devices Table too large, reduce ids 32->19
+[    0.000000] ITS@0x0000000017040000: Devices too large, reduce ITS pages 1024->256
+[    0.000000] ITS@0x0000000017040000: allocated 131072 Devices @880100000 (indirect, esz 8, psz 4K, shr 1)
+[    0.000000] ITS@0x0000000017040000: allocated 4096 Interrupt Collections @880043000 (flat, esz 1, psz 4K, shr 1)
+[    0.000000] GICv3: using LPI property table @0x0000000880080000
+[    0.000000] GICv3: CPU0: using allocated LPI pending table @0x0000000880090000
+[    0.000000] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[    0.000000] arch_timer: cp15 timer running at 19.20MHz (virt).
+[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x46d987e47, max_idle_ns: 440795202767 ns
+[    0.000000] sched_clock: 56 bits at 19MHz, resolution 52ns, wraps every 4398046511078ns
+[    0.008330] arm-pv: using stolen time PV
+[    0.012441] Console: colour dummy device 80x25
+[    0.017004] printk: legacy console [tty0] enabled
+[    0.021849] Calibrating delay loop (skipped), value calculated using timer frequency.. 38.40 BogoMIPS (lpj=76800)
+[    0.032375] pid_max: default: 32768 minimum: 301
+[    0.037172] Mount-cache hash table entries: 65536 (order: 7, 524288 bytes, linear)
+[    0.044949] Mountpoint-cache hash table entries: 65536 (order: 7, 524288 bytes, linear)
+[    0.053546] rcu: Hierarchical SRCU implementation.
+[    0.058466] rcu: 	Max phase no-delay instances is 1000.
+[    0.063863] Timer migration: 1 hierarchy levels; 8 children per group; 1 crossnode level
+[    0.072243] fsl-mc MSI: msi-controller@17040000 domain created
+[    0.079224] Remapping and enabling EFI services.
+[    0.084053] smp: Bringing up secondary CPUs ...
+[    0.088860] Detected PIPT I-cache on CPU1
+[    0.088881] GICv3: CPU1: found redistributor 100 region 0:0x00000000170c0000
+[    0.088946] GICv3: CPU1: using allocated LPI pending table @0x00000008800a0000
+[    0.089034] CPU1: Booted secondary processor 0x0000000100 [0x512f0011]
+[    0.089587] Detected PIPT I-cache on CPU2
+[    0.089606] GICv3: CPU2: found redistributor 200 region 0:0x0000000017100000
+[    0.089670] GICv3: CPU2: using allocated LPI pending table @0x00000008800b0000
+[    0.089757] CPU2: Booted secondary processor 0x0000000200 [0x512f0011]
+[    0.090284] Detected PIPT I-cache on CPU3
+[    0.090303] GICv3: CPU3: found redistributor 300 region 0:0x0000000017140000
+[    0.090367] GICv3: CPU3: using allocated LPI pending table @0x00000008800c0000
+[    0.090453] CPU3: Booted secondary processor 0x0000000300 [0x512f0011]
+[    0.092782] Detected PIPT I-cache on CPU4
+[    0.092827] GICv3: CPU4: found redistributor 10000 region 0:0x0000000017180000
+[    0.092906] GICv3: CPU4: using allocated LPI pending table @0x00000008800d0000
+[    0.093011] CPU4: Booted secondary processor 0x0000010000 [0x511f0011]
+[    0.093629] Detected PIPT I-cache on CPU5
+[    0.093650] GICv3: CPU5: found redistributor 10100 region 0:0x00000000171c0000
+[    0.093714] GICv3: CPU5: using allocated LPI pending table @0x00000008800e0000
+[    0.093802] CPU5: Booted secondary processor 0x0000010100 [0x511f0011]
+[    0.094064] Detected PIPT I-cache on CPU6
+[    0.094087] GICv3: CPU6: found redistributor 10200 region 0:0x0000000017200000
+[    0.094150] GICv3: CPU6: using allocated LPI pending table @0x00000008800f0000
+[    0.094237] CPU6: Booted secondary processor 0x0000010200 [0x511f0011]
+[    0.094845] Detected PIPT I-cache on CPU7
+[    0.094868] GICv3: CPU7: found redistributor 10300 region 0:0x0000000017240000
+[    0.094938] GICv3: CPU7: using allocated LPI pending table @0x0000000880200000
+[    0.095025] CPU7: Booted secondary processor 0x0000010300 [0x511f0011]
+[    0.095084] smp: Brought up 1 node, 8 CPUs
+[    0.278280] SMP: Total of 8 processors activated.
+[    0.283111] CPU: All CPU(s) started at EL1
+[    0.287330] CPU features: detected: Branch Target Identification
+[    0.293493] CPU features: detected: ARMv8.4 Translation Table Level
+[    0.299933] CPU features: detected: Instruction cache invalidation not required for I/D coherence
+[    0.309033] CPU features: detected: Data cache clean to the PoU not required for I/D coherence
+[    0.317867] CPU features: detected: Common not Private translations
+[    0.324304] CPU features: detected: CRC32 instructions
+[    0.329585] CPU features: detected: Data independent timing control (DIT)
+[    0.336549] CPU features: detected: E0PD
+[    0.340575] CPU features: detected: Enhanced Counter Virtualization
+[    0.347012] CPU features: detected: Enhanced Counter Virtualization (CNTPOFF)
+[    0.354339] CPU features: detected: Enhanced Privileged Access Never
+[    0.360864] CPU features: detected: Enhanced Virtualization Traps
+[    0.367123] CPU features: detected: Fine Grained Traps
+[    0.372404] CPU features: detected: Generic authentication (architected QARMA5 algorithm)
+[    0.380802] CPU features: detected: RCpc load-acquire (LDAPR)
+[    0.386700] CPU features: detected: LSE atomic instructions
+[    0.392419] CPU features: detected: Privileged Access Never
+[    0.398138] CPU features: detected: PMUv3
+[    0.402264] CPU features: detected: RAS Extension Support
+[    0.407809] CPU features: detected: RASv1p1 Extension Support
+[    0.413706] CPU features: detected: Random Number Generator
+[    0.419426] CPU features: detected: Speculation barrier (SB)
+[    0.425235] CPU features: detected: Stage-2 Force Write-Back
+[    0.431045] CPU features: detected: TLB range maintenance instructions
+[    0.437745] CPU features: detected: XNX
+[    0.441682] CPU features: detected: Speculative Store Bypassing Safe (SSBS)
+[    0.448852] alternatives: applying system-wide alternatives
+[    0.455740] CPU features: detected: Activity Monitors Unit (AMU) on CPU0-7
+[    0.462971] Memory: 32069352K/33116864K available (20736K kernel code, 5030K rwdata, 14932K rodata, 12544K init, 697K bss, 907948K reserved, 131072K cma-reserved)
+[    0.477969] devtmpfs: initialized
+[    0.488360] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.498357] posixtimers hash table entries: 4096 (order: 4, 65536 bytes, linear)
+[    0.505955] futex hash table entries: 2048 (131072 bytes on 1 NUMA nodes, total 128 KiB, linear).
+[    0.515324] 2G module region forced by RANDOMIZE_MODULE_REGION_FULL
+[    0.521763] 0 pages in range for non-PLT usage
+[    0.521764] 510736 pages in range for PLT usage
+[    0.527109] SMBIOS 3.6.0 present.
+[    0.535177] DMI: LENOVO 91B6001CUK/3796, BIOS O6NKT3BA 05/02/2025
+[    0.541453] DMI: Memory slots populated: 1/1
+[    0.546486] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.553043] DMA: preallocated 4096 KiB GFP_KERNEL pool for atomic allocations
+[    0.560645] DMA: preallocated 4096 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations
+[    0.568942] DMA: preallocated 4096 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
+[    0.577167] audit: initializing netlink subsys (disabled)
+[    0.582743] audit: type=2000 audit(0.352:1): state=initialized audit_enabled=0 res=1
+[    0.583541] thermal_sys: Registered thermal governor 'step_wise'
+[    0.590699] thermal_sys: Registered thermal governor 'power_allocator'
+[    0.596875] cpuidle: using governor menu
+[    0.607621] NET: Registered PF_QIPCRTR protocol family
+[    0.612940] hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.
+[    0.619956] ASID allocator initialised with 65536 entries
+[    0.626041] Serial: AMBA PL011 UART driver
+[    0.631155] CPUidle PSCI: Initialized CPU PM domain topology using OSI mode
+[    0.641574] /soc@0/clock-controller@100000: Fixed dependency cycle(s) with /soc@0/phy@1bfc000
+[    0.650326] /soc@0/clock-controller@100000: Fixed dependency cycle(s) with /soc@0/phy@1c06000
+[    0.659075] /soc@0/clock-controller@100000: Fixed dependency cycle(s) with /soc@0/phy@1c0e000
+[    0.667925] /soc@0/geniqup@bc0000/i2c@b8c000/typec-mux@8: Fixed dependency cycle(s) with /soc@0/phy@fd5000
+[    0.677888] /soc@0/phy@fd5000: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/displayport-controller@ae90000
+[    0.689494] /soc@0/phy@fd5000: Fixed dependency cycle(s) with /soc@0/usb@a6f8800/usb@a600000
+[    0.698157] /soc@0/phy@fd5000: Fixed dependency cycle(s) with /soc@0/geniqup@bc0000/i2c@b8c000/typec-mux@8
+[    0.708081] /soc@0/phy@1bfc000: Fixed dependency cycle(s) with /soc@0/clock-controller@100000
+[    0.716842] /soc@0/phy@1c06000: Fixed dependency cycle(s) with /soc@0/clock-controller@100000
+[    0.725602] /soc@0/phy@1c0e000: Fixed dependency cycle(s) with /soc@0/clock-controller@100000
+[    0.734492] /soc@0/usb@a6f8800/usb@a600000: Fixed dependency cycle(s) with /soc@0/phy@fd5000
+[    0.743187] /soc@0/display-subsystem@ae00000/display-controller@ae01000: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/displayport-controller@aea0000
+[    0.758539] /soc@0/display-subsystem@ae00000/display-controller@ae01000: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/displayport-controller@ae90000
+[    0.773915] /soc@0/display-subsystem@ae00000/displayport-controller@ae90000: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/display-controller@ae01000
+[    0.789267] /soc@0/display-subsystem@ae00000/displayport-controller@ae90000: Fixed dependency cycle(s) with /soc@0/phy@fd5000
+[    0.800879] /soc@0/display-subsystem@ae00000/displayport-controller@aea0000: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/displayport-controller@aea0000/aux-bus/panel
+[    0.817851] /soc@0/display-subsystem@ae00000/displayport-controller@aea0000: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/display-controller@ae01000
+[    0.833247] /soc@0/display-subsystem@ae00000/displayport-controller@aea0000/aux-bus/panel: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/displayport-controller@aea0000
+[    0.850239] /soc@0/stm@10002000: Fixed dependency cycle(s) with /soc@0/funnel@10041000
+[    0.858390] /soc@0/tpda@10004000: Fixed dependency cycle(s) with /soc@0/funnel@10041000
+[    0.866610] /soc@0/tpda@10004000: Fixed dependency cycle(s) with /soc@0/tpdm@1000f000
+[    0.874663] /soc@0/tpdm@1000f000: Fixed dependency cycle(s) with /soc@0/tpda@10004000
+[    0.882714] /soc@0/funnel@10041000: Fixed dependency cycle(s) with /soc@0/funnel@10045000
+[    0.891112] /soc@0/funnel@10041000: Fixed dependency cycle(s) with /soc@0/stm@10002000
+[    0.899245] /soc@0/funnel@10041000: Fixed dependency cycle(s) with /soc@0/tpda@10004000
+[    0.907470] /soc@0/funnel@10042000: Fixed dependency cycle(s) with /soc@0/funnel@10045000
+[    0.915877] /soc@0/funnel@10042000: Fixed dependency cycle(s) with /soc@0/funnel@10c2c000
+[    0.924275] /soc@0/funnel@10042000: Fixed dependency cycle(s) with /soc@0/funnel@10ac5000
+[    0.932673] /soc@0/funnel@10042000: Fixed dependency cycle(s) with /soc@0/funnel@10cc5000
+[    0.941076] /soc@0/funnel@10045000: Fixed dependency cycle(s) with /soc@0/funnel@10b04000
+[    0.949487] /soc@0/funnel@10045000: Fixed dependency cycle(s) with /soc@0/funnel@10042000
+[    0.957886] /soc@0/funnel@10045000: Fixed dependency cycle(s) with /soc@0/funnel@10041000
+[    0.966302] /soc@0/tpdm@10800000: Fixed dependency cycle(s) with /soc@0/tpda@10c3c000
+[    0.974354] /soc@0/tpdm@1082c000: Fixed dependency cycle(s) with /soc@0/tpda@10c2b000
+[    0.982406] /soc@0/tpdm@10841000: Fixed dependency cycle(s) with /soc@0/tpda@10c2b000
+[    0.990458] /soc@0/tpdm@10844000: Fixed dependency cycle(s) with /soc@0/funnel@10846000
+[    0.998696] /soc@0/funnel@10846000: Fixed dependency cycle(s) with /soc@0/tpda@10c2b000
+[    1.006916] /soc@0/funnel@10846000: Fixed dependency cycle(s) with /soc@0/tpdm@10844000
+[    1.015154] /soc@0/tpdm@10ac1000: Fixed dependency cycle(s) with /soc@0/tpda@10ac4000
+[    1.023206] /soc@0/tpda@10ac4000: Fixed dependency cycle(s) with /soc@0/funnel@10ac5000
+[    1.031426] /soc@0/tpda@10ac4000: Fixed dependency cycle(s) with /soc@0/tpdm@10ac1000
+[    1.039477] /soc@0/funnel@10ac5000: Fixed dependency cycle(s) with /soc@0/funnel@10042000
+[    1.047875] /soc@0/funnel@10ac5000: Fixed dependency cycle(s) with /soc@0/tpda@10ac4000
+[    1.056096] /soc@0/funnel@10b04000: Fixed dependency cycle(s) with /soc@0/tmc@10b05000
+[    1.064242] /soc@0/funnel@10b04000: Fixed dependency cycle(s) with /soc@0/funnel@10045000
+[    1.072642] /soc@0/funnel@10b04000: Fixed dependency cycle(s) with /soc@0/tpda@10b08000
+[    1.080862] /soc@0/tmc@10b05000: Fixed dependency cycle(s) with /soc@0/replicator@10b06000
+[    1.089364] /soc@0/tmc@10b05000: Fixed dependency cycle(s) with /soc@0/funnel@10b04000
+[    1.097497] /soc@0/replicator@10b06000: Fixed dependency cycle(s) with /dummy-sink
+[    1.105292] /soc@0/replicator@10b06000: Fixed dependency cycle(s) with /soc@0/tmc@10b05000
+[    1.113794] /soc@0/tpda@10b08000: Fixed dependency cycle(s) with /soc@0/funnel@10b04000
+[    1.122014] /soc@0/tpda@10b08000: Fixed dependency cycle(s) with /soc@0/tpdm@10b0d000
+[    1.130048] /soc@0/tpda@10b08000: Fixed dependency cycle(s) with /soc@0/tpdm@10b0c000
+[    1.138082] /soc@0/tpda@10b08000: Fixed dependency cycle(s) with /soc@0/tpdm@10b0b000
+[    1.146115] /soc@0/tpda@10b08000: Fixed dependency cycle(s) with /soc@0/tpdm@10b0a000
+[    1.154148] /soc@0/tpda@10b08000: Fixed dependency cycle(s) with /soc@0/tpdm@10b09000
+[    1.162200] /soc@0/tpdm@10b09000: Fixed dependency cycle(s) with /soc@0/tpda@10b08000
+[    1.170253] /soc@0/tpdm@10b0a000: Fixed dependency cycle(s) with /soc@0/tpda@10b08000
+[    1.178306] /soc@0/tpdm@10b0b000: Fixed dependency cycle(s) with /soc@0/tpda@10b08000
+[    1.186359] /soc@0/tpdm@10b0c000: Fixed dependency cycle(s) with /soc@0/tpda@10b08000
+[    1.194411] /soc@0/tpdm@10b0d000: Fixed dependency cycle(s) with /soc@0/tpda@10b08000
+[    1.202464] /soc@0/tpdm@10c08000: Fixed dependency cycle(s) with /soc@0/funnel@10c0b000
+[    1.210701] /soc@0/funnel@10c0b000: Fixed dependency cycle(s) with /soc@0/tpda@10c3c000
+[    1.218921] /soc@0/funnel@10c0b000: Fixed dependency cycle(s) with /soc@0/tpdm@10c08000
+[    1.227159] /soc@0/tpdm@10c28000: Fixed dependency cycle(s) with /soc@0/tpda@10c2b000
+[    1.235211] /soc@0/tpdm@10c29000: Fixed dependency cycle(s) with /soc@0/tpda@10c2b000
+[    1.243261] /soc@0/tpda@10c2b000: Fixed dependency cycle(s) with /soc@0/funnel@10c2c000
+[    1.251481] /soc@0/tpda@10c2b000: Fixed dependency cycle(s) with /soc@0/tpdm@10c29000
+[    1.259514] /soc@0/tpda@10c2b000: Fixed dependency cycle(s) with /soc@0/tpdm@10c28000
+[    1.267548] /soc@0/tpda@10c2b000: Fixed dependency cycle(s) with /soc@0/tpdm@1082c000
+[    1.275581] /soc@0/tpda@10c2b000: Fixed dependency cycle(s) with /soc@0/tpdm@10841000
+[    1.283614] /soc@0/tpda@10c2b000: Fixed dependency cycle(s) with /soc@0/funnel@10846000
+[    1.291843] /soc@0/funnel@10c2c000: Fixed dependency cycle(s) with /soc@0/funnel@10042000
+[    1.300244] /soc@0/funnel@10c2c000: Fixed dependency cycle(s) with /soc@0/funnel@10d04000
+[    1.308644] /soc@0/funnel@10c2c000: Fixed dependency cycle(s) with /soc@0/funnel@10c3d000
+[    1.317043] /soc@0/funnel@10c2c000: Fixed dependency cycle(s) with /soc@0/tpda@10c2b000
+[    1.325281] /soc@0/tpdm@10c38000: Fixed dependency cycle(s) with /soc@0/tpda@10c3c000
+[    1.333333] /soc@0/tpdm@10c39000: Fixed dependency cycle(s) with /soc@0/tpda@10c3c000
+[    1.341383] /soc@0/tpda@10c3c000: Fixed dependency cycle(s) with /soc@0/funnel@10c3d000
+[    1.349603] /soc@0/tpda@10c3c000: Fixed dependency cycle(s) with /soc@0/tpdm@10c39000
+[    1.357636] /soc@0/tpda@10c3c000: Fixed dependency cycle(s) with /soc@0/tpdm@10c38000
+[    1.365669] /soc@0/tpda@10c3c000: Fixed dependency cycle(s) with /soc@0/tpdm@10800000
+[    1.373703] /soc@0/tpda@10c3c000: Fixed dependency cycle(s) with /soc@0/funnel@10c0b000
+[    1.381939] /soc@0/funnel@10c3d000: Fixed dependency cycle(s) with /soc@0/funnel@10c2c000
+[    1.390340] /soc@0/funnel@10c3d000: Fixed dependency cycle(s) with /soc@0/tpda@10c3c000
+[    1.398578] /soc@0/tpda@10cc4000: Fixed dependency cycle(s) with /soc@0/funnel@10cc5000
+[    1.406816] /soc@0/funnel@10cc5000: Fixed dependency cycle(s) with /soc@0/funnel@10042000
+[    1.415214] /soc@0/funnel@10cc5000: Fixed dependency cycle(s) with /soc@0/tpda@10cc4000
+[    1.423448] /soc@0/funnel@10d04000: Fixed dependency cycle(s) with /soc@0/funnel@10c2c000
+[    1.431849] /soc@0/funnel@10d04000: Fixed dependency cycle(s) with /soc@0/funnel@10d13000
+[    1.440266] /soc@0/tpdm@10d08000: Fixed dependency cycle(s) with /soc@0/tpda@10d12000
+[    1.448318] /soc@0/tpdm@10d09000: Fixed dependency cycle(s) with /soc@0/tpda@10d12000
+[    1.456370] /soc@0/tpdm@10d0a000: Fixed dependency cycle(s) with /soc@0/tpda@10d12000
+[    1.464422] /soc@0/tpdm@10d0b000: Fixed dependency cycle(s) with /soc@0/tpda@10d12000
+[    1.472474] /soc@0/tpdm@10d0c000: Fixed dependency cycle(s) with /soc@0/tpda@10d12000
+[    1.480526] /soc@0/tpdm@10d0d000: Fixed dependency cycle(s) with /soc@0/tpda@10d12000
+[    1.488578] /soc@0/tpdm@10d0e000: Fixed dependency cycle(s) with /soc@0/tpda@10d12000
+[    1.496630] /soc@0/tpdm@10d0f000: Fixed dependency cycle(s) with /soc@0/tpda@10d12000
+[    1.504679] /soc@0/tpda@10d12000: Fixed dependency cycle(s) with /soc@0/funnel@10d13000
+[    1.512899] /soc@0/tpda@10d12000: Fixed dependency cycle(s) with /soc@0/tpdm@10d0f000
+[    1.520932] /soc@0/tpda@10d12000: Fixed dependency cycle(s) with /soc@0/tpdm@10d0e000
+[    1.528965] /soc@0/tpda@10d12000: Fixed dependency cycle(s) with /soc@0/tpdm@10d0d000
+[    1.536998] /soc@0/tpda@10d12000: Fixed dependency cycle(s) with /soc@0/tpdm@10d0c000
+[    1.545031] /soc@0/tpda@10d12000: Fixed dependency cycle(s) with /soc@0/tpdm@10d0b000
+[    1.553064] /soc@0/tpda@10d12000: Fixed dependency cycle(s) with /soc@0/tpdm@10d0a000
+[    1.561097] /soc@0/tpda@10d12000: Fixed dependency cycle(s) with /soc@0/tpdm@10d09000
+[    1.569130] /soc@0/tpda@10d12000: Fixed dependency cycle(s) with /soc@0/tpdm@10d08000
+[    1.577179] /soc@0/funnel@10d13000: Fixed dependency cycle(s) with /soc@0/funnel@10d04000
+[    1.585581] /soc@0/funnel@10d13000: Fixed dependency cycle(s) with /soc@0/tpda@10d12000
+[    1.593801] /soc@0/interrupt-controller@17000000: Fixed dependency cycle(s) with /soc@0/interrupt-controller@17000000
+[    1.604763] /soc@0/clock-controller@100000: Fixed dependency cycle(s) with /soc@0/phy@1bfc000
+[    1.613534] /soc@0/clock-controller@100000: Fixed dependency cycle(s) with /soc@0/phy@1c06000
+[    1.622285] /soc@0/clock-controller@100000: Fixed dependency cycle(s) with /soc@0/phy@1c0e000
+[    1.631461] /soc@0/geniqup@bc0000/i2c@b8c000/typec-mux@8: Fixed dependency cycle(s) with /soc@0/phy@fd5000
+[    1.641667] /soc@0/geniqup@bc0000/i2c@b8c000/typec-mux@8: Fixed dependency cycle(s) with /soc@0/phy@fd5000
+[    1.651624] /soc@0/phy@fd5000: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/displayport-controller@ae90000
+[    1.663231] /soc@0/phy@fd5000: Fixed dependency cycle(s) with /soc@0/usb@a6f8800/usb@a600000
+[    1.671897] /soc@0/phy@fd5000: Fixed dependency cycle(s) with /soc@0/geniqup@bc0000/i2c@b8c000/typec-mux@8
+[    1.682524] /soc@0/clock-controller@100000: Fixed dependency cycle(s) with /soc@0/phy@1bfc000
+[    1.691285] /soc@0/phy@1bfc000: Fixed dependency cycle(s) with /soc@0/clock-controller@100000
+[    1.700176] /soc@0/clock-controller@100000: Fixed dependency cycle(s) with /soc@0/phy@1c06000
+[    1.708935] /soc@0/phy@1c06000: Fixed dependency cycle(s) with /soc@0/clock-controller@100000
+[    1.717828] /soc@0/clock-controller@100000: Fixed dependency cycle(s) with /soc@0/phy@1c0e000
+[    1.726588] /soc@0/phy@1c0e000: Fixed dependency cycle(s) with /soc@0/clock-controller@100000
+[    1.737230] /soc@0/usb@a6f8800/usb@a600000: Fixed dependency cycle(s) with /soc@0/phy@fd5000
+[    1.746081] /soc@0/display-subsystem@ae00000/display-controller@ae01000: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/displayport-controller@aea0000
+[    1.761454] /soc@0/display-subsystem@ae00000/display-controller@ae01000: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/displayport-controller@ae90000
+[    1.776853] /soc@0/display-subsystem@ae00000/displayport-controller@ae90000: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/display-controller@ae01000
+[    1.792199] /soc@0/display-subsystem@ae00000/displayport-controller@ae90000: Fixed dependency cycle(s) with /soc@0/phy@fd5000
+[    1.803824] /soc@0/display-subsystem@ae00000/displayport-controller@aea0000: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/displayport-controller@aea0000/aux-bus/panel
+[    1.820810] /soc@0/display-subsystem@ae00000/displayport-controller@aea0000: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/display-controller@ae01000
+[    1.836220] /soc@0/display-subsystem@ae00000/displayport-controller@aea0000/aux-bus/panel: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/displayport-controller@aea0000
+[    1.853712] /soc@0/stm@10002000: Fixed dependency cycle(s) with /soc@0/funnel@10041000
+[    1.861875] /soc@0/tpda@10004000: Fixed dependency cycle(s) with /soc@0/funnel@10041000
+[    1.870097] /soc@0/tpda@10004000: Fixed dependency cycle(s) with /soc@0/tpdm@1000f000
+[    1.878149] /soc@0/tpda@10004000: Fixed dependency cycle(s) with /soc@0/tpdm@1000f000
+[    1.886201] /soc@0/tpdm@1000f000: Fixed dependency cycle(s) with /soc@0/tpda@10004000
+[    1.894270] /soc@0/tpda@10004000: Fixed dependency cycle(s) with /soc@0/funnel@10041000
+[    1.902509] /soc@0/stm@10002000: Fixed dependency cycle(s) with /soc@0/funnel@10041000
+[    1.910649] /soc@0/funnel@10041000: Fixed dependency cycle(s) with /soc@0/funnel@10045000
+[    1.919047] /soc@0/funnel@10041000: Fixed dependency cycle(s) with /soc@0/stm@10002000
+[    1.927185] /soc@0/funnel@10041000: Fixed dependency cycle(s) with /soc@0/tpda@10004000
+[    1.935435] /soc@0/funnel@10042000: Fixed dependency cycle(s) with /soc@0/funnel@10045000
+[    1.943842] /soc@0/funnel@10042000: Fixed dependency cycle(s) with /soc@0/funnel@10c2c000
+[    1.952239] /soc@0/funnel@10042000: Fixed dependency cycle(s) with /soc@0/funnel@10ac5000
+[    1.960638] /soc@0/funnel@10042000: Fixed dependency cycle(s) with /soc@0/funnel@10cc5000
+[    1.969057] /soc@0/funnel@10042000: Fixed dependency cycle(s) with /soc@0/funnel@10045000
+[    1.977473] /soc@0/funnel@10041000: Fixed dependency cycle(s) with /soc@0/funnel@10045000
+[    1.985880] /soc@0/funnel@10045000: Fixed dependency cycle(s) with /soc@0/funnel@10b04000
+[    1.994285] /soc@0/funnel@10045000: Fixed dependency cycle(s) with /soc@0/funnel@10042000
+[    2.002691] /soc@0/funnel@10045000: Fixed dependency cycle(s) with /soc@0/funnel@10041000
+[    2.011126] /soc@0/tpdm@10800000: Fixed dependency cycle(s) with /soc@0/tpda@10c3c000
+[    2.019190] /soc@0/tpdm@1082c000: Fixed dependency cycle(s) with /soc@0/tpda@10c2b000
+[    2.027253] /soc@0/tpdm@10841000: Fixed dependency cycle(s) with /soc@0/tpda@10c2b000
+[    2.035317] /soc@0/tpdm@10844000: Fixed dependency cycle(s) with /soc@0/funnel@10846000
+[    2.043567] /soc@0/tpdm@10844000: Fixed dependency cycle(s) with /soc@0/funnel@10846000
+[    2.051806] /soc@0/funnel@10846000: Fixed dependency cycle(s) with /soc@0/tpda@10c2b000
+[    2.060026] /soc@0/funnel@10846000: Fixed dependency cycle(s) with /soc@0/tpdm@10844000
+[    2.068298] /soc@0/tpdm@10ac1000: Fixed dependency cycle(s) with /soc@0/tpda@10ac4000
+[    2.076365] /soc@0/tpdm@10ac1000: Fixed dependency cycle(s) with /soc@0/tpda@10ac4000
+[    2.084422] /soc@0/tpda@10ac4000: Fixed dependency cycle(s) with /soc@0/funnel@10ac5000
+[    2.092642] /soc@0/tpda@10ac4000: Fixed dependency cycle(s) with /soc@0/tpdm@10ac1000
+[    2.100711] /soc@0/tpda@10ac4000: Fixed dependency cycle(s) with /soc@0/funnel@10ac5000
+[    2.108940] /soc@0/funnel@10042000: Fixed dependency cycle(s) with /soc@0/funnel@10ac5000
+[    2.117354] /soc@0/funnel@10ac5000: Fixed dependency cycle(s) with /soc@0/funnel@10042000
+[    2.125759] /soc@0/funnel@10ac5000: Fixed dependency cycle(s) with /soc@0/tpda@10ac4000
+[    2.134006] /soc@0/funnel@10045000: Fixed dependency cycle(s) with /soc@0/funnel@10b04000
+[    2.142412] /soc@0/funnel@10b04000: Fixed dependency cycle(s) with /soc@0/tmc@10b05000
+[    2.150553] /soc@0/funnel@10b04000: Fixed dependency cycle(s) with /soc@0/funnel@10045000
+[    2.158959] /soc@0/funnel@10b04000: Fixed dependency cycle(s) with /soc@0/tpda@10b08000
+[    2.167199] /soc@0/funnel@10b04000: Fixed dependency cycle(s) with /soc@0/tmc@10b05000
+[    2.175339] /soc@0/tmc@10b05000: Fixed dependency cycle(s) with /soc@0/replicator@10b06000
+[    2.183839] /soc@0/tmc@10b05000: Fixed dependency cycle(s) with /soc@0/funnel@10b04000
+[    2.191996] /soc@0/tmc@10b05000: Fixed dependency cycle(s) with /soc@0/replicator@10b06000
+[    2.200500] /dummy-sink: Fixed dependency cycle(s) with /soc@0/replicator@10b06000
+[    2.208277] /soc@0/replicator@10b06000: Fixed dependency cycle(s) with /dummy-sink
+[    2.216065] /soc@0/replicator@10b06000: Fixed dependency cycle(s) with /soc@0/tmc@10b05000
+[    2.224578] /soc@0/funnel@10b04000: Fixed dependency cycle(s) with /soc@0/tpda@10b08000
+[    2.232815] /soc@0/tpda@10b08000: Fixed dependency cycle(s) with /soc@0/funnel@10b04000
+[    2.241042] /soc@0/tpda@10b08000: Fixed dependency cycle(s) with /soc@0/tpdm@10b0d000
+[    2.249075] /soc@0/tpda@10b08000: Fixed dependency cycle(s) with /soc@0/tpdm@10b0c000
+[    2.257108] /soc@0/tpda@10b08000: Fixed dependency cycle(s) with /soc@0/tpdm@10b0b000
+[    2.265141] /soc@0/tpda@10b08000: Fixed dependency cycle(s) with /soc@0/tpdm@10b0a000
+[    2.273174] /soc@0/tpda@10b08000: Fixed dependency cycle(s) with /soc@0/tpdm@10b09000
+[    2.281225] /soc@0/tpda@10b08000: Fixed dependency cycle(s) with /soc@0/tpdm@10b09000
+[    2.289278] /soc@0/tpdm@10b09000: Fixed dependency cycle(s) with /soc@0/tpda@10b08000
+[    2.297337] /soc@0/tpda@10b08000: Fixed dependency cycle(s) with /soc@0/tpdm@10b0a000
+[    2.305391] /soc@0/tpdm@10b0a000: Fixed dependency cycle(s) with /soc@0/tpda@10b08000
+[    2.313451] /soc@0/tpda@10b08000: Fixed dependency cycle(s) with /soc@0/tpdm@10b0b000
+[    2.321502] /soc@0/tpdm@10b0b000: Fixed dependency cycle(s) with /soc@0/tpda@10b08000
+[    2.329560] /soc@0/tpda@10b08000: Fixed dependency cycle(s) with /soc@0/tpdm@10b0c000
+[    2.337613] /soc@0/tpdm@10b0c000: Fixed dependency cycle(s) with /soc@0/tpda@10b08000
+[    2.345671] /soc@0/tpda@10b08000: Fixed dependency cycle(s) with /soc@0/tpdm@10b0d000
+[    2.353723] /soc@0/tpdm@10b0d000: Fixed dependency cycle(s) with /soc@0/tpda@10b08000
+[    2.361795] /soc@0/tpdm@10c08000: Fixed dependency cycle(s) with /soc@0/funnel@10c0b000
+[    2.370045] /soc@0/tpdm@10c08000: Fixed dependency cycle(s) with /soc@0/funnel@10c0b000
+[    2.378283] /soc@0/funnel@10c0b000: Fixed dependency cycle(s) with /soc@0/tpda@10c3c000
+[    2.386503] /soc@0/funnel@10c0b000: Fixed dependency cycle(s) with /soc@0/tpdm@10c08000
+[    2.394759] /soc@0/tpdm@10c28000: Fixed dependency cycle(s) with /soc@0/tpda@10c2b000
+[    2.402822] /soc@0/tpdm@10c29000: Fixed dependency cycle(s) with /soc@0/tpda@10c2b000
+[    2.410886] /soc@0/tpdm@10c29000: Fixed dependency cycle(s) with /soc@0/tpda@10c2b000
+[    2.418939] /soc@0/tpdm@10c28000: Fixed dependency cycle(s) with /soc@0/tpda@10c2b000
+[    2.426990] /soc@0/funnel@10846000: Fixed dependency cycle(s) with /soc@0/tpda@10c2b000
+[    2.435227] /soc@0/tpdm@10841000: Fixed dependency cycle(s) with /soc@0/tpda@10c2b000
+[    2.443280] /soc@0/tpdm@1082c000: Fixed dependency cycle(s) with /soc@0/tpda@10c2b000
+[    2.451329] /soc@0/tpda@10c2b000: Fixed dependency cycle(s) with /soc@0/funnel@10c2c000
+[    2.459550] /soc@0/tpda@10c2b000: Fixed dependency cycle(s) with /soc@0/tpdm@10c29000
+[    2.467591] /soc@0/tpda@10c2b000: Fixed dependency cycle(s) with /soc@0/tpdm@10c28000
+[    2.475631] /soc@0/tpda@10c2b000: Fixed dependency cycle(s) with /soc@0/tpdm@1082c000
+[    2.483670] /soc@0/tpda@10c2b000: Fixed dependency cycle(s) with /soc@0/tpdm@10841000
+[    2.491711] /soc@0/tpda@10c2b000: Fixed dependency cycle(s) with /soc@0/funnel@10846000
+[    2.499966] /soc@0/tpda@10c2b000: Fixed dependency cycle(s) with /soc@0/funnel@10c2c000
+[    2.508200] /soc@0/funnel@10042000: Fixed dependency cycle(s) with /soc@0/funnel@10c2c000
+[    2.516609] /soc@0/funnel@10c2c000: Fixed dependency cycle(s) with /soc@0/funnel@10042000
+[    2.525016] /soc@0/funnel@10c2c000: Fixed dependency cycle(s) with /soc@0/funnel@10d04000
+[    2.533415] /soc@0/funnel@10c2c000: Fixed dependency cycle(s) with /soc@0/funnel@10c3d000
+[    2.541813] /soc@0/funnel@10c2c000: Fixed dependency cycle(s) with /soc@0/tpda@10c2b000
+[    2.550069] /soc@0/tpdm@10c38000: Fixed dependency cycle(s) with /soc@0/tpda@10c3c000
+[    2.558135] /soc@0/tpdm@10c39000: Fixed dependency cycle(s) with /soc@0/tpda@10c3c000
+[    2.566198] /soc@0/tpdm@10c39000: Fixed dependency cycle(s) with /soc@0/tpda@10c3c000
+[    2.574251] /soc@0/tpdm@10c38000: Fixed dependency cycle(s) with /soc@0/tpda@10c3c000
+[    2.582302] /soc@0/funnel@10c0b000: Fixed dependency cycle(s) with /soc@0/tpda@10c3c000
+[    2.590540] /soc@0/tpdm@10800000: Fixed dependency cycle(s) with /soc@0/tpda@10c3c000
+[    2.598590] /soc@0/tpda@10c3c000: Fixed dependency cycle(s) with /soc@0/funnel@10c3d000
+[    2.606810] /soc@0/tpda@10c3c000: Fixed dependency cycle(s) with /soc@0/tpdm@10c39000
+[    2.614850] /soc@0/tpda@10c3c000: Fixed dependency cycle(s) with /soc@0/tpdm@10c38000
+[    2.622890] /soc@0/tpda@10c3c000: Fixed dependency cycle(s) with /soc@0/tpdm@10800000
+[    2.630930] /soc@0/tpda@10c3c000: Fixed dependency cycle(s) with /soc@0/funnel@10c0b000
+[    2.639185] /soc@0/tpda@10c3c000: Fixed dependency cycle(s) with /soc@0/funnel@10c3d000
+[    2.647414] /soc@0/funnel@10c2c000: Fixed dependency cycle(s) with /soc@0/funnel@10c3d000
+[    2.655828] /soc@0/funnel@10c3d000: Fixed dependency cycle(s) with /soc@0/funnel@10c2c000
+[    2.664235] /soc@0/funnel@10c3d000: Fixed dependency cycle(s) with /soc@0/tpda@10c3c000
+[    2.672491] /soc@0/tpda@10cc4000: Fixed dependency cycle(s) with /soc@0/funnel@10cc5000
+[    2.680742] /soc@0/tpda@10cc4000: Fixed dependency cycle(s) with /soc@0/funnel@10cc5000
+[    2.688969] /soc@0/funnel@10042000: Fixed dependency cycle(s) with /soc@0/funnel@10cc5000
+[    2.697384] /soc@0/funnel@10cc5000: Fixed dependency cycle(s) with /soc@0/funnel@10042000
+[    2.705788] /soc@0/funnel@10cc5000: Fixed dependency cycle(s) with /soc@0/tpda@10cc4000
+[    2.714035] /soc@0/funnel@10c2c000: Fixed dependency cycle(s) with /soc@0/funnel@10d04000
+[    2.722450] /soc@0/funnel@10d04000: Fixed dependency cycle(s) with /soc@0/funnel@10c2c000
+[    2.730857] /soc@0/funnel@10d04000: Fixed dependency cycle(s) with /soc@0/funnel@10d13000
+[    2.739284] /soc@0/tpdm@10d08000: Fixed dependency cycle(s) with /soc@0/tpda@10d12000
+[    2.747349] /soc@0/tpdm@10d09000: Fixed dependency cycle(s) with /soc@0/tpda@10d12000
+[    2.755413] /soc@0/tpdm@10d0a000: Fixed dependency cycle(s) with /soc@0/tpda@10d12000
+[    2.763477] /soc@0/tpdm@10d0b000: Fixed dependency cycle(s) with /soc@0/tpda@10d12000
+[    2.771541] /soc@0/tpdm@10d0c000: Fixed dependency cycle(s) with /soc@0/tpda@10d12000
+[    2.779605] /soc@0/tpdm@10d0d000: Fixed dependency cycle(s) with /soc@0/tpda@10d12000
+[    2.787668] /soc@0/tpdm@10d0e000: Fixed dependency cycle(s) with /soc@0/tpda@10d12000
+[    2.795731] /soc@0/tpdm@10d0f000: Fixed dependency cycle(s) with /soc@0/tpda@10d12000
+[    2.803796] /soc@0/tpdm@10d0f000: Fixed dependency cycle(s) with /soc@0/tpda@10d12000
+[    2.811848] /soc@0/tpdm@10d0e000: Fixed dependency cycle(s) with /soc@0/tpda@10d12000
+[    2.819901] /soc@0/tpdm@10d0d000: Fixed dependency cycle(s) with /soc@0/tpda@10d12000
+[    2.827953] /soc@0/tpdm@10d0c000: Fixed dependency cycle(s) with /soc@0/tpda@10d12000
+[    2.836004] /soc@0/tpdm@10d0b000: Fixed dependency cycle(s) with /soc@0/tpda@10d12000
+[    2.844055] /soc@0/tpdm@10d0a000: Fixed dependency cycle(s) with /soc@0/tpda@10d12000
+[    2.852106] /soc@0/tpdm@10d09000: Fixed dependency cycle(s) with /soc@0/tpda@10d12000
+[    2.860158] /soc@0/tpdm@10d08000: Fixed dependency cycle(s) with /soc@0/tpda@10d12000
+[    2.868208] /soc@0/tpda@10d12000: Fixed dependency cycle(s) with /soc@0/funnel@10d13000
+[    2.876428] /soc@0/tpda@10d12000: Fixed dependency cycle(s) with /soc@0/tpdm@10d0f000
+[    2.884468] /soc@0/tpda@10d12000: Fixed dependency cycle(s) with /soc@0/tpdm@10d0e000
+[    2.892508] /soc@0/tpda@10d12000: Fixed dependency cycle(s) with /soc@0/tpdm@10d0d000
+[    2.900549] /soc@0/tpda@10d12000: Fixed dependency cycle(s) with /soc@0/tpdm@10d0c000
+[    2.908588] /soc@0/tpda@10d12000: Fixed dependency cycle(s) with /soc@0/tpdm@10d0b000
+[    2.916629] /soc@0/tpda@10d12000: Fixed dependency cycle(s) with /soc@0/tpdm@10d0a000
+[    2.924668] /soc@0/tpda@10d12000: Fixed dependency cycle(s) with /soc@0/tpdm@10d09000
+[    2.932708] /soc@0/tpda@10d12000: Fixed dependency cycle(s) with /soc@0/tpdm@10d08000
+[    2.940779] /soc@0/tpda@10d12000: Fixed dependency cycle(s) with /soc@0/funnel@10d13000
+[    2.949009] /soc@0/funnel@10d04000: Fixed dependency cycle(s) with /soc@0/funnel@10d13000
+[    2.957422] /soc@0/funnel@10d13000: Fixed dependency cycle(s) with /soc@0/funnel@10d04000
+[    2.965828] /soc@0/funnel@10d13000: Fixed dependency cycle(s) with /soc@0/tpda@10d12000
+[    2.976393] /soc@0/rsc@17500000/regulators-0: Fixed dependency cycle(s) with /soc@0/rsc@17500000/regulators-0/bob2
+[    2.987017] /soc@0/rsc@17500000/regulators-0: Fixed dependency cycle(s) with /soc@0/rsc@17500000/regulators-0/bob1
+[    2.997881] /soc@0/rsc@17500000/regulators-7: Fixed dependency cycle(s) with /soc@0/rsc@17500000/regulators-7/smps5
+[    3.008591] /soc@0/rsc@17500000/regulators-7: Fixed dependency cycle(s) with /soc@0/rsc@17500000/regulators-4/smps1
+[    3.020325] /pmic-glink/connector@0: Fixed dependency cycle(s) with /soc@0/geniqup@bc0000/i2c@b8c000/typec-mux@8
+[    3.031057] /pmic-glink/connector@0: Fixed dependency cycle(s) with /soc@0/usb@a6f8800/usb@a600000
+[    3.041267] HugeTLB: registered 1.00 GiB page size, pre-allocated 0 pages
+[    3.048235] HugeTLB: 0 KiB vmemmap can be freed for a 1.00 GiB page
+[    3.054672] HugeTLB: registered 32.0 MiB page size, pre-allocated 0 pages
+[    3.061636] HugeTLB: 0 KiB vmemmap can be freed for a 32.0 MiB page
+[    3.068073] HugeTLB: registered 2.00 MiB page size, pre-allocated 0 pages
+[    3.075036] HugeTLB: 0 KiB vmemmap can be freed for a 2.00 MiB page
+[    3.081472] HugeTLB: registered 64.0 KiB page size, pre-allocated 0 pages
+[    3.088435] HugeTLB: 0 KiB vmemmap can be freed for a 64.0 KiB page
+[    3.095317] ACPI: Interpreter disabled.
+[    3.101788] iommu: Default domain type: Translated
+[    3.106719] iommu: DMA domain TLB invalidation policy: strict mode
+[    3.113240] SCSI subsystem initialized
+[    3.117118] libata version 3.00 loaded.
+[    3.121136] usbcore: registered new interface driver usbfs
+[    3.126776] usbcore: registered new interface driver hub
+[    3.132238] usbcore: registered new device driver usb
+[    3.137662] mc: Linux media interface: v0.10
+[    3.142059] videodev: Linux video capture interface: v2.00
+[    3.147701] pps_core: LinuxPPS API ver. 1 registered
+[    3.152806] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    3.162182] PTP clock support registered
+[    3.166245] EDAC MC: Ver: 3.0.0
+[    3.169614] scmi_core: SCMI protocol bus registered
+[    3.174945] FPGA manager framework
+[    3.178784] vgaarb: loaded
+[    3.181642] clocksource: Switched to clocksource arch_sys_counter
+[    3.187945] VFS: Disk quotas dquot_6.6.0
+[    3.191978] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[    3.199098] pnp: PnP ACPI: disabled
+[    3.204093] NET: Registered PF_INET protocol family
+[    3.209142] IP idents hash table entries: 262144 (order: 9, 2097152 bytes, linear)
+[    3.219551] tcp_listen_portaddr_hash hash table entries: 16384 (order: 6, 262144 bytes, linear)
+[    3.228583] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    3.236531] TCP established hash table entries: 262144 (order: 9, 2097152 bytes, linear)
+[    3.245566] TCP bind hash table entries: 65536 (order: 9, 2097152 bytes, linear)
+[    3.253921] TCP: Hash tables configured (established 262144 bind 65536)
+[    3.260728] UDP hash table entries: 16384 (order: 8, 1048576 bytes, linear)
+[    3.268365] UDP-Lite hash table entries: 16384 (order: 8, 1048576 bytes, linear)
+[    3.276465] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    3.282350] RPC: Registered named UNIX socket transport module.
+[    3.288426] RPC: Registered udp transport module.
+[    3.293255] RPC: Registered tcp transport module.
+[    3.298084] RPC: Registered tcp-with-tls transport module.
+[    3.303717] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    3.310742] PCI: CLS 0 bytes, default 64
+[    3.314827] Unpacking initramfs...
+[    3.314867] kvm [1]: HYP mode not available
+[    3.322820] Initialise system trusted keyrings
+[    3.327418] workingset: timestamp_bits=42 max_order=23 bucket_order=0
+[    3.334144] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    3.340205] NFS: Registering the id_resolver key type
+[    3.345398] Key type id_resolver registered
+[    3.348594] Freeing initrd memory: 2752K
+[    3.349700] Key type id_legacy registered
+[    3.349704] nfs4filelayout_init: NFSv4 File Layout Driver Registering...
+[    3.349706] nfs4flexfilelayout_init: NFSv4 Flexfile Layout Driver Registering...
+[    3.372375] 9p: Installing v9fs 9p2000 file system support
+[    3.388788] Key type asymmetric registered
+[    3.393005] Asymmetric key parser 'x509' registered
+[    3.398023] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 242)
+[    3.405617] io scheduler mq-deadline registered
+[    3.410272] io scheduler kyber registered
+[    3.414394] io scheduler bfq registered
+[    3.423348] ledtrig-cpu: registered to indicate activity on CPUs
+[    3.438561] vreg_s5j_1p2: Setting 1256000-1304000uV
+[    3.438561] vreg_s1f_0p7: Setting 700000-1100000uV
+[    3.438662] vreg_l1f_1p0: Setting 1024000-1024000uV
+[    3.439577] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+[    3.440242] msm_serial: driver initialized
+[    3.440344] SuperH (H)SCI(F) driver initialized
+[    3.440395] STM32 USART driver initialized
+[    3.443671] vreg_l1j_0p8: Setting 880000-920000uV
+[    3.448570] vreg_l2f_1p0: Setting 1024000-1024000uV
+[    3.453574] vreg_l2j_1p2: Setting 1256000-1256000uV
+[    3.459994] vreg_l3f_1p0: Setting 1024000-1024000uV
+[    3.464226] vreg_l3j_0p8: Setting 880000-920000uV
+[    3.498605] loop: module loaded
+[    3.502084] megasas: 07.734.00.00-rc1
+[    3.506918] spmi_pmic_arb c400000.arbiter: PMIC arbiter version v7 (0x70000001)
+[    3.529927] tun: Universal TUN/TAP device driver, 1.6
+[    3.535367] thunder_xcv, ver 1.0
+[    3.538701] thunder_bgx, ver 1.0
+[    3.542032] nicpf, ver 1.0
+[    3.545160] e1000: Intel(R) PRO/1000 Network Driver
+[    3.550168] e1000: Copyright (c) 1999-2006 Intel Corporation.
+[    3.556075] e1000e: Intel(R) PRO/1000 Network Driver
+[    3.561181] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+[    3.567261] igb: Intel(R) Gigabit Ethernet Network Driver
+[    3.572808] igb: Copyright (c) 2007-2014 Intel Corporation.
+[    3.578534] igbvf: Intel(R) Gigabit Virtual Function Network Driver
+[    3.584972] igbvf: Copyright (c) 2009 - 2012 Intel Corporation.
+[    3.591135] sky2: driver version 1.30
+[    3.595270] VFIO - User Level meta-driver version: 0.3
+[    3.602052] /pmic-glink/connector@0: Fixed dependency cycle(s) with /soc@0/usb@a6f8800/usb@a600000
+[    3.611268] /soc@0/phy@fd5000: Fixed dependency cycle(s) with /soc@0/usb@a6f8800/usb@a600000
+[    3.619957] /soc@0/usb@a6f8800/usb@a600000: Fixed dependency cycle(s) with /pmic-glink/connector@0
+[    3.629158] /soc@0/usb@a6f8800/usb@a600000: Fixed dependency cycle(s) with /soc@0/phy@fd5000
+[    3.638643] usbcore: registered new interface driver usb-storage
+[    3.658892] i2c_dev: i2c /dev entries driver
+[    3.664333] input: pmic_pwrkey as /devices/platform/soc@0/c400000.arbiter/spmi-0/0-00/c42d000.spmi:pmic@0:pon@1300/c42d000.spmi:pmic@0:pon@1300:pwrkey/input/input0
+[    3.686257] sbsa-gwdt 1c840000.watchdog: Initialized with 10s timeout @ 19200000 Hz, action=0.
+[    3.695738] driver: Idle state 1 target residency too low
+[    3.701314] driver: Idle state 1 target residency too low
+[    3.706887] driver: Idle state 1 target residency too low
+[    3.712458] driver: Idle state 1 target residency too low
+[    3.718031] driver: Idle state 1 target residency too low
+[    3.723602] driver: Idle state 1 target residency too low
+[    3.729172] driver: Idle state 1 target residency too low
+[    3.734745] driver: Idle state 1 target residency too low
+[    3.740371] sdhci: Secure Digital Host Controller Interface driver
+[    3.746721] sdhci: Copyright(c) Pierre Ossman
+[    3.751421] Synopsys Designware Multimedia Card Interface Driver
+[    3.757870] sdhci-pltfm: SDHCI platform and OF driver helper
+[    3.764400] efifb: probing for efifb
+[    3.768085] efifb: framebuffer at 0xe4800000, using 8100k, total 8100k
+[    3.774790] efifb: mode is 1920x1080x32, linelength=7680, pages=1
+[    3.781052] efifb: scrolling: redraw
+[    3.784729] efifb: Truecolor: size=8:8:8:8, shift=24:16:8:0
+[    3.794866] Console: switching to colour frame buffer device 240x67
+[    3.805165] fb0: EFI VGA frame buffer device
+[    3.809776] arm-scmi arm-scmi.0.auto: Using scmi_mailbox_transport
+[    3.816147] arm-scmi arm-scmi.0.auto: SCMI max-rx-timeout: 30ms / max-msg-size: 104bytes / max-msg: 20
+[    3.825821] arm-scmi arm-scmi.0.auto: SCMI Notifications - Core Enabled.
+[    3.833248] arm-scmi arm-scmi.0.auto: SCMI Protocol v2.0 'Qualcomm:' Firmware version 0x20000
+[    3.842121] arm-scmi arm-scmi.0.auto: Enabling SCMI Quirk [quirk_perf_level_get_fc_force]
+[    3.850688] arm-scmi arm-scmi.0.auto: Enabling SCMI Quirk [quirk_clock_rates_triplet_out_of_spec]
+[    3.865363] arm-scmi arm-scmi.0.auto: [Firmware Bug]: Failed to add opps_by_lvl at 2956800 for NCC1 - ret:-16
+[    3.875722] arm-scmi arm-scmi.0.auto: [Firmware Bug]: Failed to add opps_by_lvl at 2956800 for NCC1 - ret:-16
+[    3.887904] cpu cpu0: EM: created perf domain
+[    3.892706] cpu cpu4: EM: created perf domain
+[    3.897270] scmi-perf-domain scmi_dev.4: Initialized 3 performance domains
+[    3.904853] SMCCC: SOC_ID: ARCH_SOC_ID not implemented, skipping ....
+[    3.911799] clocksource: arch_mmio_counter: mask: 0xffffffffffffff max_cycles: 0x46d987e47, max_idle_ns: 440795202767 ns
+[    3.922984] arch-timer-mmio 17800000.timer: mmio timer running at 19.20MHz (virt)
+[    3.930834] usbcore: registered new interface driver usbhid
+[    3.936576] usbhid: USB HID core driver
+[    3.942495] hw perfevents: enabled with armv8_pmuv3 PMU driver, 13 (0,80000fff) counters available
+[    3.953375] NET: Registered PF_PACKET protocol family
+[    3.958598] 9pnet: Installing 9P2000 support
+[    3.963010] Key type dns_resolver registered
+[    3.969875] registered taskstats version 1
+[    3.974136] Loading compiled-in X.509 certificates
+[    3.980965] Demotion targets for Node 0: null
+[    4.018117] qcom_scm: convention: smc arm 64
+[    4.029964] qcom_scm firmware:scm: qseecom: found qseecom with version 0x1402000
+[    4.037598] qcom_scm firmware:scm: qseecom: untested machine, skipping
+[    4.045709] /soc@0/geniqup@bc0000/i2c@b8c000/typec-mux@8: Fixed dependency cycle(s) with /soc@0/phy@fd5000
+[    4.062513] vreg_s4c_1p8: Setting 1856000-2000000uV
+[    4.063124] vreg_l2e_0p8: Setting 880000-920000uV
+[    4.063792] arm-smmu 3da0000.iommu: probing hardware configuration...
+[    4.063794] arm-smmu 3da0000.iommu: SMMUv2 with:
+[    4.063814] arm-smmu 3da0000.iommu: 	stage 1 translation
+[    4.063816] arm-smmu 3da0000.iommu: 	coherent table walk
+[    4.063817] arm-smmu 3da0000.iommu: 	stream matching with 24 register groups
+[    4.063833] arm-smmu 3da0000.iommu: 	22 context banks (0 stage-2 only)
+[    4.063850] arm-smmu 3da0000.iommu: 	Supported page sizes: 0x61311000
+[    4.063851] arm-smmu 3da0000.iommu: 	Stage-1: 48-bit VA -> 40-bit IPA
+[    4.063893] arm-smmu 3da0000.iommu: 	preserved 0 boot mappings
+[    4.065249] platform 3d00000.gpu: Adding to iommu group 0
+[    4.065313] platform 3d6a000.gmu: Adding to iommu group 1
+[    4.066567] arm-smmu 15000000.iommu: probing hardware configuration...
+[    4.066568] arm-smmu 15000000.iommu: SMMUv2 with:
+[    4.066576] arm-smmu 15000000.iommu: 	stage 1 translation
+[    4.066577] arm-smmu 15000000.iommu: 	coherent table walk
+[    4.066578] arm-smmu 15000000.iommu: 	stream matching with 117 register groups
+[    4.066585] arm-smmu 15000000.iommu: 	74 context banks (0 stage-2 only)
+[    4.067210] arm-smmu 15000000.iommu: 	Supported page sizes: 0x61311000
+[    4.067211] arm-smmu 15000000.iommu: 	Stage-1: 40-bit VA -> 40-bit IPA
+[    4.067230] arm-smmu 15000000.iommu: 	preserved 0 boot mappings
+[    4.067754] vreg_l1c_1p2: Setting 1200000-1200000uV
+[    4.068945] platform 8c0000.geniqup: Adding to iommu group 2
+[    4.068979] platform ac0000.geniqup: Adding to iommu group 3
+[    4.069013] platform bc0000.geniqup: Adding to iommu group 4
+[    4.069071] platform ae00000.display-subsystem: Adding to iommu group 5
+[    4.069121] platform a600000.usb: Adding to iommu group 6
+[    4.072723] vreg_l3e_1p2: Setting 1200000-1200000uV
+[    4.074624] platform a400000.usb: Adding to iommu group 7
+[    4.076254] remoteproc remoteproc0: adsp is available
+[    4.076301] remoteproc remoteproc0: Direct firmware load for qcom/x1e80100/adsp.mbn failed with error -2
+[    4.076305] remoteproc remoteproc0: powering up adsp
+[    4.076313] remoteproc remoteproc0: Direct firmware load for qcom/x1e80100/adsp.mbn failed with error -2
+[    4.076316] remoteproc remoteproc0: request_firmware failed: -2
+[    4.077225] remoteproc remoteproc1: cdsp is available
+[    4.077236] remoteproc remoteproc1: Direct firmware load for qcom/x1e80100/cdsp.mbn failed with error -2
+[    4.077237] remoteproc remoteproc1: powering up cdsp
+[    4.077242] remoteproc remoteproc1: Direct firmware load for qcom/x1e80100/cdsp.mbn failed with error -2
+[    4.077243] remoteproc remoteproc1: request_firmware failed: -2
+[    4.079218] vreg_l2c_0p8: Setting 880000-920000uV
+[    4.079255] 894000.serial: ttyMSM0 at MMIO 0x894000 (irq = 184, base_baud = 0) is a MSM
+[    4.082063] qcom_pmic_glink pmic-glink: Failed to create device link (0x180) with supplier 2-0008 for /pmic-glink/connector@0
+[    4.090026] qcom_pmic_glink pmic-glink: Failed to create device link (0x180) with supplier 2-0008 for /pmic-glink/connector@0
+[    4.094918] vreg_l3c_0p8: Setting 880000-920000uV
+[    4.129818] /soc@0/display-subsystem@ae00000/display-controller@ae01000: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/displayport-controller@aea0000
+[    4.399674] /soc@0/display-subsystem@ae00000/display-controller@ae01000: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/displayport-controller@ae90000
+[    4.416441] /soc@0/display-subsystem@ae00000/display-controller@ae01000: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/displayport-controller@ae90000
+[    4.432625] /soc@0/display-subsystem@ae00000/displayport-controller@ae90000: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/display-controller@ae01000
+[    4.449542] /soc@0/display-subsystem@ae00000/display-controller@ae01000: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/displayport-controller@aea0000
+[    4.465754] /soc@0/display-subsystem@ae00000/displayport-controller@aea0000: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/displayport-controller@aea0000/aux-bus/panel
+[    4.483551] /soc@0/display-subsystem@ae00000/displayport-controller@aea0000: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/display-controller@ae01000
+[    4.499782] /soc@0/display-subsystem@ae00000/displayport-controller@aea0000/aux-bus/panel: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/displayport-controller@aea0000
+[    4.521472] vreg_bob1: Setting 3008000-3960000uV
+[    4.521704] vreg_l1d_0p8: Setting 880000-920000uV
+[    4.521871] vreg_s1i_0p9: Setting 900000-920000uV
+[    4.522022] vreg_s2i_1p0: Setting 1000000-1100000uV
+[    4.522132] vreg_l1i_1p8: Setting 1800000-1800000uV
+[    4.522342] vreg_l2i_1p2: Setting 1200000-1200000uV
+[    4.522563] vreg_bob2: Setting 2504000-3008000uV
+[    4.522715] vreg_l1b_1p8: Setting 1800000-1800000uV
+[    4.522815] vreg_l2b_3p0: Setting 3072000-3100000uV
+[    4.522907] vreg_l4b_1p8: Setting 1800000-1800000uV
+[    4.522987] vreg_l5b_3p0: Setting 3000000-3000000uV
+[    4.523064] vreg_l6b_1p8: Setting 1800000-2960000uV
+[    4.523170] vreg_l7b_2p8: Setting 2800000-2800000uV
+[    4.523230] vreg_l8b_3p0: Setting 3072000-3072000uV
+[    4.523296] vreg_l2d_0p9: Setting 912000-920000uV
+[    4.523372] vreg_l3d_1p8: Setting 1800000-1800000uV
+[    4.523383] /soc@0/display-subsystem@ae00000/displayport-controller@aea0000: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/displayport-controller@aea0000/aux-bus/panel
+[    4.523398] /soc@0/display-subsystem@ae00000/displayport-controller@aea0000/aux-bus/panel: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/displayport-controller@aea0000
+[    4.524158] vreg_l3i_0p8: Setting 880000-920000uV
+[    4.524975] vreg_l9b_2p9: Setting 2960000-2960000uV
+[    4.575712] qcom-pcie 1bf8000.pci: supply vdda not found, using dummy regulator
+[    4.575835] qcom-pcie 1c08000.pci: supply vdda not found, using dummy regulator
+[    4.575855] qcom-pcie 1c08000.pci: supply vddpe-3v3 not found, using dummy regulator
+[    4.575938] qcom-pcie 1c08000.pci: host bridge /soc@0/pci@1c08000 ranges:
+[    4.575948] qcom-pcie 1c08000.pci:       IO 0x007c200000..0x007c2fffff -> 0x0000000000
+[    4.575957] qcom-pcie 1c08000.pci:      MEM 0x007c300000..0x007dffffff -> 0x007c300000
+[    4.576545] qcom-pcie 1c00000.pci: supply vdda not found, using dummy regulator
+[    4.576684] qcom-pcie 1c00000.pci: host bridge /soc@0/pci@1c00000 ranges:
+[    4.576698] qcom-pcie 1c00000.pci:       IO 0x007e200000..0x007e2fffff -> 0x0000000000
+[    4.576704] qcom-pcie 1c00000.pci:      MEM 0x007e300000..0x007fffffff -> 0x007e300000
+[    4.578554] vreg_l10b_1p8: Setting 1800000-1800000uV
+[    4.578636] irq: IRQ196: trimming hierarchy from :soc@0:interrupt-controller@b220000-9
+[    4.578680] input: gpio-keys as /devices/platform/gpio-keys/input/input1
+[    4.578931] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+[    4.579390] qcom-pcie 1bf8000.pci: host bridge /soc@0/pci@1bf8000 ranges:
+[    4.579685] Loaded X.509 cert 'sforshee: 00b28ddf47aef9cea7'
+[    4.580038] Loaded X.509 cert 'wens: 61c038651aabdcf94bd0ac7ff06c7248db18c600'
+[    4.580105] vreg_l12b_1p2: Setting 1200000-1200000uV
+[    4.580214] vreg_l13b_3p0: Setting 3072000-3100000uV
+[    4.580267] vreg_l14b_3p0: Setting 3072000-3072000uV
+[    4.580324] vreg_l15b_1p8: Setting 1800000-1800000uV
+[    4.580448] vreg_l16b_2p9: Setting 2912000-2912000uV
+[    4.580500] vreg_l17b_2p5: Setting 2504000-2504000uV
+[    4.580837] qcom-pcie 1bf8000.pci:       IO 0x0070200000..0x00702fffff -> 0x0000000000
+[    4.581040] irq: IRQ198: trimming hierarchy from :soc@0:interrupt-controller@b220000-9
+[    4.581066] irq: IRQ199: trimming hierarchy from :soc@0:interrupt-controller@b220000-9
+[    4.581182] irq: IRQ200: trimming hierarchy from :soc@0:interrupt-controller@b220000-9
+[    4.581911] faux_driver regulatory: Direct firmware load for regulatory.db failed with error -2
+[    4.582476] clk: Not disabling unused clocks
+[    4.582478] PM: genpd: Not disabling unused power domains
+[    4.582746] qcom-pcie 1bf8000.pci:      MEM 0x0070300000..0x0073ffffff -> 0x0070300000
+[    4.584039] cfg80211: failed to load regulatory.db
+[    4.606261] xhci-hcd xhci-hcd.1.auto: xHCI Host Controller
+[    4.687981] qcom-pcie 1c00000.pci: iATU: unroll T, 8 ob, 8 ib, align 4K, limit 1024G
+[    4.691296] qcom-pcie 1c08000.pci: iATU: unroll T, 8 ob, 8 ib, align 4K, limit 1024G
+[    4.691463] qcom-pcie 1c08000.pci: PCI host bridge to bus 0004:00
+[    4.691465] pci_bus 0004:00: root bus resource [bus 00-ff]
+[    4.691468] pci_bus 0004:00: root bus resource [io  0x0000-0xfffff]
+[    4.691469] pci_bus 0004:00: root bus resource [mem 0x7c300000-0x7dffffff]
+[    4.691515] pci 0004:00:00.0: [17cb:0111] type 01 class 0x060400 PCIe Root Port
+[    4.691527] pci 0004:00:00.0: BAR 0 [mem 0x00000000-0x00000fff]
+[    4.691530] pci 0004:00:00.0: PCI bridge to [bus 01-ff]
+[    4.691534] pci 0004:00:00.0:   bridge window [io  0x0000-0x0fff]
+[    4.691536] pci 0004:00:00.0:   bridge window [mem 0x00000000-0x000fffff]
+[    4.691541] pci 0004:00:00.0:   bridge window [mem 0x00000000-0x000fffff 64bit pref]
+[    4.691577] pci 0004:00:00.0: PME# supported from D0 D3hot D3cold
+[    4.692643] pci 0004:00:00.0: BAR 0 [mem 0x7c300000-0x7c300fff]: assigned
+[    4.692646] pci 0004:00:00.0: PCI bridge to [bus 01-ff]
+[    4.692651] pci_bus 0004:00: resource 4 [io  0x0000-0xfffff]
+[    4.692653] pci_bus 0004:00: resource 5 [mem 0x7c300000-0x7dffffff]
+[    4.695306] xhci-hcd xhci-hcd.1.auto: new USB bus registered, assigned bus number 1
+[    4.697391] pcieport 0004:00:00.0: PME: Signaling with IRQ 211
+[    4.697709] xhci-hcd xhci-hcd.1.auto: hcc params 0x0110ffc5 hci version 0x110 quirks 0x0000808000000810
+[    4.697731] xhci-hcd xhci-hcd.1.auto: irq 201, io mem 0x0a600000
+[    4.697783] xhci-hcd xhci-hcd.1.auto: xHCI Host Controller
+[    4.697784] xhci-hcd xhci-hcd.1.auto: new USB bus registered, assigned bus number 2
+[    4.697786] xhci-hcd xhci-hcd.1.auto: Host supports USB 3.1 Enhanced SuperSpeed
+[    4.698013] hub 1-0:1.0: USB hub found
+[    4.698020] hub 1-0:1.0: 1 port detected
+[    4.698377] hub 2-0:1.0: USB hub found
+[    4.698403] hub 2-0:1.0: 1 port detected
+[    4.699258] qcom-pcie 1bf8000.pci: iATU: unroll T, 8 ob, 8 ib, align 4K, limit 1024G
+[    4.699555] qcom_pmic_glink pmic-glink: Failed to create device link (0x180) with supplier a600000.usb for /pmic-glink/connector@0
+[    4.700933] pcieport 0004:00:00.0: AER: enabled with IRQ 211
+[    4.706217] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[    4.771321] qcom-pcie 1bf8000.pci: PCI host bridge to bus 0006:00
+[    4.772155] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 3
+[    4.773522] pci_bus 0006:00: root bus resource [bus 00-ff]
+[    4.776817] xhci-hcd xhci-hcd.2.auto: hcc params 0x0118ffc5 hci version 0x110 quirks 0x0000808000000810
+[    4.841302] pci_bus 0006:00: root bus resource [io  0x200000-0x2fffff] (bus address [0x0000-0xfffff])
+[    4.842204] xhci-hcd xhci-hcd.2.auto: irq 212, io mem 0x0a400000
+[    4.843077] pci_bus 0006:00: root bus resource [mem 0x70300000-0x73ffffff]
+[    4.844001] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[    4.844812] pci 0006:00:00.0: [17cb:0111] type 01 class 0x060400 PCIe Root Port
+[    4.845669] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 4
+[    4.846536] pci 0006:00:00.0: BAR 0 [mem 0x00000000-0x00000fff]
+[    4.847380] xhci-hcd xhci-hcd.2.auto: Host supports USB 3.1 Enhanced SuperSpeed
+[    4.848234] pci 0006:00:00.0: PCI bridge to [bus 01-ff]
+[    4.849246] hub 3-0:1.0: USB hub found
+[    4.849946] pci 0006:00:00.0:   bridge window [io  0x200000-0x200fff]
+[    4.850780] hub 3-0:1.0: 2 ports detected
+[    4.851610] pci 0006:00:00.0:   bridge window [mem 0x00000000-0x000fffff]
+[    4.852630] hub 4-0:1.0: USB hub found
+[    4.853276] pci 0006:00:00.0:   bridge window [mem 0x00000000-0x000fffff 64bit pref]
+[    4.854087] hub 4-0:1.0: 2 ports detected
+[    4.854905] pci 0006:00:00.0: PME# supported from D0 D3hot D3cold
+[    5.097697] usb 3-1: new high-speed USB device number 2 using xhci-hcd
+[    5.121824] pci 0006:01:00.0: [144d:a80d] type 00 class 0x010802 PCIe Endpoint
+[    5.333313] hub 3-1:1.0: USB hub found
+[    5.386081] pci 0006:01:00.0: BAR 0 [mem 0x00000000-0x00003fff 64bit]
+[    5.387187] hub 3-1:1.0: 4 ports detected
+[    5.393912] pci 0006:01:00.0: ASPM: default states L1
+[    5.441974] usb 4-1: new SuperSpeed Plus Gen 2x1 USB device number 2 using xhci-hcd
+[    5.477667] hub 4-1:1.0: USB hub found
+[    5.520241] pci 0006:00:00.0: bridge window [mem 0x70300000-0x703fffff]: assigned
+[    5.520426] qcom-pcie 1c00000.pci: PCI host bridge to bus 0005:00
+[    5.520435] pci_bus 0005:00: root bus resource [bus 00-ff]
+[    5.520440] pci_bus 0005:00: root bus resource [io  0x100000-0x1fffff] (bus address [0x0000-0xfffff])
+[    5.520444] pci_bus 0005:00: root bus resource [mem 0x7e300000-0x7fffffff]
+[    5.520467] pci 0005:00:00.0: [17cb:0111] type 01 class 0x060400 PCIe Root Port
+[    5.520482] pci 0005:00:00.0: BAR 0 [mem 0x00000000-0x00000fff]
+[    5.520487] pci 0005:00:00.0: PCI bridge to [bus 01-ff]
+[    5.520493] pci 0005:00:00.0:   bridge window [io  0x100000-0x100fff]
+[    5.520497] pci 0005:00:00.0:   bridge window [mem 0x00000000-0x000fffff]
+[    5.520504] pci 0005:00:00.0:   bridge window [mem 0x00000000-0x000fffff 64bit pref]
+[    5.520540] pci 0005:00:00.0: PME# supported from D0 D3hot D3cold
+[    5.521351] hub 4-1:1.0: 3 ports detected
+[    5.521761] pci 0005:01:00.0: [10ec:8168] type 00 class 0x020000 PCIe Endpoint
+[    5.521807] pci 0006:00:00.0: BAR 0 [mem 0x70400000-0x70400fff]: assigned
+[    5.522037] pci 0005:01:00.0: BAR 0 [io  0x100000-0x1000ff]
+[    5.522061] pci 0005:01:00.0: BAR 2 [mem 0x00000000-0x00000fff 64bit]
+[    5.522078] pci 0005:01:00.0: BAR 4 [mem 0x00000000-0x00003fff 64bit]
+[    5.522666] pci 0005:01:00.0: supports D1 D2
+[    5.523472] pci 0006:01:00.0: BAR 0 [mem 0x70300000-0x70303fff 64bit]: assigned
+[    5.524327] pci 0005:01:00.0: PME# supported from D0 D1 D2 D3hot D3cold
+[    5.525172] pci 0006:00:00.0: PCI bridge to [bus 01-ff]
+[    5.533990] pci 0005:01:00.0: ASPM: default states L1
+[    5.592195] pci 0006:00:00.0:   bridge window [mem 0x70300000-0x703fffff]
+[    5.593093] pci 0005:00:00.0: bridge window [mem 0x7e300000-0x7e3fffff]: assigned
+[    5.593724] pci_bus 0006:00: resource 4 [io  0x200000-0x2fffff]
+[    5.594521] pci 0005:00:00.0: BAR 0 [mem 0x7e400000-0x7e400fff]: assigned
+[    5.595320] pci_bus 0006:00: resource 5 [mem 0x70300000-0x73ffffff]
+[    5.596121] pci 0005:00:00.0: bridge window [io  0x100000-0x100fff]: assigned
+[    5.596922] pci_bus 0006:01: resource 1 [mem 0x70300000-0x703fffff]
+[    5.597749] pci 0005:01:00.0: BAR 4 [mem 0x7e300000-0x7e303fff 64bit]: assigned
+[    5.605832] pci 0004:01:00.0: [17cb:1107] type 00 class 0x028000 PCIe Endpoint
+[    5.664956] pci 0005:01:00.0: BAR 2 [mem 0x7e304000-0x7e304fff 64bit]: assigned
+[    5.665984] pci 0004:01:00.0: BAR 0 [mem 0x00000000-0x001fffff 64bit]
+[    5.666698] pci 0005:01:00.0: BAR 0 [io  0x100000-0x1000ff]: assigned
+[    5.667902] pci 0004:01:00.0: PME# supported from D0 D3hot D3cold
+[    5.668381] pci 0005:00:00.0: PCI bridge to [bus 01-ff]
+[    5.673732] pci 0004:01:00.0: ASPM: default states L1
+[    5.735576] pci 0005:00:00.0:   bridge window [io  0x100000-0x100fff]
+[    5.736517] pcieport 0004:00:00.0: bridge window [mem 0x7c400000-0x7c5fffff]: assigned
+[    5.737281] pci 0005:00:00.0:   bridge window [mem 0x7e300000-0x7e3fffff]
+[    5.737285] pci_bus 0005:00: resource 4 [io  0x100000-0x1fffff]
+[    5.737286] pci_bus 0005:00: resource 5 [mem 0x7e300000-0x7fffffff]
+[    5.737288] pci_bus 0005:01: resource 0 [io  0x100000-0x100fff]
+[    5.738154] pci 0004:01:00.0: BAR 0 [mem 0x7c400000-0x7c5fffff 64bit]: assigned
+[    5.738989] pci_bus 0005:01: resource 1 [mem 0x7e300000-0x7e3fffff]
+[    5.745271] pcieport 0006:00:00.0: PME: Signaling with IRQ 219
+[    5.861685] usb 3-1.3: new low-speed USB device number 3 using xhci-hcd
+[    5.872917] pcieport 0006:00:00.0: AER: enabled with IRQ 214
+[    6.108339] input: SEM USB Keyboard as /devices/platform/soc@0/a4f8800.usb/a400000.usb/xhci-hcd.2.auto/usb3/3-1/3-1.3/3-1.3:1.0/0003:1A2C:2124.0001/input/input2
+[    6.139669] nvme nvme0: pci function 0006:01:00.0
+[    6.140320] pcieport 0005:00:00.0: PME: Signaling with IRQ 221
+[    6.140686] pcieport 0005:00:00.0: AER: enabled with IRQ 221
+[    6.141327] r8169 0005:01:00.0: enabling device (0000 -> 0003)
+[    6.142143] nvme 0006:01:00.0: enabling device (0000 -> 0002)
+[    6.149911] usb 4-1.2: new SuperSpeed USB device number 3 using xhci-hcd
+[    6.170266] ------------[ cut here ]------------
+[    6.170270] WARNING: kernel/module/kmod.c:143 at __request_module+0x19c/0x200, CPU#2: kworker/u34:3/103
+[    6.170283] Modules linked in:
+[    6.170289] CPU: 2 UID: 0 PID: 103 Comm: kworker/u34:3 Not tainted 6.19.0-rc4-g740f9e80d577 #1 PREEMPT 
+[    6.170293] Hardware name: LENOVO 91B6001CUK/3796, BIOS O6NKT3BA 05/02/2025
+[    6.170296] Workqueue: async async_run_entry_fn
+[    6.170303] pstate: 61400005 (nZCv daif +PAN -UAO -TCO +DIT -SSBS BTYPE=--)
+[    6.170307] pc : __request_module+0x19c/0x200
+[    6.170311] lr : __request_module+0x198/0x200
+[    6.170315] sp : ffff80008183b3b0
+[    6.170317] x29: ffff80008183b430 x28: ffff000801f36000 x27: ffff000801f350c8
+[    6.170321] x26: ffffc2fc13c000b8 x25: ffff000801f350c8 x24: 0000000000000000
+[    6.170326] x23: ffff000801f36000 x22: 0000000000000000 x21: ffff0008024db000
+[    6.170331] x20: 0000000000000001 x19: ffffc2fc13be0b40 x18: 0000000000000002
+[    6.170335] x17: 0000000000000000 x16: 0000000000000000 x15: 0000000000000000
+[    6.170338] x14: 0000000000000000 x13: 0000000000000000 x12: 0000000000000000
+[    6.170342] x11: 0000000000000000 x10: 0000000000000000 x9 : 0000000000000000
+[    6.170346] x8 : ffff80008183b428 x7 : 0000000000000000 x6 : 0000000000000000
+[    6.170350] x5 : 0000000000000000 x4 : 0000000000000000 x3 : 0000000000000030
+[    6.170353] x2 : 0000000000000008 x1 : ffffc2fc11b3ec7c x0 : 0000000000000001
+[    6.170357] Call trace:
+[    6.170360]  __request_module+0x19c/0x200 (P)
+[    6.170366]  phy_request_driver_module+0x11c/0x17c
+[    6.170374]  phy_device_create+0x224/0x250
+[    6.170379]  get_phy_device+0x78/0x154
+[    6.170383]  mdiobus_scan+0x38/0x11c
+[    6.170387]  __mdiobus_register+0x1e8/0x408
+[    6.170392]  __devm_mdiobus_register+0x70/0xe8
+[    6.170396]  rtl_init_one+0x824/0x10cc
+[    6.170403]  local_pci_probe+0x40/0xa4
+[    6.170409]  pci_device_probe+0xc0/0x240
+[    6.170412]  really_probe+0xbc/0x29c
+[    6.170419]  __driver_probe_device+0x78/0x12c
+[    6.170423]  driver_probe_device+0x3c/0x15c
+[    6.170427]  __device_attach_driver+0xb8/0x134
+[    6.170432]  bus_for_each_drv+0x88/0xe8
+[    6.170435]  __device_attach+0xa0/0x190
+[    6.170440]  device_initial_probe+0x50/0x54
+[    6.170444]  pci_bus_add_device+0xac/0x170
+[    6.170451]  pci_bus_add_devices+0x3c/0x88
+[    6.170456]  pci_bus_add_devices+0x68/0x88
+[    6.170461]  pci_host_probe+0x90/0x108
+[    6.170464]  dw_pcie_host_init+0x42c/0x6e8
+[    6.170472]  qcom_pcie_probe+0x590/0x83c
+[    6.170475]  platform_probe+0x5c/0x98
+[    6.170478]  really_probe+0xbc/0x29c
+[    6.170482]  __driver_probe_device+0x78/0x12c
+[    6.170486]  driver_probe_device+0x3c/0x15c
+[    6.170491]  __device_attach_driver+0xb8/0x134
+[    6.170495]  bus_for_each_drv+0x88/0xe8
+[    6.170499]  __device_attach_async_helper+0xb4/0xd8
+[    6.170503]  async_run_entry_fn+0x34/0xe0
+[    6.170507]  process_one_work+0x148/0x28c
+[    6.170511]  worker_thread+0x2cc/0x3d4
+[    6.170513]  kthread+0x12c/0x204
+[    6.170518]  ret_from_fork+0x10/0x20
+[    6.170522] ---[ end trace 0000000000000000 ]---
+[    6.171313] r8169 0005:01:00.0 eth0: RTL8168h/8111h, 18:3d:2d:ce:9f:ac, XID 541, IRQ 222
+[    6.171317] r8169 0005:01:00.0 eth0: jumbo features [frames: 9194 bytes, tx checksumming: ko]
+[   14.604252] platform c42d000.spmi:pmic@0:rtc@6100: deferred probe pending: (reason unknown)
+[   18.750378] usb-storage 4-1.2:1.0: USB Mass Storage device detected
+[   18.818816] platform 6e80000.pinctrl: deferred probe pending: qcom-sm8550-lpass-lpi-pinctrl: Failed to get clk 'core'
+[   18.818825] gcc-x1e80100 100000.clock-controller: sync_state() pending due to 3d6a000.gmu
+[   18.818827] gpucc-x1p42100 3d90000.clock-controller: sync_state() pending due to 3d6a000.gmu
+[   18.963245] nvme nvme0: D3 entry latency set to 10 seconds
+[   18.964827] scsi host0: usb-storage 4-1.2:1.0
+[   18.965657] hid-generic 0003:1A2C:2124.0001: input: USB HID v1.10 Keyboard [SEM USB Keyboard] on usb-xhci-hcd.2.auto-1.3/input0
+[   19.958977] input: SEM USB Keyboard Consumer Control as /devices/platform/soc@0/a4f8800.usb/a400000.usb/xhci-hcd.2.auto/usb3/3-1/3-1.3/3-1.3:1.1/0003:1A2C:2124.0002/input/input3
+[   20.032217] scsi 0:0:0:0: Direct-Access      USB      SanDisk 3.2Gen1 1.00 PQ: 0 ANSI: 6
+[   20.104014] input: SEM USB Keyboard System Control as /devices/platform/soc@0/a4f8800.usb/a400000.usb/xhci-hcd.2.auto/usb3/3-1/3-1.3/3-1.3:1.1/0003:1A2C:2124.0002/input/input4
+[   20.106238] sd 0:0:0:0: [sda] 60088320 512-byte logical blocks: (30.8 GB/28.7 GiB)
+[   20.175548] hid-generic 0003:1A2C:2124.0002: input: USB HID v1.10 Device [SEM USB Keyboard] on usb-xhci-hcd.2.auto-1.3/input1
+[   20.177524] sd 0:0:0:0: [sda] Write Protect is off
+[   20.389589] sd 0:0:0:0: [sda] Mode Sense: 43 00 00 00
+[   20.461690] sd 0:0:0:0: [sda] Write cache: disabled, read cache: enabled, doesn't support DPO or FUA
+[   20.517697] usb 3-1.4: new low-speed USB device number 4 using xhci-hcd
+[   20.611363] nvme nvme0: allocated 64 MiB host memory buffer (16 segments).
+[   20.713162]  sda: sda1
+[   20.789567] sd 0:0:0:0: [sda] Attached SCSI removable disk
+[   20.902842] nvme nvme0: 8/0/0 default/read/poll queues
+[   21.007301]  nvme0n1: p1 p2 p3 p4
+[   21.036008] usb 3-1.4: device descriptor read/64, error -71
+[   21.083659] Freeing unused kernel memory: 12544K
+[   21.226469] Run /init as init process
+[   21.298013]   with arguments:
+[   21.369486]     /init
+[   21.440960]     earlyprintk
+[   21.512419]   with environment:
+[   21.527561] input: SIGMACHIP Usb Mouse as /devices/platform/soc@0/a4f8800.usb/a400000.usb/xhci-hcd.2.auto/usb3/3-1/3-1.4/3-1.4:1.0/0003:1C4F:0034.0003/input/input5
+[   21.583875]     HOME=/
+[   21.583875]     TERM=linux
+[   21.799576] hid-generic 0003:1C4F:0034.0003: input: USB HID v1.10 Mouse [SIGMACHIP Usb Mouse] on usb-xhci-hcd.2.auto-1.4/input0
+[   23.794134] usb 3-1.4: USB disconnect, device number 4
+[   24.105694] usb 3-1.4: new low-speed USB device number 5 using xhci-hcd
+[   24.332466] input: SIGMACHIP Usb Mouse as /devices/platform/soc@0/a4f8800.usb/a400000.usb/xhci-hcd.2.auto/usb3/3-1/3-1.4/3-1.4:1.0/0003:1C4F:0034.0004/input/input6
+[   24.409191] hid-generic 0003:1C4F:0034.0004: input: USB HID v1.10 Mouse [SIGMACHIP Usb Mouse] on usb-xhci-hcd.2.auto-1.4/input0
+[   26.356214] usb 3-1.4: USB disconnect, device number 5
+[   26.691733] usb 3-1.4: new low-speed USB device number 6 using xhci-hcd
+[   26.900134] input: SIGMACHIP Usb Mouse as /devices/platform/soc@0/a4f8800.usb/a400000.usb/xhci-hcd.2.auto/usb3/3-1/3-1.4/3-1.4:1.0/0003:1C4F:0034.0005/input/input7
+[   26.976154] hid-generic 0003:1C4F:0034.0005: input: USB HID v1.10 Mouse [SIGMACHIP Usb Mouse] on usb-xhci-hcd.2.auto-1.4/input0
+[   27.050732] FAT-fs (sda1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.

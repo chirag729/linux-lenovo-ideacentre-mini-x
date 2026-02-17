@@ -175,10 +175,20 @@ The first blind boot proved the kernel works. The immediate priority is getting 
 
 ### 2.1 SSH over Ethernet
 Ethernet (r8169) is confirmed working. Next boot should bring up the network and start an SSH server.
-- [ ] Build initramfs with dropbear (lightweight SSH server) or use a debootstrap rootfs
-- [ ] Configure initramfs to: bring up eth0 via DHCP, start dropbear/sshd
+- [x] Build initramfs with dropbear (lightweight SSH server) (2026-02-16, lenovo-win)
+- [x] Configure initramfs to: bring up eth0 via DHCP, start dropbear/sshd (2026-02-16, lenovo-win)
+  - v1 initramfs had two bugs discovered on 2026-02-17:
+    1. Missing `/usr/share/udhcpc/default.script` -- DHCP lease obtained but IP never configured
+    2. `ld-linux-aarch64.so.1` was self-referential symlink -- dropbear couldn't start
+  - v2 initramfs fixed udhcpc script but used wrong variable (`$mask` vs `$subnet`)
+  - v3 initramfs (2026-02-17, pi): fixed both -- real ld-linux binary + ifconfig-based udhcpc script
 - [ ] Boot Lenovo, SSH in from another machine on the LAN
 - [ ] Verify interactive shell access works
+
+#### Boot Attempts Log (2026-02-17, pi)
+- **Boot 3 (v1 initramfs):** DHCP packets sent (router saw MAC), but udhcpc had no default.script so IP never configured. System stayed alive (watchdog NOT the problem). Logs: `testing/boot-logs/2026-02-17-watchdog-kill/`
+- **Boot 4 (v2 initramfs):** Carrier detected after 4s, DHCP lease obtained (192.168.1.15), but udhcpc script used `$mask` (undefined) instead of `$subnet` so `ip addr add` failed silently. Dropbear failed with "Too many levels of symbolic links" (ld-linux self-referential symlink). System alive at 29.7s -- confirms watchdog is NOT killing the system. Logs: `testing/boot-logs/2026-02-17-dhcp-works-ssh-broken/`
+- **Boot 5 (v3 initramfs):** Pending -- fixed ld-linux + udhcpc script
 
 ### 2.2 Full Rootfs (debootstrap)
 A busybox initramfs is too limited for real debugging. Need a proper Ubuntu rootfs.
@@ -222,3 +232,11 @@ Record any blockers, surprises, or decisions here:
   - Ethernet, NVMe, USB all working with drivers
   - WiFi detected but needs firmware; display needs DRM_MSM debugging
   - Next priority: SSH over Ethernet for interactive access
+- SSH boot debugging (2026-02-17, pi):
+  - SBSA GWDT watchdog (10s timeout) was initial suspect for system death -- **DISPROVEN**
+  - `nowatchdog` kernel param only affects software lockup detector, not hardware watchdog
+  - Codex CLI review confirmed: kernel watchdog core auto-pings via WDOG_HW_RUNNING
+  - System stays alive well past 29s (init-trace.txt proves it)
+  - Real bugs: (1) missing udhcpc default.script, (2) ld-linux self-referential symlink
+  - Initramfs patched on Pi: extracted cpio.gz, fixed both bugs, repacked
+  - `build-initramfs.sh` in repo still has these bugs -- needs updating on WSL2

@@ -141,6 +141,24 @@ ip addr > /mnt/usb/logs/ip-addr-interactive.txt
 sync
 ```
 
+## Boot Debugging History (2026-02-17)
+
+### Boot 3 (v1 initramfs -- original from WSL2)
+- DHCP packets sent (router saw MAC at 192.168.1.15), system alive
+- **Bug 1:** No `/usr/share/udhcpc/default.script` -- DHCP lease never configures IP
+- **Bug 2:** `/lib/ld-linux-aarch64.so.1` symlinks to itself -- dropbear can't load
+
+### Boot 4 (v2 initramfs -- patched on Pi, udhcpc script added)
+- Carrier detected in 4s, DHCP lease obtained (192.168.1.15)
+- **Bug 1 partially fixed:** udhcpc script used `$mask` (undefined) instead of `$subnet`
+- **Bug 2 still present:** ld-linux symlink loop, dropbear still broken
+- **Key finding:** System alive at 29.7s -- watchdog is NOT killing the system
+
+### Boot 5 (v3 initramfs -- both bugs fixed)
+- Fixed: real `ld-linux-aarch64.so.1` binary (copied from Pi, same glibc 2.39)
+- Fixed: udhcpc script uses `ifconfig $interface $ip netmask $subnet up`
+- Pending test
+
 ## Known Facts from First Boot
 
 - **Kernel:** 6.19.0-rc4-g740f9e80d577

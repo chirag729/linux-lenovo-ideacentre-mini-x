@@ -1,0 +1,33 @@
+=========================================
+  Lenovo IdeaCentre Mini x - Boot Log
+=========================================
+
+Kernel: 6.19.0-rc4-g740f9e80d577
+Architecture: aarch64
+Cmdline: BOOT_IMAGE=/Image nomodeset video=efifb:on drm.modeset=0 clk_ignore_unused pd_ignore_unused console=tty0 earlycon earlyprintk loglevel=8 keep_bootcon
+Date: Thu Jan  1 00:00:23 UTC 1970
+Log directory: /mnt/usb/logs
+
+Files captured:
+total 1104
+drwxr-xr-x    2 0        0             4096 Jan  1  1980 .
+drwxr-xr-x    6 0        0             4096 Jan  1 00:00 ..
+-rwxr-xr-x    1 0        0                8 Jan  1  1980 acpi-tables-list.txt
+-rwxr-xr-x    1 0        0               29 Jan  1  1980 boot-timestamp.txt
+-rwxr-xr-x    1 0        0           110483 Jan  1  1980 clk-summary.txt
+-rwxr-xr-x    1 0        0              150 Jan  1  1980 cmdline.txt
+-rwxr-xr-x    1 0        0             2960 Jan  1  1980 cpuinfo.txt
+-rwxr-xr-x    1 0        0           850736 Jan  1  1980 devicetree-listing.txt
+-rwxr-xr-x    1 0        0            81038 Jan  1  1980 dmesg.txt
+-rwxr-xr-x    1 0        0               40 Jan  1  1980 dt-compatible.txt
+-rwxr-xr-x    1 0        0            11492 Jan  1  1980 interrupts.txt
+-rwxr-xr-x    1 0        0             9673 Jan  1  1980 iomem.txt
+-rwxr-xr-x    1 0        0              223 Jan  1  1980 ip-addr.txt
+-rwxr-xr-x    1 0        0              223 Jan  1  1980 ip-link.txt
+-rwxr-xr-x    1 0        0                0 Jan  1  1980 modules.txt
+-rwxr-xr-x    1 0        0              260 Jan  1  1980 partitions.txt
+-rwxr-xr-x    1 0        0              351 Jan  1  1980 pci-devices.txt
+-rwxr-xr-x    1 0        0             3096 Jan  1  1980 platform-devices.txt
+-rwxr-xr-x    1 0        0             1843 Jan  1  1980 regulators.txt
+-rwxr-xr-x    1 0        0              418 Jan  1  1980 summary.txt
+-rwxr-xr-x    1 0        0              756 Jan  1  1980 usb-devices.txt

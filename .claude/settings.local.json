@@ -16,7 +16,17 @@
       "Bash(powershell.exe -Command 'Get-ChildItem -Recurse -File E:\\\\ | Format-Table FullName, Length -AutoSize')",
       "Bash(powershell.exe -Command 'Copy-Item \"\"C:\\\\Development\\\\Projects\\\\linux-lenovo-ideacentre-mini-x\\\\usb-staging\\\\EFI\\\\BOOT\\\\grub.cfg\"\" \"\"E:\\\\EFI\\\\BOOT\\\\grub.cfg\"\" -Force; Write-Host \"\"grub.cfg copied to USB\"\"')",
       "Bash(powershell.exe -Command 'Copy-Item \"\"C:\\\\Development\\\\Projects\\\\linux-lenovo-ideacentre-mini-x\\\\scripts\\\\grub.cfg\"\" \"\"E:\\\\EFI\\\\BOOT\\\\grub.cfg\"\" -Force; Write-Host \"\"grub.cfg updated on USB\"\"')",
-      "Bash(powershell.exe -Command:*)"
+      "Bash(powershell.exe -Command:*)",
+      "Bash(ip addr:*)",
+      "Bash(arp:*)",
+      "Bash(ssh:*)",
+      "Bash(ping:*)",
+      "Bash(lsblk:*)",
+      "Bash(sudo mount:*)",
+      "Bash(command -v:*)",
+      "Bash(cpio:*)",
+      "Bash(chmod:*)",
+      "Bash(gzip:*)"
     ]
   }
 }
