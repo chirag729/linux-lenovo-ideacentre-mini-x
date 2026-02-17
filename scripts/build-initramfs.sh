@@ -1,5 +1,7 @@
 #!/bin/bash
 # Build a minimal initramfs with busybox for first test boot
+# The init script writes all hardware data to the USB stick's FAT32 partition,
+# so we can read it from Windows without needing display output.
 set -e
 
 OUTDIR=/tmp/initramfs-build
@@ -14,7 +16,7 @@ cp /usr/bin/busybox "$OUTDIR/bin/busybox"
 # Create symlinks for key busybox applets
 for cmd in sh ash init mount umount mkdir ls cat echo dmesg ip ifconfig udhcpc sleep \
   reboot poweroff ln mknod grep sed awk vi cp mv rm find less head tail \
-  modprobe insmod lsmod sysctl hostname date; do
+  modprobe insmod lsmod sysctl hostname date sync; do
   ln -sf busybox "$OUTDIR/bin/$cmd"
 done
 
@@ -31,56 +33,168 @@ mount -t devpts devpts /dev/pts
 
 echo "========================================="
 echo "  Lenovo IdeaCentre Mini x - Test Boot"
+echo "  Blind boot: writing logs to USB stick"
 echo "========================================="
-echo ""
-echo "Kernel: $(uname -r)"
-echo "Architecture: $(uname -m)"
-echo ""
 
-echo "=== dmesg ==="
-dmesg
+# Wait a few seconds for block devices to appear
+echo "Waiting for block devices..."
+sleep 5
 
-echo ""
-echo "=== /proc/cpuinfo ==="
-cat /proc/cpuinfo
-
-echo ""
-echo "=== /proc/iomem ==="
-cat /proc/iomem
-
-echo ""
-echo "=== /proc/interrupts ==="
-cat /proc/interrupts
-
-echo ""
-echo "=== /sys/firmware/devicetree ==="
-ls -la /sys/firmware/devicetree/base/ 2>/dev/null || echo "No device tree found"
-
-echo ""
-echo "=== Block devices ==="
-cat /proc/partitions
-
-echo ""
-echo "=== Network interfaces ==="
-ip link 2>/dev/null || echo "ip not available"
-
-echo ""
-echo "=== PCI devices ==="
-for dev in /sys/bus/pci/devices/*/; do
-  vendor=$(cat ${dev}vendor 2>/dev/null)
-  device=$(cat ${dev}device 2>/dev/null)
-  class=$(cat ${dev}class 2>/dev/null)
-  echo "${dev##*/}: vendor=$vendor device=$device class=$class"
+# Find and mount the USB FAT32 partition (the one we booted from)
+# Look for vfat partitions - try common device names
+LOGDIR=""
+for dev in /dev/sda1 /dev/sdb1 /dev/sdc1 /dev/sda /dev/sdb /dev/sdc \
+           /dev/nvme0n1p1 /dev/mmcblk0p1; do
+  if [ -b "$dev" ]; then
+    echo "Trying to mount $dev..."
+    mkdir -p /mnt/usb
+    if mount -t vfat "$dev" /mnt/usb 2>/dev/null; then
+      # Check if this is our boot USB (has our Image file)
+      if [ -f /mnt/usb/Image ] || [ -f /mnt/usb/EFI/BOOT/BOOTAA64.EFI ]; then
+        LOGDIR="/mnt/usb/logs"
+        mkdir -p "$LOGDIR"
+        echo "Found boot USB at $dev, logging to $LOGDIR"
+        break
+      fi
+      umount /mnt/usb
+    fi
+  fi
 done
 
-echo ""
-echo "=== Platform devices ==="
-ls /sys/bus/platform/devices/ 2>/dev/null | head -50
+if [ -z "$LOGDIR" ]; then
+  echo "WARNING: Could not find USB stick to write logs."
+  echo "Dumping to console only."
+  LOGDIR="/tmp"
+fi
+
+# Capture timestamp
+date > "$LOGDIR/boot-timestamp.txt" 2>/dev/null || true
+
+# Capture dmesg
+echo "Capturing dmesg..."
+dmesg > "$LOGDIR/dmesg.txt" 2>&1
+
+# Capture cpuinfo
+echo "Capturing cpuinfo..."
+cat /proc/cpuinfo > "$LOGDIR/cpuinfo.txt" 2>&1
+
+# Capture iomem
+echo "Capturing iomem..."
+cat /proc/iomem > "$LOGDIR/iomem.txt" 2>&1
+
+# Capture interrupts
+echo "Capturing interrupts..."
+cat /proc/interrupts > "$LOGDIR/interrupts.txt" 2>&1
+
+# Capture device tree
+echo "Capturing device tree info..."
+if [ -d /sys/firmware/devicetree/base ]; then
+  ls -laR /sys/firmware/devicetree/base/ > "$LOGDIR/devicetree-listing.txt" 2>&1
+  # Capture the compatible string for the root node
+  cat /sys/firmware/devicetree/base/compatible > "$LOGDIR/dt-compatible.txt" 2>/dev/null || true
+  echo "Device tree found" >> "$LOGDIR/devicetree-listing.txt"
+else
+  echo "No device tree found" > "$LOGDIR/devicetree-listing.txt"
+fi
+
+# Capture block devices
+echo "Capturing block devices..."
+cat /proc/partitions > "$LOGDIR/partitions.txt" 2>&1
+
+# Capture network interfaces
+echo "Capturing network interfaces..."
+ip link > "$LOGDIR/ip-link.txt" 2>&1
+ip addr > "$LOGDIR/ip-addr.txt" 2>&1
+
+# Capture PCI devices
+echo "Capturing PCI devices..."
+{
+  for pcidev in /sys/bus/pci/devices/*/; do
+    vendor=$(cat "${pcidev}vendor" 2>/dev/null)
+    device=$(cat "${pcidev}device" 2>/dev/null)
+    class=$(cat "${pcidev}class" 2>/dev/null)
+    driver=$(readlink "${pcidev}driver" 2>/dev/null)
+    driver=${driver##*/}
+    echo "${pcidev##*/}: vendor=$vendor device=$device class=$class driver=$driver"
+  done
+} > "$LOGDIR/pci-devices.txt" 2>&1
+
+# Capture USB devices
+echo "Capturing USB devices..."
+{
+  for usbdev in /sys/bus/usb/devices/*/; do
+    if [ -f "${usbdev}idVendor" ]; then
+      vid=$(cat "${usbdev}idVendor" 2>/dev/null)
+      pid=$(cat "${usbdev}idProduct" 2>/dev/null)
+      prod=$(cat "${usbdev}product" 2>/dev/null)
+      mfg=$(cat "${usbdev}manufacturer" 2>/dev/null)
+      echo "${usbdev##*/}: vid=$vid pid=$pid product='$prod' manufacturer='$mfg'"
+    fi
+  done
+} > "$LOGDIR/usb-devices.txt" 2>&1
+
+# Capture platform devices
+echo "Capturing platform devices..."
+ls /sys/bus/platform/devices/ > "$LOGDIR/platform-devices.txt" 2>&1
+
+# Capture loaded modules (if any)
+echo "Capturing modules..."
+cat /proc/modules > "$LOGDIR/modules.txt" 2>&1 || true
+
+# Capture cmdline
+echo "Capturing cmdline..."
+cat /proc/cmdline > "$LOGDIR/cmdline.txt" 2>&1
+
+# Capture ACPI info if available
+echo "Capturing ACPI info..."
+ls /sys/firmware/acpi/tables/ > "$LOGDIR/acpi-tables-list.txt" 2>&1 || echo "No ACPI" > "$LOGDIR/acpi-tables-list.txt"
+
+# Capture clock info
+echo "Capturing clock info..."
+{
+  if [ -d /sys/kernel/debug ]; then
+    mount -t debugfs debugfs /sys/kernel/debug 2>/dev/null
+    cat /sys/kernel/debug/clk/clk_summary 2>/dev/null || echo "clk_summary not available"
+  fi
+} > "$LOGDIR/clk-summary.txt" 2>&1
+
+# Capture regulator info
+{
+  for reg in /sys/class/regulator/*/; do
+    name=$(cat "${reg}name" 2>/dev/null)
+    state=$(cat "${reg}state" 2>/dev/null)
+    echo "${reg##*/}: name=$name state=$state"
+  done
+} > "$LOGDIR/regulators.txt" 2>&1
+
+# Write summary
+echo "Writing summary..."
+{
+  echo "========================================="
+  echo "  Lenovo IdeaCentre Mini x - Boot Log"
+  echo "========================================="
+  echo ""
+  echo "Kernel: $(uname -r)"
+  echo "Architecture: $(uname -m)"
+  echo "Cmdline: $(cat /proc/cmdline)"
+  echo "Date: $(date 2>/dev/null || echo 'unknown')"
+  echo "Log directory: $LOGDIR"
+  echo ""
+  echo "Files captured:"
+  ls -la "$LOGDIR/"
+} > "$LOGDIR/summary.txt" 2>&1
+
+# Sync to make sure everything is written
+echo "Syncing..."
+sync
+sleep 2
+sync
 
 echo ""
 echo "========================================="
-echo "  Hardware audit complete."
-echo "  Dropping to shell."
+echo "  Logs written to USB stick."
+echo "  Files in $LOGDIR/"
+echo "  Dropping to shell (or reboot)."
 echo "========================================="
 echo ""
 

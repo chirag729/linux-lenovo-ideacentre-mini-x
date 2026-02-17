@@ -1,0 +1,6 @@
+: vendor=0x17cb device=0x0111 class=0x060400 driver=pcieport
+: vendor=0x17cb device=0x1107 class=0x028000 driver=
+: vendor=0x17cb device=0x0111 class=0x060400 driver=pcieport
+: vendor=0x10ec device=0x8168 class=0x020000 driver=r8169
+: vendor=0x17cb device=0x0111 class=0x060400 driver=pcieport
+: vendor=0x144d device=0xa80d class=0x010802 driver=nvme

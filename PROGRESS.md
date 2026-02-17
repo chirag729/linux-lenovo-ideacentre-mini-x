@@ -125,23 +125,79 @@ Always `git pull` before reading, `git push` after updating.
 - [ ] Fix display output on real hardware
   - `nomodeset` alone: still goes black (DRM_MSM is built-in =y, probes and kills efifb)
   - `nomodeset + video=efifb:on + drm.modeset=0 + keep_bootcon`: Tux logo + brief text visible
-  - **NEXT**: Add `clk_ignore_unused pd_ignore_unused` to prevent clock/power domain shutdown
+  - `clk_ignore_unused pd_ignore_unused`: confirmed working (dmesg: "Not disabling unused clocks")
   - Without DTB (ACPI-only): no display at all (no Tux logo)
-  - With DTB: display works initially but dies when unused clocks/power domains are disabled
-- [ ] Boot Lenovo into Linux with console output visible
-- [ ] Capture dmesg, lspci, lsusb, /proc/iomem, etc.
-- [ ] Commit all captured data to `hardware/linux-audit/`
+  - With DTB + best cmdline: Tux logo + brief text, then black -- display still lost
+  - **Root cause**: DRM_MSM=y (built-in) probes and takes over from efifb; clock/power protection helps but doesn't fully fix it
+  - **NEXT**: Get SSH over Ethernet for interactive access (Ethernet confirmed working)
+- [x] First successful Linux boot via blind capture (2026-02-16, lenovo-win)
+  - Kernel boots fully with DTB + `clk_ignore_unused pd_ignore_unused`
+  - Blind boot initramfs writes 19 log files to USB FAT32 partition
+  - All logs captured and saved to `testing/boot-logs/2026-02-16-first-boot/`
+- [ ] Commit all captured data to `testing/boot-logs/2026-02-16-first-boot/`
 
 ### 1.3 Analysis
-- [ ] Cross-reference Windows PnP device IDs with Linux `lspci` output
-- [x] Identify the Ethernet controller: **Realtek RTL8168** (VEN_10EC DEV_8168) (2026-02-15, lenovo-win)
-- [x] Identify USB hub chip: **Genesys Logic GL3510** (VID 05E3) (2026-02-15, lenovo-win)
+- [x] Cross-reference Windows PnP device IDs with Linux PCI scan (2026-02-16, lenovo-win)
+  - PCI devices confirmed in Linux: WiFi (17cb:1107), Ethernet (10ec:8168), NVMe (144d:a80d), 3x PCIe root ports (17cb:0111)
+- [x] Identify the Ethernet controller: **Realtek RTL8168h** (VEN_10EC DEV_8168), driver: `r8169` -- **WORKING** (2026-02-15/16)
+  - MAC: 18:3d:2d:ce:9f:ac, link detected, interface `eth0`
+- [x] Identify USB hub chip: **Genesys Logic GL3510** (VID 05E3, PID 0610/0625) (2026-02-15, lenovo-win)
+  - USB2.1 Hub (0610) + USB3.2 Hub (0625) confirmed in Linux boot logs
 - [x] Identify Bluetooth transport: **UART H4** (ACPI QCOM0C6B) (2026-02-15, lenovo-win)
-- [ ] Identify display bridge chips (HDMI/DP) -- needs ACPI table analysis or Linux boot
+- [x] WiFi chip confirmed: **Qualcomm FastConnect 7800** (17cb:1107), no driver bound (needs `ath12k` + firmware) (2026-02-16, lenovo-win)
+- [ ] Identify display bridge chips (HDMI/DP) -- DTB has 2 DisplayPort controllers (ae90000, aea0000) + 3 retimer regulators
 - [ ] Identify retimer chips -- needs I2C bus probing from Linux
 - [ ] Identify VID_17EF PID_6044 Lenovo USB device
 - [ ] Compare ACPI tables against DT nodes to find missing hardware descriptions
 - [ ] Produce `hardware/hardware-map.md` -- the definitive component-to-driver mapping
+
+### Key Findings from First Linux Boot (2026-02-16)
+- **Kernel:** 6.19.0-rc4-g740f9e80d577 (Mostafa's lenovo branch)
+- **DT compatible:** `lenovo,ideacentre-x-gen10 qcom,x1p42100`
+- **CPU:** 8 Oryon cores -- CPUs 0-3 variant 0x2 (performance), CPUs 4-7 variant 0x1 (efficiency)
+- **RAM:** 32GB (32071124K/33116864K available)
+- **PCI devices (6):**
+  - 3x Qualcomm PCIe root ports (17cb:0111) -- segments 4, 5, 6
+  - WiFi: Qualcomm 17cb:1107 -- no driver (ath12k needs firmware)
+  - Ethernet: Realtek 10ec:8168 -- r8169 driver, **working**
+  - NVMe: Samsung 144d:a80d -- nvme driver, **working** (all 4 Windows partitions visible)
+- **USB devices:** 4x xHCI controllers, GL3510 hubs, keyboard (1a2c:2124), mouse (1c4f:0034), SanDisk boot USB
+- **Display:** efifb at e4800000-e4fe8fff, 2 DisplayPort controllers in DTB, 3 retimer regulators (all enabled)
+- **Regulators:** 55 total, key ones enabled: VREG_EDP_3P3, VREG_NVME_3P3, VREG_RTMR0/1/2
+- **Missing firmware:** adsp.mbn, cdsp.mbn, wpss.mbn, regulatory.db (expected -- remoteprocs not started)
+- **Non-critical errors:** PMIC glink connector link error, mouse reconnect cycling, modem remoteproc crash (no firmware)
+
+---
+
+## Phase 2: Interactive Linux Access (Next Steps)
+
+The first blind boot proved the kernel works. The immediate priority is getting interactive access without relying on display output (which is still broken).
+
+### 2.1 SSH over Ethernet
+Ethernet (r8169) is confirmed working. Next boot should bring up the network and start an SSH server.
+- [ ] Build initramfs with dropbear (lightweight SSH server) or use a debootstrap rootfs
+- [ ] Configure initramfs to: bring up eth0 via DHCP, start dropbear/sshd
+- [ ] Boot Lenovo, SSH in from another machine on the LAN
+- [ ] Verify interactive shell access works
+
+### 2.2 Full Rootfs (debootstrap)
+A busybox initramfs is too limited for real debugging. Need a proper Ubuntu rootfs.
+- [ ] Create arm64 Ubuntu rootfs via debootstrap in WSL2
+- [ ] Include: openssh-server, NetworkManager, firmware-linux, pciutils, usbutils
+- [ ] Package as initramfs or place on NFS/USB partition
+- [ ] Boot with full rootfs, verify SSH + package management
+
+### 2.3 Display Enablement
+Display goes black because DRM_MSM (built-in) probes and fails. Options:
+- [ ] Rebuild kernel with CONFIG_DRM_MSM=m (module) so it doesn't auto-probe
+- [ ] Or: debug DRM_MSM initialization with SSH access + dmesg analysis
+- [ ] Identify which display output is connected (HDMI via DisplayPort alt mode?)
+- [ ] Get console output on screen
+
+### 2.4 WiFi Enablement
+- [ ] Copy ath12k firmware files to rootfs (`/lib/firmware/ath12k/`)
+- [ ] Extract firmware from Windows driver package or linux-firmware repo
+- [ ] Test WiFi association
 
 ---
 
@@ -161,3 +217,8 @@ Record any blockers, surprises, or decisions here:
   - Without DTB: no display (ACPI-only boot has no framebuffer info)
   - With DTB + nomodeset: brief display then black -- clocks/power domains being disabled
   - Best cmdline so far: `nomodeset video=efifb:on drm.modeset=0 clk_ignore_unused pd_ignore_unused console=tty0 earlycon earlyprintk loglevel=8 keep_bootcon`
+- First successful Linux boot (2026-02-16): blind capture to USB, 19 log files in `testing/boot-logs/2026-02-16-first-boot/`
+  - Kernel fully functional, all major subsystems probed
+  - Ethernet, NVMe, USB all working with drivers
+  - WiFi detected but needs firmware; display needs DRM_MSM debugging
+  - Next priority: SSH over Ethernet for interactive access
