@@ -1,0 +1,1 @@
+BOOT_IMAGE=/Image nomodeset video=efifb:on drm.modeset=0 clk_ignore_unused pd_ignore_unused console=tty0 earlycon earlyprintk loglevel=8 keep_bootcon

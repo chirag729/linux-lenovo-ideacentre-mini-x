@@ -1,0 +1,123 @@
+
+cat /sys/kernel/debug/pm_genpd/pm_genpd_summary
+
+
+BusyBox v1.36.1 (Ubuntu 1:1.36.1-6ubuntu3.1) built-in shell (ash)
+Enter 'help' for a list of built-in commands.
+
+~ # cat /sys/kernel/debug/pm_genpd/pm_genpd_summary
+domain                          status          children        performance
+    /device                         runtime status                  managed by
+------------------------------------------------------------------------------
+mdss_int2_gdsc                  off-0                           0
+mdss_gdsc                       off-0                           0
+    ae00000.display-subsystem       suspended                   0           SW
+NCC2_2                          on                              0
+NCC1_1                          on                              0
+NCC0_0                          on                              0
+video_cc_mvs1_gdsc              off-0                           0
+video_cc_mvs1c_gdsc             off-0                           0
+                                                video_cc_mvs1_gdsc
+video_cc_mvs0_gdsc              off-0                           0
+video_cc_mvs0c_gdsc             off-0                           0
+                                                video_cc_mvs0_gdsc
+gpu_cc_gx_gdsc                  off-0                           0
+gpu_cc_cx_gdsc                  off-0                           0
+    3da0000.iommu                   suspended                   0           SW
+gcc_usb_2_phy_gdsc              on                              0
+gcc_usb_1_phy_gdsc              on                              0
+gcc_usb_0_phy_gdsc              on                              0
+    fd5000.phy                      active                      0           SW
+    aux_bridge.aux_bridge.0         unsupported                 0           SW
+gcc_usb4_2_gdsc                 off-0                           0
+gcc_usb4_1_gdsc                 off-0                           0
+gcc_usb4_0_gdsc                 off-0                           0
+gcc_usb3_mp_ss1_phy_gdsc        on                              0
+    88e5000.phy                     active                      0           SW
+gcc_usb3_mp_ss0_phy_gdsc        on                              0
+    88e3000.phy                     active                      0           SW
+gcc_usb30_tert_gdsc             off-0                           0
+gcc_usb30_sec_gdsc              off-0                           0
+gcc_usb30_prim_gdsc             on                              256
+    a6f8800.usb                     active                      256         SW
+gcc_usb30_mp_gdsc               on                              256
+    a4f8800.usb                     active                      256         SW
+gcc_usb20_prim_gdsc             on                              0
+gcc_ufs_phy_gdsc                on                              0
+gcc_ufs_mem_phy_gdsc            on                              0
+gcc_pcie_6b_gdsc                off-0                           0
+gcc_pcie_6a_gdsc                on                              256
+    1bf8000.pci                     active                      256         SW
+gcc_pcie_6_phy_gdsc             on                              0
+    1bfc000.phy                     unsupported                 0           SW
+gcc_pcie_5_phy_gdsc             on                              0
+    1c06000.phy                     unsupported                 0           SW
+gcc_pcie_5_gdsc                 on                              256
+    1c00000.pci                     active                      256         SW
+gcc_pcie_4_phy_gdsc             on                              0
+    1c0e000.phy                     unsupported                 0           SW
+gcc_pcie_4_gdsc                 on                              256
+    1c08000.pci                     active                      256         SW
+gcc_pcie_3_phy_gdsc             off-0                           0
+gcc_pcie_3_gdsc                 off-0                           0
+gcc_pcie_2_tunnel_gdsc          off-0                           0
+gcc_pcie_1_tunnel_gdsc          off-0                           0
+gcc_pcie_0_tunnel_gdsc          off-0                           0
+gmxc                            off-0                           0
+nsp                             off-0                           0
+    genpd:2:32300000.remoteproc     suspended                   0           SW
+mxc                             off-0                           0
+                                                video_cc_mvs0c_gdsc, video_cc_mvs1c_gdsc
+    genpd:1:aaf0000.clock-controller  suspended                   0           SW
+    genpd:1:32300000.remoteproc     suspended                   0           SW
+mx_ao                           off-0                           0
+mx                              on                              0
+    aec5a00.phy                     unsupported                 0           SW
+mmcx_ao                         off-0                           0
+mmcx                            on                              0
+                                                video_cc_mvs0c_gdsc, video_cc_mvs1c_gdsc, mdss_gdsc, mdss_int2_gdsc
+    genpd:0:aaf0000.clock-controller  suspended                   0           SW
+    af00000.clock-controller        suspended                   0           SW
+    ae01000.display-controller      unsupported                 0           SW
+    aea0000.displayport-controller  suspended                   0           SW
+    ae90000.displayport-controller  suspended                   0           SW
+lmx                             off-0                           0
+    genpd:1:6800000.remoteproc      suspended                   0           SW
+lcx                             off-0                           0
+    genpd:0:6800000.remoteproc      suspended                   0           SW
+gfx                             off-0                           0
+ebi                             off-0                           0
+cx_ao                           off-0                           0
+cx                              on                              256
+                                                gcc_pcie_0_tunnel_gdsc, gcc_pcie_1_tunnel_gdsc, gcc_pcie_2_tunnel_gdsc, gcc_pcie_3_gdsc, gcc_pcie_3_phy_gdsc, gcc_pcie_4_gdsc, gcc_pcie_4_phy_gdsc, gcc_pcie_5_gdsc, gcc_pcie_5_phy_gdsc, gcc_pcie_6_phy_gdsc, gcc_pcie_6a_gdsc, gcc_pcie_6b_gdsc, gcc_ufs_mem_phy_gdsc, gcc_ufs_phy_gdsc, gcc_usb20_prim_gdsc, gcc_usb30_mp_gdsc, gcc_usb30_prim_gdsc, gcc_usb30_sec_gdsc, gcc_usb30_tert_gdsc, gcc_usb3_mp_ss0_phy_gdsc, gcc_usb3_mp_ss1_phy_gdsc, gcc_usb4_0_gdsc, gcc_usb4_1_gdsc, gcc_usb4_2_gdsc, gcc_usb_0_phy_gdsc, gcc_usb_1_phy_gdsc, gcc_usb_2_phy_gdsc
+    100000.clock-controller         unsupported                 0           SW
+    genpd:0:32300000.remoteproc     suspended                   0           SW
+    894000.serial                   suspended                   0           SW
+    a80000.i2c                      suspended                   0           SW
+    b80000.i2c                      suspended                   0           SW
+    b8c000.i2c                      suspended                   0           SW
+    b94000.i2c                      suspended                   0           SW
+power-domain-system             on                              0
+                                                power-domain-cpu-cluster0, power-domain-cpu-cluster1
+    17500000.rsc                    suspended                   0           SW
+power-domain-cpu-cluster1       off-1                           0
+                                                power-domain-cpu4, power-domain-cpu5, power-domain-cpu6, power-domain-cpu7
+power-domain-cpu-cluster0       on                              0
+                                                power-domain-cpu0, power-domain-cpu1, power-domain-cpu2, power-domain-cpu3
+power-domain-cpu7               off-0                           0
+    genpd:0:cpu7                    suspended                   0           SW
+power-domain-cpu6               off-0                           0
+    genpd:0:cpu6                    suspended                   0           SW
+power-domain-cpu5               off-0                           0
+    genpd:0:cpu5                    suspended                   0           SW
+power-domain-cpu4               off-0                           0
+    genpd:0:cpu4                    suspended                   0           SW
+power-domain-cpu3               off-0                           0
+    genpd:0:cpu3                    suspended                   0           SW
+power-domain-cpu2               off-0                           0
+    genpd:0:cpu2                    suspended                   0           SW
+power-domain-cpu1               off-0                           0
+    genpd:0:cpu1                    suspended                   0           SW
+power-domain-cpu0               on                              0
+    genpd:0:cpu0                    active                      0           SW
+~ # [6n

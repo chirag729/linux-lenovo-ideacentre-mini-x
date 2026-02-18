@@ -1,0 +1,29 @@
+
+
+
+BusyBox v1.36.1 (Ubuntu 1:1.36.1-6ubuntu3.1) built-in shell (ash)
+Enter 'help' for a list of built-in commands.
+
+~ # [6necho "---PMIC-GLINK---"
+---PMIC-GLINK---
+~ # ls /sys/firmware/devicetree/base/pmic-glink/ 2>/dev/null
+#address-cells     compatible         name               nvmem-cells
+#size-cells        connector@0        nvmem-cell-names   orientation-gpios
+~ # echo "---CONNECTOR0---"
+---CONNECTOR0---
+~ # ls /sys/firmware/devicetree/base/pmic-glink/connector@0/ 2>/dev/null
+compatible  data-role   name        ports       power-role  reg
+~ # echo "---USB-DEVICES---"
+---USB-DEVICES---
+~ # for d in /sys/bus/usb/devices/*/; do prod=$(cat ${d}product 2>/dev/null); vi
+d=$(cat ${d}idVendor 2>/dev/null); pid=$(cat ${d}idProduct 2>/dev/null); if [ -n
+ "$vid" ]; then echo "${d##*/}: $vid:$pid $prod"; fi; done
+: 1a2c:2124 USB Keyboard
+: 05e3:0610 USB2.1 Hub
+: 0781:55a3  SanDisk 3.2Gen1
+: 05e3:0625 USB3.2 Hub
+: 1d6b:0002 xHCI Host Controller
+: 1d6b:0003 xHCI Host Controller
+: 1d6b:0002 xHCI Host Controller
+: 1d6b:0003 xHCI Host Controller
+~ # [6n

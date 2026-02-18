@@ -146,7 +146,7 @@ Always `git pull` before reading, `git push` after updating.
 - [x] Identify Bluetooth transport: **UART H4** (ACPI QCOM0C6B) (2026-02-15, lenovo-win)
 - [x] WiFi chip confirmed: **Qualcomm FastConnect 7800** (17cb:1107), no driver bound (needs `ath12k` + firmware) (2026-02-16, lenovo-win)
 - [ ] Identify display bridge chips (HDMI/DP) -- DTB has 2 DisplayPort controllers (ae90000, aea0000) + 3 retimer regulators
-- [ ] Identify retimer chips -- needs I2C bus probing from Linux
+- [x] Identify retimer chips (2026-02-18, pi) -- ps8830 (Parade DP retimer), ptn3222 (NXP USB-C redriver)
 - [ ] Identify VID_17EF PID_6044 Lenovo USB device
 - [ ] Compare ACPI tables against DT nodes to find missing hardware descriptions
 - [ ] Produce `hardware/hardware-map.md` -- the definitive component-to-driver mapping
@@ -188,7 +188,25 @@ Ethernet (r8169) is confirmed working. Next boot should bring up the network and
 #### Boot Attempts Log (2026-02-17, pi)
 - **Boot 3 (v1 initramfs):** DHCP packets sent (router saw MAC), but udhcpc had no default.script so IP never configured. System stayed alive (watchdog NOT the problem). Logs: `testing/boot-logs/2026-02-17-watchdog-kill/`
 - **Boot 4 (v2 initramfs):** Carrier detected after 4s, DHCP lease obtained (192.168.1.15), but udhcpc script used `$mask` (undefined) instead of `$subnet` so `ip addr add` failed silently. Dropbear failed with "Too many levels of symbolic links" (ld-linux self-referential symlink). System alive at 29.7s -- confirms watchdog is NOT killing the system. Logs: `testing/boot-logs/2026-02-17-dhcp-works-ssh-broken/`
-- **Boot 5 (v3 initramfs):** Pending -- fixed ld-linux + udhcpc script
+- **Boot 5 (v3 initramfs, 2026-02-18):** Same errors persisted despite fixes being verified in cpio archive. Possible initramfs loading mismatch (kernel reported 2752K freed vs 2844K file). Logs: `testing/boot-logs/2026-02-18-boot5-dhcp-ok-ip-missing/`
+- **Boot 6 (v4 initramfs, 2026-02-18):** SUCCESS! Build marker v4-pi-20260218-204435. DHCP works, IP configured (192.168.1.15), ping works. Telnet (port 23) provides interactive shell. SSH (dropbear) connects but rejects login: `/root` permissions wrong + password not set correctly. Full interactive hardware exploration completed via telnet. Logs + analysis: `testing/boot-logs/2026-02-18-boot6-telnet-interactive/`
+- [x] Interactive shell access via telnet (2026-02-18, pi)
+- [ ] Fix SSH: correct /root permissions (0700 root:root) + set root password properly
+
+#### Boot 6 Key Findings (2026-02-18, pi -- first interactive session)
+- **DT model:** "Lenovo IdeaCentre X Gen 10 Snapdragon"
+- **DT compatible:** `lenovo,ideacentre-x-gen10`, `qcom,x1p42100`
+- **DRM/Display:** Completely disabled (`drm.modeset=0` + `nomodeset`). efifb works (1920x1080x32). Display-subsystem, DPU, 2x DP controllers all in platform devices but not probed.
+- **I2C retimers:** ps8830 (Parade DP retimer), ptn3222 (NXP USB-C redriver)
+- **Retimer regulators:** Only RTMR0 powered; RTMR1, RTMR2, EDP_3P3 all disabled
+- **Power domains:** mdss_gdsc OFF, gpu_cc_* OFF, mmcx ON (display clocks available)
+- **Remoteproc firmware path:** `qcom/x1e80100/` (NOT x1p42100) -- adsp.mbn, cdsp.mbn both ENOENT
+- **PMIC glink:** Failed to link with connector@0 supplier 2-0008 (Type-C mux)
+- **Clock sync_state:** gcc + gpucc pending due to GMU (3d6a000.gmu)
+- **LPASS pinctrl:** deferred probe -- "Failed to get clk 'core'" (audio broken)
+- **USB mouse bug:** SIGMACHIP 1c4f:0034 reconnects every ~2.5s, flooding dmesg
+- **NVMe:** Samsung MZVL8512HDLU-00BLL, FW 9L2QKXD7, 4 partitions (EFI/Reserved/Windows/Recovery)
+- **System stable:** Stayed alive >30 minutes, thermals 21-23C SoC, 37C PMICs
 
 ### 2.2 Full Rootfs (debootstrap)
 A busybox initramfs is too limited for real debugging. Need a proper Ubuntu rootfs.
@@ -240,3 +258,11 @@ Record any blockers, surprises, or decisions here:
   - Real bugs: (1) missing udhcpc default.script, (2) ld-linux self-referential symlink
   - Initramfs patched on Pi: extracted cpio.gz, fixed both bugs, repacked
   - `build-initramfs.sh` in repo still has these bugs -- needs updating on WSL2
+- Boot 6 interactive session (2026-02-18, pi):
+  - Telnet access works (busybox telnetd, statically linked, no ld-linux needed)
+  - Dropbear SSH is running but rejects login: wrong /root perms + password issue
+  - Display architecture confirmed: MDSS -> DPU -> 2x DP controllers, DP0 via USB3/DP PHY, DP1 has eDP panel child
+  - Only retimer 0 is powered -- retimers 1 and 2 disabled (explains partial display)
+  - PMIC glink can't link to Type-C mux (2-0008) -- affects USB-C DP alt mode
+  - Firmware paths use `qcom/x1e80100/` not `qcom/x1p42100/` -- DTSi inherits from x1e80100
+  - Next steps: (1) fix SSH, (2) try boot with DRM enabled, (3) extract firmware from Windows

@@ -1,0 +1,28 @@
+
+
+
+BusyBox v1.36.1 (Ubuntu 1:1.36.1-6ubuntu3.1) built-in shell (ash)
+Enter 'help' for a list of built-in commands.
+
+cat /proc/bus/pci/devices 2>/dev/null
+echo "---LSPCI-LIKE---"
+for d in /sys/bus/pci/devices/*/; do vendor=$(cat ${d}vendor 2>/dev/null); device=$(cat ${d}device 2>/dev/null); drv=$(readlink ${d}driver 2>/dev/null); echo "${d##*/}: vendor=$vendor device=$device driver=${drv##*/}"; done
+~ # cat /proc/bus/pci/devices 2>/dev/null
+0000    17cb0111        d6              70400000                       0                       0                       0                       0                       0                       0                    1000                       0                       0                       0                       0                       0                       0        pcieport
+0100    144da80d        d5              70300004                       0                       0                       0                       0                       0                       0                    4000                       0                       0                       0                       0                       0                       0        nvme
+0000    17cb0111        d4              7c300000                       0                       0                       0                       0                       0                       0                    1000                       0                       0                       0                       0                       0                       0        pcieport
+0100    17cb1107        0               7c400004                       0                       0                       0                       0                       0                       0                  200000                       0                       0                       0                       0                       0                       0        
+0000    17cb0111        de              7e400000                       0                       0                       0                       0                       0                       0                    1000                       0                       0                       0                       0                       0                       0        pcieport
+0100    10ec8168        dd                200001                       0                7e304004                       0                7e300004                       0                       0                     100                       0                    1000                       0                    4000                       0                       0        r8169
+~ # echo "---LSPCI-LIKE---"
+---LSPCI-LIKE---
+~ # for d in /sys/bus/pci/devices/*/; do vendor=$(cat ${d}vendor 2>/dev/null); d
+evice=$(cat ${d}device 2>/dev/null); drv=$(readlink ${d}driver 2>/dev/null); ech
+o "${d##*/}: vendor=$vendor device=$device driver=${drv##*/}"; done
+: vendor=0x17cb device=0x0111 driver=pcieport
+: vendor=0x17cb device=0x1107 driver=
+: vendor=0x17cb device=0x0111 driver=pcieport
+: vendor=0x10ec device=0x8168 driver=r8169
+: vendor=0x17cb device=0x0111 driver=pcieport
+: vendor=0x144d device=0xa80d driver=nvme
+~ # [6n

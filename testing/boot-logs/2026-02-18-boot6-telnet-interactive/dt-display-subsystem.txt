@@ -1,0 +1,72 @@
+
+
+
+BusyBox v1.36.1 (Ubuntu 1:1.36.1-6ubuntu3.1) built-in shell (ash)
+Enter 'help' for a list of built-in commands.
+
+~ # [6necho "---DISPLAY-SUBSYSTEM-DT---"
+---DISPLAY-SUBSYSTEM-DT---
+~ # ls /sys/firmware/devicetree/base/soc@0/display-subsystem@ae00000/
+#address-cells                  interrupt-controller
+#interrupt-cells                interrupts
+#size-cells                     iommus
+clocks                          name
+compatible                      phandle
+display-controller@ae01000      power-domains
+displayport-controller@ae90000  ranges
+displayport-controller@ae98000  reg
+displayport-controller@ae9a000  reg-names
+displayport-controller@aea0000  resets
+interconnect-names              status
+interconnects
+~ # echo "---DP0---"
+---DP0---
+~ # ls /sys/firmware/devicetree/base/soc@0/display-subsystem@ae00000/displayport
+-controller@ae90000/
+#sound-dai-cells        interrupts-extended     phys
+assigned-clock-parents  name                    ports
+assigned-clocks         operating-points-v2     power-domains
+clock-names             opp-table               reg
+clocks                  phandle                 status
+compatible              phy-names
+~ # echo "---DP1---"
+---DP1---
+~ # ls /sys/firmware/devicetree/base/soc@0/display-subsystem@ae00000/displayport
+-controller@aea0000/
+assigned-clock-parents  name                    pinctrl-names
+assigned-clocks         operating-points-v2     ports
+aux-bus                 opp-table               power-domains
+clock-names             phandle                 reg
+clocks                  phy-names               status
+compatible              phys
+interrupts-extended     pinctrl-0
+~ # echo "---DP1-AUXBUS---"
+---DP1-AUXBUS---
+~ # ls /sys/firmware/devicetree/base/soc@0/display-subsystem@ae00000/displayport
+-controller@aea0000/aux-bus/ 2>/dev/null
+name   panel
+~ # echo "---DP1-PANEL---"
+---DP1-PANEL---
+~ # ls /sys/firmware/devicetree/base/soc@0/display-subsystem@ae00000/displayport
+-controller@aea0000/aux-bus/panel/ 2>/dev/null
+compatible     name           pinctrl-names  power-supply
+enable-gpios   pinctrl-0      port
+~ # echo "---GPU---"
+---GPU---
+~ # ls /sys/firmware/devicetree/base/soc@0/gpu@3d00000/
+#cooling-cells       name                 qcom,gmu
+compatible           nvmem-cell-names     reg
+interconnect-names   nvmem-cells          reg-names
+interconnects        operating-points-v2  status
+interrupts           opp-table            zap-shader
+iommus               phandle
+~ # echo "---PHY-FD5000---"
+---PHY-FD5000---
+~ # ls /sys/firmware/devicetree/base/soc@0/phy@fd5000/
+#clock-cells        name                reset-names
+#phy-cells          orientation-switch  resets
+clock-names         phandle             status
+clocks              ports               vdda-phy-supply
+compatible          power-domains       vdda-pll-supply
+mode-switch         reg
+~ # [6n

@@ -1,0 +1,98 @@
+
+cat /sys/firmware/devicetree/base/model 2>/dev/null; echo
+cat /sys/firmware/devicetree/base/compatible 2>/dev/null; echo
+echo "---DT-NODES---"
+ls /sys/firmware/devicetree/base/soc@0/ | head -80
+
+
+BusyBox v1.36.1 (Ubuntu 1:1.36.1-6ubuntu3.1) built-in shell (ash)
+Enter 'help' for a list of built-in commands.
+
+~ # cat /sys/firmware/devicetree/base/model 2>/dev/null; echo
+Lenovo IdeaCentre X Gen 10 Snapdragon
+~ # cat /sys/firmware/devicetree/base/compatible 2>/dev/null; echo
+lenovo,ideacentre-x-gen10qcom,x1p42100
+~ # echo "---DT-NODES---"
+---DT-NODES---
+~ # ls /sys/firmware/devicetree/base/soc@0/ | head -80
+#address-cells
+#size-cells
+arbiter@c400000
+clock-controller@100000
+clock-controller@1fc0000
+clock-controller@3d90000
+clock-controller@6b6c000
+clock-controller@6ea0000
+clock-controller@aaf0000
+clock-controller@af00000
+codec@6aa0000
+codec@6ac0000
+codec@6ae0000
+codec@6b00000
+codec@6d44000
+compatible
+cti@1098b000
+display-subsystem@ae00000
+dma-controller@800000
+dma-controller@a00000
+dma-controller@b00000
+dma-ranges
+efuse@221c8000
+funnel@10041000
+funnel@10042000
+funnel@10045000
+funnel@10846000
+funnel@10ac5000
+funnel@10b04000
+funnel@10b24000
+funnel@10c0b000
+funnel@10c2c000
+funnel@10c3d000
+funnel@10cc5000
+funnel@10d04000
+funnel@10d13000
+geniqup@8c0000
+geniqup@ac0000
+geniqup@bc0000
+gmu@3d6a000
+gpu@3d00000
+hwlock@1f40000
+interconnect@1500000
+interconnect@1600000
+interconnect@1680000
+interconnect@16c0000
+interconnect@16d0000
+interconnect@16e0000
+interconnect@1700000
+interconnect@1740000
+interconnect@1750000
+interconnect@1760000
+interconnect@1770000
+interconnect@1780000
+interconnect@26400000
+interconnect@320c0000
+interconnect@7400000
+interconnect@7430000
+interconnect@7e40000
+interrupt-controller@17000000
+interrupt-controller@b220000
+iommu@15000000
+iommu@15400000
+iommu@3da0000
+mailbox@17430000
+mailbox@408000
+mmc@8804000
+mmc@8844000
+name
+pci@1bf8000
+pci@1c00000
+pci@1c08000
+pcie@1bd0000
+phandle
+phy@1bd4000
+phy@1bfc000
+phy@1c06000
+phy@1c0e000
+phy@88e0000
+phy@88e1000
+~ # [6n

@@ -1,0 +1,39 @@
+
+
+
+BusyBox v1.36.1 (Ubuntu 1:1.36.1-6ubuntu3.1) built-in shell (ash)
+Enter 'help' for a list of built-in commands.
+
+~ # [6ncat /proc/partitions
+major minor  #blocks  name
+
+   8        0   30044160 sda
+   8        1     524288 sda1
+ 259        0  500107608 nvme0n1
+ 259        1     266240 nvme0n1p1
+ 259        2      16384 nvme0n1p2
+ 259        3  497775616 nvme0n1p3
+ 259        4    2048000 nvme0n1p4
+~ # echo "---NVME-INFO---"
+---NVME-INFO---
+~ # cat /sys/block/nvme0n1/device/model 2>/dev/null
+SAMSUNG MZVL8512HDLU-00BLL              
+~ # cat /sys/block/nvme0n1/device/firmware_rev 2>/dev/null
+9L2QKXD7
+~ # echo "---BLOCK-DEVICES---"
+---BLOCK-DEVICES---
+~ # ls -la /sys/block/
+total 0
+drwxr-xr-x    2 root     root             0 Jan  1 00:44 .
+dr-xr-xr-x   13 root     root             0 Jan  1 00:00 ..
+lrwxrwxrwx    1 root     root             0 Jan  1 00:44 loop0 -> ../devices/virtual/block/loop0
+lrwxrwxrwx    1 root     root             0 Jan  1 00:44 loop1 -> ../devices/virtual/block/loop1
+lrwxrwxrwx    1 root     root             0 Jan  1 00:44 loop2 -> ../devices/virtual/block/loop2
+lrwxrwxrwx    1 root     root             0 Jan  1 00:44 loop3 -> ../devices/virtual/block/loop3
+lrwxrwxrwx    1 root     root             0 Jan  1 00:44 loop4 -> ../devices/virtual/block/loop4
+lrwxrwxrwx    1 root     root             0 Jan  1 00:44 loop5 -> ../devices/virtual/block/loop5
+lrwxrwxrwx    1 root     root             0 Jan  1 00:44 loop6 -> ../devices/virtual/block/loop6
+lrwxrwxrwx    1 root     root             0 Jan  1 00:44 loop7 -> ../devices/virtual/block/loop7
+lrwxrwxrwx    1 root     root             0 Jan  1 00:44 nvme0n1 -> ../devices/platform/soc@0/1bf8000.pci/pci0006:00/0006:00:00.0/0006:01:00.0/nvme/nvme0/nvme0n1
+lrwxrwxrwx    1 root     root             0 Jan  1 00:44 sda -> ../devices/platform/soc@0/a4f8800.usb/a400000.usb/xhci-hcd.2.auto/usb4/4-1/4-1.2/4-1.2:1.0/host0/target0:0:0/0:0:0:0/block/sda
+~ # [6n

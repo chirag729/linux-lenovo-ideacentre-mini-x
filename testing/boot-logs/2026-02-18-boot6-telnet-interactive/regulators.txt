@@ -1,0 +1,64 @@
+
+
+
+BusyBox v1.36.1 (Ubuntu 1:1.36.1-6ubuntu3.1) built-in shell (ash)
+Enter 'help' for a list of built-in commands.
+
+~ # [6nfor reg in /sys/class/regulator/*/; do name=$(cat ${reg}name 2>/dev/null); s
+tate=$(cat ${reg}state 2>/dev/null); uv=$(cat ${reg}microvolts 2>/dev/null); ech
+o "${reg##*/}: name=$name state=$state uV=$uv"; done
+: name=regulator-dummy state= uV=
+: name=vph_pwr state= uV=3700000
+: name=VREG_EDP_3P3 state=disabled uV=3300000
+: name=VREG_MISC_3P3 state=enabled uV=3300000
+: name=VREG_NVME_3P3 state=enabled uV=3300000
+: name=VREG_RTMR1_1P8 state=disabled uV=1800000
+: name=VREG_RTMR0_1P15 state=enabled uV=1150000
+: name=VREG_RTMR1_1P15 state=disabled uV=1150000
+: name=VREG_RTMR0_1P8 state=enabled uV=1800000
+: name=VREG_RTMR1_3P3 state=disabled uV=3300000
+: name=VREG_RTMR0_3P3 state=enabled uV=3300000
+: name=VREG_RTMR2_1P15 state=disabled uV=1150000
+: name=vreg_s1f_0p7 state=enabled uV=700000
+: name=VREG_RTMR2_1P8 state=disabled uV=1800000
+: name=VREG_RTMR2_3P3 state=disabled uV=3300000
+: name=SDX_VPH_PWR state=enabled uV=3300000
+: name=vreg_s4c_1p8 state=enabled uV=1856000
+: name=vreg_l2e_0p8 state=enabled uV=880000
+: name=vreg_l1c_1p2 state=unknown uV=1200000
+: name=vreg_l3e_1p2 state=enabled uV=1200000
+: name=vreg_l2c_0p8 state=unknown uV=880000
+: name=vreg_l3c_0p8 state=enabled uV=880000
+: name=vreg_bob1 state=enabled uV=3032000
+: name=vreg_s5j_1p2 state=enabled uV=1256000
+: name=vreg_l1d_0p8 state=enabled uV=880000
+: name=vreg_s1i_0p9 state=unknown uV=900000
+: name=vreg_s2i_1p0 state=unknown uV=1000000
+: name=vreg_l1i_1p8 state=unknown uV=1800000
+: name=vreg_bob2 state=unknown uV=3000000
+: name=vreg_l1b_1p8 state=unknown uV=1800000
+: name=vreg_l2b_3p0 state=enabled uV=3072000
+: name=vreg_l4b_1p8 state=enabled uV=1800000
+: name=vreg_l5b_3p0 state=unknown uV=3000000
+: name=vreg_l6b_1p8 state=unknown uV=1800000
+: name=vreg_l1f_1p0 state=unknown uV=1024000
+: name=vreg_l7b_2p8 state=unknown uV=2800000
+: name=vreg_l8b_3p0 state=unknown uV=3072000
+: name=vreg_l2d_0p9 state=unknown uV=912000
+: name=vreg_l3d_1p8 state=enabled uV=1800000
+: name=vreg_l2i_1p2 state=unknown uV=1200000
+: name=vreg_l9b_2p9 state=unknown uV=2960000
+: name=vreg_l3i_0p8 state=enabled uV=880000
+: name=vreg_l10b_1p8 state=unknown uV=1800000
+: name=vreg_l12b_1p2 state=enabled uV=1200000
+: name=vreg_l13b_3p0 state=enabled uV=3072000
+: name=vreg_l1j_0p8 state=enabled uV=880000
+: name=vreg_l14b_3p0 state=unknown uV=3072000
+: name=vreg_l15b_1p8 state=enabled uV=1800000
+: name=vreg_l16b_2p9 state=unknown uV=2912000
+: name=vreg_l17b_2p5 state=unknown uV=2504000
+: name=vreg_l2f_1p0 state=unknown uV=1024000
+: name=vreg_l2j_1p2 state=enabled uV=1256000
+: name=vreg_l3f_1p0 state=unknown uV=1024000
+: name=vreg_l3j_0p8 state=enabled uV=880000
+~ # [6n

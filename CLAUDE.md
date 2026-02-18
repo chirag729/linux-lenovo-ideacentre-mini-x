@@ -26,6 +26,7 @@ See `PLAN.md` for the full plan.
   - netconsole listener: `nc -u -l -p 6666`
   - SSH client to access Lenovo during headless Linux boot
 - **Why it exists:** When the Lenovo reboots into Linux for testing, it can't listen to its own boot log, serve its own network boot files, or provide its own SSH access. The netbox handles all of that.
+- **Secondary AI reviewers:** `codex` (OpenAI Codex CLI) and `gemini` (Google Gemini CLI) are installed on the netbox. Use them for second opinions on tricky debugging, architecture decisions, or when stuck. Run with `codex exec "prompt"` or `gemini "prompt"`.
 
 ## Git Workflow
 
