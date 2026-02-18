@@ -1,0 +1,65 @@
+
+echo "---PORT0-ENDPOINT---"
+ls /sys/firmware/devicetree/base/soc@0/display-subsystem@ae00000/display-controller@ae01000/ports/port@0/endpoint/
+echo "---PORT0-REMOTE---"
+cat /sys/firmware/devicetree/base/soc@0/display-subsystem@ae00000/display-controller@ae01000/ports/port@0/endpoint/remote-endpoint 2>/dev/null | od -A x -t x1 | head -5
+echo "---PORT4---"
+ls /sys/firmware/devicetree/base/soc@0/display-subsystem@ae00000/display-controller@ae01000/ports/port@4/ 2>/dev/null
+echo "---PORT5---"
+ls /sys/firmware/devicetree/base/soc@0/display-subsystem@ae00000/display-controller@ae01000/ports/port@5/ 2>/dev/null
+echo "---PORT6---"
+ls /sys/firmware/devicetree/base/soc@0/display-subsystem@ae00000/display-controller@ae01000/ports/port@6/ 2>/dev/null
+echo "---PORT4-EP---"
+ls /sys/firmware/devicetree/base/soc@0/display-subsystem@ae00000/display-controller@ae01000/ports/port@4/endpoint/ 2>/dev/null
+echo "---PORT5-EP---"
+ls /sys/firmware/devicetree/base/soc@0/display-subsystem@ae00000/display-controller@ae01000/ports/port@5/endpoint/ 2>/dev/null
+echo "---PORT6-EP---"
+ls /sys/firmware/devicetree/base/soc@0/display-subsystem@ae00000/display-controller@ae01000/ports/port@6/endpoint/ 2>/dev/null
+
+
+BusyBox v1.36.1 (Ubuntu 1:1.36.1-6ubuntu3.1) built-in shell (ash)
+Enter 'help' for a list of built-in commands.
+
+~ # echo "---PORT0-ENDPOINT---"
+---PORT0-ENDPOINT---
+~ # ls /sys/firmware/devicetree/base/soc@0/display-subsystem@ae00000/display-con
+troller@ae01000/ports/port@0/endpoint/
+name             phandle          remote-endpoint
+~ # echo "---PORT0-REMOTE---"
+---PORT0-REMOTE---
+~ # cat /sys/firmware/devicetree/base/soc@0/display-subsystem@ae00000/display-co
+ntroller@ae01000/ports/port@0/endpoint/remote-endpoint 2>/dev/null | od -A x -t 
+x1 | head -5
+000000 00 00 00 f1
+000004
+~ # echo "---PORT4---"
+---PORT4---
+~ # ls /sys/firmware/devicetree/base/soc@0/display-subsystem@ae00000/display-con
+troller@ae01000/ports/port@4/ 2>/dev/null
+endpoint  name      reg
+~ # echo "---PORT5---"
+---PORT5---
+~ # ls /sys/firmware/devicetree/base/soc@0/display-subsystem@ae00000/display-con
+troller@ae01000/ports/port@5/ 2>/dev/null
+endpoint  name      reg
+~ # echo "---PORT6---"
+---PORT6---
+~ # ls /sys/firmware/devicetree/base/soc@0/display-subsystem@ae00000/display-con
+troller@ae01000/ports/port@6/ 2>/dev/null
+endpoint  name      reg
+~ # echo "---PORT4-EP---"
+---PORT4-EP---
+~ # ls /sys/firmware/devicetree/base/soc@0/display-subsystem@ae00000/display-con
+troller@ae01000/ports/port@4/endpoint/ 2>/dev/null
+name             phandle          remote-endpoint
+~ # echo "---PORT5-EP---"
+---PORT5-EP---
+~ # ls /sys/firmware/devicetree/base/soc@0/display-subsystem@ae00000/display-con
+troller@ae01000/ports/port@5/endpoint/ 2>/dev/null
+name             phandle          remote-endpoint
+~ # echo "---PORT6-EP---"
+---PORT6-EP---
+~ # ls /sys/firmware/devicetree/base/soc@0/display-subsystem@ae00000/display-con
+troller@ae01000/ports/port@6/endpoint/ 2>/dev/null
+name             phandle          remote-endpoint
+~ # [6n

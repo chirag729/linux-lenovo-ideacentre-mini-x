@@ -208,6 +208,18 @@ Ethernet (r8169) is confirmed working. Next boot should bring up the network and
 - **NVMe:** Samsung MZVL8512HDLU-00BLL, FW 9L2QKXD7, 4 partitions (EFI/Reserved/Windows/Recovery)
 - **System stable:** Stayed alive >30 minutes, thermals 21-23C SoC, 37C PMICs
 
+#### Boot 7 Key Findings (2026-02-18, pi -- DRM enabled, display test)
+- **Cmdline:** `clk_ignore_unused pd_ignore_unused console=tty0 earlycon earlyprintk loglevel=8 keep_bootcon drm.debug=0x1ff log_buf_len=8M` (no nomodeset, no drm.modeset=0)
+- **DRM probed:** DPU mapped address space, DP1 (eDP) did PHY init then exited, DP0 (USB-C) had no DRM activity
+- **DRM card NOT created:** Component aggregate `ae01000.display-controller` never bound
+- **Root cause:** DPU expects 3 components via port graph, only DP0 registered. DP1 (aea0000) probed as platform device but never called component_add() -- likely because eDP panel probe failed (no panel on desktop)
+- **DPU port graph:** port@0→DP0 (ae90000), port@4→DP2 (ae98000, disabled), port@5→DP1 (aea0000), port@6→DP3 (ae9a000, disabled)
+- **efifb survives:** DRM didn't take over, screen stays on EFI framebuffer
+- **System stable:** Network + telnet still work with DRM enabled
+- **Initramfs v5:** fakeroot-built (root:root), new password hash. SSH still rejects -- needs more investigation
+- **HDMI bridge:** No bridge chip in DT. Codex suggests Realtek RTD2171 based on ThinkBook 16 patches. Needs identification from Windows driver data
+- Logs: `testing/boot-logs/2026-02-18-boot7-drm-enabled/`
+
 ### 2.2 Full Rootfs (debootstrap)
 A busybox initramfs is too limited for real debugging. Need a proper Ubuntu rootfs.
 - [ ] Create arm64 Ubuntu rootfs via debootstrap in WSL2
@@ -216,11 +228,16 @@ A busybox initramfs is too limited for real debugging. Need a proper Ubuntu root
 - [ ] Boot with full rootfs, verify SSH + package management
 
 ### 2.3 Display Enablement
-Display goes black because DRM_MSM (built-in) probes and fails. Options:
-- [ ] Rebuild kernel with CONFIG_DRM_MSM=m (module) so it doesn't auto-probe
-- [ ] Or: debug DRM_MSM initialization with SSH access + dmesg analysis
-- [ ] Identify which display output is connected (HDMI via DisplayPort alt mode?)
-- [ ] Get console output on screen
+Boot 7 confirmed: DRM_MSM probes but component aggregate never binds (no DRM card created).
+Root cause: DPU expects 3 components but DP1 (eDP) never registers its component.
+
+**Next steps (DTS work on WSL2):**
+- [ ] Disable DP1 (aea0000) and its eDP panel in board DTS -- no eDP panel on desktop
+- [ ] Remove DPU port@5 endpoint or mark DP1 status="disabled"
+- [ ] Rebuild DTB and test -- DRM card should be created with just DP0
+- [ ] Identify HDMI bridge chip from Windows hardware data / ACPI tables
+- [ ] Add HDMI bridge node (likely Realtek RTD2171) to DTS under correct DP controller
+- [ ] Test HDMI output with bridge chip described in DTS
 
 ### 2.4 WiFi Enablement
 - [ ] Copy ath12k firmware files to rootfs (`/lib/firmware/ath12k/`)

@@ -1,0 +1,77 @@
+
+echo "---DISPLAY-SUBSYSTEM-DEVICE---"
+ls /sys/bus/platform/devices/ae00000.display-subsystem/
+echo "---DPU-DEVICE---"
+ls /sys/bus/platform/devices/ae01000.display-controller/
+echo "---COMPONENT-DIR---"
+ls /sys/kernel/debug/device_component/ 2>&1
+echo "---COMPONENT-DISPLAY---"
+cat /sys/kernel/debug/device_component/* 2>&1
+echo "---DMESG-COMPONENT---"
+dmesg | grep -i "component\|bind\|aggregate\|master" | head -20
+
+
+BusyBox v1.36.1 (Ubuntu 1:1.36.1-6ubuntu3.1) built-in shell (ash)
+Enter 'help' for a list of built-in commands.
+
+~ # echo "---DISPLAY-SUBSYSTEM-DEVICE---"
+---DISPLAY-SUBSYSTEM-DEVICE---
+~ # ls /sys/bus/platform/devices/ae00000.display-subsystem/
+ae01000.display-controller
+ae90000.displayport-controller
+aea0000.displayport-controller
+consumer:platform:ae01000.display-controller
+consumer:platform:ae90000.displayport-controller
+consumer:platform:aea0000.displayport-controller
+driver
+driver_override
+iommu
+iommu_group
+modalias
+of_node
+power
+subsystem
+supplier:platform:100000.clock-controller
+supplier:platform:15000000.iommu
+supplier:platform:1600000.interconnect
+supplier:platform:1780000.interconnect
+supplier:platform:26400000.interconnect
+supplier:platform:af00000.clock-controller
+supplier:platform:interconnect-1
+uevent
+~ # echo "---DPU-DEVICE---"
+---DPU-DEVICE---
+~ # ls /sys/bus/platform/devices/ae01000.display-controller/
+driver
+driver_override
+modalias
+of_node
+power
+subsystem
+supplier:platform:100000.clock-controller
+supplier:platform:17500000.rsc:power-controller
+supplier:platform:ae00000.display-subsystem
+supplier:platform:af00000.clock-controller
+uevent
+~ # echo "---COMPONENT-DIR---"
+---COMPONENT-DIR---
+~ # ls /sys/kernel/debug/device_component/ 2>&1
+ae01000.display-controller
+~ # echo "---COMPONENT-DISPLAY---"
+---COMPONENT-DISPLAY---
+~ # cat /sys/kernel/debug/device_component/* 2>&1
+aggregate_device name                                            status
+-----------------------------------------------------------------------
+ae01000.display-controller                                    not bound
+
+device name                                                      status
+-----------------------------------------------------------------------
+ae90000.displayport-controller                                not bound
+(unknown)                                                not registered
+(unknown)                                                not registered
+~ # echo "---DMESG-COMPONENT---"
+---DMESG-COMPONENT---
+~ # dmesg | grep -i "component\|bind\|aggregate\|master" | head -20
+[    3.245472] TCP bind hash table entries: 65536 (order: 9, 2097152 bytes, linear)
+[    3.253827] TCP: Hash tables configured (established 262144 bind 65536)
+~ # [6n

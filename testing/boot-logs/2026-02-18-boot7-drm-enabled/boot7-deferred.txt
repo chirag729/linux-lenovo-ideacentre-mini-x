@@ -1,0 +1,75 @@
+
+echo "---DEFERRED-PROBES---"
+cat /sys/kernel/debug/devices_deferred 2>/dev/null
+echo "---COMPONENT-DEVICES---"
+cat /sys/kernel/debug/device_component/ae00000.display-subsystem 2>/dev/null
+echo "---DP0-DRIVER---"
+ls /sys/bus/platform/devices/ae90000.displayport-controller/ 2>&1
+echo "---DP1-DRIVER---"
+ls /sys/bus/platform/devices/aea0000.displayport-controller/ 2>&1
+echo "---PHY-FD5000---"
+ls /sys/bus/platform/devices/fd5000.phy/ 2>&1
+
+
+BusyBox v1.36.1 (Ubuntu 1:1.36.1-6ubuntu3.1) built-in shell (ash)
+Enter 'help' for a list of built-in commands.
+
+~ # echo "---DEFERRED-PROBES---"
+---DEFERRED-PROBES---
+~ # cat /sys/kernel/debug/devices_deferred 2>/dev/null
+c42d000.spmi:pmic@0:rtc@6100    
+6e80000.pinctrl qcom-sm8550-lpass-lpi-pinctrl: Failed to get clk 'core'
+~ # echo "---COMPONENT-DEVICES---"
+---COMPONENT-DEVICES---
+~ # cat /sys/kernel/debug/device_component/ae00000.display-subsystem 2>/dev/null
+~ # echo "---DP0-DRIVER---"
+---DP0-DRIVER---
+~ # ls /sys/bus/platform/devices/ae90000.displayport-controller/ 2>&1
+driver
+driver_override
+modalias
+of_node
+power
+subsystem
+supplier:phy:phy-fd5000.phy.2
+supplier:platform:17500000.rsc:power-controller
+supplier:platform:ae00000.display-subsystem
+supplier:platform:af00000.clock-controller
+uevent
+~ # echo "---DP1-DRIVER---"
+---DP1-DRIVER---
+~ # ls /sys/bus/platform/devices/aea0000.displayport-controller/ 2>&1
+aux-aea0000.displayport-controller
+consumer:dp-aux:aux-aea0000.displayport-controller
+driver
+driver_override
+modalias
+of_node
+power
+subsystem
+supplier:phy:phy-aec5a00.phy.0
+supplier:platform:17500000.rsc:power-controller
+supplier:platform:ae00000.display-subsystem
+supplier:platform:aec5a00.phy
+supplier:platform:af00000.clock-controller
+supplier:platform:f100000.pinctrl
+uevent
+~ # echo "---PHY-FD5000---"
+---PHY-FD5000---
+~ # ls /sys/bus/platform/devices/fd5000.phy/ 2>&1
+aux_bridge.aux_bridge.0
+driver
+driver_override
+modalias
+of_node
+phy
+power
+subsystem
+supplier:platform:100000.clock-controller
+supplier:platform:17500000.rsc:clock-controller
+supplier:platform:17500000.rsc:regulators-7
+supplier:regulator:regulator.4
+supplier:regulator:regulator.6
+typec_mux
+uevent
+~ # [6n

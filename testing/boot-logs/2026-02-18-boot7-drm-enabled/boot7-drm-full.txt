@@ -1,0 +1,39 @@
+
+grep -c '\[drm' /mnt/usb/logs/dmesg-boot7-drm.txt
+echo "---ALL-DRM-LINES---"
+grep '\[drm' /mnt/usb/logs/dmesg-boot7-drm.txt
+
+
+BusyBox v1.36.1 (Ubuntu 1:1.36.1-6ubuntu3.1) built-in shell (ash)
+Enter 'help' for a list of built-in commands.
+
+~ # grep -c '\[drm' /mnt/usb/logs/dmesg-boot7-drm.txt
+24
+~ # echo "---ALL-DRM-LINES---"
+---ALL-DRM-LINES---
+~ # grep '\[drm' /mnt/usb/logs/dmesg-boot7-drm.txt
+[    3.440809] [drm:drm_core_init] Initialized
+[    3.440817] [drm:msm_drm_register] init
+[    3.440819] [drm:msm_mdp_register] 
+[    3.440950] [drm:msm_dsi_register] 
+[    4.413287] [drm:mdss_runtime_resume] 
+[    4.418390] [drm:mdss_runtime_suspend] 
+[    4.455624] [drm:mdss_runtime_resume] 
+[    4.460813] [drm:mdss_runtime_suspend] 
+[    4.534007] [drm:mdss_runtime_resume] 
+[    4.539392] [drm:mdss_runtime_suspend] 
+[    4.545435] [drm:mdss_runtime_resume] 
+[    4.545874] [drm:dpu_dev_probe] mapped dpu address space @0000000097caeca2
+[    4.545877] [drm:dpu_dev_probe] VBIF NRT is not defined
+[    4.546634] [drm:msm_dp_pm_runtime_resume] type=14 core_init=0 phy_init=0
+[    4.546640] [drm:msm_dp_ctrl_core_clk_enable] enable core clocks 
+[    4.546642] [drm:msm_dp_ctrl_core_clk_enable] stream_clks:off link_clks:off core_clks:on
+[    4.547761] [drm:msm_dp_display_host_phy_init] type=14 core_init=1 phy_init=0
+[    4.617597] [drm:msm_dp_ctrl_phy_init] phy=0000000011c9a3e8 init=1 power_on=0
+[    4.623898] [drm:msm_dp_display_host_phy_exit] type=14 core_init=1 phy_init=1
+[    4.627014] [drm:msm_dp_ctrl_phy_exit] phy=0000000011c9a3e8 init=0 power_on=0
+[    4.627021] [drm:msm_dp_pm_runtime_suspend] type=14 core_init=1 phy_init=0
+[    4.628142] [drm:msm_dp_ctrl_core_clk_disable] disable core clocks 
+[    4.628145] [drm:msm_dp_ctrl_core_clk_disable] stream_clks:off link_clks:off core_clks:off
+[    4.628149] [drm:mdss_runtime_suspend] 
+~ # [6n

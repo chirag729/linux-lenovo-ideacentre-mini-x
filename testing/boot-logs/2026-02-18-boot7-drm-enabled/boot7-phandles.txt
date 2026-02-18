@@ -1,0 +1,24 @@
+
+find /sys/firmware/devicetree/base -name phandle -exec sh -c '
+  ph=$(od -A n -t x1 "$1" 2>/dev/null | tr -d " \n")
+  case "$ph" in
+    000000f2|000000f3|000000f4)
+      echo "phandle 0x$ph -> $(dirname "$1")";;
+  esac
+' _ {} \;
+
+
+BusyBox v1.36.1 (Ubuntu 1:1.36.1-6ubuntu3.1) built-in shell (ash)
+Enter 'help' for a list of built-in commands.
+
+~ # find /sys/firmware/devicetree/base -name phandle -exec sh -c '
+>   ph=$(od -A n -t x1 "$1" 2>/dev/null | tr -d " \n")
+>   case "$ph" in
+>     000000f2|000000f3|000000f4)
+>       echo "phandle 0x$ph -> $(dirname "$1")";;
+>   esac
+> ' _ {} \;
+phandle 0x000000f2 -> /sys/firmware/devicetree/base/soc@0/display-subsystem@ae00000/displayport-controller@ae98000/ports/port@0/endpoint
+phandle 0x000000f3 -> /sys/firmware/devicetree/base/soc@0/display-subsystem@ae00000/displayport-controller@aea0000/ports/port@0/endpoint
+phandle 0x000000f4 -> /sys/firmware/devicetree/base/soc@0/display-subsystem@ae00000/displayport-controller@ae9a000/ports/port@0/endpoint
+~ # [6n

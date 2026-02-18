@@ -1,0 +1,48 @@
+
+echo "---RESOLVE-PHANDLES---"
+for p in 0 4 5 6; do
+  ep="/sys/firmware/devicetree/base/soc@0/display-subsystem@ae00000/display-controller@ae01000/ports/port@$p/endpoint/remote-endpoint"
+  ph=$(od -A n -t x1 "$ep" 2>/dev/null | tr -d ' \n')
+  echo "port@$p remote-phandle: 0x$ph"
+done
+echo "---FIND-NODE-BY-PHANDLE---"
+find /sys/firmware/devicetree/base -name phandle -exec sh -c '
+  ph=$(od -A n -t x1 "$1" 2>/dev/null | tr -d " \n")
+  case "$ph" in
+    000000f1|000000ea|000000e5|000000ec|000000e0|000000e8)
+      echo "phandle 0x$ph -> $(dirname "$1")";;
+  esac
+' _ {} \;
+
+
+BusyBox v1.36.1 (Ubuntu 1:1.36.1-6ubuntu3.1) built-in shell (ash)
+Enter 'help' for a list of built-in commands.
+
+~ # echo "---RESOLVE-PHANDLES---"
+---RESOLVE-PHANDLES---
+~ # for p in 0 4 5 6; do
+>   ep="/sys/firmware/devicetree/base/soc@0/display-subsystem@ae00000/display-co
+ntroller@ae01000/ports/port@$p/endpoint/remote-endpoint"
+>   ph=$(od -A n -t x1 "$ep" 2>/dev/null | tr -d ' \n')
+>   echo "port@$p remote-phandle: 0x$ph"
+> done
+port@0 remote-phandle: 0x000000f1
+port@4 remote-phandle: 0x000000f2
+port@5 remote-phandle: 0x000000f3
+port@6 remote-phandle: 0x000000f4
+~ # echo "---FIND-NODE-BY-PHANDLE---"
+---FIND-NODE-BY-PHANDLE---
+~ # find /sys/firmware/devicetree/base -name phandle -exec sh -c '
+>   ph=$(od -A n -t x1 "$1" 2>/dev/null | tr -d " \n")
+>   case "$ph" in
+>     000000f1|000000ea|000000e5|000000ec|000000e0|000000e8)
+>       echo "phandle 0x$ph -> $(dirname "$1")";;
+>   esac
+> ' _ {} \;
+phandle 0x000000f1 -> /sys/firmware/devicetree/base/soc@0/display-subsystem@ae00000/displayport-controller@ae90000/ports/port@0/endpoint
+phandle 0x000000ec -> /sys/firmware/devicetree/base/soc@0/rsc@17500000/power-controller/opp-table/opp-56
+phandle 0x000000e8 -> /sys/firmware/devicetree/base/soc@0/clock-controller@aaf0000
+phandle 0x000000e0 -> /sys/firmware/devicetree/base/soc@0/phy@88e3000
+phandle 0x000000e5 -> /sys/firmware/devicetree/base/soc@0/phy@fd5000/ports/port@1/endpoint
+phandle 0x000000ea -> /sys/firmware/devicetree/base/soc@0/interconnect@1780000
+~ # [6n

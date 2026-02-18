@@ -1,0 +1,31 @@
+I2C Device Map (Boot 6, 2026-02-18)
+=====================================
+
+Bus 0:
+  0-0010: hid-over-i2c (compatible: hid-over-i2c)
+
+Bus 1:
+  1-0015: hid-over-i2c
+  1-003a: hid-over-i2c
+
+Bus 2:
+  2-0008: ps8830 (compatible: parade,ps8830) -- USB4/DP retimer
+          This is the "supplier 2-0008" that PMIC glink connector@0 can't link to
+
+Bus 3:
+  3-004f: ptn3222 (compatible: nxp,ptn3222) -- USB Type-C redriver
+
+DT I2C controllers:
+  geniqup@ac0000: i2c@a80000 through i2c@a9c000 (8 buses)
+  geniqup@bc0000: i2c@b80000 through i2c@b9c000 (8 buses)
+
+DP Controller DT Status:
+  ae90000 (DP0): okay    -- USB-C DP alt mode via PHY@fd5000
+  ae98000 (DP2): disabled
+  ae9a000 (DP3): disabled
+  aea0000 (DP1): okay    -- has eDP panel child (inherited from CRD, likely wrong for desktop)
+
+HDMI Bridge:
+  NO bridge chip found in DT (no realtek,rtd2171 or similar compatible strings)
+  Codex suggests RTD2171 based on ThinkBook 16 patches -- needs investigation
+  HDMI port routing is unknown -- could be through DP0 via PS8830 retimer

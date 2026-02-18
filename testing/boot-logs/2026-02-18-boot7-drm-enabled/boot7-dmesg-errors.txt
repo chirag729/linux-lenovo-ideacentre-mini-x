@@ -1,0 +1,29 @@
+
+grep -i -E "error|fail|unable|defer|not found|missing" /mnt/usb/logs/dmesg-boot7-drm.txt | grep -v "usb\|USB\|mouse\|Mouse\|SIGMACHIP"
+
+
+BusyBox v1.36.1 (Ubuntu 1:1.36.1-6ubuntu3.1) built-in shell (ash)
+Enter 'help' for a list of built-in commands.
+
+~ # grep -i -E "error|fail|unable|defer|not found|missing" /mnt/usb/logs/dmesg-b
+oot7-drm.txt | grep -v "usb\|USB\|mouse\|Mouse\|SIGMACHIP"
+[    3.879897] arm-scmi arm-scmi.0.auto: [Firmware Bug]: Failed to add opps_by_lvl at 2956800 for NCC1 - ret:-16
+[    3.890291] arm-scmi arm-scmi.0.auto: [Firmware Bug]: Failed to add opps_by_lvl at 2956800 for NCC1 - ret:-16
+[    4.073422] remoteproc remoteproc0: Direct firmware load for qcom/x1e80100/adsp.mbn failed with error -2
+[    4.073432] remoteproc remoteproc0: Direct firmware load for qcom/x1e80100/adsp.mbn failed with error -2
+[    4.073434] remoteproc remoteproc0: request_firmware failed: -2
+[    4.074166] remoteproc remoteproc1: Direct firmware load for qcom/x1e80100/cdsp.mbn failed with error -2
+[    4.074175] remoteproc remoteproc1: Direct firmware load for qcom/x1e80100/cdsp.mbn failed with error -2
+[    4.074176] remoteproc remoteproc1: request_firmware failed: -2
+[    4.080167] qcom_pmic_glink pmic-glink: Failed to create device link (0x180) with supplier 2-0008 for /pmic-glink/connector@0
+[    4.089979] qcom_pmic_glink pmic-glink: Failed to create device link (0x180) with supplier 2-0008 for /pmic-glink/connector@0
+[    4.625536] qcom-pcie 1bf8000.pci: supply vdda not found, using dummy regulator
+[    4.625975] qcom-pcie 1c00000.pci: supply vdda not found, using dummy regulator
+[    4.626245] qcom-pcie 1c08000.pci: supply vdda not found, using dummy regulator
+[    4.626262] qcom-pcie 1c08000.pci: supply vddpe-3v3 not found, using dummy regulator
+[    4.666600] faux_driver regulatory: Direct firmware load for regulatory.db failed with error -2
+[    4.668575] cfg80211: failed to load regulatory.db
+[   20.057102] platform c42d000.spmi:pmic@0:rtc@6100: deferred probe pending: (reason unknown)
+[   20.128398] platform 6e80000.pinctrl: deferred probe pending: qcom-sm8550-lpass-lpi-pinctrl: Failed to get clk 'core'
+[   26.901132] r8169 0005:01:00.0: Unable to load firmware rtl_nic/rtl8168h-2.fw (-2)
+~ # [6n
