@@ -1,0 +1,365 @@
+[    0.000000] OF: reserved mem: 0x0000000081f00000..0x0000000081f0ffff (64 KiB) nomap non-reusable gpu-prr@81f00000
+[    0.000000] OF: reserved mem: 0x000000008d9fe000..0x000000008d9fffff (8 KiB) nomap non-reusable gpu-microcode@8d9fe000
+[    0.000000] Kernel command line: BOOT_IMAGE=/Image clk_ignore_unused pd_ignore_unused console=tty0 earlycon earlyprintk loglevel=8 keep_bootcon drm.debug=0x1ff log_buf_len=8M
+[    3.115847] TCP bind hash table entries: 65536 (order: 9, 2097152 bytes, linear)
+[    3.124200] TCP: Hash tables configured (established 262144 bind 65536)
+[    3.310336] msm_serial: driver initialized
+[    3.311482] [drm:drm_core_init] Initialized
+[    3.311492] [drm:msm_drm_register] init
+[    3.311494] [drm:msm_mdp_register] 
+[    3.311635] [drm:msm_dsi_register] 
+[    3.637606] Synopsys Designware Multimedia Card Interface Driver
+[    3.946770] platform 3d00000.gpu: Adding to iommu group 0
+[    3.950352] platform ae00000.display-subsystem: Adding to iommu group 5
+[    3.960330] 894000.serial: ttyMSM0 at MMIO 0x894000 (irq = 184, base_baud = 0) is a MSM
+[    4.282502] [drm:mdss_runtime_resume] 
+[    4.287664] [drm:mdss_runtime_suspend] 
+[    4.325073] [drm:mdss_runtime_resume] 
+[    4.330329] [drm:mdss_runtime_suspend] 
+[    4.336254] [drm:mdss_runtime_resume] 
+[    4.336687] [drm:dpu_dev_probe] mapped dpu address space @0000000072d52cb3
+[    4.336691] [drm:dpu_dev_probe] VBIF NRT is not defined
+[    4.336789] [drm:mdss_runtime_suspend] 
+[    4.336947] [drm:mdss_runtime_resume] 
+[    4.337497] [drm:mdss_runtime_suspend] 
+[    4.339634] [drm:mdss_runtime_resume] 
+[    4.340180] msm_dpu ae01000.display-controller: [drm:msm_dp_pm_runtime_resume] type=10 core_init=0 phy_init=0
+[    4.340187] [drm:msm_dp_ctrl_core_clk_enable] enable core clocks 
+[    4.340190] [drm:msm_dp_ctrl_core_clk_enable] stream_clks:off link_clks:off core_clks:on
+[    4.341311] msm_dpu ae01000.display-controller: [drm:msm_dp_pm_runtime_suspend] type=10 core_init=1 phy_init=0
+[    4.341432] msm_dpu ae01000.display-controller: bound ae90000.displayport-controller (ops msm_dp_display_comp_ops)
+[    4.341439] [drm:adreno_bind] Found GPU: 67.3.12.0
+[    4.341572] [drm:adreno_gpu_init] fast_rate=1107000000, slow_rate=27000000
+[    4.341722] [drm:msm_gpu_init] ebi1_clk: fffffffffffffffe
+[    4.341730] adreno 3d00000.gpu: supply vdd not found, using dummy regulator
+[    4.341747] [drm:msm_gpu_init] gpu_reg: 00000000a72b24ea
+[    4.341753] adreno 3d00000.gpu: supply vddcx not found, using dummy regulator
+[    4.341761] [drm:msm_gpu_init] gpu_cx: 000000006e13a93e
+[    4.342435] [drm:msm_dp_ctrl_core_clk_disable] disable core clocks 
+[    4.342438] [drm:msm_dp_ctrl_core_clk_disable] stream_clks:off link_clks:off core_clks:off
+[    4.353980] msm_dpu ae01000.display-controller: bound 3d00000.gpu (ops a3xx_ops)
+[    7.882815] [drm:dpu_kms_hw_init:1173] dpu hardware revision:0x90020000
+[    8.012261] [drm:dpu_hw_intf_init] Skip intf 3 with type NONE
+[    8.143101] [drm:dpu_hw_intf_init] Skip intf 7 with type NONE
+[    8.208584] [drm:dpu_hw_intf_init] Skip intf 8 with type NONE
+[    8.208594] [drm:dpu_encoder_init] dsi_info->num_of_h_tiles 1
+[    8.339544] [drm:dpu_encoder_init] h_tile_instance 0 = 0, split_role 0
+[    8.339546] [drm:dpu_encoder_init] enc33 
+[    8.339548] [drm:dpu_encoder_phys_vid_init] enc-1 intf-1 
+[    8.405020] [drm:dpu_encoder_phys_vid_init] enc33 intf0 created intf idx:1
+[    8.405023] [drm:dpu_encoder_init] enc33 created
+[    8.405044] msm_dpu ae01000.display-controller: [drm:msm_dp_pm_runtime_resume] type=10 core_init=0 phy_init=0
+[    8.536037] [drm:msm_dp_ctrl_core_clk_enable] enable core clocks 
+[    8.667020] [drm:msm_dp_ctrl_core_clk_enable] stream_clks:off link_clks:off core_clks:on
+[    8.799276] [drm:dpu_encoder_init] dsi_info->num_of_h_tiles 1
+[    8.799309] msm_dpu ae01000.display-controller: [drm:msm_dp_pm_runtime_suspend] type=10 core_init=1 phy_init=0
+[    8.800430] [drm:msm_dp_ctrl_core_clk_disable] disable core clocks 
+[    8.800434] [drm:msm_dp_ctrl_core_clk_disable] stream_clks:off link_clks:off core_clks:off
+[    8.928989] [drm:dpu_encoder_init] h_tile_instance 0 = 3, split_role 0
+[    8.928991] [drm:dpu_encoder_init] enc36 
+[    9.059968] [drm:dpu_encoder_phys_wb_init] 
+[   13.382543] [drm:dpu_encoder_phys_wb_init] Created dpu_encoder_phys for wb 3
+[   13.448043] [drm:dpu_encoder_init] enc36 created
+[   13.513532] [drm:_dpu_kms_drm_obj_init] Create plane type 1 with features 2da4 (cur 0)
+[   13.579031] [drm:dpu_plane_init_common.isra.0] plane-0 created for pipe:1 id:42
+[   13.644525] [drm:dpu_plane_init] plane-0 created for pipe:1 id:42
+[   13.710019] [drm:_dpu_kms_drm_obj_init] Create plane type 1 with features 2da4 (cur 0)
+[   13.775507] [drm:dpu_plane_init_common.isra.0] plane-1 created for pipe:2 id:48
+[   13.840996] [drm:dpu_plane_init] plane-1 created for pipe:2 id:48
+[   13.906481] [drm:_dpu_kms_drm_obj_init] Create plane type 0 with features 2da4 (cur 0)
+[   13.971969] [drm:dpu_plane_init_common.isra.0] plane-2 created for pipe:3 id:54
+[   14.037457] [drm:dpu_plane_init] plane-2 created for pipe:3 id:54
+[   14.102940] [drm:_dpu_kms_drm_obj_init] Create plane type 0 with features 2da4 (cur 0)
+[   14.168424] [drm:dpu_plane_init_common.isra.0] plane-3 created for pipe:4 id:60
+[   14.168425] [drm:dpu_plane_init] plane-3 created for pipe:4 id:60
+[   14.168427] [drm:_dpu_kms_drm_obj_init] Create plane type 0 with features 3d80 (cur 0)
+[   14.168431] [drm:dpu_plane_init_common.isra.0] plane-4 created for pipe:9 id:66
+[   14.495810] [drm:dpu_plane_init] plane-4 created for pipe:9 id:66
+[   14.561311] [drm:_dpu_kms_drm_obj_init] Create plane type 0 with features 3d80 (cur 0)
+[   14.626833] [drm:dpu_plane_init_common.isra.0] plane-5 created for pipe:10 id:72
+[   14.692319] [drm:dpu_plane_init] plane-5 created for pipe:10 id:72
+[   14.757802] [drm:_dpu_kms_drm_obj_init] Create plane type 0 with features 3d80 (cur 0)
+[   14.823308] [drm:dpu_plane_init_common.isra.0] plane-6 created for pipe:11 id:78
+[   14.888796] [drm:dpu_plane_init] plane-6 created for pipe:11 id:78
+[   14.954275] [drm:_dpu_kms_drm_obj_init] Create plane type 0 with features 3d80 (cur 0)
+[   15.019769] [drm:dpu_plane_init_common.isra.0] plane-7 created for pipe:12 id:84
+[   15.085253] [drm:dpu_plane_init] plane-7 created for pipe:12 id:84
+[   15.150736] [drm:_dpu_kms_drm_obj_init] Create plane type 2 with features 3dc0 (cur 40)
+[   15.216228] [drm:dpu_plane_init_common.isra.0] plane-8 created for pipe:13 id:90
+[   15.281718] [drm:dpu_plane_init] plane-8 created for pipe:13 id:90
+[   15.347206] [drm:_dpu_kms_drm_obj_init] Create plane type 2 with features 3dc0 (cur 40)
+[   15.412693] [drm:dpu_plane_init_common.isra.0] plane-9 created for pipe:14 id:96
+[   15.478181] [drm:dpu_plane_init] plane-9 created for pipe:14 id:96
+[   15.543707] [drm:dpu_crtc_init] crtc102: successfully initialized crtc
+[   15.674806] [drm:dpu_crtc_init] crtc103: successfully initialized crtc
+[   15.741318] [drm:dpu_plane_reset] plane42 
+[   15.871472] [drm:dpu_plane_reset] plane48 
+[   15.936963] [drm:dpu_plane_reset] plane54 
+[   16.002447] [drm:dpu_plane_reset] plane60 
+[   16.067939] [drm:dpu_plane_reset] plane66 
+[   16.133428] [drm:dpu_plane_reset] plane72 
+[   16.198913] [drm:dpu_plane_reset] plane78 
+[   16.264401] [drm:dpu_plane_reset] plane84 
+[   16.329889] [drm:dpu_plane_reset] plane90 
+[   16.395373] [drm:dpu_plane_reset] plane96 
+[   16.460929] [drm:drm_minor_register] 
+[   16.526549] [drm:drm_minor_register] new minor registered 128
+[   16.592039] [drm:drm_minor_register] 
+[   16.657709] [drm:drm_minor_register] new minor registered 0
+[   16.723198] [drm:drm_minor_register] 
+[   16.788697] msm_dpu ae01000.display-controller: [drm:drm_sysfs_connector_add] [CONNECTOR:34:DP-1] adding connector to sysfs
+[   16.854200] msm_dpu ae01000.display-controller: [drm:drm_sysfs_connector_hotplug_event] [CONNECTOR:34:DP-1] generating connector hotplug event
+[   16.919691] msm_dpu ae01000.display-controller: [drm:drm_sysfs_connector_add] [CONNECTOR:37:Writeback-1] adding connector to sysfs
+[   16.985182] msm_dpu ae01000.display-controller: [drm:drm_sysfs_connector_hotplug_event] [CONNECTOR:37:Writeback-1] generating connector hotplug event
+[   17.050756] [drm] Initialized msm 1.13.0 for ae01000.display-controller on minor 0
+[   17.116284] msm_dpu ae01000.display-controller: Direct firmware load for qcom/gen71500_sqe.fw failed with error -2
+[   17.181773] msm_dpu ae01000.display-controller: [drm:adreno_request_fw] *ERROR* failed to load gen71500_sqe.fw
+[   17.247272] msm_dpu ae01000.display-controller: [drm:drm_client_modeset_probe] 
+[   17.312769] [drm:drm_mode_object_get] OBJ ID: 34 (2)
+[   17.378259] msm_dpu ae01000.display-controller: [drm:drm_helper_probe_single_connector_modes] [CONNECTOR:34:DP-1]
+[   17.443759] msm_dpu ae01000.display-controller: [drm:msm_dp_bridge_detect] link_ready = false
+[   17.509244] msm_dpu ae01000.display-controller: [drm:drm_helper_probe_single_connector_modes] [CONNECTOR:34:DP-1] status updated from unknown to disconnected
+[   17.574737] msm_dpu ae01000.display-controller: [drm:drm_sysfs_hotplug_event] generating hotplug event
+[   17.640232] msm_dpu ae01000.display-controller: [drm:drm_helper_probe_single_connector_modes] [CONNECTOR:34:DP-1] disconnected
+[   17.705724] msm_dpu ae01000.display-controller: [drm:drm_client_modeset_probe] No connectors reported connected with modes
+[   17.771222] msm_dpu ae01000.display-controller: [drm:drm_client_modeset_probe] [CONNECTOR:34:DP-1] enabled? no
+[   17.836718] msm_dpu ae01000.display-controller: [drm:drm_client_modeset_probe] Not using firmware configuration
+[   17.902203] msm_dpu ae01000.display-controller: [drm:drm_client_modeset_probe] picking CRTCs for 16383x16383 config
+[   17.967691] [drm:drm_mode_object_put.part.0] OBJ ID: 34 (2)
+[   18.033186] msm_dpu ae01000.display-controller: [drm:__drm_fb_helper_initial_config_and_unlock] test CRTC 0 primary plane
+[   18.098675] msm_dpu ae01000.display-controller: [drm] Cannot find any crtc or sizes
+[   18.164161] msm_dpu ae01000.display-controller: [drm:drm_atomic_state_init] Allocated atomic state 00000000ac13f66a
+[   18.229656] [drm:dpu_plane_duplicate_state] plane42 
+[   18.295141] msm_dpu ae01000.display-controller: [drm:drm_atomic_get_plane_state] Added [PLANE:42:plane-0] 000000006e112d21 state to 00000000ac13f66a
+[   18.360639] [drm:dpu_plane_duplicate_state] plane48 
+[   18.426137] msm_dpu ae01000.display-controller: [drm:drm_atomic_get_plane_state] Added [PLANE:48:plane-1] 000000003adf4f3b state to 00000000ac13f66a
+[   18.491629] [drm:dpu_plane_duplicate_state] plane54 
+[   18.557112] msm_dpu ae01000.display-controller: [drm:drm_atomic_get_plane_state] Added [PLANE:54:plane-2] 0000000027fb5dab state to 00000000ac13f66a
+[   18.622607] msm_dpu ae01000.display-controller: [drm:drm_atomic_set_fb_for_plane] Set [NOFB] for [PLANE:54:plane-2] state 0000000027fb5dab
+[   18.688087] [drm:dpu_plane_duplicate_state] plane60 
+[   18.753569] msm_dpu ae01000.display-controller: [drm:drm_atomic_get_plane_state] Added [PLANE:60:plane-3] 00000000a27a6c01 state to 00000000ac13f66a
+[   18.819063] msm_dpu ae01000.display-controller: [drm:drm_atomic_set_fb_for_plane] Set [NOFB] for [PLANE:60:plane-3] state 00000000a27a6c01
+[   18.884547] [drm:dpu_plane_duplicate_state] plane66 
+[   18.950026] msm_dpu ae01000.display-controller: [drm:drm_atomic_get_plane_state] Added [PLANE:66:plane-4] 00000000e1c77c34 state to 00000000ac13f66a
+[   19.015514] msm_dpu ae01000.display-controller: [drm:drm_atomic_set_fb_for_plane] Set [NOFB] for [PLANE:66:plane-4] state 00000000e1c77c34
+[   19.080994] [drm:dpu_plane_duplicate_state] plane72 
+[   19.146484] msm_dpu ae01000.display-controller: [drm:drm_atomic_get_plane_state] Added [PLANE:72:plane-5] 00000000de219183 state to 00000000ac13f66a
+[   19.211974] msm_dpu ae01000.display-controller: [drm:drm_atomic_set_fb_for_plane] Set [NOFB] for [PLANE:72:plane-5] state 00000000de219183
+[   19.277457] [drm:dpu_plane_duplicate_state] plane78 
+[   19.342944] msm_dpu ae01000.display-controller: [drm:drm_atomic_get_plane_state] Added [PLANE:78:plane-6] 0000000069e3740a state to 00000000ac13f66a
+[   19.408432] msm_dpu ae01000.display-controller: [drm:drm_atomic_set_fb_for_plane] Set [NOFB] for [PLANE:78:plane-6] state 0000000069e3740a
+[   19.473914] [drm:dpu_plane_duplicate_state] plane84 
+[   19.539400] msm_dpu ae01000.display-controller: [drm:drm_atomic_get_plane_state] Added [PLANE:84:plane-7] 00000000f5f04da7 state to 00000000ac13f66a
+[   19.604887] msm_dpu ae01000.display-controller: [drm:drm_atomic_set_fb_for_plane] Set [NOFB] for [PLANE:84:plane-7] state 00000000f5f04da7
+[   19.670372] [drm:dpu_plane_duplicate_state] plane90 
+[   19.735859] msm_dpu ae01000.display-controller: [drm:drm_atomic_get_plane_state] Added [PLANE:90:plane-8] 000000002b2dbf69 state to 00000000ac13f66a
+[   19.801351] msm_dpu ae01000.display-controller: [drm:drm_atomic_set_fb_for_plane] Set [NOFB] for [PLANE:90:plane-8] state 000000002b2dbf69
+[   19.866834] [drm:dpu_plane_duplicate_state] plane96 
+[   19.932317] msm_dpu ae01000.display-controller: [drm:drm_atomic_get_plane_state] Added [PLANE:96:plane-9] 000000002136f3f6 state to 00000000ac13f66a
+[   19.997802] msm_dpu ae01000.display-controller: [drm:drm_atomic_set_fb_for_plane] Set [NOFB] for [PLANE:96:plane-9] state 000000002136f3f6
+[   20.063289] msm_dpu ae01000.display-controller: [drm:drm_atomic_get_crtc_state] Added [CRTC:102:crtc-0] 00000000a3208b49 state to 00000000ac13f66a
+[   20.128777] msm_dpu ae01000.display-controller: [drm:drm_atomic_set_mode_for_crtc] Set [NOMODE] for [CRTC:102:crtc-0] state 00000000a3208b49
+[   20.194265] msm_dpu ae01000.display-controller: [drm:drm_atomic_set_fb_for_plane] Set [NOFB] for [PLANE:42:plane-0] state 000000006e112d21
+[   20.259749] msm_dpu ae01000.display-controller: [drm:drm_atomic_add_affected_connectors] Adding all current connectors for [CRTC:102:crtc-0] to 00000000ac13f66a
+[   20.325241] msm_dpu ae01000.display-controller: [drm:drm_atomic_get_crtc_state] Added [CRTC:103:crtc-1] 000000004645c8bc state to 00000000ac13f66a
+[   20.390731] msm_dpu ae01000.display-controller: [drm:drm_atomic_set_mode_for_crtc] Set [NOMODE] for [CRTC:103:crtc-1] state 000000004645c8bc
+[   20.456218] msm_dpu ae01000.display-controller: [drm:drm_atomic_set_fb_for_plane] Set [NOFB] for [PLANE:48:plane-1] state 000000003adf4f3b
+[   20.521706] msm_dpu ae01000.display-controller: [drm:drm_atomic_add_affected_connectors] Adding all current connectors for [CRTC:103:crtc-1] to 00000000ac13f66a
+[   20.587196] msm_dpu ae01000.display-controller: [drm:drm_atomic_print_new_state] checking 00000000ac13f66a
+[   20.652680] msm_dpu ae01000.display-controller: [drm] plane[42]: plane-0
+[   20.718168] msm_dpu ae01000.display-controller: [drm] 	crtc=(null)
+[   20.783650] msm_dpu ae01000.display-controller: [drm] 	fb=0
+[   20.849136] msm_dpu ae01000.display-controller: [drm] 	crtc-pos=0x0+0+0
+[   20.914619] msm_dpu ae01000.display-controller: [drm] 	src-pos=0.000000x0.000000+0.000000+0.000000
+[   20.980106] msm_dpu ae01000.display-controller: [drm] 	rotation=1
+[   21.045589] msm_dpu ae01000.display-controller: [drm] 	normalized-zpos=0
+[   21.111072] msm_dpu ae01000.display-controller: [drm] 	color-encoding=ITU-R BT.601 YCbCr
+[   21.176554] msm_dpu ae01000.display-controller: [drm] 	color-range=YCbCr limited range
+[   21.242044] msm_dpu ae01000.display-controller: [drm] 	color_mgmt_changed=0
+[   21.307531] msm_dpu ae01000.display-controller: [drm] 	color-pipeline=0
+[   21.373029] msm_dpu ae01000.display-controller: [drm] 	stage=0
+[   21.438518] msm_dpu ae01000.display-controller: [drm] plane[48]: plane-1
+[   21.504000] msm_dpu ae01000.display-controller: [drm] 	crtc=(null)
+[   21.569481] msm_dpu ae01000.display-controller: [drm] 	fb=0
+[   21.634970] msm_dpu ae01000.display-controller: [drm] 	crtc-pos=0x0+0+0
+[   21.700452] msm_dpu ae01000.display-controller: [drm] 	src-pos=0.000000x0.000000+0.000000+0.000000
+[   21.765937] msm_dpu ae01000.display-controller: [drm] 	rotation=1
+[   21.831422] msm_dpu ae01000.display-controller: [drm] 	normalized-zpos=0
+[   21.896908] msm_dpu ae01000.display-controller: [drm] 	color-encoding=ITU-R BT.601 YCbCr
+[   21.962400] msm_dpu ae01000.display-controller: [drm] 	color-range=YCbCr limited range
+[   22.027891] msm_dpu ae01000.display-controller: [drm] 	color_mgmt_changed=0
+[   22.093380] msm_dpu ae01000.display-controller: [drm] 	color-pipeline=0
+[   22.158867] msm_dpu ae01000.display-controller: [drm] 	stage=0
+[   22.224361] msm_dpu ae01000.display-controller: [drm] plane[54]: plane-2
+[   22.289846] msm_dpu ae01000.display-controller: [drm] 	crtc=(null)
+[   22.355347] msm_dpu ae01000.display-controller: [drm] 	fb=0
+[   22.420838] msm_dpu ae01000.display-controller: [drm] 	crtc-pos=0x0+0+0
+[   22.486324] msm_dpu ae01000.display-controller: [drm] 	src-pos=0.000000x0.000000+0.000000+0.000000
+[   22.551812] msm_dpu ae01000.display-controller: [drm] 	rotation=1
+[   22.617301] msm_dpu ae01000.display-controller: [drm] 	normalized-zpos=0
+[   22.682784] msm_dpu ae01000.display-controller: [drm] 	color-encoding=ITU-R BT.601 YCbCr
+[   22.748268] msm_dpu ae01000.display-controller: [drm] 	color-range=YCbCr limited range
+[   22.813751] msm_dpu ae01000.display-controller: [drm] 	color_mgmt_changed=0
+[   22.879237] msm_dpu ae01000.display-controller: [drm] 	color-pipeline=0
+[   22.944721] msm_dpu ae01000.display-controller: [drm] 	stage=0
+[   23.010206] msm_dpu ae01000.display-controller: [drm] plane[60]: plane-3
+[   23.075689] msm_dpu ae01000.display-controller: [drm] 	crtc=(null)
+[   23.141174] msm_dpu ae01000.display-controller: [drm] 	fb=0
+[   23.206660] msm_dpu ae01000.display-controller: [drm] 	crtc-pos=0x0+0+0
+[   23.272143] msm_dpu ae01000.display-controller: [drm] 	src-pos=0.000000x0.000000+0.000000+0.000000
+[   23.337638] msm_dpu ae01000.display-controller: [drm] 	rotation=1
+[   23.403123] msm_dpu ae01000.display-controller: [drm] 	normalized-zpos=0
+[   23.468605] msm_dpu ae01000.display-controller: [drm] 	color-encoding=ITU-R BT.601 YCbCr
+[   23.534088] msm_dpu ae01000.display-controller: [drm] 	color-range=YCbCr limited range
+[   23.599576] msm_dpu ae01000.display-controller: [drm] 	color_mgmt_changed=0
+[   23.665055] msm_dpu ae01000.display-controller: [drm] 	color-pipeline=0
+[   23.730540] msm_dpu ae01000.display-controller: [drm] 	stage=0
+[   23.796024] msm_dpu ae01000.display-controller: [drm] plane[66]: plane-4
+[   23.861502] msm_dpu ae01000.display-controller: [drm] 	crtc=(null)
+[   23.926988] msm_dpu ae01000.display-controller: [drm] 	fb=0
+[   23.992480] msm_dpu ae01000.display-controller: [drm] 	crtc-pos=0x0+0+0
+[   24.057961] msm_dpu ae01000.display-controller: [drm] 	src-pos=0.000000x0.000000+0.000000+0.000000
+[   24.123449] msm_dpu ae01000.display-controller: [drm] 	rotation=1
+[   24.188935] msm_dpu ae01000.display-controller: [drm] 	normalized-zpos=0
+[   24.254418] msm_dpu ae01000.display-controller: [drm] 	color-encoding=ITU-R BT.601 YCbCr
+[   24.319907] msm_dpu ae01000.display-controller: [drm] 	color-range=YCbCr limited range
+[   24.385394] msm_dpu ae01000.display-controller: [drm] 	color_mgmt_changed=0
+[   24.450877] msm_dpu ae01000.display-controller: [drm] 	color-pipeline=0
+[   24.516365] msm_dpu ae01000.display-controller: [drm] 	stage=0
+[   24.581852] msm_dpu ae01000.display-controller: [drm] plane[72]: plane-5
+[   24.647339] msm_dpu ae01000.display-controller: [drm] 	crtc=(null)
+[   24.712819] msm_dpu ae01000.display-controller: [drm] 	fb=0
+[   24.778306] msm_dpu ae01000.display-controller: [drm] 	crtc-pos=0x0+0+0
+[   24.843789] msm_dpu ae01000.display-controller: [drm] 	src-pos=0.000000x0.000000+0.000000+0.000000
+[   24.909274] msm_dpu ae01000.display-controller: [drm] 	rotation=1
+[   24.974757] msm_dpu ae01000.display-controller: [drm] 	normalized-zpos=0
+[   25.040243] msm_dpu ae01000.display-controller: [drm] 	color-encoding=ITU-R BT.601 YCbCr
+[   25.105726] msm_dpu ae01000.display-controller: [drm] 	color-range=YCbCr limited range
+[   25.171213] msm_dpu ae01000.display-controller: [drm] 	color_mgmt_changed=0
+[   25.236699] msm_dpu ae01000.display-controller: [drm] 	color-pipeline=0
+[   25.302186] msm_dpu ae01000.display-controller: [drm] 	stage=0
+[   25.367673] msm_dpu ae01000.display-controller: [drm] plane[78]: plane-6
+[   25.433160] msm_dpu ae01000.display-controller: [drm] 	crtc=(null)
+[   25.498638] msm_dpu ae01000.display-controller: [drm] 	fb=0
+[   25.564129] msm_dpu ae01000.display-controller: [drm] 	crtc-pos=0x0+0+0
+[   25.629617] msm_dpu ae01000.display-controller: [drm] 	src-pos=0.000000x0.000000+0.000000+0.000000
+[   25.695098] msm_dpu ae01000.display-controller: [drm] 	rotation=1
+[   25.760582] msm_dpu ae01000.display-controller: [drm] 	normalized-zpos=0
+[   25.826068] msm_dpu ae01000.display-controller: [drm] 	color-encoding=ITU-R BT.601 YCbCr
+[   25.891549] msm_dpu ae01000.display-controller: [drm] 	color-range=YCbCr limited range
+[   25.957034] msm_dpu ae01000.display-controller: [drm] 	color_mgmt_changed=0
+[   26.022516] msm_dpu ae01000.display-controller: [drm] 	color-pipeline=0
+[   26.088005] msm_dpu ae01000.display-controller: [drm] 	stage=0
+[   26.153494] msm_dpu ae01000.display-controller: [drm] plane[84]: plane-7
+[   26.218984] msm_dpu ae01000.display-controller: [drm] 	crtc=(null)
+[   26.284466] msm_dpu ae01000.display-controller: [drm] 	fb=0
+[   26.349954] msm_dpu ae01000.display-controller: [drm] 	crtc-pos=0x0+0+0
+[   26.415443] msm_dpu ae01000.display-controller: [drm] 	src-pos=0.000000x0.000000+0.000000+0.000000
+[   26.480927] msm_dpu ae01000.display-controller: [drm] 	rotation=1
+[   26.546412] msm_dpu ae01000.display-controller: [drm] 	normalized-zpos=0
+[   26.611901] msm_dpu ae01000.display-controller: [drm] 	color-encoding=ITU-R BT.601 YCbCr
+[   26.677392] msm_dpu ae01000.display-controller: [drm] 	color-range=YCbCr limited range
+[   26.742879] msm_dpu ae01000.display-controller: [drm] 	color_mgmt_changed=0
+[   26.808369] msm_dpu ae01000.display-controller: [drm] 	color-pipeline=0
+[   26.873852] msm_dpu ae01000.display-controller: [drm] 	stage=0
+[   26.939335] msm_dpu ae01000.display-controller: [drm] plane[90]: plane-8
+[   27.004819] msm_dpu ae01000.display-controller: [drm] 	crtc=(null)
+[   27.070299] msm_dpu ae01000.display-controller: [drm] 	fb=0
+[   27.135785] msm_dpu ae01000.display-controller: [drm] 	crtc-pos=0x0+0+0
+[   27.201272] msm_dpu ae01000.display-controller: [drm] 	src-pos=0.000000x0.000000+0.000000+0.000000
+[   27.266758] msm_dpu ae01000.display-controller: [drm] 	rotation=1
+[   27.332247] msm_dpu ae01000.display-controller: [drm] 	normalized-zpos=0
+[   27.397732] msm_dpu ae01000.display-controller: [drm] 	color-encoding=ITU-R BT.601 YCbCr
+[   27.463210] msm_dpu ae01000.display-controller: [drm] 	color-range=YCbCr limited range
+[   27.528692] msm_dpu ae01000.display-controller: [drm] 	color_mgmt_changed=0
+[   27.594179] msm_dpu ae01000.display-controller: [drm] 	color-pipeline=0
+[   27.659662] msm_dpu ae01000.display-controller: [drm] 	stage=0
+[   27.725149] msm_dpu ae01000.display-controller: [drm] plane[96]: plane-9
+[   27.790635] msm_dpu ae01000.display-controller: [drm] 	crtc=(null)
+[   27.856113] msm_dpu ae01000.display-controller: [drm] 	fb=0
+[   27.921598] msm_dpu ae01000.display-controller: [drm] 	crtc-pos=0x0+0+0
+[   27.987088] msm_dpu ae01000.display-controller: [drm] 	src-pos=0.000000x0.000000+0.000000+0.000000
+[   28.052567] msm_dpu ae01000.display-controller: [drm] 	rotation=1
+[   28.118055] msm_dpu ae01000.display-controller: [drm] 	normalized-zpos=0
+[   28.183541] msm_dpu ae01000.display-controller: [drm] 	color-encoding=ITU-R BT.601 YCbCr
+[   28.249023] msm_dpu ae01000.display-controller: [drm] 	color-range=YCbCr limited range
+[   28.314515] msm_dpu ae01000.display-controller: [drm] 	color_mgmt_changed=0
+[   28.380005] msm_dpu ae01000.display-controller: [drm] 	color-pipeline=0
+[   28.445493] msm_dpu ae01000.display-controller: [drm] 	stage=0
+[   28.510971] msm_dpu ae01000.display-controller: [drm] crtc[102]: crtc-0
+[   28.576459] msm_dpu ae01000.display-controller: [drm] 	enable=0
+[   28.641945] msm_dpu ae01000.display-controller: [drm] 	active=0
+[   28.707425] msm_dpu ae01000.display-controller: [drm] 	self_refresh_active=0
+[   28.772911] msm_dpu ae01000.display-controller: [drm] 	planes_changed=0
+[   28.838398] msm_dpu ae01000.display-controller: [drm] 	mode_changed=0
+[   28.903882] msm_dpu ae01000.display-controller: [drm] 	active_changed=0
+[   28.969369] msm_dpu ae01000.display-controller: [drm] 	connectors_changed=0
+[   29.034851] msm_dpu ae01000.display-controller: [drm] 	color_mgmt_changed=0
+[   29.100333] msm_dpu ae01000.display-controller: [drm] 	plane_mask=0
+[   29.165818] msm_dpu ae01000.display-controller: [drm] 	connector_mask=0
+[   29.231304] msm_dpu ae01000.display-controller: [drm] 	encoder_mask=0
+[   29.296787] msm_dpu ae01000.display-controller: [drm] 	mode: "": 0 0 0 0 0 0 0 0 0 0 0x0 0x0
+[   29.362271] msm_dpu ae01000.display-controller: [drm] crtc[103]: crtc-1
+[   29.427755] msm_dpu ae01000.display-controller: [drm] 	enable=0
+[   29.493232] msm_dpu ae01000.display-controller: [drm] 	active=0
+[   29.558717] msm_dpu ae01000.display-controller: [drm] 	self_refresh_active=0
+[   29.624203] msm_dpu ae01000.display-controller: [drm] 	planes_changed=0
+[   29.689686] msm_dpu ae01000.display-controller: [drm] 	mode_changed=0
+[   29.755172] msm_dpu ae01000.display-controller: [drm] 	active_changed=0
+[   29.820658] msm_dpu ae01000.display-controller: [drm] 	connectors_changed=0
+[   29.886140] msm_dpu ae01000.display-controller: [drm] 	color_mgmt_changed=0
+[   29.951627] msm_dpu ae01000.display-controller: [drm] 	plane_mask=0
+[   30.017114] msm_dpu ae01000.display-controller: [drm] 	connector_mask=0
+[   30.082593] msm_dpu ae01000.display-controller: [drm] 	encoder_mask=0
+[   30.148082] msm_dpu ae01000.display-controller: [drm] 	mode: "": 0 0 0 0 0 0 0 0 0 0 0x0 0x0
+[   30.213563] msm_dpu ae01000.display-controller: [drm:drm_atomic_check_only] checking 00000000ac13f66a
+[   30.279049] [drm:dpu_crtc_check_mode_changed] 102
+[   30.344537] [drm:dpu_crtc_check_mode_changed] 103
+[   30.410032] [drm:dpu_crtc_atomic_check] crtc102 -> enable 0, active 0, skip atomic_check
+[   30.475523] [drm:dpu_crtc_atomic_check] crtc103 -> enable 0, active 0, skip atomic_check
+[   30.541012] msm_dpu ae01000.display-controller: [drm:drm_atomic_commit] committing 00000000ac13f66a
+[   30.606547] [drm:dpu_kms_wait_flush] [crtc:102] not enable
+[   30.672042] [drm:dpu_kms_wait_flush] [crtc:103] not enable
+[   30.737536] [drm:dpu_crtc_atomic_begin] crtc102 -> enable 0, skip atomic_begin
+[   30.803024] [drm:dpu_crtc_atomic_begin] crtc103 -> enable 0, skip atomic_begin
+[   30.868511] [drm:dpu_crtc_atomic_flush] crtc102 -> enable 0, skip atomic_flush
+[   30.933999] [drm:dpu_crtc_atomic_flush] crtc103 -> enable 0, skip atomic_flush
+[   30.999486] [drm:dpu_kms_wait_flush] [crtc:102] not enable
+[   31.064970] [drm:dpu_kms_wait_flush] [crtc:103] not enable
+[   31.130465] [drm:dpu_core_perf_crtc_update] crtc:102 enabled:0 core_clk:0
+[   31.195950] [drm:dpu_core_perf_crtc_update] crtc=102 disable
+[   31.261735] [drm:dpu_core_perf_crtc_update] clk:0
+[   31.327237] [drm:dpu_core_perf_crtc_update] update clk rate = 0 HZ
+[   31.392722] msm_dpu ae01000.display-controller: [drm:drm_atomic_state_init] Allocated atomic state 0000000027fd91f5
+[   31.458211] [drm:dpu_core_perf_crtc_update] crtc:103 enabled:0 core_clk:0
+[   31.523711] [drm:dpu_core_perf_crtc_update] crtc=103 disable
+[   31.589207] msm_dpu ae01000.display-controller: [drm:drm_atomic_state_init] Allocated atomic state 00000000f37933e3
+[   31.654913] [drm:dpu_core_perf_crtc_update] clk:0
+[   31.720405] [drm:dpu_core_perf_crtc_update] update clk rate = 0 HZ
+[   31.786117] msm_dpu ae01000.display-controller: [drm:drm_atomic_state_default_clear] Clearing atomic state 00000000ac13f66a
+[   31.851609] [drm:dpu_crtc_destroy_state] crtc102
+[   31.917099] [drm:dpu_crtc_destroy_state] crtc103
+[   31.982584] msm_dpu ae01000.display-controller: [drm:__drm_atomic_state_free] Freeing atomic state 00000000ac13f66a
+[   32.048071] msm_dpu ae01000.display-controller: [drm:drm_atomic_get_crtc_state] Added [CRTC:103:crtc-1] 00000000b08b4328 state to 0000000027fd91f5
+[   32.113561] msm_dpu ae01000.display-controller: [drm:drm_atomic_get_crtc_state] Added [CRTC:102:crtc-0] 00000000b63bbc1a state to 00000000f37933e3
+[   32.179053] msm_dpu ae01000.display-controller: [drm:drm_client_modeset_probe] 
+[   32.244587] [drm:mdss_runtime_suspend] 
+[   32.245522] msm_dpu ae01000.display-controller: [drm:drm_atomic_state_default_clear] Clearing atomic state 0000000027fd91f5
+[   32.594436] msm_dpu ae01000.display-controller: [drm:drm_atomic_state_default_clear] Clearing atomic state 00000000f37933e3
+[   32.594439] [drm:dpu_crtc_destroy_state] crtc102
+[   32.594442] msm_dpu ae01000.display-controller: [drm:__drm_atomic_state_free] Freeing atomic state 00000000f37933e3
+[   32.594446] [drm:drm_mode_object_get] OBJ ID: 34 (2)
+[   32.594449] msm_dpu ae01000.display-controller: [drm:drm_helper_probe_single_connector_modes] [CONNECTOR:34:DP-1]
+[   32.594453] msm_dpu ae01000.display-controller: [drm:msm_dp_bridge_detect] link_ready = false
+[   32.806452] msm_dpu ae01000.display-controller: [drm:drm_helper_probe_single_connector_modes] [CONNECTOR:34:DP-1] disconnected
+[   32.806456] msm_dpu ae01000.display-controller: [drm:drm_client_modeset_probe] No connectors reported connected with modes
+[   32.806459] msm_dpu ae01000.display-controller: [drm:drm_client_modeset_probe] [CONNECTOR:34:DP-1] enabled? no
+[   32.806463] [drm:dpu_crtc_destroy_state] crtc103
+[   32.806466] msm_dpu ae01000.display-controller: [drm:__drm_atomic_state_free] Freeing atomic state 0000000027fd91f5
+[   32.806470] msm_dpu ae01000.display-controller: [drm:drm_client_modeset_probe] Not using firmware configuration
+[   32.877075] msm_dpu ae01000.display-controller: [drm:drm_client_modeset_probe] picking CRTCs for 16383x16383 config
+[   32.877080] [drm:drm_mode_object_put.part.0] OBJ ID: 34 (2)
+[   32.877083] msm_dpu ae01000.display-controller: [drm:__drm_fb_helper_initial_config_and_unlock] test CRTC 0 primary plane
+[   33.018259] msm_dpu ae01000.display-controller: [drm] Cannot find any crtc or sizes
+[   33.018261] msm_dpu ae01000.display-controller: [drm:drm_client_dev_hotplug] fbdev: ret=0
+[   42.647792] gpucc-x1p42100 3d90000.clock-controller: sync_state() pending due to 3d6a000.gmu

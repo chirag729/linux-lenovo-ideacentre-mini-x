@@ -1,138 +1,114 @@
-# Next Steps: DTS Fix for Display (2026-02-18)
+# Next Steps: Display & Firmware (2026-02-26)
 
-## Problem
+## Current Status
 
-Boot 7 proved DRM_MSM probes successfully, but the DRM card is never created because
-the component aggregate can't bind. The DPU expects 3 display components but only 1
-registers:
+Boot 12 achieved:
+- **UCSI typec port0 registered** -- full PDR chain works (QRTR_SMD=y, PD_MAPPER=y)
+- **DP alt mode active** (SVID 0xff01) on port0
+- **USB-C partner detected** (Apple USB-C to HDMI adapter)
+- **HPD fired**, DP link training started
+- **CR (phase 1) succeeded** at HBR3 / 2 lanes / v=0, p=0 through PS8830 LTTPR
+- **EQ (phase 2) FAILED** on PS8830 LTTPR -- retimer always returns 0/0 adjust requests
+- **Root cause:** Two bugs in MSM DP driver retry loop:
+  1. HPD deasserts after LTTPR EQ failure (PS8830 toggles HPD), breaking retry loop
+  2. Driver never falls back to lower link rates (HBR2/HBR/RBR) after LTTPR failure
 
-```
-aggregate: ae01000.display-controller       -> not bound
-  ae90000.displayport-controller            -> registered, not bound
-  (unknown)                                 -> not registered  (DP1/aea0000)
-  (unknown)                                 -> not registered  (port@6 target?)
-```
+## Fix Applied for Boot 13
 
-**Root cause:** DP1 (aea0000, eDP) has an eDP panel child in the DT. On a desktop
-with no built-in panel, the panel probe fails and DP1 never calls `component_add()`.
+Modified `drivers/gpu/drm/msm/dp/dp_ctrl.c` in `msm_dp_ctrl_on_link()`:
+- **Removed HPD check** from EQ failure retry path (Intel blocks HPD during training too)
+- **Always rate-downshift first** after EQ failure (HBR3→HBR2→HBR→RBR)
+- **Removed stale DPRX link status read** (meaningless after LTTPR failure)
+- Loop is bounded by `link_train_max_retries=5`, so can't loop forever
 
-## Fix: Edit the Board DTS
+Expected Boot 13 sequence:
+1. HBR3 LTTPR EQ fails (PS8830 still returns 0/0) → rate downshift to HBR2
+2. HBR2 LTTPR training → may succeed (lower rate = less signal tuning needed)
+3. If HBR2 works → sink training → display output!
+4. If HBR2 fails → HBR → RBR → eventually succeed or exhaust retries
 
-### Option A: Quick iteration on Pi (decompile/edit/recompile DTB)
+## What's on the USB
 
-1. Mount the USB on the Pi: `sudo mount /dev/sda1 /mnt`
-2. Decompile the DTB:
-   ```bash
-   dtc -I dtb -O dts -o /tmp/board.dts /mnt/dtb/x1p42100-lenovo-ideacentre-x-gen10.dtb
-   ```
-3. Edit `/tmp/board.dts`:
-   - Find the `displayport-controller@aea0000` node
-   - Change its `status` from `"okay"` to `"disabled"`
-   - OR: delete the `port@5` endpoint from the `display-controller@ae01000/ports/` node
-4. Recompile:
-   ```bash
-   dtc -I dts -O dtb -o /mnt/dtb/x1p42100-lenovo-ideacentre-x-gen10.dtb /tmp/board.dts
-   ```
-5. `sudo sync && sudo umount /mnt`
-6. Boot with option 3 (DRM enabled)
+- `Image` -- kernel with EQ retry fix + full PDR chain built-in
+- `dtb/x1p42100-lenovo-ideacentre-x-gen10.dtb` -- mdss_dp3 (aea0000) disabled
+- `initramfs.cpio.gz` -- v7 with firmware (adsp.mbn, cdsp.mbn, gen71500_zap.mbn)
 
-**Advantage:** Fast, no kernel rebuild needed.
-**Disadvantage:** Decompiled DTS uses phandle numbers, hard to read. Not upstreamable.
+## Boot 13 Check
 
-### Option B: Proper fix on WSL2 (edit source DTS)
-
-1. On WSL2, edit `~/kernel/misaleh-linux/arch/arm64/boot/dts/qcom/x1p42100-lenovo-ideacentre-x-gen10.dts`
-2. Add/modify:
-   ```dts
-   /* Disable eDP -- no built-in panel on desktop */
-   &mdss_dp1 {
-       status = "disabled";
-   };
-   ```
-   Or if the board DTS already has `&mdss_dp1 { status = "okay"; }`, change it to disabled.
-3. Rebuild just the DTB (seconds):
-   ```bash
-   cd ~/kernel/misaleh-linux
-   make dtbs
-   ```
-4. Copy new DTB to USB:
-   ```bash
-   cp arch/arm64/boot/dts/qcom/x1p42100-lenovo-ideacentre-x-gen10.dtb /mnt/c/path/to/usb/dtb/
-   ```
-5. Boot with option 3
-
-**Advantage:** Clean, upstreamable fix.
-**Disadvantage:** Requires WSL2 session.
-
-## What Should Happen After the Fix
-
-With DP1 disabled, the component aggregate should only expect DP0 (ae90000).
-Since DP0 already registers as a component, `msm_drm_bind()` should fire:
-
-1. DRM card created (`/sys/class/drm/card0`, `/dev/dri/card0`)
-2. DP0 connector registered (USB-C DisplayPort)
-3. DPU/CRTC initialized
-4. **But:** HDMI still won't work yet -- needs bridge chip identification
-
-## HDMI Bridge -- Still Unknown
-
-The HDMI port needs a DP-to-HDMI bridge chip described in the DTS. Based on Codex
-review of X1P42100 ThinkBook 16 patches, the bridge is likely **Realtek RTD2171**.
-
-To confirm, check on Lenovo Windows:
-```powershell
-# Check for Realtek display bridge in Device Manager
-Get-PnpDevice | Where-Object { $_.FriendlyName -match "RTD|Realtek.*bridge|HDMI" }
-
-# Check ACPI tables for bridge references
-# Look in hardware/acpi-tables/ if extracted
-
-# Check Qualcomm display driver INF for bridge references
-Get-ChildItem "C:\Windows\INF\oem*.inf" | Select-String -Pattern "RTD2171|bridge|HDMI"
-```
-
-Once identified, add to the DTS under the correct DP controller:
-```dts
-&mdss_dp0 {  /* or whichever DP drives HDMI */
-    status = "okay";
-
-    aux-bus {
-        hdmi-bridge@... {
-            compatible = "realtek,rtd2171";
-            /* reg, power-supply, enable-gpios, etc. */
-        };
-    };
-};
-```
-
-## SSH Fix -- Still Needed
-
-Boot 7 initramfs v5 (fakeroot-built, root:root) still rejects SSH passwords.
-Dropbear says "Bad password attempt" -- the password hash might not match.
-
-To debug on next boot:
 ```bash
-# Via telnet, check the shadow file
-cat /etc/shadow
-# Check /root ownership
-ls -la / | grep root
-# Try setting password at runtime
-echo "root:linux" | chpasswd
-# Then test SSH from Pi
+ssh root@192.168.1.15
+dmesg | grep -i "link rate\|new rate\|link training\|channel eq\|EQ done"
+cat /sys/class/drm/card0-DP-1/status   # connected?
+cat /sys/class/drm/card0-DP-1/modes    # if connected, what modes?
+dmesg | grep -i "rate_down_shift\|reinitialize"  # verify retry happening
 ```
 
-Or switch to key-based auth:
-```bash
-# Generate a key on Pi if not done
-ssh-keygen -t ed25519 -f ~/.ssh/lenovo_key -N ""
-# Add to initramfs /root/.ssh/authorized_keys
-```
+## Built-in Config Chain (all =y)
 
-## Summary of All Boot Options
+| Config | Purpose |
+|--------|---------|
+| QRTR | QRTR IPC router |
+| QRTR_SMD | SMD transport for QRTR (talks to ADSP) |
+| QCOM_QMI_HELPERS | QMI encoding/decoding |
+| QCOM_PDR_HELPERS | Protection Domain Restart helpers |
+| QCOM_PDR_MSG | PDR QMI messages |
+| QCOM_PD_MAPPER | In-kernel pd-mapper (service locator provider) |
+| QCOM_PMIC_GLINK | PMIC glink (altmode, UCSI, battmgr) |
+| UCSI_PMIC_GLINK | UCSI over PMIC glink |
+| TYPEC_DP_ALTMODE | USB Type-C DP alt mode |
+| TYPEC_QCOM_PMIC | Qualcomm PMIC typec driver |
 
-| Option | Cmdline | Purpose |
-|--------|---------|---------|
-| 1 | ACPI, nomodeset | No DTB, display test |
-| 2 | DTB, DRM disabled | **Safe fallback**, telnet works |
-| 3 | DTB, DRM enabled, drm.debug | **Display testing** |
-| 4 | DTB, DRM enabled, nomodeset | DRM probes but no modeset |
+## Two Display Paths
+
+### Path 1: USB-C DP Alt Mode (DP0 / ae90000) -- ACTIVE
+- Wiring: DPU → DP0 → USB3-DP PHY (fd5000) → PS8830 retimer → USB-C rear port
+- Chain: ADSP → PMIC glink → PDR → UCSI → typec port → DP alt mode → HPD → link training
+- Status: Link training reaches PS8830, CR OK, EQ fails at HBR3 → Boot 13 has rate fallback fix
+- Test: Apple USB-C to HDMI adapter plugged into rear USB-C port
+
+### Path 2: HDMI via mdss_dp3 (aea0000) -- needs DT work
+- **Currently disabled** in DTB (we disabled it to fix component aggregate)
+- Codex analysis suggests HDMI goes through this controller via an external bridge chip
+- The DT currently has an eDP panel child (wrong for desktop)
+- **Fix:** Re-enable mdss_dp3, remove eDP panel, add HDMI bridge+connector graph
+
+## Boot History
+
+| Boot | Config/Fix | Result |
+|------|-----------|--------|
+| 8 | (initial DRM test) | DRM card0 created, DP-1 disconnected |
+| 9 | TYPEC_DP_ALTMODE=y, TYPEC_QCOM_PMIC=y | Aux bus drivers bound, still disconnected |
+| 10 | NTFS3_FS=y | Firmware extracted, ADSP/CDSP started manually |
+| 11 | QRTR_SMD=y + firmware in initramfs | ADSP/CDSP at boot, UCSI still no typec ports |
+| 12 | QCOM_PD_MAPPER=y | UCSI works! typec port0 registered, DP alt mode active, link training fails (EQ at HBR3) |
+| 13 | EQ retry fix (remove HPD check, rate fallback) | **Pending** |
+
+## PS8830 LTTPR Details (from Boot 12 dmesg)
+
+- LTTPR revision: DP 2.0 (0x20)
+- Max link rate: HBR3 (0x1e = 8.1 Gbps)
+- PHY repeater count: 1 (0x80)
+- I2C address: bus 2, 0x08
+- Non-transparent mode set correctly (0xaa written to 0xf0003)
+- CR phase: succeeds with TPS1 at v=0, p=0
+- EQ phase: fails with TPS4 -- adjust request registers (0xf0033) always 0x00
+- Known upstream issue: "PS8830 claims no Level 3 support but actually requires it"
+
+## If Boot 13 Still Fails
+
+If all rates fail EQ on the LTTPR:
+1. Try transparent LTTPR mode (write 0x55 to DPCD 0xf0003 instead of 0xaa)
+2. Add PS8830-specific voltage/pre-emphasis quirk (keyed on OUI at 0xf0003)
+3. Investigate HDMI path (Path 2) as alternative -- no LTTPR involved
+
+## Firmware Reference
+
+Extracted from Windows, installed as:
+| Windows name | Linux path | Purpose |
+|---|---|---|
+| qcadsp8380.mbn | qcom/x1e80100/adsp.mbn | ADSP coprocessor |
+| adsp_dtbs.elf | qcom/x1e80100/adsp_dtb.mbn | ADSP device tree |
+| qccdsp8380.mbn | qcom/x1e80100/cdsp.mbn | CDSP coprocessor |
+| cdsp_dtbs.elf | qcom/x1e80100/cdsp_dtb.mbn | CDSP device tree |
+| qcdxkmsuc8380.mbn | qcom/x1p42100/gen71500_zap.mbn | GPU microcode |
+| adspr.jsn, adsps.jsn, adspua.jsn, battmgr.jsn, cdspr.jsn | qcom/x1e80100/ | Sidecar configs |

@@ -28,7 +28,12 @@
       "Bash(chmod:*)",
       "Bash(gzip:*)",
       "Bash(arping:*)",
-      "Bash(gemini:*)"
+      "Bash(gemini:*)",
+      "Bash(dtc -I dtb -O dts -o /tmp/board.dts /mnt/dtb/x1p42100-lenovo-ideacentre-x-gen10.dtb 2>&1)",
+      "Bash(dtc -I dts -O dtb -o /tmp/board-fixed.dtb /tmp/board.dts 2>&1)",
+      "Bash(dtc -I dtb -O dts /tmp/board-fixed.dtb 2>/dev/null | grep -A15 'displayport-controller@aea0000 {' | head -16)",
+      "Bash(mkdir -p /tmp/initramfs-work/root && cd /tmp/initramfs-work/root && zcat /mnt/initramfs.cpio.gz | fakeroot cpio -idm 2>&1 | tail -3)",
+      "Bash(find . | fakeroot cpio -o -H newc 2>/dev/null | gzip -9 > /tmp/initramfs-work/initramfs-v6.cpio.gz && ls -la /tmp/initramfs-work/initramfs-v6.cpio.gz)"
     ]
   }
 }

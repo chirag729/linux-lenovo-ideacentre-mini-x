@@ -220,6 +220,66 @@ Ethernet (r8169) is confirmed working. Next boot should bring up the network and
 - **HDMI bridge:** No bridge chip in DT. Codex suggests Realtek RTD2171 based on ThinkBook 16 patches. Needs identification from Windows driver data
 - Logs: `testing/boot-logs/2026-02-18-boot7-drm-enabled/`
 
+#### Boot 8 Key Findings (2026-02-26, pi -- DRM enabled, DP1 disabled in DTB)
+- **DTB fix:** DP1/mdss_dp3 (aea0000, eDP) set to `status = "disabled"` via dtc decompile/edit/recompile on Pi 5
+- **Initramfs v6:** SSH key auth (ed25519 authorized_keys for Pi)
+- **DRM card0 CREATED!** Component aggregate `ae01000.display-controller` bound successfully
+- `bound ae90000.displayport-controller (ops msm_dp_display_comp_ops)`
+- `bound 3d00000.gpu (ops a3xx_ops)` -- GPU Adreno 67.3.12.0 bound
+- **DRM card0** with DP-1 connector, Writeback-1 connector, renderD128
+- **SSH key auth works** -- `ssh root@192.168.1.15` connects immediately
+- **DP-1 connector: disconnected** -- `link_ready = false`, no HPD signal
+- Root cause: `CONFIG_TYPEC_DP_ALTMODE=m` and `CONFIG_TYPEC_QCOM_PMIC=m` -- modules never loaded
+- Logs: `testing/boot-logs/2026-02-26-boot8-drm-dp1-disabled/`
+
+#### Boot 9 Key Findings (2026-02-26, pi -- typec drivers built-in)
+- **Kernel rebuilt on Pi 5** with `CONFIG_TYPEC_DP_ALTMODE=y` and `CONFIG_TYPEC_QCOM_PMIC=y`
+- All auxiliary bus drivers bound: pmic_glink_altmode, ucsi_glink, aux_hpd_bridge, aux_bridge (x2)
+- **DP-1 still disconnected** -- `link_ready = false`
+- `Failed to create device link (0x180)` is **red herring** -- flags are `DL_FLAG_SYNC_STATE_ONLY | DL_FLAG_INFERRED`, non-fatal
+- **Real cause:** ADSP firmware missing → UCSI can't communicate → no typec ports → no DP alt mode → no HPD
+- `remoteproc0 adsp: Direct firmware load for qcom/x1e80100/adsp.mbn failed with error -2`
+
+#### Boot 10 Key Findings (2026-02-26, pi -- NTFS3 support, firmware extraction)
+- **Kernel rebuilt with CONFIG_NTFS3_FS=y** for Windows partition access
+- **BitLocker disabled** from Windows, drive decrypted
+- **Mounted Windows NTFS partition** (`/dev/nvme0n1p3`) successfully
+- **Extracted all 10 firmware files** from `Windows/System32/DriverStore/FileRepository/`:
+  - ADSP: qcadsp8380.mbn, adsp_dtbs.elf, adspr.jsn, adsps.jsn, adspua.jsn, battmgr.jsn
+  - CDSP: qccdsp8380.mbn, cdsp_dtbs.elf, cdspr.jsn
+  - GPU: qcdxkmsuc8380.mbn
+- **ADSP and CDSP started manually** via `echo start > /sys/class/remoteproc/remoteprocN/state`
+  - `remote processor adsp is now up` -- ADSP running!
+  - `remote processor cdsp is now up` -- CDSP running!
+  - PMIC_RTR_ADSP_APPS rpmsg channel appeared and bound to qcom_pmic_glink_rpmsg
+  - Battery manager power supplies appeared (qcom-battmgr-*)
+  - But UCSI still didn't register typec ports (ADSP started too late, after PMIC glink probe)
+- **Firmware saved to USB** at `/firmware/qcom/x1e80100/` and `/firmware/qcom/x1p42100/`
+- **Initramfs v7 built** with firmware baked in (16.9MB) -- firmware will be available at boot
+- **Codex analysis** (2 sessions):
+  - `0x180` device link error is noisy/non-fatal fw_devlink behavior
+  - HDMI on this desktop may NOT go through USB-C alt mode -- could be a direct DP path through mdss_dp3 (aea0000) to an external HDMI bridge (RTD2171)
+  - Recommended: re-enable mdss_dp3, remove eDP panel node, add HDMI bridge+connector graph
+
+#### Boot 11 Key Findings (2026-02-26, pi -- firmware in initramfs, QRTR_SMD investigation)
+- **Kernel rebuilt with CONFIG_QRTR_SMD=y** (was =m)
+- **Initramfs v7 with firmware** -- ADSP and CDSP both start automatically at boot (~4 seconds)
+  - `remoteproc0 adsp: remote processor adsp is now up`
+  - `remoteproc1 cdsp: remote processor cdsp is now up`
+- **PMIC_RTR_ADSP_APPS** rpmsg channel established at boot
+- **Battery manager** power supplies registered (qcom-battmgr-*)
+- **DP-1 still disconnected** -- `ls /sys/class/typec/` is empty, UCSI never registered typec ports
+- **Root cause chain identified:**
+  1. `CONFIG_QRTR_SMD=m` -- QRTR SMD transport not loaded → QRTR can't talk to ADSP
+  2. `CONFIG_QCOM_PD_MAPPER=m` -- in-kernel pd-mapper not loaded → PDR service locator has no provider
+  3. Without pd-mapper, PDR can't discover `msm/adsp/charger_pd` service → `pd_running` stays false → UCSI never registers
+- **Codex analysis (3rd session):** Confirmed both QRTR_SMD and PD_MAPPER must be built-in. Provided full recommended config list.
+- **Kernel rebuilt with both fixes:** `CONFIG_QRTR_SMD=y` + `CONFIG_QCOM_PD_MAPPER=y`
+- **Full PDR chain now all built-in:**
+  - QRTR=y, QRTR_SMD=y, QCOM_QMI_HELPERS=y, QCOM_PDR_HELPERS=y, QCOM_PDR_MSG=y, QCOM_PD_MAPPER=y
+  - QCOM_PMIC_GLINK=y, UCSI_PMIC_GLINK=y, TYPEC_DP_ALTMODE=y, TYPEC_QCOM_PMIC=y
+- New kernel transferred to USB, checksums verified, ready for Boot 12
+
 ### 2.2 Full Rootfs (debootstrap)
 A busybox initramfs is too limited for real debugging. Need a proper Ubuntu rootfs.
 - [ ] Create arm64 Ubuntu rootfs via debootstrap in WSL2
@@ -228,16 +288,32 @@ A busybox initramfs is too limited for real debugging. Need a proper Ubuntu root
 - [ ] Boot with full rootfs, verify SSH + package management
 
 ### 2.3 Display Enablement
-Boot 7 confirmed: DRM_MSM probes but component aggregate never binds (no DRM card created).
-Root cause: DPU expects 3 components but DP1 (eDP) never registers its component.
+Boot 8 confirmed: DRM card0 created when mdss_dp3 (aea0000, eDP) disabled.
+Boot 9-10: DP-1 connector exists but "disconnected" -- HPD not firing.
 
-**Next steps (DTS work on WSL2):**
-- [ ] Disable DP1 (aea0000) and its eDP panel in board DTS -- no eDP panel on desktop
-- [ ] Remove DPU port@5 endpoint or mark DP1 status="disabled"
-- [ ] Rebuild DTB and test -- DRM card should be created with just DP0
-- [ ] Identify HDMI bridge chip from Windows hardware data / ACPI tables
-- [ ] Add HDMI bridge node (likely Realtek RTD2171) to DTS under correct DP controller
-- [ ] Test HDMI output with bridge chip described in DTS
+**Two parallel display paths identified:**
+1. **USB-C DP alt mode (DP0/ae90000):** Goes through PMIC glink → PS8830 retimer → USB3-DP PHY. Requires ADSP firmware for UCSI/typec. Firmware extracted and baked into initramfs v7.
+2. **Direct HDMI (mdss_dp3/aea0000, suspected):** May connect to external DP-to-HDMI bridge chip (likely Realtek RTD2171) NOT described in DT. Currently disabled -- needs re-enabling with correct bridge node instead of eDP panel.
+
+**Completed:**
+- [x] Disable mdss_dp3 (aea0000) eDP panel -- proved DRM card creation works (2026-02-26, pi)
+- [x] Rebuild kernel with typec drivers built-in (2026-02-26, pi)
+- [x] Extract Qualcomm firmware from Windows partition (2026-02-26, pi)
+- [x] Bake firmware into initramfs v7 (2026-02-26, pi)
+- [x] Kernel built on Pi 5 with ccache (`make -j4 CC="ccache gcc"`) -- native ARM64, no cross-compile
+- [x] ADSP/CDSP start automatically at boot with firmware in initramfs (2026-02-26, pi)
+- [x] Iteratively fixed all module→builtin configs for PDR/UCSI chain (2026-02-26, pi):
+  - TYPEC_DP_ALTMODE=y, TYPEC_QCOM_PMIC=y (Boot 9)
+  - QRTR_SMD=y (Boot 11)
+  - QCOM_PD_MAPPER=y (Boot 12 prep)
+
+**Next steps:**
+- [ ] Boot 12: Verify UCSI registers typec ports now that full PDR chain is built-in
+- [ ] Test USB-C display output (plug monitor into rear USB-C port)
+- [ ] Identify HDMI bridge chip from Windows driver INFs or I2C enumeration
+- [ ] Re-enable mdss_dp3 with HDMI bridge node instead of eDP panel
+- [ ] Add bridge node (likely `simple-bridge` + `realtek,rtd2171`) to DTS
+- [ ] Test HDMI output
 
 ### 2.4 WiFi Enablement
 - [ ] Copy ath12k firmware files to rootfs (`/lib/firmware/ath12k/`)

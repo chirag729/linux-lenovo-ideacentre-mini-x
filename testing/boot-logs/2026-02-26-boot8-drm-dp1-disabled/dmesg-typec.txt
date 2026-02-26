@@ -1,0 +1,4 @@
+[    0.000000] OF: reserved mem: 0x0000000081f20000..0x0000000081f2ffff (64 KiB) nomap non-reusable usb-ucsi-shared@81f20000
+[    3.964079] qcom_pmic_glink pmic-glink: Failed to create device link (0x180) with supplier 2-0008 for /pmic-glink/connector@0
+[    3.980292] qcom_pmic_glink pmic-glink: Failed to create device link (0x180) with supplier 2-0008 for /pmic-glink/connector@0
+[   32.276242] qcom_pmic_glink pmic-glink: Failed to create device link (0x180) with supplier a600000.usb for /pmic-glink/connector@0
