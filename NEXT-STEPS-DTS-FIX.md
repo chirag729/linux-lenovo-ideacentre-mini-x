@@ -1,109 +1,203 @@
-# Next Steps: Display & Firmware (2026-02-26)
+# HDMI via DP1 - Session Progress (2026-02-26)
 
-## Current Status
+## Status: Boot 17 deployed, awaiting cold boot test
 
-Boot 12 achieved:
-- **UCSI typec port0 registered** -- full PDR chain works (QRTR_SMD=y, PD_MAPPER=y)
-- **DP alt mode active** (SVID 0xff01) on port0
-- **USB-C partner detected** (Apple USB-C to HDMI adapter)
-- **HPD fired**, DP link training started
-- **CR (phase 1) succeeded** at HBR3 / 2 lanes / v=0, p=0 through PS8830 LTTPR
-- **EQ (phase 2) FAILED** on PS8830 LTTPR -- retimer always returns 0/0 adjust requests
-- **Root cause:** Two bugs in MSM DP driver retry loop:
-  1. HPD deasserts after LTTPR EQ failure (PS8830 toggles HPD), breaking retry loop
-  2. Driver never falls back to lower link rates (HBR2/HBR/RBR) after LTTPR failure
+The Lenovo is powered off. New kernel Image + DTB are on the USB drive.
+**Action needed:** Press power button, select GRUB **option 3**.
 
-## Fix Applied for Boot 13
+---
 
-Modified `drivers/gpu/drm/msm/dp/dp_ctrl.c` in `msm_dp_ctrl_on_link()`:
-- **Removed HPD check** from EQ failure retry path (Intel blocks HPD during training too)
-- **Always rate-downshift first** after EQ failure (HBR3→HBR2→HBR→RBR)
-- **Removed stale DPRX link status read** (meaningless after LTTPR failure)
-- Loop is bounded by `link_train_max_retries=5`, so can't loop forever
+## What Was Done This Session (Boots 14-17)
 
-Expected Boot 13 sequence:
-1. HBR3 LTTPR EQ fails (PS8830 still returns 0/0) → rate downshift to HBR2
-2. HBR2 LTTPR training → may succeed (lower rate = less signal tuning needed)
-3. If HBR2 works → sink training → display output!
-4. If HBR2 fails → HBR → RBR → eventually succeed or exhaust retries
+### Discovery: HDMI is on DP1 (ae98000)
+- Confirmed by: (1) Only DP0/DP1 have HPD pinctrl functions in X1E80100 pinctrl; (2) UEFI enables dptx1 clocks (firmware was driving HDMI); (3) GPIO 120 available for edp1_hot
+- DP0 (ae90000) = USB-C rear port (via PS8830 retimer at fd5000)
+- DP1 (ae98000) = HDMI port (via combo PHY fda000)
+- DP3 (aea0000) = internal eDP (nothing physically connected on this desktop)
 
-## What's on the USB
+### Bug 1 Fixed: Clock reparent -EBUSY (Boots 14-16)
+**Symptom:** `clk: failed to reparent disp_cc_mdss_dptx1_link_clk_src to fda000.phy::link_clk: -16`
+Repeated every ~3 seconds, DP1 stuck in deferred probe, entire DRM subsystem blocked.
 
-- `Image` -- kernel with EQ retry fix + full PDR chain built-in
-- `dtb/x1p42100-lenovo-ideacentre-x-gen10.dtb` -- mdss_dp3 (aea0000) disabled
-- `initramfs.cpio.gz` -- v7 with firmware (adsp.mbn, cdsp.mbn, gen71500_zap.mbn)
+**Root cause:** UEFI initialized DP1 for display and left the dptx1 RCG (register clock generator) hardware active. Linux tries to reparent clocks via `assigned-clock-parents` in the DT, but the RCG hardware rejects configuration changes while active (`rcg didn't update its configuration`). This is a hardware-level busy, NOT a Linux enable-count issue -- removing `clk_ignore_unused` from cmdline did NOT help (tested Boot 15).
 
-## Boot 13 Check
-
-```bash
-ssh root@192.168.1.15
-dmesg | grep -i "link rate\|new rate\|link training\|channel eq\|EQ done"
-cat /sys/class/drm/card0-DP-1/status   # connected?
-cat /sys/class/drm/card0-DP-1/modes    # if connected, what modes?
-dmesg | grep -i "rate_down_shift\|reinitialize"  # verify retry happening
+**Fix applied to DTS (`&mdss_dp1` node):**
+```dts
+/delete-property/ assigned-clocks;
+/delete-property/ assigned-clock-parents;
 ```
+This inherits UEFI's clock configuration (which is already correct -- UEFI was driving HDMI through DP1). Codex confirmed the MSM DP driver never calls `clk_set_parent()` at runtime; it relies entirely on DT preset or firmware state.
+
+**Verification:** Boot 16 showed ZERO clock reparent errors.
+
+### Bug 2 Fixed: aux_bridge infinite deferred probe (Boot 16)
+**Symptom:** `ae98000.displayport-controller: deferred probe pending: (reason unknown)`. No DRM devices created (no card0, no connectors).
+
+**Root cause (5-step chain):**
+1. Combo PHY (fda000) always calls `drm_aux_bridge_register(dev)` during probe → creates `aux_bridge.aux_bridge.2` auxiliary device
+2. aux_bridge driver probes → calls `devm_drm_of_get_bridge(node, 0, 0)` → looks at combo PHY's port@0 endpoint (`usb_1_ss1_qmpphy_out`)
+3. port@0 was **empty** (no `remote-endpoint`) → aux_bridge fails with -ENODEV → NO DRM bridge registered for fda000 node
+4. DP1 controller probe → `msm_dp_display_probe_tail()` → `devm_drm_of_get_bridge(node, 1, 0)` → follows graph from `mdss_dp1_out` to combo PHY (fda000) → finds remote node but no DRM bridge registered
+5. `drm_of_find_panel_or_bridge()` **defaults ret to -EPROBE_DEFER** (line 245 of drm_of.c). Since remote node exists but no bridge found, returns -EPROBE_DEFER. DP driver only ignores -ENODEV → **infinite deferred probe**.
+
+**Key insight:** For DP0, the aux_bridge succeeds because the PS8830 retimer (connected via `usb_1_ss0_qmpphy_out`) provides the next bridge. For DP1, there's no retimer -- just a direct HDMI output.
+
+**Fix applied (upstream-quality, confirmed by both Codex and Gemini):**
+1. Added `hdmi-connector` node in board DTS root:
+```dts
+hdmi-connector {
+    compatible = "hdmi-connector";
+    type = "a";
+    port {
+        hdmi_con_in: endpoint {
+            remote-endpoint = <&usb_1_ss1_qmpphy_out>;
+        };
+    };
+};
+```
+2. Connected combo PHY output to HDMI connector:
+```dts
+&usb_1_ss1_qmpphy_out {
+    data-lanes = <0 1 2 3>;
+    remote-endpoint = <&hdmi_con_in>;
+};
+```
+3. Added `data-lanes` to DP1 output:
+```dts
+&mdss_dp1_out {
+    data-lanes = <0 1 2 3>;
+    link-frequencies = /bits/ 64 <1620000000 2700000000 5400000000 8100000000>;
+};
+```
+
+### Bug 3 Fixed: DRM_DISPLAY_CONNECTOR=m
+The `hdmi-connector` compatible is handled by `drivers/gpu/drm/bridge/display-connector.c` which was built as a module (=m). In our initramfs-only environment with no module loading, this is invisible.
+
+**Fix:** Changed `CONFIG_DRM_DISPLAY_CONNECTOR=y` in defconfig.
+
+---
+
+## Files Modified This Session
+
+### Kernel source (`~/kernel/misaleh-linux`)
+
+**`arch/arm64/boot/dts/qcom/x1p42100-lenovo-ideacentre-x-gen10.dts`:**
+- Added `hdmi-connector` node in root (type "a", linked to combo PHY output)
+- Added `&usb_1_ss1_qmpphy_out` override with `data-lanes = <0 1 2 3>` and `remote-endpoint = <&hdmi_con_in>`
+- Added `data-lanes = <0 1 2 3>` to `&mdss_dp1_out`
+- Added `/delete-property/ assigned-clocks` and `/delete-property/ assigned-clock-parents` to `&mdss_dp1`
+- Added `&mdss_dp1` with `pinctrl-0 = <&edp1_hpd_default>`, `status = "okay"`
+- Added `edp1_hpd_default` pinctrl in `&tlmm` for GPIO 120 with `edp1_hot` function
+- Added `&usb_1_ss1_qmpphy` with `/delete-property/ mode-switch`, `/delete-property/ orientation-switch`, supplies, `status = "okay"`
+- Added `&usb_1_ss1` (status okay) and `&usb_1_ss1_dwc3` (`dr_mode = "host"`)
+
+**`drivers/gpu/drm/msm/dp/dp_display.c`:**
+- Removed forced plug event HACK for DP3 (aea0000)
+- Added debug breadcrumbs in `hpd_enable` (DRM_DEV_INFO messages for hpd_enable called/done)
+- Added PHY init call in `hpd_enable`
+
+**`drivers/gpu/drm/msm/dp/dp_ctrl.c`:**
+- Rate fallback fix from previous session: removed HPD check from EQ retry path, always rate-downshift first (HBR3→HBR2→HBR→RBR)
+
+### Project repo (`~/Projects/lenovo-mini-ubuntu`)
+- **`kernel/defconfig`** -- `CONFIG_DRM_DISPLAY_CONNECTOR=y` (was `=m`)
+
+### Git state
+- Branch: `lenovo-hdmi-dp1` on remote `myfork` (chirag729/linux.git)
+- Last push: commit c783abb58 (before Bug 2 and Bug 3 fixes were made)
+- **Unpushed changes:** hdmi-connector node, combo PHY output link, assigned-clocks delete, display-connector=y
+
+---
+
+## What to Do After Boot 17
+
+### If Boot 17 succeeds (DP1 probes, DRM card0 created):
+```bash
+ssh root@192.168.1.15 'dmesg' > testing/boot-logs/2026-02-26-boot17-hdmi-connector/dmesg-full.txt
+ssh root@192.168.1.15 'ls /dev/dri/'                         # expect card0, renderD128
+ssh root@192.168.1.15 'cat /sys/class/drm/card0-*/status'    # check connector status
+ssh root@192.168.1.15 'cat /sys/class/drm/card0-*/modes'     # check available modes
+# Check if HDMI monitor shows anything
+# Check dmesg for: HPD, AUX communication, link training
+```
+
+### If Boot 17 still has deferred probe:
+```bash
+ssh root@192.168.1.15 'dmesg | grep -i "display.connector\|hdmi.connector\|aux_bridge"'
+ssh root@192.168.1.15 'ls /sys/devices/platform/soc@0/fda000.phy/aux_bridge.aux_bridge.2/driver 2>&1'
+ssh root@192.168.1.15 'cat /sys/kernel/debug/devices_deferred'
+```
+
+### After HDMI works:
+- Remove debug breadcrumbs from dp_display.c
+- Clean up DP3 (aea0000) -- consider disabling since nothing physically connected
+- Test USB-C DP (DP0) link training with rate fallback fix
+- Investigate I2C 3:0x5b device (possible HDMI bridge chip)
+- Commit all fixes and push to chirag729/linux
+- Consider PR to misaleh/linux
+
+---
+
+## Hardware Reference
+
+### Display Pipeline (confirmed)
+| Controller | Address | PHY | HPD GPIO | Output |
+|-----------|---------|-----|----------|--------|
+| DP0 | ae90000 | fd5000 (combo) | 119 (edp0_hot) | USB-C rear (via PS8830) |
+| DP1 | ae98000 | fda000 (combo) | 120 (edp1_hot) | HDMI type A |
+| DP3 | aea0000 | dedicated DP PHY | 119 (shared) | Internal eDP (unused) |
+
+### I2C Devices
+| Bus | Addr | Device |
+|-----|------|--------|
+| 2 | 0x08 | Parade PS8830 (USB4/DP retimer for DP0) |
+| 3 | 0x4f | NXP PTN3222 (USB-C redriver) |
+| 3 | 0x5b | Unknown (returns 0xFF, possibly HDMI bridge) |
+
+### GPIOs (display-related)
+| GPIO | Function | State |
+|------|----------|-------|
+| 70 | VREG_EDP_3P3 enable | Claimed by regulator |
+| 117 | Unknown (bridge enable?) | Output HIGH, 16mA, UNCLAIMED |
+| 119 | DP0 HPD (edp0_hot) | Claimed by DP3 controller |
+| 120 | DP1 HPD (edp1_hot) | Configured in our DTS |
+
+### GRUB Menu (`/mnt/usb/EFI/BOOT/grub.cfg`)
+1. ACPI boot - no DTB
+2. DTB + DRM disabled (safe, telnet works)
+3. **DTB + DRM enabled (display test)** ← USE THIS FOR BOOT 17
+4. DTB + DRM enabled + nomodeset fallback
+5. DTB + DRM + no clk_ignore (DP1/HDMI test)
+6. Reboot / Shutdown
+
+---
+
+## Boot History This Session
+
+| Boot | Changes | Result |
+|------|---------|--------|
+| 14a-c | DP1 enabled in DTS, combo PHY enabled | Clock reparent -EBUSY blocks DP1 probe, NO DRM devices |
+| 14d | Added usb_1_ss1 USB controller | Same clock issue + USB dwc3 init failure (missing HS PHY) |
+| 15 | Removed `clk_ignore_unused` from cmdline | Clock reparent STILL fails (hardware RCG busy, not Linux), system survived though |
+| 16 | Deleted assigned-clocks/parents from mdss_dp1 | Clock errors GONE! But DP1 still deferred (aux_bridge chain discovered) |
+| 17 | Added hdmi-connector + linked combo PHY output + DRM_DISPLAY_CONNECTOR=y | **PENDING TEST** |
 
 ## Built-in Config Chain (all =y)
 
 | Config | Purpose |
 |--------|---------|
-| QRTR | QRTR IPC router |
-| QRTR_SMD | SMD transport for QRTR (talks to ADSP) |
-| QCOM_QMI_HELPERS | QMI encoding/decoding |
-| QCOM_PDR_HELPERS | Protection Domain Restart helpers |
-| QCOM_PDR_MSG | PDR QMI messages |
-| QCOM_PD_MAPPER | In-kernel pd-mapper (service locator provider) |
-| QCOM_PMIC_GLINK | PMIC glink (altmode, UCSI, battmgr) |
+| QRTR, QRTR_SMD | IPC to ADSP |
+| QCOM_QMI_HELPERS | QMI encoding |
+| QCOM_PDR_HELPERS, QCOM_PDR_MSG | Protection Domain Restart |
+| QCOM_PD_MAPPER | In-kernel pd-mapper |
+| QCOM_PMIC_GLINK | PMIC glink (altmode, UCSI) |
 | UCSI_PMIC_GLINK | UCSI over PMIC glink |
 | TYPEC_DP_ALTMODE | USB Type-C DP alt mode |
-| TYPEC_QCOM_PMIC | Qualcomm PMIC typec driver |
-
-## Two Display Paths
-
-### Path 1: USB-C DP Alt Mode (DP0 / ae90000) -- ACTIVE
-- Wiring: DPU → DP0 → USB3-DP PHY (fd5000) → PS8830 retimer → USB-C rear port
-- Chain: ADSP → PMIC glink → PDR → UCSI → typec port → DP alt mode → HPD → link training
-- Status: Link training reaches PS8830, CR OK, EQ fails at HBR3 → Boot 13 has rate fallback fix
-- Test: Apple USB-C to HDMI adapter plugged into rear USB-C port
-
-### Path 2: HDMI via mdss_dp3 (aea0000) -- needs DT work
-- **Currently disabled** in DTB (we disabled it to fix component aggregate)
-- Codex analysis suggests HDMI goes through this controller via an external bridge chip
-- The DT currently has an eDP panel child (wrong for desktop)
-- **Fix:** Re-enable mdss_dp3, remove eDP panel, add HDMI bridge+connector graph
-
-## Boot History
-
-| Boot | Config/Fix | Result |
-|------|-----------|--------|
-| 8 | (initial DRM test) | DRM card0 created, DP-1 disconnected |
-| 9 | TYPEC_DP_ALTMODE=y, TYPEC_QCOM_PMIC=y | Aux bus drivers bound, still disconnected |
-| 10 | NTFS3_FS=y | Firmware extracted, ADSP/CDSP started manually |
-| 11 | QRTR_SMD=y + firmware in initramfs | ADSP/CDSP at boot, UCSI still no typec ports |
-| 12 | QCOM_PD_MAPPER=y | UCSI works! typec port0 registered, DP alt mode active, link training fails (EQ at HBR3) |
-| 13 | EQ retry fix (remove HPD check, rate fallback) | **Pending** |
-
-## PS8830 LTTPR Details (from Boot 12 dmesg)
-
-- LTTPR revision: DP 2.0 (0x20)
-- Max link rate: HBR3 (0x1e = 8.1 Gbps)
-- PHY repeater count: 1 (0x80)
-- I2C address: bus 2, 0x08
-- Non-transparent mode set correctly (0xaa written to 0xf0003)
-- CR phase: succeeds with TPS1 at v=0, p=0
-- EQ phase: fails with TPS4 -- adjust request registers (0xf0033) always 0x00
-- Known upstream issue: "PS8830 claims no Level 3 support but actually requires it"
-
-## If Boot 13 Still Fails
-
-If all rates fail EQ on the LTTPR:
-1. Try transparent LTTPR mode (write 0x55 to DPCD 0xf0003 instead of 0xaa)
-2. Add PS8830-specific voltage/pre-emphasis quirk (keyed on OUI at 0xf0003)
-3. Investigate HDMI path (Path 2) as alternative -- no LTTPR involved
+| TYPEC_QCOM_PMIC | Qualcomm PMIC typec |
+| DRM_DISPLAY_CONNECTOR | hdmi-connector / dp-connector DRM bridge |
 
 ## Firmware Reference
 
-Extracted from Windows, installed as:
 | Windows name | Linux path | Purpose |
 |---|---|---|
 | qcadsp8380.mbn | qcom/x1e80100/adsp.mbn | ADSP coprocessor |

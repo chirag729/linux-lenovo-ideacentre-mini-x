@@ -25,7 +25,32 @@ See `PLAN.md` for the full plan.
 - **USB boot drive** mounted at `/mnt/usb` (FAT32) -- contains Image, dtb/, initramfs.cpio.gz
 - **File transfer to USB:** `cat file | ssh root@192.168.1.15 'cat > /mnt/usb/file'` (no scp in initramfs)
 - **Windows partition:** BitLocker disabled, NTFS mountable from Linux
-- **UEFI:** GRUB boot menu with multiple options in `/mnt/usb/EFI/BOOT/grub.cfg`
+- **UEFI:** GRUB boot menu in `/mnt/usb/EFI/BOOT/grub.cfg`. Option 1 is the default DRM-enabled boot, auto-selected after 5 seconds.
+- **Initramfs environment:** PID 1 is `/bin/sh` (no init system). Busybox provides basic userspace. No module loading.
+
+### Rebooting the Lenovo remotely
+The Lenovo can be rebooted remotely without user intervention. After deploying new kernel/DTB files, trigger a reboot yourself -- do NOT ask the user to press the power button.
+
+**How to reboot:**
+```bash
+# Sync filesystem first, then trigger immediate reboot via sysrq
+ssh root@192.168.1.15 'sync && echo b > /proc/sysrq-trigger'
+```
+
+**Why sysrq:** Busybox `reboot` does not work reliably because PID 1 is a bare `/bin/sh` with no init system to handle the reboot signal. Writing `b` to `/proc/sysrq-trigger` triggers an immediate kernel reboot.
+
+**Waiting for the system to come back online:**
+```bash
+# Wait 60 seconds for UEFI + GRUB + kernel boot, then poll every 5 seconds
+sleep 60 && for i in $(seq 1 24); do \
+  if ssh -o ConnectTimeout=3 root@192.168.1.15 'uptime' 2>/dev/null; then \
+    echo "ONLINE at attempt $i"; break; \
+  fi; \
+  echo "Attempt $i - waiting..."; sleep 5; \
+done
+```
+
+**After reboot:** Always verify the uptime is low (< 2 minutes) to confirm a real reboot occurred. GRUB auto-selects option 1 (DTB + DRM enabled) after 5 seconds.
 
 ## Git Workflow
 
@@ -58,16 +83,22 @@ dtc -I dtb -O dts -o /tmp/board.dts /path/to/board.dtb   # decompile
 dtc -I dts -O dtb -o /tmp/board.dtb /tmp/board.dts        # recompile
 ```
 
-### Deploying kernel to Lenovo USB (while Lenovo is running Linux)
+### Deploying kernel to Lenovo USB and rebooting
 ```bash
 # Copy kernel Image:
 cat ~/kernel/misaleh-linux/arch/arm64/boot/Image | ssh root@192.168.1.15 'cat > /mnt/usb/Image'
 # Copy DTB:
 cat ~/kernel/misaleh-linux/arch/arm64/boot/dts/qcom/x1p42100-lenovo-ideacentre-x-gen10.dtb | \
   ssh root@192.168.1.15 'cat > /mnt/usb/dtb/x1p42100-lenovo-ideacentre-x-gen10.dtb'
-# Always sync after:
-ssh root@192.168.1.15 'sync'
+# Sync and reboot:
+ssh root@192.168.1.15 'sync && echo b > /proc/sysrq-trigger'
+# Wait for reboot (60s initial wait + poll every 5s):
+sleep 60 && for i in $(seq 1 24); do \
+  if ssh -o ConnectTimeout=3 root@192.168.1.15 'uptime' 2>/dev/null; then break; fi; \
+  echo "Attempt $i - waiting..."; sleep 5; \
+done
 ```
+After each deploy+reboot cycle, capture dmesg and verify the changes took effect.
 
 ### Capturing boot logs from Lenovo
 ```bash
@@ -122,9 +153,10 @@ Never propose capping values, disabling features, or skipping code paths as a fi
 ## Hardware & Driver Knowledge
 
 ### Display Pipeline
-Two separate display paths on this board:
-1. **USB-C DP Alt Mode (DP0 / ae90000):** DPU → DP0 → USB3-DP PHY (fd5000) → PS8830 retimer (LTTPR) → USB-C rear port. Requires full PMIC glink + UCSI + ADSP chain for HPD.
-2. **HDMI (mdss_dp3 / aea0000):** Goes to external bridge chip (suspected Realtek RTD2171). Currently disabled in DTB. DT has wrong eDP panel node -- needs replacing with bridge+connector.
+Three display controllers confirmed on this board:
+1. **USB-C DP Alt Mode (DP0 / ae90000):** DPU → DP0 → USB3-DP combo PHY (fd5000) → PS8830 retimer (LTTPR) → USB-C rear port. Requires full PMIC glink + UCSI + ADSP chain for HPD.
+2. **HDMI (DP1 / ae98000):** DPU → DP1 → USB3-DP combo PHY (fda000) → HDMI Type A port. HPD on GPIO 120 (edp1_hot). No retimer in this path.
+3. **Internal eDP (DP3 / aea0000):** Nothing physically connected on this desktop. HPD shared with DP0 on GPIO 119.
 
 ### PMIC Glink / UCSI / PDR Chain
 All must be =y (built-in) since no module loading in initramfs:
