@@ -137,14 +137,55 @@ Progress is tracked in `PROGRESS.md` at the repo root. This file contains granul
 4. Update `PROGRESS.md` -- mark completed steps, add notes
 5. `git commit` and `git push` -- share progress
 
+## Autonomous Work Loop
+
+**You must work autonomously and continuously until the current task is complete.** Do NOT stop to ask the user for input unless you are physically blocked (e.g., need them to plug in a cable). The full cycle is:
+
+1. **Research** the problem (web search, kernel source, datasheets)
+2. **Get second opinions** from Codex and Gemini (launch as parallel background subagents)
+3. **Implement** the fix
+4. **Build** (kernel and/or DTB)
+5. **Deploy** to Lenovo USB
+6. **Reboot** the Lenovo remotely (sysrq)
+7. **Capture dmesg** and analyze results
+8. **If not fixed**, go back to step 1 with new information from the boot log
+
+Repeat this loop yourself. Do NOT wait for the user to tell you to reboot, or to analyze the log, or to try the next thing. Keep going.
+
+### Encouraged Research
+
+Web search is encouraged but not mandatory. Use as needed for:
+- Unknown chip identification, error messages, I2C addresses
+- Searching lore.kernel.org and patchwork for existing upstream patches
+- Finding datasheets, forum posts, kernel patches, and mailing list discussions
+
+### MANDATORY: Codex and Gemini Gate
+
+**BEFORE editing ANY kernel code (.c, .h) or device tree (.dts, .dtsi) file, you MUST:**
+
+1. **Launch BOTH `ask-codex` AND `ask-gemini`** as parallel background subagents describing:
+   - The problem you're trying to solve
+   - What you've found so far (dmesg errors, code paths, etc.)
+   - The fix you're considering
+
+2. **Wait for their responses** before editing code. You may continue research while waiting.
+
+3. **Cross-reference their analysis** with your own. If they disagree, investigate both angles.
+
+**This is a HARD GATE, not a suggestion.** If you find yourself about to edit a .c/.h/.dts/.dtsi file without having launched both agents IN THIS SESSION for this specific problem, STOP and launch them first.
+
+**Why this matters:** Trial-and-error debugging without external review wastes the user's time with avoidable build-deploy-reboot cycles. A 2-minute wait for agent responses can save 20+ minutes of failed boots.
+
+**Exceptions:** Trivial changes like fixing typos, adjusting log messages, or reverting your own recent changes do not require the gate.
+
 ## Problem-Solving Approach
 
 **Always find and implement the proper fix. Hacks and workarounds are a last resort only.**
 
 When encountering a bug or failure:
 1. **Investigate the root cause.** Read the relevant kernel source, trace the code path, understand why it fails.
-2. **Search for existing upstream patches.** Check lore.kernel.org, patchwork, mailing list archives. Someone may have already fixed this.
-3. **Get second opinions.** Use Codex and Gemini for tricky issues. Cross-reference their analysis.
+2. **Search online for existing solutions.** Web search for the error, check lore.kernel.org, patchwork, mailing list archives. Someone may have already fixed this.
+3. **Get second opinions.** Launch Codex and Gemini as parallel background subagents. Cross-reference their analysis with yours and with web search results.
 4. **Write a correct fix** that matches how other drivers handle the same problem (e.g., check how i915, amdgpu, or other Qualcomm drivers solve it).
 5. **Only as a last resort**, if the proper solution truly cannot be found after thorough research, propose a workaround -- and clearly label it as temporary with a TODO to replace it.
 
@@ -155,7 +196,7 @@ Never propose capping values, disabling features, or skipping code paths as a fi
 ### Display Pipeline
 Three display controllers confirmed on this board:
 1. **USB-C DP Alt Mode (DP0 / ae90000):** DPU → DP0 → USB3-DP combo PHY (fd5000) → PS8830 retimer (LTTPR) → USB-C rear port. Requires full PMIC glink + UCSI + ADSP chain for HPD.
-2. **HDMI (DP1 / ae98000):** DPU → DP1 → USB3-DP combo PHY (fda000) → HDMI Type A port. HPD on GPIO 120 (edp1_hot). No retimer in this path.
+2. **HDMI (DP1 / ae98000):** DPU → DP1 → USB3-DP combo PHY (fda000) → DP-to-HDMI bridge chip (I2C bus 3, addr 0x5b, chip unidentified -- registers 0x10=0x20, 0x11=0x87) → HDMI Type A port. HPD on GPIO 120 (edp1_hot). Bridge chip may need a Linux driver for HPD forwarding. GPIO 117 (output HIGH, 16mA, unclaimed) is suspected bridge/HDMI power enable.
 3. **Internal eDP (DP3 / aea0000):** Nothing physically connected on this desktop. HPD shared with DP0 on GPIO 119.
 
 ### PMIC Glink / UCSI / PDR Chain

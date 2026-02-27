@@ -1,9 +1,10 @@
 # HDMI via DP1 - Session Progress (2026-02-26)
 
-## Status: Boot 17 deployed, awaiting cold boot test
+## Status: Boot 17 TESTED -- DRM fully operational, HPD not detecting HDMI
 
-The Lenovo is powered off. New kernel Image + DTB are on the USB drive.
-**Action needed:** Press power button, select GRUB **option 3**.
+Boot 17 was a major success: all three DP controllers probed, DRM card0 created, HDMI-A-1 connector registered. But all connectors report "disconnected" because HPD is not asserting despite HDMI cable being plugged in and display working during UEFI/GRUB.
+
+**Current blocker:** Suspected DP-to-HDMI bridge chip at I2C 3:0x5b needs identification and possibly a Linux driver. The bridge chip likely handles HPD forwarding from the monitor to GPIO 120, and may need initialization that UEFI provides but Linux does not.
 
 ---
 
@@ -180,7 +181,7 @@ ssh root@192.168.1.15 'cat /sys/kernel/debug/devices_deferred'
 | 14d | Added usb_1_ss1 USB controller | Same clock issue + USB dwc3 init failure (missing HS PHY) |
 | 15 | Removed `clk_ignore_unused` from cmdline | Clock reparent STILL fails (hardware RCG busy, not Linux), system survived though |
 | 16 | Deleted assigned-clocks/parents from mdss_dp1 | Clock errors GONE! But DP1 still deferred (aux_bridge chain discovered) |
-| 17 | Added hdmi-connector + linked combo PHY output + DRM_DISPLAY_CONNECTOR=y | **PENDING TEST** |
+| 17 | Added hdmi-connector + linked combo PHY output + DRM_DISPLAY_CONNECTOR=y | **DRM card0 created, DP-1/HDMI-A-1/DP-2 connectors registered, all report disconnected. HPD GPIO 120 reads LOW despite HDMI cable plugged in. Bridge chip at I2C 3:0x5b alive (regs 0x10=0x20, 0x11=0x87). Zero HPD interrupts fired.** |
 
 ## Built-in Config Chain (all =y)
 

@@ -288,32 +288,54 @@ A busybox initramfs is too limited for real debugging. Need a proper Ubuntu root
 - [ ] Boot with full rootfs, verify SSH + package management
 
 ### 2.3 Display Enablement
-Boot 8 confirmed: DRM card0 created when mdss_dp3 (aea0000, eDP) disabled.
-Boot 9-10: DP-1 connector exists but "disconnected" -- HPD not firing.
+
+#### Boot 28 - DISPLAY WORKING! (2026-02-27, pi)
+**efifb console output now visible on HDMI!** Tux logo + console text working.
+
+**Root cause of display going blank:** Display clocks (disp_cc_mdss_mdp_clk, ahb_clk, vsync_clk) were being disabled by kernel even with `clk_ignore_unused` because no driver was holding them.
+
+**Fix:** Added `CLK_IS_CRITICAL` flag to key display clocks in `dispcc-x1e80100.c`:
+- disp_cc_mdss_mdp_clk (MDP clock)
+- disp_cc_mdss_ahb_clk (AHB bus clock)
+- disp_cc_mdss_vsync_clk (vsync clock)
+- Also: ALWAYS_ON flag on mdss_gdsc power domain
+
+**Boot cmdline:** `nomodeset video=efifb:on clk_ignore_unused pd_ignore_unused regulator_ignore_unused`
+
+**Verification:** Clocks now show enable_count=1 in clk_summary (previously 0).
+
+**Files modified:**
+- `drivers/clk/qcom/dispcc-x1e80100.c` - CLK_IS_CRITICAL + ALWAYS_ON flags
+- GRUB config - added regulator_ignore_unused
+
+---
+
+**Earlier boot history:**
+- Boot 8: DRM card0 created when mdss_dp3 (aea0000, eDP) disabled
+- Boot 9-10: DP-1 connector exists but "disconnected" -- HPD not firing
+- Boot 17: All three DP controllers bound, HDMI-A-1 connector registered
+- Boots 21-27: efifb testing, display blank despite probing, clock issues identified
+- Boot 28: CLK_IS_CRITICAL fix works!
 
 **Two parallel display paths identified:**
 1. **USB-C DP alt mode (DP0/ae90000):** Goes through PMIC glink → PS8830 retimer → USB3-DP PHY. Requires ADSP firmware for UCSI/typec. Firmware extracted and baked into initramfs v7.
-2. **Direct HDMI (mdss_dp3/aea0000, suspected):** May connect to external DP-to-HDMI bridge chip (likely Realtek RTD2171) NOT described in DT. Currently disabled -- needs re-enabling with correct bridge node instead of eDP panel.
+2. **HDMI (DP1/ae98000):** DPU → DP1 → combo PHY (fda000) → ITE IT66311/IT66312 bridge (I2C 3:0x5b) → HDMI Type A port.
 
 **Completed:**
 - [x] Disable mdss_dp3 (aea0000) eDP panel -- proved DRM card creation works (2026-02-26, pi)
 - [x] Rebuild kernel with typec drivers built-in (2026-02-26, pi)
 - [x] Extract Qualcomm firmware from Windows partition (2026-02-26, pi)
 - [x] Bake firmware into initramfs v7 (2026-02-26, pi)
-- [x] Kernel built on Pi 5 with ccache (`make -j4 CC="ccache gcc"`) -- native ARM64, no cross-compile
+- [x] Kernel built on Pi 5 with ccache -- native ARM64, no cross-compile
 - [x] ADSP/CDSP start automatically at boot with firmware in initramfs (2026-02-26, pi)
-- [x] Iteratively fixed all module→builtin configs for PDR/UCSI chain (2026-02-26, pi):
-  - TYPEC_DP_ALTMODE=y, TYPEC_QCOM_PMIC=y (Boot 9)
-  - QRTR_SMD=y (Boot 11)
-  - QCOM_PD_MAPPER=y (Boot 12 prep)
+- [x] Iteratively fixed all module→builtin configs for PDR/UCSI chain (2026-02-26, pi)
+- [x] **efifb display working via CLK_IS_CRITICAL fix (2026-02-27, pi)**
 
-**Next steps:**
-- [ ] Boot 12: Verify UCSI registers typec ports now that full PDR chain is built-in
-- [ ] Test USB-C display output (plug monitor into rear USB-C port)
-- [ ] Identify HDMI bridge chip from Windows driver INFs or I2C enumeration
-- [ ] Re-enable mdss_dp3 with HDMI bridge node instead of eDP panel
-- [ ] Add bridge node (likely `simple-bridge` + `realtek,rtd2171`) to DTS
-- [ ] Test HDMI output
+**Next steps for full DRM support:**
+- [ ] Identify ITE IT66311/IT66312 bridge chip driver requirements
+- [ ] Get HPD working (GPIO 120 reads LOW with cable connected)
+- [ ] Re-enable MDSS/DPU for hardware-accelerated graphics
+- [ ] Write or port bridge chip driver if needed
 
 ### 2.4 WiFi Enablement
 - [ ] Copy ath12k firmware files to rootfs (`/lib/firmware/ath12k/`)
